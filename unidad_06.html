@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 6: Carga Térmica y Estrés Térmico | Guía de Estudio Universitaria</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- KaTeX for beautiful math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <!-- Script de Inicialización de Modo Oscuro -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            thermal: {
+              hot: '#ef4444',
+              warm: '#f97316',
+              neutral: '#10b981',
+              cool: '#06b6d4',
+              cold: '#3b82f6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .gradient-header {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #dc2626 100%);
+    }
+    .badge-tag {
+      @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide;
+    }
+
+    /* Reglas para Modo Oscuro (Dark Mode) */
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.88) !important;
+      border-color: rgba(51, 65, 85, 0.7) !important;
+      color: #f1f5f9;
+    }
+    .dark .bg-slate-50 {
+      background-color: rgba(30, 41, 59, 0.7) !important;
+    }
+    .dark .bg-slate-100 {
+      background-color: rgba(51, 65, 85, 0.6) !important;
+    }
+    .dark .bg-white {
+      background-color: rgba(15, 23, 42, 0.85) !important;
+    }
+    .dark .border-slate-200,
+    .dark .border-slate-300,
+    .dark .border-slate-100 {
+      border-color: rgba(51, 65, 85, 0.8) !important;
+    }
+    .dark .divide-slate-200,
+    .dark .divide-slate-100 {
+      border-color: rgba(51, 65, 85, 0.8) !important;
+    }
+    .dark .text-slate-900 {
+      color: #f8fafc !important;
+    }
+    .dark .text-slate-800 {
+      color: #f1f5f9 !important;
+    }
+    .dark .text-slate-700 {
+      color: #cbd5e1 !important;
+    }
+    .dark .text-slate-600 {
+      color: #94a3b8 !important;
+    }
+    .dark .text-slate-500 {
+      color: #64748b !important;
+    }
+    .dark input,
+    .dark select {
+      background-color: #1e293b !important;
+      color: #f1f5f9 !important;
+      border-color: #475569 !important;
+    }
+    .dark input:focus,
+    .dark select:focus {
+      border-color: #38bdf8 !important;
+      outline: none;
+    }
+    .dark tr:hover {
+      background-color: rgba(51, 65, 85, 0.35) !important;
+    }
+    .dark thead.bg-slate-100,
+    .dark thead .bg-slate-100 {
+      background-color: #1e293b !important;
+      color: #f1f5f9 !important;
+    }
+
+    /* Cajas y badges contextuales en modo oscuro */
+    .dark .bg-amber-50, .dark .bg-amber-50\/70 {
+      background-color: rgba(120, 53, 15, 0.25) !important;
+      border-color: rgba(245, 158, 11, 0.4) !important;
+    }
+    .dark .text-amber-950, .dark .text-amber-900 {
+      color: #fef3c7 !important;
+    }
+    .dark .text-amber-800 {
+      color: #fde68a !important;
+    }
+    .dark .text-amber-700, .dark .text-amber-600 {
+      color: #fbbf24 !important;
+    }
+
+    .dark .bg-sky-50, .dark .bg-sky-50\/70 {
+      background-color: rgba(12, 74, 110, 0.3) !important;
+      border-color: rgba(14, 165, 233, 0.4) !important;
+    }
+    .dark .text-sky-950, .dark .text-sky-900 {
+      color: #e0f2fe !important;
+    }
+    .dark .text-sky-800 {
+      color: #7dd3fc !important;
+    }
+    .dark .text-sky-700, .dark .text-sky-600 {
+      color: #38bdf8 !important;
+    }
+
+    .dark .bg-rose-50, .dark .bg-red-50 {
+      background-color: rgba(136, 19, 55, 0.3) !important;
+      border-color: rgba(244, 63, 94, 0.4) !important;
+    }
+    .dark .text-rose-950, .dark .text-rose-900, .dark .text-red-950, .dark .text-red-900 {
+      color: #ffe4e6 !important;
+    }
+    .dark .text-rose-800, .dark .text-red-800 {
+      color: #fecdd3 !important;
+    }
+    .dark .text-rose-700, .dark .text-rose-600, .dark .text-red-600 {
+      color: #fb7185 !important;
+    }
+
+    .dark .bg-emerald-50, .dark .bg-emerald-50\/70 {
+      background-color: rgba(6, 78, 59, 0.3) !important;
+      border-color: rgba(16, 185, 129, 0.4) !important;
+    }
+    .dark .text-emerald-950, .dark .text-emerald-900 {
+      color: #d1fae5 !important;
+    }
+    .dark .text-emerald-800 {
+      color: #a7f3d0 !important;
+    }
+    .dark .text-emerald-700, .dark .text-emerald-600 {
+      color: #34d399 !important;
+    }
+
+    .dark .bg-purple-50 {
+      background-color: rgba(88, 28, 135, 0.3) !important;
+      border-color: rgba(168, 85, 247, 0.4) !important;
+    }
+    .dark .text-purple-950, .dark .text-purple-900 {
+      color: #f3e8ff !important;
+    }
+    .dark .text-purple-800 {
+      color: #e9d5ff !important;
+    }
+    .dark .text-purple-700, .dark .text-purple-600 {
+      color: #c084fc !important;
+    }
+
+    .dark .bg-orange-50 {
+      background-color: rgba(124, 45, 18, 0.3) !important;
+      border-color: rgba(249, 115, 22, 0.4) !important;
+    }
+    .dark .text-orange-950, .dark .text-orange-900 {
+      color: #ffedd5 !important;
+    }
+    .dark .text-orange-800 {
+      color: #fed7aa !important;
+    }
+    .dark .text-orange-700, .dark .text-orange-600 {
+      color: #fb923c !important;
+    }
+
+    .dark .bg-blue-50 {
+      background-color: rgba(30, 58, 138, 0.3) !important;
+      border-color: rgba(59, 130, 246, 0.4) !important;
+    }
+    .dark .text-blue-900 {
+      color: #dbeafe !important;
+    }
+    .dark .text-blue-800 {
+      color: #bfdbfe !important;
+    }
+    .dark .text-blue-600 {
+      color: #60a5fa !important;
+    }
+
+    .dark .bg-indigo-50 {
+      background-color: rgba(49, 46, 129, 0.3) !important;
+      border-color: rgba(99, 102, 241, 0.4) !important;
+    }
+    .dark .text-indigo-900 {
+      color: #e0e7ff !important;
+    }
+    .dark .text-indigo-600 {
+      color: #818cf8 !important;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Estilo de impresión optimizado */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .glass-card { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-sky-200 selection:text-sky-900 transition-colors duration-200">
+
+  <!-- TOP BAR CONTEXTUAL -->
+  <header class="no-print bg-slate-900/95 backdrop-blur text-slate-300 text-xs py-2 px-4 border-b border-slate-800 sticky top-0 z-40 shadow-sm transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition text-xs shadow-sm">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Volver al Índice</span>
+        </a>
+        <span class="text-slate-600 hidden sm:inline">|</span>
+        <span class="font-semibold text-white tracking-wider hidden md:inline">Material de Estudio Universitario</span>
+        <span class="text-slate-600 hidden md:inline">|</span>
+        <span class="hidden sm:inline">Higiene y Seguridad</span>
+      </div>
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <span class="bg-sky-950 text-sky-300 px-2 py-0.5 rounded border border-sky-800 text-[11px] font-mono hidden sm:inline">Res. SRT 295/03</span>
+        <span class="bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800 text-[11px] font-mono hidden sm:inline">ISO 7933 / ISO 8996</span>
+        <!-- Botón de Modo Oscuro -->
+        <button id="theme-toggle" class="p-1.5 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition flex items-center gap-1.5 border border-slate-700 text-xs" title="Alternar modo claro / oscuro" aria-label="Cambiar tema">
+          <i class="fa-solid fa-moon dark:hidden text-amber-300"></i>
+          <i class="fa-solid fa-sun hidden dark:inline text-amber-400"></i>
+          <span class="hidden sm:inline">Tema</span>
+        </button>
+        <button onclick="window.print()" class="hover:text-white transition flex items-center gap-1 text-slate-300 p-1.5 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs" title="Imprimir guía">
+          <i class="fa-solid fa-print"></i> <span class="hidden sm:inline">Imprimir</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO HEADER -->
+  <div class="gradient-header text-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 shadow-xl relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/15"></div>
+    <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-red-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-20 -top-20 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider backdrop-blur-sm mb-4 border border-white/20">
+            <i class="fa-solid fa-temperature-arrow-up text-amber-300"></i> Módulo de Factores Físicos Ambientales
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading tracking-tight text-white mb-4">
+            Unidad 6: Carga Térmica y Estrés Calórico
+          </h1>
+          <p class="text-base sm:text-lg text-sky-100 font-light leading-relaxed">
+            Fundamentos fisiológicos de termorregulación humana, metodologías de evaluación del estrés térmico laboral mediante el índice <strong class="text-white font-semibold">TGBH (WBGT)</strong> según la <em>Resolución SRT 295/03</em> y análisis detallado por balance térmico e <strong class="text-white font-semibold">Índice de Esfuerzo Calórico (IEC)</strong> bajo norma <em>ISO 7933</em>.
+          </p>
+        </div>
+        <div class="glass-card bg-white/10 border-white/20 p-5 rounded-2xl text-white backdrop-blur-md max-w-sm flex-shrink-0 shadow-lg">
+          <div class="text-xs uppercase tracking-wider text-sky-200 font-semibold mb-2 flex items-center justify-between">
+            <span>Metadatos de Estudio</span>
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between border-b border-white/10 pb-1.5">
+              <span class="text-sky-200">Enfoque:</span>
+              <span class="font-medium text-right">Fisiológico & Normativo</span>
+            </div>
+            <div class="flex justify-between border-b border-white/10 pb-1.5">
+              <span class="text-sky-200">Temperatura Interna:</span>
+              <span class="font-medium text-emerald-300">37.0 °C (Homotermia)</span>
+            </div>
+            <div class="flex justify-between border-b border-white/10 pb-1.5">
+              <span class="text-sky-200">Límite Crítico:</span>
+              <span class="font-medium text-red-300">38.0 °C / 38.5 °C rectal</span>
+            </div>
+            <div class="flex justify-between pt-1">
+              <span class="text-sky-200">Métodos:</span>
+              <span class="font-medium text-amber-200">TGBH + ISO 7933</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Nav Pills -->
+      <div class="no-print mt-8 flex flex-wrap gap-2 pt-4 border-t border-white/15 text-xs font-medium">
+        <a href="#maquina-termica" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-person text-sky-300"></i> El Cuerpo Humano
+        </a>
+        <a href="#termorregulacion" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-fire-flame-curved text-amber-300"></i> Termogénesis vs Termólisis
+        </a>
+        <a href="#estres-vs-tension" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-scale-balanced text-emerald-300"></i> Estrés vs Tensión
+        </a>
+        <a href="#flujograma-srt" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-diagram-project text-purple-300"></i> Flujograma Res. 295/03
+        </a>
+        <a href="#indice-tgbh" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-gauge-high text-red-300"></i> Índice TGBH (WBGT)
+        </a>
+        <a href="#carga-metabolica" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-bolt text-yellow-300"></i> Carga Metabólica (M)
+        </a>
+        <a href="#iso-7933-iec" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-chart-line text-cyan-300"></i> ISO 7933 & IEC
+        </a>
+        <a href="#controles-prevencion" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition backdrop-blur-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-emerald-300"></i> Controles & Síntomas
+        </a>
+        <a href="#calculadora-interactiva" class="bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5">
+          <i class="fa-solid fa-calculator"></i> Calculadora Interactiva
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+    <!-- SECCIÓN 1: EL CUERPO HUMANO COMO MÁQUINA TÉRMICA -->
+    <section id="maquina-termica" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl font-bold">
+          1
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-600">Fundamentos Bioenergéticos</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">El Cuerpo Humano como Máquina Térmica</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-4">
+          <p class="text-slate-700 leading-relaxed">
+            Desde el punto de vista de la termodinámica aplicada a la higiene laboral, el organismo humano opera como una <strong>máquina térmica</strong>. Su fuente de entrada es la <em>energía química</em> contenida en los alimentos consumidos, la cual es procesada y metabolizada para generar dos formas principales de energía de salida: <strong>trabajo mecánico externo</strong> y <strong>calor disipado</strong>.
+          </p>
+
+          <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+            <h4 class="font-bold text-amber-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Ley del Rendimiento Muscular (Rendimiento del 20%)
+            </h4>
+            <p class="text-xs text-amber-800 mt-1 leading-relaxed">
+              De cada 100 calorías generadas durante la actividad muscular, <strong>únicamente el 20% se convierte en trabajo mecánico útil</strong>, mientras que el <strong>80% restante se transforma en calor metabólico</strong>. Este inmenso caudal de calor interno debe ser evacuado de forma continua hacia el entorno para evitar un sobrecalentamiento letal.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+              <h5 class="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                <i class="fa-solid fa-dna text-sky-600"></i> Metabolismo
+              </h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Conjunto de reacciones bioquímicas integradas que comprende:
+                <br>• <strong>Catabolismo:</strong> Ruptura de moléculas complejas para <span class="text-red-600 font-semibold">producir energía</span>.
+                <br>• <strong>Anabolismo:</strong> Construcción de componentes celulares que <span class="text-blue-600 font-semibold">utilizan energía</span>.
+              </p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+              <h5 class="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                <i class="fa-solid fa-heart-pulse text-rose-600"></i> Procesos Fisiológicos
+              </h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Intervienen de manera directa: digestión de alimentos, excreción renal y digestiva, ventilación pulmonar, dinamismo cardiovascular y la regulación térmica neural.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Lateral: Temperaturas Fisiológicas -->
+        <div class="bg-sky-50/70 border border-sky-200 p-5 rounded-xl space-y-4">
+          <h3 class="font-bold text-sky-950 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-temperature-three-quarters text-sky-600"></i> Homotermia y Zonas Térmicas
+          </h3>
+          <p class="text-xs text-sky-900">
+            Para sostener la viabilidad celular y enzimática, el núcleo profundo corporal debe conservarse a un promedio estricto de <strong>37.0 °C</strong>.
+          </p>
+
+          <div class="space-y-2">
+            <div class="bg-white p-2.5 rounded-lg border border-sky-100 flex justify-between items-center text-xs">
+              <span class="font-medium text-slate-700"><i class="fa-regular fa-circle-dot text-sky-500 mr-1.5"></i> Temperatura Axilar:</span>
+              <span class="font-bold text-slate-900 font-mono">36.2 °C – 36.8 °C</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-sky-100 flex justify-between items-center text-xs">
+              <span class="font-medium text-slate-700"><i class="fa-regular fa-circle-dot text-sky-500 mr-1.5"></i> Temperatura Bucal:</span>
+              <span class="font-bold text-slate-900 font-mono">36.2 °C – 37.3 °C</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-sky-100 flex justify-between items-center text-xs">
+              <span class="font-medium text-slate-700"><i class="fa-regular fa-circle-dot text-rose-500 mr-1.5"></i> Temperatura Rectal (Central):</span>
+              <span class="font-bold text-rose-700 font-mono">36.2 °C – 37.8 °C</span>
+            </div>
+          </div>
+
+          <div class="border-t border-sky-200 pt-3">
+            <h4 class="text-xs font-bold text-sky-950 mb-2">Comportamiento según Temp. Ambiente (\(t_a\)):</h4>
+            <ul class="text-xs text-sky-900 space-y-1.5">
+              <li class="flex items-start gap-1.5">
+                <i class="fa-solid fa-chevron-right text-sky-500 text-[10px] mt-0.5"></i>
+                <span><strong>\(t_a < 22^\circ\text{C}\):</strong> El metabolismo se <em>incrementa</em> para compensar pérdidas hacia el frío.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <i class="fa-solid fa-chevron-right text-emerald-500 text-[10px] mt-0.5"></i>
+                <span><strong>\(22^\circ\text{C} \le t_a \le 35^\circ\text{C}\):</strong> Rango termoneutral; el metabolismo se <em>estabiliza</em>.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <i class="fa-solid fa-chevron-right text-red-500 text-[10px] mt-0.5"></i>
+                <span><strong>\(t_a > 35^\circ\text{C}\):</strong> El metabolismo se <em>incrementa de nuevo</em> debido a la aceleración de reacciones por suba de la propia temperatura tisular.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: TERMORREGULACIÓN (TERMOGÉNESIS VS TERMÓLISIS) -->
+    <section id="termorregulacion" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
+          2
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Balance Dinámico del SNC</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Termogénesis vs. Termólisis</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- TERMOGÉNESIS -->
+        <div class="bg-gradient-to-br from-rose-50 to-orange-50 border border-rose-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between mb-4 border-b border-rose-200 pb-3">
+            <h3 class="text-lg font-bold font-heading text-rose-900 flex items-center gap-2">
+              <i class="fa-solid fa-fire text-rose-600"></i> Termogénesis
+            </h3>
+            <span class="text-xs bg-rose-200 text-rose-800 px-2.5 py-1 rounded-full font-semibold">Producción Bioquímica</span>
+          </div>
+
+          <p class="text-xs text-slate-700 mb-4 leading-relaxed">
+            Mecanismos fisiológicos y metabólicos responsables de generar calor en el interior del cuerpo. La <strong>caloría</strong> se define formalmente como la energía térmica para elevar de 15 °C a 16 °C la temperatura de 1 cm³ de agua pura.
+          </p>
+
+          <div class="space-y-3">
+            <div class="bg-white/80 p-3 rounded-xl border border-rose-100">
+              <span class="text-xs font-bold text-rose-900 block mb-0.5">1. Tono Muscular Basal:</span>
+              <p class="text-xs text-slate-600">Estado de semicontracción isométrica permanente e involuntaria de las fibras musculares esqueléticas que mantiene la producción calórica continua de sostén.</p>
+            </div>
+
+            <div class="bg-white/80 p-3 rounded-xl border border-rose-100">
+              <span class="text-xs font-bold text-rose-900 block mb-0.5">2. Acción Dinámica Específica (ADE) de los Nutrientes:</span>
+              <p class="text-xs text-slate-600 mb-1.5">Elevación del gasto metabólico durante la digestión y asimilación. Tomando como base 100 calorías basales en ayunas, se generan:</p>
+              <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                <div class="bg-rose-50 p-1.5 rounded border border-rose-200">
+                  <span class="block font-extrabold text-rose-700">130 cal</span>
+                  <span class="text-[10px] text-slate-500">Proteínas (+30%)</span>
+                </div>
+                <div class="bg-amber-50 p-1.5 rounded border border-amber-200">
+                  <span class="block font-extrabold text-amber-700">106 cal</span>
+                  <span class="text-[10px] text-slate-500">Lípidos (+6%)</span>
+                </div>
+                <div class="bg-blue-50 p-1.5 rounded border border-blue-200">
+                  <span class="block font-extrabold text-blue-700">104 cal</span>
+                  <span class="text-[10px] text-slate-500">Glúcidos (+4%)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/80 p-3 rounded-xl border border-rose-100">
+              <span class="text-xs font-bold text-rose-900 block mb-0.5">3. Actividad Muscular:</span>
+              <p class="text-xs text-slate-600">
+                • <em>Voluntaria:</em> Derivada de la carga física laboral o el ejercicio.<br>
+                • <em>Involuntaria:</em> Temblores y escalofríos involuntarios detonados ante el frío para aumentar rápidamente el calor.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TERMÓLISIS -->
+        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between mb-4 border-b border-cyan-200 pb-3">
+            <h3 class="text-lg font-bold font-heading text-cyan-950 flex items-center gap-2">
+              <i class="fa-solid fa-snowflake text-cyan-600"></i> Termólisis
+            </h3>
+            <span class="text-xs bg-cyan-200 text-cyan-800 px-2.5 py-1 rounded-full font-semibold">Disipación Física</span>
+          </div>
+
+          <p class="text-xs text-slate-700 mb-4 leading-relaxed">
+            Mecanismos biofísicos de transporte de calor desde la piel y mucosas hacia el ambiente. El calor fluye por cuatro vías físicas primarias:
+          </p>
+
+          <div class="space-y-3">
+            <div class="bg-white/80 p-3 rounded-xl border border-cyan-100 flex items-start gap-3">
+              <div class="text-center min-w-[55px]">
+                <span class="text-base font-extrabold text-indigo-700 block">55%</span>
+                <span class="text-[9px] uppercase font-bold text-slate-400">Total</span>
+              </div>
+              <div class="border-l border-slate-200 pl-3">
+                <span class="text-xs font-bold text-indigo-950 block">Radiación (\(R\)):</span>
+                <p class="text-xs text-slate-600">Intercambio por radiación infrarroja sin contacto directo. Depende de la emisividad de la piel (\(\epsilon\)), la superficie expuesta y la diferencia de cuartas potencias de temperatura: \((T_{sk}^4 - T_r^4)\).</p>
+              </div>
+            </div>
+
+            <div class="bg-white/80 p-3 rounded-xl border border-cyan-100 flex items-start gap-3">
+              <div class="text-center min-w-[55px]">
+                <span class="text-base font-extrabold text-cyan-700 block">25%</span>
+                <span class="text-[9px] uppercase font-bold text-slate-400">Total</span>
+              </div>
+              <div class="border-l border-slate-200 pl-3">
+                <span class="text-xs font-bold text-cyan-950 block">Evaporación Cutánea (\(E\)):</span>
+                <p class="text-xs text-slate-600">
+                  Cambio de estado del sudor: <strong>1 cm³ de sudor evaporado disipa 0.6 kcal (600 cal)</strong>.<br>
+                  • <em>Perspiración insensible:</em> ~700 ml/día.<br>
+                  • <em>Sudoración activa:</em> 1 a 2 L/h en tarea moderada; hasta 4 L/h en tarea extrema.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white/80 p-3 rounded-xl border border-cyan-100 flex items-start gap-3">
+              <div class="text-center min-w-[55px]">
+                <span class="text-base font-extrabold text-teal-700 block">15%</span>
+                <span class="text-[9px] uppercase font-bold text-slate-400">Total</span>
+              </div>
+              <div class="border-l border-slate-200 pl-3">
+                <span class="text-xs font-bold text-teal-950 block">Convección (\(C\)) y Conducción (\(K\)):</span>
+                <p class="text-xs text-slate-600">
+                  • <em>Conducción:</em> Contacto físico directo con sólidos/fluidos.<br>
+                  • <em>Convección:</em> Renovación de la capa de aire caliente pegada a la piel; aumenta drásticamente con la velocidad del aire (convección forzada).
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white/80 p-3 rounded-xl border border-cyan-100">
+              <span class="text-xs font-bold text-slate-900 block mb-0.5">Otras Vías Menores:</span>
+              <p class="text-xs text-slate-600"><strong>Respiración</strong> (convección y evaporación del tracto respiratorio) y <strong>Evacuación</strong> (pérdida residual de calor en orina y heces).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLA COMPARATIVA DE RESPUESTAS DEL SNC -->
+      <div class="mt-8 border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <div class="bg-slate-100 px-4 py-3 border-b border-slate-200">
+          <h4 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-sliders text-sky-600"></i> Respuestas Fisiológicas de Control Neural (SNC)
+          </h4>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 text-xs">
+          <!-- Respuesta ante sobrecalentamiento -->
+          <div class="p-4 bg-red-50/40 space-y-3">
+            <span class="font-bold text-red-900 text-sm flex items-center gap-1.5">
+              <i class="fa-solid fa-sun text-red-500"></i> Para Reducir la Temperatura Corporal (Ante Calor)
+            </span>
+            <div class="space-y-1.5">
+              <strong class="text-slate-700 block">A) Aumento de Pérdida de Calor:</strong>
+              <ul class="list-disc list-inside text-slate-600 space-y-1">
+                <li><span class="font-semibold text-slate-800">Vasodilatación periférica:</span> Abre capilares cutáneos aumentando la irrigación y perdiendo calor por convección y radiación.</li>
+                <li><span class="font-semibold text-slate-800">Sudoración activa y perspiración:</span> Aumenta el agua en superficie para evaporación.</li>
+                <li><span class="font-semibold text-slate-800">Taquipnea:</span> Incremento de la ventilación respiratoria.</li>
+              </ul>
+            </div>
+            <div class="space-y-1.5 pt-1">
+              <strong class="text-slate-700 block">B) Disminución del Metabolismo (Producción):</strong>
+              <ul class="list-disc list-inside text-slate-600 space-y-1">
+                <li><span class="font-semibold text-slate-800">Anorexia:</span> Disminución refleja del apetito para reducir el calor por ADE.</li>
+                <li><span class="font-semibold text-slate-800">Apatía e inercia motora:</span> Desgana fisiológica para evitar el gasto muscular voluntario.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Respuesta ante enfriamiento -->
+          <div class="p-4 bg-blue-50/40 space-y-3">
+            <span class="font-bold text-blue-900 text-sm flex items-center gap-1.5">
+              <i class="fa-solid fa-snowflake text-blue-500"></i> Para Aumentar la Temperatura Corporal (Ante Frío)
+            </span>
+            <div class="space-y-1.5">
+              <strong class="text-slate-700 block">A) Disminución de Pérdida de Calor:</strong>
+              <ul class="list-disc list-inside text-slate-600 space-y-1">
+                <li><span class="font-semibold text-slate-800">Vasoconstricción periférica:</span> Cierra el flujo sanguíneo hacia la periferia, aislante dérmico.</li>
+                <li><span class="font-semibold text-slate-800">Enroscamiento postural:</span> Disminuye el área de superficie expuesta al ambiente.</li>
+                <li><span class="font-semibold text-slate-800">Piloerección:</span> "Piel de gallina", atrapa una capa límite de aire quieto.</li>
+              </ul>
+            </div>
+            <div class="space-y-1.5 pt-1">
+              <strong class="text-slate-700 block">B) Aumento del Metabolismo (Producción):</strong>
+              <ul class="list-disc list-inside text-slate-600 space-y-1">
+                <li><span class="font-semibold text-slate-800">Apetito voraz:</span> Mayor ingesta energética.</li>
+                <li><span class="font-semibold text-slate-800">Temblores corporales:</span> Contracciones micro-musculares rápidas generadoras directas de calor.</li>
+                <li><span class="font-semibold text-slate-800">Liberación hormonal:</span> Adrenalina, noradrenalina y tiroxina activan la tasa oxidativa.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: ESTRÉS TÉRMICO VS TENSIÓN TÉRMICA -->
+    <section id="estres-vs-tension" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl font-bold">
+          3
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-purple-600">Diferenciación Conceptual Crítica</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Estrés Térmico (Heat Stress) vs. Tensión Térmica (Heat Strain)</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Tarjeta Estrés Térmico -->
+        <div class="border-2 border-amber-300 bg-amber-50/50 rounded-2xl p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-amber-400 text-slate-900 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+            Carga Externa Impuesta
+          </div>
+          <h3 class="text-lg font-bold text-amber-950 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-weight-hanging text-amber-600"></i> Estrés Térmico
+          </h3>
+          <p class="text-xs text-slate-700 leading-relaxed mb-4">
+            Es la <strong>carga térmica total neta</strong> a la que se halla sometido el trabajador durante su jornada, resultante de la interacción de tres factores concurrentes:
+          </p>
+          <ul class="text-xs text-slate-800 space-y-2 font-medium">
+            <li class="flex items-center gap-2 bg-white/70 p-2 rounded-lg border border-amber-200">
+              <i class="fa-solid fa-bolt text-amber-600 w-4 text-center"></i>
+              <span><strong>Carga Metabólica (\(M\)):</strong> Gasto energético por la actividad física desarrollada.</span>
+            </li>
+            <li class="flex items-center gap-2 bg-white/70 p-2 rounded-lg border border-amber-200">
+              <i class="fa-solid fa-cloud-sun text-amber-600 w-4 text-center"></i>
+              <span><strong>Factores Ambientales:</strong> Temperatura del aire, humedad, velocidad del aire y calor radiante.</span>
+            </li>
+            <li class="flex items-center gap-2 bg-white/70 p-2 rounded-lg border border-amber-200">
+              <i class="fa-solid fa-shirt text-amber-600 w-4 text-center"></i>
+              <span><strong>Vestimenta:</strong> Resistencia térmica (\(I_c\)) y permeabilidad al vapor de agua del uniforme.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta Tensión Térmica -->
+        <div class="border-2 border-rose-300 bg-rose-50/50 rounded-2xl p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-rose-400 text-slate-900 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+            Respuesta Biológica Interna
+          </div>
+          <h3 class="text-lg font-bold text-rose-950 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-heart-pulse text-rose-600"></i> Tensión Térmica
+          </h3>
+          <p class="text-xs text-slate-700 leading-relaxed mb-4">
+            Es la <strong>respuesta fisiológica reactiva del organismo</strong> del trabajador frente al estrés térmico recibido, orientada a disipar calor para proteger los órganos vitales:
+          </p>
+          <ul class="text-xs text-slate-800 space-y-2 font-medium">
+            <li class="flex items-center gap-2 bg-white/70 p-2 rounded-lg border border-rose-200">
+              <i class="fa-solid fa-stopwatch text-rose-600 w-4 text-center"></i>
+              <span><strong>Frecuencia Cardíaca:</strong> Taquicardia compensatoria para bombear sangre hacia la piel periférica.</span>
+            </li>
+            <li class="flex items-center gap-2 bg-white/70 p-2 rounded-lg border border-rose-200">
+              <i class="fa-solid fa-droplet text-rose-600 w-4 text-center"></i>
+              <span><strong>Tasa de Sudoración:</strong> Volumen de líquido secretado por hora para evaporación cutánea.</span>
+            </li>
+            <li class="flex items-center gap-2 bg-white/70 p-2 rounded-lg border border-rose-200">
+              <i class="fa-solid fa-thermometer text-rose-600 w-4 text-center"></i>
+              <span><strong>Temperatura Central:</strong> Incremento térmico de órganos profundos si la disipación es insuficiente.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-slate-600">
+          <strong class="text-slate-800">Principio de Gradación del Daño:</strong>
+          Si el estrés térmico es leve/moderado causa incomodidad y disminuye el rendimiento. Si es <strong>excesivo</strong> y se saturan los mecanismos de disipación calórica, provoca daños severos irreversibles y potencial riesgo de muerte (golpe de calor).
+        </div>
+        <div class="flex-shrink-0">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-lg text-xs border border-emerald-300">
+            <i class="fa-solid fa-shield-heart"></i> La Aclimatación mitiga la Tensión
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: FLUJOGRAMA DE EVALUACIÓN SEGÚN RES. SRT 295/03 -->
+    <section id="flujograma-srt" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold">
+          4
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Marco Regulatorio Nacional</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Proceso de Evaluación según Res. SRT 295/03</h2>
+        </div>
+      </div>
+
+      <p class="text-sm text-slate-700 mb-6 leading-relaxed">
+        La legislación laboral argentina establece una secuencia lógica de toma de decisiones escalonada para identificar, valorar y controlar el riesgo higiénico por estrés térmico.
+      </p>
+
+      <!-- DIAGRAMA VISUAL DEL ÁRBOL DE DECISIÓN -->
+      <div class="bg-slate-900 text-slate-100 rounded-2xl p-6 shadow-inner overflow-x-auto">
+        <div class="min-w-[700px] flex flex-col items-center space-y-6 text-center text-xs">
+          
+          <!-- Nodo 1 -->
+          <div class="bg-slate-800 border-2 border-sky-400 px-6 py-3 rounded-xl max-w-sm shadow-md">
+            <span class="text-[10px] uppercase font-bold text-sky-400">Punto de Partida</span>
+            <div class="font-bold text-sm text-white">¿Probable estrés térmico en el puesto?</div>
+          </div>
+
+          <i class="fa-solid fa-arrow-down text-sky-400 text-base"></i>
+
+          <!-- Nodo 2 -->
+          <div class="bg-slate-800 border-2 border-amber-400 px-6 py-3 rounded-xl max-w-md shadow-md">
+            <div class="font-bold text-sm text-white">¿La vestimenta permite la circulación de vapor de agua o aire?</div>
+          </div>
+
+          <div class="w-full flex justify-around items-start">
+            <div class="flex flex-col items-center w-1/3">
+              <span class="bg-red-900/80 text-red-200 px-2 py-0.5 rounded font-bold mb-2">NO (Ropa impermeable / hermética)</span>
+              <i class="fa-solid fa-arrow-down text-red-400 text-sm mb-2"></i>
+              <div class="bg-rose-950 border-2 border-rose-500 p-3 rounded-xl text-rose-200 w-full text-xs font-semibold">
+                Control Fisiológico Directo de Tensión Térmica o Controles Generales Inmediatos
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center w-2/3 pl-6">
+              <span class="bg-emerald-900/80 text-emerald-200 px-2 py-0.5 rounded font-bold mb-2">SÍ (Permeable)</span>
+              <i class="fa-solid fa-arrow-down text-emerald-400 text-sm mb-2"></i>
+
+              <!-- Nodo 3: Criterios primarios TGBH -->
+              <div class="bg-slate-800 border-2 border-sky-400 px-5 py-3 rounded-xl w-full max-w-lg shadow-md mb-4">
+                <div class="font-bold text-sm text-white">¿Se exceden los criterios de valoración primaria (TGBH - M)?</div>
+                <div class="text-[11px] text-slate-300 mt-1">Comparación del TGBH corregido vs. Tabla de Umbrales Límite</div>
+              </div>
+
+              <div class="w-full flex justify-between items-start gap-4">
+                <div class="flex flex-col items-center w-1/2">
+                  <span class="bg-emerald-900/80 text-emerald-200 px-2 py-0.5 rounded font-bold mb-2">NO se exceden</span>
+                  <i class="fa-solid fa-arrow-down text-emerald-400 text-sm mb-2"></i>
+                  <div class="bg-emerald-950 border-2 border-emerald-500 p-3 rounded-xl text-emerald-200 w-full font-bold">
+                    <i class="fa-solid fa-circle-check mr-1"></i> RIESGO BAJO
+                    <div class="text-[11px] font-normal text-emerald-300 mt-1">Continuar el trabajo y controlar periódicamente las condiciones.</div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col items-center w-1/2">
+                  <span class="bg-amber-900/80 text-amber-200 px-2 py-0.5 rounded font-bold mb-2">SÍ se exceden</span>
+                  <i class="fa-solid fa-arrow-down text-amber-400 text-sm mb-2"></i>
+                  
+                  <div class="bg-slate-800 border-2 border-amber-400 p-3 rounded-xl w-full mb-3">
+                    <div class="font-bold text-white">¿Se dispone de datos para un análisis detallado (ISO 7933)?</div>
+                  </div>
+
+                  <div class="w-full flex justify-between gap-2">
+                    <div class="w-1/2 flex flex-col items-center">
+                      <span class="text-[10px] bg-slate-700 px-1.5 py-0.5 rounded text-slate-300 mb-1">NO</span>
+                      <div class="bg-amber-950 border border-amber-500 p-2.5 rounded-lg text-amber-200 w-full text-[11px]">
+                        <strong>Controles Específicos</strong>: regímenes de trabajo/descanso, ventilación, pantallas.
+                      </div>
+                    </div>
+                    <div class="w-1/2 flex flex-col items-center">
+                      <span class="text-[10px] bg-slate-700 px-1.5 py-0.5 rounded text-slate-300 mb-1">SÍ</span>
+                      <div class="bg-purple-950 border border-purple-500 p-2.5 rounded-lg text-purple-200 w-full text-[11px]">
+                        <strong>Cálculo Detallado</strong>: Evaluar Tasa de Sudoración e Índice IEC.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: ÍNDICE TGBH (WBGT), VESTIMENTA Y LÍMITES PERMISIBLES -->
+    <section id="indice-tgbh" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-red-100 text-red-700 flex items-center justify-center text-xl font-bold">
+          5
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-red-600">Medición Instrumental y Valoración Primaria</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">El Índice TGBH (Temperatura de Globo y Bulbo Húmedo)</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-4">
+          <p class="text-slate-700 leading-relaxed text-sm">
+            Para caracterizar la agresión térmica ambiental que incide sobre un trabajador, se deben cuantificar cuatro parámetros físicos: <strong>1) Temperatura del aire</strong>, <strong>2) Humedad relativa</strong>, <strong>3) Temperatura media radiante</strong> y <strong>4) Velocidad del aire</strong>. El índice ambiental normalizado para ponderar estos factores simultáneamente es el <strong>TGBH</strong> (o <em>WBGT</em> por sus siglas en inglés).
+          </p>
+
+          <!-- FÓRMULAS MATEMÁTICAS -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Interiores -->
+            <div class="bg-slate-900 text-white p-4 rounded-xl border-t-4 border-sky-400 shadow-md">
+              <span class="text-[11px] uppercase tracking-wider text-sky-300 font-bold block mb-1">
+                <i class="fa-solid fa-house mr-1"></i> Ambientes Interiores o sin Sol Directo
+              </span>
+              <div class="text-lg font-mono font-bold text-center py-2 bg-slate-800/80 rounded-lg text-sky-200">
+                \[\text{TGBH}_i = 0.7\, t_{bh} + 0.3\, t_g\]
+              </div>
+              <p class="text-[11px] text-slate-300 mt-2">
+                Pondera en un <strong>70%</strong> la humedad natural (\(t_{bh}\)) y en un <strong>30%</strong> la radiación térmica (\(t_g\)).
+              </p>
+            </div>
+
+            <!-- Exteriores -->
+            <div class="bg-slate-900 text-white p-4 rounded-xl border-t-4 border-amber-400 shadow-md">
+              <span class="text-[11px] uppercase tracking-wider text-amber-300 font-bold block mb-1">
+                <i class="fa-solid fa-sun mr-1"></i> Ambientes Exteriores con Carga Solar
+              </span>
+              <div class="text-lg font-mono font-bold text-center py-2 bg-slate-800/80 rounded-lg text-amber-200">
+                \[\text{TGBH}_e = 0.7\, t_{bh} + 0.2\, t_g + 0.1\, t_{bs}\]
+              </div>
+              <p class="text-[11px] text-slate-300 mt-2">
+                Incorpora un <strong>10%</strong> del bulbo seco (\(t_{bs}\)) por el calentamiento convectivo del aire a cielo abierto.
+              </p>
+            </div>
+          </div>
+
+          <!-- Variables del Monitor -->
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-xs space-y-2">
+            <h4 class="font-bold text-slate-900 flex items-center gap-2 text-sm">
+              <i class="fa-solid fa-toolbox text-slate-600"></i> Termómetros del Monitor de Carga Térmica
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                <strong class="text-sky-700 block font-mono">\(t_{bh}\) (Bulbo Húmedo Natural)</strong>
+                <span class="text-slate-600 text-[11px]">Sensor cubierto con mecha humedecida en agua destilada y ventilación natural. Mide el potencial evaporativo.</span>
+              </div>
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                <strong class="text-slate-800 block font-mono">\(t_g\) (Termómetro de Globo)</strong>
+                <span class="text-slate-600 text-[11px]">Esfera hueca de cobre pintada de negro mate (diám. 15 cm) con sensor interno. Mide calor radiante.</span>
+              </div>
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                <strong class="text-emerald-700 block font-mono">\(t_{bs}\) (Bulbo Seco)</strong>
+                <span class="text-slate-600 text-[11px]">Termómetro al aire libre protegido del impacto directo de la radiación infrarroja solar. Mide temperatura ambiental.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Factores Modificadores: Vestimenta y Aclimatación -->
+        <div class="space-y-4">
+          <!-- Corrección por Vestimenta -->
+          <div class="bg-white border-2 border-slate-200 p-4 rounded-xl shadow-sm">
+            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-shirt text-indigo-600"></i> Corrección por Vestimenta
+            </h4>
+            <p class="text-[11px] text-slate-600 mb-2">
+              El índice medido debe corregirse <strong>sumando</strong> un diferencial térmico según el aislamiento y resistencia al vapor de la ropa de trabajo:
+            </p>
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-1.5">Tipo de Vestimenta</th>
+                  <th class="p-1.5 text-right">Adición a TGBH</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-medium">
+                <tr>
+                  <td class="p-1.5 text-slate-700">Uniforme de verano (algodón liviano)</td>
+                  <td class="p-1.5 text-right font-mono text-emerald-600 font-bold">0 °C</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 text-slate-700">Buzo de tela / tejido grueso</td>
+                  <td class="p-1.5 text-right font-mono text-amber-600 font-bold">+3.5 °C</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 text-slate-700">Buzo de doble tela / ignífugo</td>
+                  <td class="p-1.5 text-right font-mono text-rose-600 font-bold">+5.0 °C</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 text-slate-700 text-[11px] italic" colspan="2">
+                    * Trajes herméticos/impermeables impiden la evaporación: no aplica TGBH directo.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Aclimatación Fisiológica -->
+          <div class="bg-amber-50/70 border border-amber-200 p-4 rounded-xl">
+            <h4 class="font-bold text-amber-950 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+              <i class="fa-solid fa-person-running text-amber-600"></i> Protocolo de Aclimatación
+            </h4>
+            <p class="text-[11px] text-amber-900 leading-relaxed">
+              Es la adaptación fisiológica progresiva del sistema circulatorio y sudoríparo ante exposiciones repetidas a calor severo.
+            </p>
+            <ul class="text-[11px] text-amber-900 mt-2 space-y-1">
+              <li>• Demanda hasta <strong>3 semanas</strong> de actividad física continua.</li>
+              <li>• Se considera <em>aclimatado</em> si expuso al menos <strong>5 días en los últimos 7 días</strong>.</li>
+              <li>• La aclimatación decrece velozmente ante pausas y <strong>se pierde de modo evidente tras 4 días</strong> continuos de inactividad.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLA DE VALORACIÓN DE TGBH LÍMITE (RES. SRT 295/03) -->
+      <div class="mt-8">
+        <h4 class="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-table-cells text-sky-600"></i> Tabla de Valores Límite Umbral de TGBH (°C) según Régimen de Trabajo-Descanso y Carga Metabólica
+        </h4>
+        <div class="overflow-x-auto border border-slate-300 rounded-xl shadow-sm">
+          <table class="w-full text-xs text-center border-collapse">
+            <thead>
+              <tr class="bg-slate-800 text-white font-bold divide-x divide-slate-700">
+                <th rowspan="2" class="p-3 text-left w-1/4">Distribución del Trabajo / Descanso en la Hora</th>
+                <th colspan="4" class="p-2 bg-emerald-800 text-emerald-100">TRABAJADOR ACLIMATADO</th>
+                <th colspan="4" class="p-2 bg-amber-800 text-amber-100">TRABAJADOR NO ACLIMATADO</th>
+              </tr>
+              <tr class="bg-slate-700 text-slate-200 font-semibold text-[11px] divide-x divide-slate-600">
+                <th class="p-2">Ligero<br><span class="font-normal text-[9px]">M &lt; 230 W</span></th>
+                <th class="p-2">Moderado<br><span class="font-normal text-[9px]">230-400 W</span></th>
+                <th class="p-2">Pesado<br><span class="font-normal text-[9px]">400-600 W</span></th>
+                <th class="p-2">Muy Pes.<br><span class="font-normal text-[9px]">&gt; 600 W</span></th>
+
+                <th class="p-2">Ligero<br><span class="font-normal text-[9px]">M &lt; 230 W</span></th>
+                <th class="p-2">Moderado<br><span class="font-normal text-[9px]">230-400 W</span></th>
+                <th class="p-2">Pesado<br><span class="font-normal text-[9px]">400-600 W</span></th>
+                <th class="p-2">Muy Pes.<br><span class="font-normal text-[9px]">&gt; 600 W</span></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 font-mono text-slate-800">
+              <tr class="hover:bg-slate-50 divide-x divide-slate-200">
+                <td class="p-2.5 font-sans font-semibold text-slate-900 text-left bg-slate-50">100% Trabajo continuo</td>
+                <td class="p-2 font-bold text-emerald-700">29.5</td>
+                <td class="p-2 font-bold text-emerald-700">27.5</td>
+                <td class="p-2 font-bold text-emerald-700">26.0</td>
+                <td class="p-2 text-slate-400 font-sans italic">---</td>
+
+                <td class="p-2 font-bold text-amber-700">27.5</td>
+                <td class="p-2 font-bold text-amber-700">25.0</td>
+                <td class="p-2 font-bold text-amber-700">22.5</td>
+                <td class="p-2 text-slate-400 font-sans italic">---</td>
+              </tr>
+              <tr class="hover:bg-slate-50 divide-x divide-slate-200">
+                <td class="p-2.5 font-sans font-semibold text-slate-900 text-left bg-slate-50">75% Trabajo / 25% Descanso</td>
+                <td class="p-2 font-bold text-emerald-700">30.5</td>
+                <td class="p-2 font-bold text-emerald-700">28.5</td>
+                <td class="p-2 font-bold text-emerald-700">27.5</td>
+                <td class="p-2 text-slate-400 font-sans italic">---</td>
+
+                <td class="p-2 font-bold text-amber-700">29.0</td>
+                <td class="p-2 font-bold text-amber-700">26.5</td>
+                <td class="p-2 font-bold text-amber-700">24.5</td>
+                <td class="p-2 text-slate-400 font-sans italic">---</td>
+              </tr>
+              <tr class="hover:bg-slate-50 divide-x divide-slate-200">
+                <td class="p-2.5 font-sans font-semibold text-slate-900 text-left bg-slate-50">50% Trabajo / 50% Descanso</td>
+                <td class="p-2 font-bold text-emerald-700">31.5</td>
+                <td class="p-2 font-bold text-emerald-700">29.5</td>
+                <td class="p-2 font-bold text-emerald-700">28.5</td>
+                <td class="p-2 font-bold text-emerald-700">27.5</td>
+
+                <td class="p-2 font-bold text-amber-700">30.0</td>
+                <td class="p-2 font-bold text-amber-700">28.0</td>
+                <td class="p-2 font-bold text-amber-700">26.5</td>
+                <td class="p-2 font-bold text-amber-700">25.0</td>
+              </tr>
+              <tr class="hover:bg-slate-50 divide-x divide-slate-200">
+                <td class="p-2.5 font-sans font-semibold text-slate-900 text-left bg-slate-50">25% Trabajo / 75% Descanso</td>
+                <td class="p-2 font-bold text-emerald-700">32.5</td>
+                <td class="p-2 font-bold text-emerald-700">31.0</td>
+                <td class="p-2 font-bold text-emerald-700">30.0</td>
+                <td class="p-2 font-bold text-emerald-700">29.5</td>
+
+                <td class="p-2 font-bold text-amber-700">31.0</td>
+                <td class="p-2 font-bold text-amber-700">29.0</td>
+                <td class="p-2 font-bold text-amber-700">28.0</td>
+                <td class="p-2 font-bold text-amber-700">26.5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[11px] text-slate-500 mt-1.5 italic">
+          Nota: Los descansos deben realizarse en zonas templadas o refrigeradas a la sombra, con reposición hídrica adecuada.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: CARGA METABÓLICA (M) -->
+    <section id="carga-metabolica" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-yellow-100 text-yellow-700 flex items-center justify-center text-xl font-bold">
+          6
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-yellow-600">Demanda Energética Interna</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Determinación de la Carga Metabólica (\(M\))</h2>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="flex flex-wrap gap-4 text-xs">
+          <div class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 font-mono">
+            <strong>Equivalencia de Energía:</strong> 1 kcal = 4.184 kJ
+          </div>
+          <div class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 font-mono">
+            <strong>Equivalencia de Potencia:</strong> 1 W = 0.864 kcal/h &harr; 1 kcal/h = 1.163 W
+          </div>
+        </div>
+
+        <!-- MÉTODOS DE ESTIMACIÓN -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+            <div class="text-xs font-bold text-sky-700 uppercase mb-1">Método 1 (Patrón Oro)</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Consumo de Oxígeno (\(VO_2\))</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Mide el volumen de \(O_2\) consumido por minuto mediante espirometría. Muy exacto y preciso pero de elevada complejidad instrumental y difícil implementación continua en fábrica.
+            </p>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+            <div class="text-xs font-bold text-amber-700 uppercase mb-1">Método 2 (Cardiovascular)</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Frecuencia Cardíaca (ISO 8996)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Estima la potencia mediante regresión lineal según edad y peso corporal:
+              <br><strong class="font-mono text-slate-800">\(M = a \cdot FC - b\)</strong>
+              <br>Brinda gran representatividad individual en tiempo real sin entorpecer la tarea.
+            </p>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+            <div class="text-xs font-bold text-emerald-700 uppercase mb-1">Método 3 (Ingenieril Tabulado)</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Descomposición Analítica</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Suma analítica del metabolismo basal, la componente postural y el componente dinámico:
+              <br><strong class="font-mono text-slate-800">\(M = M_B + M_I + M_{II}\)</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- DESGLOSE M = MB + MI + MII -->
+        <div class="bg-slate-900 text-white p-6 rounded-2xl">
+          <h3 class="text-base font-bold font-heading text-sky-300 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-calculator"></i> Desglose Detallado del Modelo \(M = M_B + M_I + M_{II}\)
+          </h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-xs">
+            <!-- Basal -->
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 space-y-2">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">1. Metabolismo Basal (\(M_B\))</span>
+              <p class="text-slate-300 leading-relaxed">
+                Consumo energético en reposo absoluto para conservar las funciones vegetativas (respiración, bombeo cardíaco, tono cerebral).
+              </p>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-700 font-mono text-slate-200">
+                Fórmula de Du Bois:<br>
+                \[A_b = 0.202 \cdot w^{0.425} \cdot l^{0.725}\]
+                <span class="text-[10px] text-slate-400 font-sans block mt-1">(\(w\): peso en kg, \(l\): estatura en m, \(A_b\): superficie corporal en \(m^2\))</span>
+              </div>
+              <ul class="text-slate-300 space-y-1 pt-1">
+                <li>• Hombres: \(\approx 44\text{ W/m}^2\) (~70 W para \(1.8\text{ m}^2\))</li>
+                <li>• Mujeres: \(\approx 41\text{ W/m}^2\) (~65 W para \(1.6\text{ m}^2\))</li>
+              </ul>
+            </div>
+
+            <!-- Postural -->
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 space-y-2">
+              <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">2. Componente Postural (\(M_I\))</span>
+              <p class="text-slate-300 leading-relaxed">
+                Gasto requerido para sostener el cuerpo en la posición de trabajo adoptada:
+              </p>
+              <div class="space-y-1.5 font-mono text-slate-200 pt-1">
+                <div class="flex justify-between border-b border-slate-700 pb-1">
+                  <span class="font-sans">Sentado o acostado:</span>
+                  <span class="text-sky-300 font-bold">10 – 20 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-1">
+                  <span class="font-sans">Arrodillado / agachado:</span>
+                  <span class="text-sky-300 font-bold">20 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-1">
+                  <span class="font-sans">De pie / inclinado:</span>
+                  <span class="text-sky-300 font-bold">25 – 40 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-1">
+                  <span class="font-sans">Caminando en llano:</span>
+                  <span class="text-sky-300 font-bold">140 W</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-sans">Subiendo pendiente:</span>
+                  <span class="text-sky-300 font-bold">290 W</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dinámico -->
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 space-y-2">
+              <span class="text-xs font-bold text-rose-400 uppercase tracking-wider block">3. Trabajo Dinámico (\(M_{II}\))</span>
+              <p class="text-slate-300 leading-relaxed">
+                Energía demandada por el movimiento de extremidades y masa muscular activa:
+              </p>
+              <div class="space-y-1 font-mono text-slate-200 text-[11px] pt-1">
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">Manual liviano:</span>
+                  <span class="text-rose-300 font-bold">28 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">Manual pesado:</span>
+                  <span class="text-rose-300 font-bold">63 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">1 brazo liviano:</span>
+                  <span class="text-rose-300 font-bold">70 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">2 brazos liviano:</span>
+                  <span class="text-rose-300 font-bold">105 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">2 brazos pesado:</span>
+                  <span class="text-rose-300 font-bold">175 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">Cuerpo liviano:</span>
+                  <span class="text-rose-300 font-bold">245 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">Cuerpo moderado:</span>
+                  <span class="text-rose-300 font-bold">350 W</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700 pb-0.5">
+                  <span class="font-sans">Cuerpo pesado:</span>
+                  <span class="text-rose-300 font-bold">490 W</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-sans">Cuerpo muy pesado:</span>
+                  <span class="text-rose-300 font-bold">630 W</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ponderación en el tiempo -->
+          <div class="mt-6 border-t border-slate-700 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-slate-300">
+              <strong class="text-white">Ponderación Temporal en Jornadas Mixtas:</strong> Si las tareas varían cíclicamente a lo largo de la hora laboral, los componentes y la carga metabólica total deben promediarse ponderados en el tiempo:
+            </div>
+            <div class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-600 font-mono text-sky-300 font-bold whitespace-nowrap">
+              \[\bar{M} = \frac{\sum (M_i \cdot t_i)}{\sum t_i}\]
+            </div>
+          </div>
+        </div>
+
+        <!-- TABLA CLASIFICACIÓN MACRO DE TAREAS (TABLA 1) -->
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">Clasificación Estratificada de Actividades (Tabla 1 Res. 295/03)</h4>
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2.5">Categoría</th>
+                  <th class="p-2.5">Potencia (\(W\))</th>
+                  <th class="p-2.5">Potencia Específica (\(W/m^2\))</th>
+                  <th class="p-2.5">Ejemplos Prácticos de Tareas</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-emerald-700">Reposada</td>
+                  <td class="p-2.5 font-mono">\(M \le 117\text{ W}\)</td>
+                  <td class="p-2.5 font-mono">\(M \le 65\text{ W/m}^2\)</td>
+                  <td class="p-2.5">Permanecer sentado sosegadamente; movimientos moderados de brazos al estar sentado.</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-sky-700">Liviana</td>
+                  <td class="p-2.5 font-mono">\(117 < M \le 234\text{ W}\)</td>
+                  <td class="p-2.5 font-mono">\(65 < M \le 130\text{ W/m}^2\)</td>
+                  <td class="p-2.5">Trabajo manual fino (escritura, dibujo, inspección); mecanizado de pequeñas piezas de pie; conducción de vehículos ligeros; caminar lento (~3 km/h).</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-amber-700">Moderada</td>
+                  <td class="p-2.5 font-mono">\(234 < M \le 360\text{ W}\)</td>
+                  <td class="p-2.5 font-mono">\(130 < M \le 200\text{ W/m}^2\)</td>
+                  <td class="p-2.5">Manejo de maquinaria pesada o tractores; martillo neumático; enyesado; recolección de legumbres/frutas; empujar carretillas ligeras; marcha entre 3.5 y 5.5 km/h.</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-orange-700">Pesada</td>
+                  <td class="p-2.5 font-mono">\(360 < M \le 468\text{ W}\)</td>
+                  <td class="p-2.5 font-mono">\(200 < M \le 260\text{ W/m}^2\)</td>
+                  <td class="p-2.5">Trabajo intenso de brazos y tronco; carga de bultos pesados; uso de hacha o sierra manual; excavación manual; marcha rápida (5.5 a 7 km/h).</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-rose-700">Muy Pesada</td>
+                  <td class="p-2.5 font-mono">\(M > 468\text{ W}\)</td>
+                  <td class="p-2.5 font-mono">\(M > 260\text{ W/m}^2\)</td>
+                  <td class="p-2.5">Cavar intensamente con pala; subir escaleras o rampas con peso; trabajo con hacha a ritmo sostenido; marcha a velocidad superior a 7 km/h o carrera.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: ANÁLISIS DETALLADO (ISO 7933) E ÍNDICE DE ESFUERZO CALÓRICO (IEC) -->
+    <section id="iso-7933-iec" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-800 flex items-center justify-center text-xl font-bold">
+          7
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-700">Método Analítico Avanzado</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Ecuación de Balance Térmico e Índice de Esfuerzo Calórico (ISO 7933)</h2>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <p class="text-slate-700 leading-relaxed text-sm">
+          Cuando el cribado inicial por TGBH supera los umbrales permisibles, la norma internacional <strong>ISO 7933</strong> permite modelar matemáticamente el balance térmico entre el trabajador y su microclima de trabajo, evaluando la <em>tasa de sudoración exigida</em> y el <em>riesgo de acumulación de calor</em>.
+        </p>
+
+        <!-- ECUACIÓN GENERAL DE BALANCE -->
+        <div class="bg-slate-900 text-white p-5 rounded-2xl border-l-4 border-cyan-400">
+          <div class="text-xs uppercase font-bold text-cyan-300 mb-1">Ecuación de Conservación de Energía Corporal:</div>
+          <div class="text-base sm:text-lg font-mono font-bold text-center py-2 text-white">
+            \[S = M - W - C - K - C_{res} - E_{res} - E - R = 0\]
+          </div>
+          <p class="text-xs text-slate-300 text-center">
+            Donde \(S\) es la tasa de almacenamiento térmico corporal (\(S = 0\) en equilibrio perfecto).
+          </p>
+        </div>
+
+        <!-- SIMPLIFICACIÓN Y EVAPORACIÓN REQUERIDA -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-calculator text-sky-600"></i> Evaporación Requerida (\(E_{req}\))
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Dado que el trabajo externo útil (\(W\)) y la conducción (\(K\)) son despreciables frente a la magnitud del metabolismo y la radiación, se despeja la <strong>tasa de calor que el cuerpo debe ceder por evaporación de sudor</strong> para no aumentar su temperatura:
+            </p>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-sky-800 font-bold text-sm">
+              \[E_{req} = M - R - C - C_{res} - E_{res} \quad \left[\frac{\text{W}}{\text{m}^2}\right]\]
+            </div>
+            <div class="text-[11px] text-slate-500 space-y-1 pt-1">
+              <div>• \(C_{res} = 0.0014 \cdot M \cdot (35 - t_a)\) : Pérdida convectiva respiratoria.</div>
+              <div>• \(E_{res} = 0.00173 \cdot M \cdot (5.624 - p_a)\) : Pérdida evaporativa respiratoria.</div>
+              <div>• \(C = h_c \cdot F_{cl} \cdot (t_{sk} - t_a)\) : Convección cutánea (\(t_{sk} \approx 36^\circ\text{C}\)).</div>
+              <div>• \(R = h_r \cdot F_{cl} \cdot (t_{sk} - t_r)\) : Radiación cutánea (\(t_r\) temp radiante).</div>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-wind text-cyan-600"></i> Evaporación Máxima Posible (\(E_{max}\))
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Representa el caudal térmico límite máximo que el ambiente es capaz de evacuar cuando la piel se encuentra <strong>completamente mojada en sudor</strong>:
+            </p>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-cyan-800 font-bold text-sm">
+              \[E_{max} = \frac{p_{sk,s} - p_a}{R_t} \quad \left[\frac{\text{W}}{\text{m}^2}\right]\]
+            </div>
+            <div class="text-[11px] text-slate-500 space-y-1 pt-1">
+              <div>• \(p_{sk,s}\): Presión de vapor saturado a temperatura de la piel (a \(36^\circ\text{C} \approx 5.94\text{ kPa}\)).</div>
+              <div>• \(p_a\): Presión parcial de vapor de agua del aire ambiente [kPa].</div>
+              <div>• \(R_t\): Resistencia evaporativa total combinada del aire y la vestimenta (\(1\text{ clo} = 0.156\text{ m}^2\text{K/W}\)).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÍNDICE DE ESFUERZO CALÓRICO (IEC) -->
+        <div class="bg-gradient-to-r from-sky-900 via-indigo-900 to-slate-900 text-white p-6 rounded-2xl">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 max-w-xl">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Definición Matemática Formal</span>
+              <h3 class="text-xl font-bold font-heading text-white">Índice de Esfuerzo Calórico (\(\text{IEC}\))</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Es la relación porcentual entre el enfriamiento evaporativo que el cuerpo <em>necesita</em> disipar (\(E_{req}\)) y el enfriamiento evaporativo que el ambiente <em>le permite</em> evacuar (\(E_{max}\)):
+              </p>
+              <div class="text-xs font-mono text-amber-200 pt-1">
+                \[w_{req} = \frac{E_{req}}{E_{max}} \quad \longrightarrow \quad \text{IEC} = w_{req} \times 100\]
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-xs space-y-2 w-full md:w-auto text-center">
+              <div class="p-2 rounded bg-red-500/20 border border-red-500/40">
+                <span class="font-bold text-red-300 font-mono">Si IEC &gt; 100:</span>
+                <span class="block text-[11px] text-slate-200">El cuerpo no puede disipar el calor requerido &rarr; <strong>Acumula calor (\(S &gt; 0\))</strong>.</span>
+              </div>
+              <div class="p-2 rounded bg-blue-500/20 border border-blue-500/40">
+                <span class="font-bold text-blue-300 font-mono">Si IEC &lt; 0:</span>
+                <span class="block text-[11px] text-slate-200">El cuerpo pierde más calor del generado &rarr; <strong>Se enfría</strong>.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABLA DE CONSECUENCIAS FISIOLÓGICAS DEL IEC -->
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">Interpretación Fisiológica del IEC (Exposición estándar de 8 horas):</h4>
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2.5 w-24 text-center">Valor IEC</th>
+                  <th class="p-2.5">Calificación del Costo Fisiológico</th>
+                  <th class="p-2.5">Consecuencias Fisiológicas y Recomendaciones Médicas</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold font-mono text-emerald-600 bg-emerald-50">0</td>
+                  <td class="p-2.5 font-bold text-emerald-800">Sin carga calórica</td>
+                  <td class="p-2.5">Equilibrio térmico ideal. No se experimenta costo fisiológico adicional ni fatiga térmica.</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold font-mono text-sky-600 bg-sky-50">10 – 30</td>
+                  <td class="p-2.5 font-bold text-sky-800">Costo suave o moderado</td>
+                  <td class="p-2.5">Compatible con tareas físicas normales. En labores de alta concentración mental o destreza psicomotriz fina puede mermar el rendimiento.</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold font-mono text-amber-600 bg-amber-50">40 – 60</td>
+                  <td class="p-2.5 font-bold text-amber-800">Costo fisiológico elevado</td>
+                  <td class="p-2.5">
+                    <strong>Implica riesgo para la salud general</strong>, excepto para individuos debidamente seleccionados y aclimatados. Muestra caída evidente de la capacidad de trabajo. Se debe excluir personal con patologías cardiovasculares o respiratorias.
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold font-mono text-orange-600 bg-orange-50">70 – 80</td>
+                  <td class="p-2.5 font-bold text-orange-800">Costo muy elevado</td>
+                  <td class="p-2.5">Muy escasas personas pueden tolerar este régimen. Obligatorio garantizar rehidratación con agua y electrolitos. Pueden ocurrir síncopes y calambres térmicos.</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold font-mono text-rose-600 bg-rose-50">100</td>
+                  <td class="p-2.5 font-bold text-rose-800">Máximo costo tolerable</td>
+                  <td class="p-2.5"><strong>Límite absoluto admisible de tolerancia biológica</strong> para jóvenes aclimatados y en óptima condición médica. Tiempo de exposición sumamente restringido.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: SÍNTOMAS DE TENSIÓN TÉRMICA, CRITERIOS CLÍNICOS Y DETENCIÓN -->
+    <section id="sintomas-vigilancia" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-xl font-bold">
+          8
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Criterios Médicos y Límites de Detención</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Monitoreo Fisiológico y Señales de Alarma Crítica</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- CRITERIOS CUANTITATIVOS DE DETENCIÓN -->
+        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm space-y-4">
+          <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-200 pb-2">
+            <i class="fa-solid fa-gauge-circle-xmark text-rose-600"></i> Criterios Fisiológicos para Interrupción de Tareas
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Se debe retirar de forma inmediata al trabajador del ambiente caluroso si se constata cualquiera de los siguientes parámetros fisiológicos:
+          </p>
+
+          <div class="space-y-2.5 text-xs">
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3">
+              <i class="fa-solid fa-heart text-rose-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-rose-950 font-bold block">1. Frecuencia Cardíaca Sostenida Excesiva:</strong>
+                <span class="text-rose-900">
+                  El pulso cardíaco en esfuerzo se mantiene por encima de:
+                  <br><strong class="font-mono bg-white px-2 py-0.5 rounded border border-rose-300 text-rose-700">\(FC > 180 - \text{edad}\)</strong> pulsaciones por minuto para personas con evaluación cardíaca normal.
+                </span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3">
+              <i class="fa-solid fa-clock-rotate-left text-rose-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-rose-950 font-bold block">2. Falla en la Recuperación del Pulso:</strong>
+                <span class="text-rose-900">
+                  La frecuencia cardíaca medida <strong>1 minuto después de cesar el esfuerzo máximo es superior a 110 lpm</strong>.
+                </span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3">
+              <i class="fa-solid fa-temperature-arrow-up text-rose-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-rose-950 font-bold block">3. Temperatura Corporal Interna Límite:</strong>
+                <span class="text-rose-900 block">
+                  • <strong>&gt; 38.5 °C</strong> en trabajadores previamente seleccionados médicamente y aclimatados.
+                  <br>• <strong>&gt; 38.0 °C</strong> en trabajadores sin seleccionar médicamente o no aclimatados.
+                </span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3">
+              <i class="fa-solid fa-head-side-virus text-rose-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-rose-950 font-bold block">4. Síntomas Neuro-vegetativos Agudos:</strong>
+                <span class="text-rose-900">Aparición repentina de fatiga intensa, mareos, vértigo, náuseas o visión borrosa.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SÍNTOMAS DE TENSIÓN TÉRMICA SEVERA (GOLPE DE CALOR) -->
+        <div class="border-2 border-red-500 bg-red-50/50 rounded-2xl p-5 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-red-200 pb-2">
+            <h3 class="font-bold text-red-950 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation text-red-600"></i> Síntomas de Tensión Térmica Severa
+            </h3>
+            <span class="bg-red-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">¡Emergencia Vital!</span>
+          </div>
+
+          <p class="text-xs text-red-950 font-medium leading-relaxed">
+            Representan el colapso del sistema termorregulador. Requieren auxilio de emergencia, enfriamiento activo urgente y traslado hospitalario inmediato:
+          </p>
+
+          <div class="space-y-2 text-xs">
+            <div class="bg-white p-3 rounded-xl border border-red-200 flex items-start gap-2.5">
+              <i class="fa-solid fa-ban text-red-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-red-950 block text-xs">Detención de la Sudoración (Piel Seca y Muy Caliente):</strong>
+                <span class="text-slate-700">
+                  Es el signo inequívoco del <strong>Golpe de Calor (Heatstroke)</strong>. El centro termorregulador hipotalámico colapsó. Mortalidad elevada si no se enfría al paciente de inmediato.
+                </span>
+              </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl border border-red-200 flex items-start gap-2.5">
+              <i class="fa-solid fa-brain text-red-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-red-950 block text-xs">Confusión Mental y Desorientación:</strong>
+                <span class="text-slate-700">Irritación sin causa aparente, habla incoherente, pérdida del equilibrio, delirio o pérdida de conciencia.</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl border border-red-200 flex items-start gap-2.5">
+              <i class="fa-solid fa-weight-scale text-red-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-red-950 block text-xs">Pérdida de Peso Corporal &gt; 1.5%:</strong>
+                <span class="text-slate-700">Deshidratación hídrica severa que compromete el volumen plasmático circulante y la filtración renal.</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl border border-red-200 flex items-start gap-2.5">
+              <i class="fa-solid fa-droplet-slash text-red-600 text-base mt-0.5"></i>
+              <div>
+                <strong class="text-red-950 block text-xs">Sudoración Profusa Continua durante Horas:</strong>
+                <span class="text-slate-700">Acompañada de síntomas similares a un estado gripal grave (mialgias, cefalea pulsátil intensa, escalofríos).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 9: MEDIDAS DE CONTROL Y GESTIÓN PREVENTIVA -->
+    <section id="controles-prevencion" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold">
+          9
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Higiene Operativa y Medicina Laboral</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Medidas de Prevención y Gestión del Estrés Térmico</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- CONTROLES DE INGENIERÍA -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+          <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center text-base font-bold">
+            <i class="fa-solid fa-gears"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-sm">1. Controles de Ingeniería</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Actúan en la fuente generadora o sobre el medio de propagación térmico:
+          </p>
+          <ul class="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
+            <li><strong>Apantallamiento de calor radiante:</strong> Pantallas reflectantes (aluminio pulido) o aislantes alrededor de hornos, calderas y coladas.</li>
+            <li><strong>Ventilación general y localizada:</strong> Inyección de aire fresco y extracción forzada localizada de vapores calientes.</li>
+            <li><strong>Control de humedad relativa:</strong> Climatización y deshumidificación de locales cerrados.</li>
+            <li><strong>Automatización y mecanización:</strong> Incorporación de autoelevadores o cintas para reducir la carga metabólica muscular (\(M\)).</li>
+          </ul>
+        </div>
+
+        <!-- CONTROLES ADMINISTRATIVOS -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+          <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-base font-bold">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-sm">2. Controles de Trabajo Específicos</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Modificación de la dinámica y gestión operativa laboral:
+          </p>
+          <ul class="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
+            <li><strong>Regímenes Trabajo - Descanso:</strong> Respetar de forma estricta las pausas según la tabla legal de TGBH.</li>
+            <li><strong>Zonas de descanso climatizadas:</strong> Disponer de áreas con sombra y aire refrigerado próximas a los frentes de trabajo.</li>
+            <li><strong>Reprogramación horaria:</strong> Realizar tareas de gran demanda física en las horas más frescas (primeras horas del día).</li>
+            <li><strong>Rotación de personal:</strong> Distribuir el tiempo de exposición entre varios operarios calificados.</li>
+          </ul>
+        </div>
+
+        <!-- CONTROLES GENERALES Y CONDUCTUALES -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-base font-bold">
+            <i class="fa-solid fa-glass-water"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-sm">3. Controles Generales & Hidratación</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Hábitos, entrenamiento y vigilancia médica preventiva:
+          </p>
+          <ul class="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
+            <li><strong>Pauta de hidratación activa:</strong> Fomentar el consumo de <strong>pequeños volúmenes de agua fresca (150-250 ml) cada 20 minutos</strong> (no esperar a tener sed).</li>
+            <li><strong>Capacitación continua:</strong> Instrucciones verbales y escritas exactas a supervisores y trabajadores.</li>
+            <li><strong>Autolimitación del operario:</strong> Facultar al trabajador a frenar la labor si percibe síntomas propios de fatiga.</li>
+            <li><strong>Detección entre pares (Compañero vigilante):</strong> Observación recíproca de anomalías del comportamiento.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- POBLACIONES DE ALTO RIESGO / EXCLUSIONES MÉDICAS -->
+      <div class="mt-6 bg-rose-50 border border-rose-200 rounded-xl p-4">
+        <h4 class="text-xs font-bold text-rose-900 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-user-doctor text-rose-600"></i> Vigilancia Médica de Trabajadores con Mayor Susceptibilidad
+        </h4>
+        <p class="text-xs text-rose-950 mb-2 leading-relaxed">
+          El servicio de medicina laboral debe extremar el control o restringir la asignación a ambientes térmicamente severos a trabajadores que presenten:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-medium text-rose-900">
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-heart-crack text-rose-500"></i> Afecciones Cardiovasculares
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-droplet text-rose-500"></i> Hipertensión Arterial
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-vial text-rose-500"></i> Patologías Renales
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-pills text-rose-500"></i> Medicados (antihistamínicos, etc.)
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-disease text-rose-500"></i> Falla de glándulas sudoríparas
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-wine-glass text-rose-500"></i> Consumo reciente de alcohol
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-weight-scale text-rose-500"></i> Obesidad o desnutrición severa
+          </div>
+          <div class="bg-white/80 p-2 rounded border border-rose-100 flex items-center gap-1.5">
+            <i class="fa-solid fa-virus text-rose-500"></i> Cuadros febriles o diarreicos
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 10: CALCULADORA INTERACTIVA DE TGBH Y CARGA METABÓLICA -->
+    <section id="calculadora-interactiva" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+          <i class="fa-solid fa-calculator"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Herramienta Didáctica de Laboratorio</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Simulador Interactivo de TGBH y Carga Metabólica</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- CALCULADORA DE TGBH -->
+        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+          <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-thermometer text-rose-500"></i> 1. Cálculo del Índice TGBH Corregido
+          </h3>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Entorno de Medición:</label>
+              <div class="grid grid-cols-2 gap-2">
+                <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer">
+                  <input type="radio" name="entorno" value="interior" checked onchange="calcularTGBH()">
+                  <span>Interior / Sin Sol (\(\text{TGBH}_i\))</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer">
+                  <input type="radio" name="entorno" value="exterior" onchange="calcularTGBH()">
+                  <span>Exterior con Sol (\(\text{TGBH}_e\))</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div>
+                <label class="font-semibold text-slate-700 block mb-1">\(t_{bh}\) (Bulbo Húmedo °C):</label>
+                <input type="number" id="in_tbh" value="24.0" step="0.1" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-mono text-sm" oninput="calcularTGBH()">
+              </div>
+              <div>
+                <label class="font-semibold text-slate-700 block mb-1">\(t_g\) (Globo °C):</label>
+                <input type="number" id="in_tg" value="34.0" step="0.1" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-mono text-sm" oninput="calcularTGBH()">
+              </div>
+              <div id="div_tbs" class="opacity-50 pointer-events-none">
+                <label class="font-semibold text-slate-700 block mb-1">\(t_{bs}\) (Bulbo Seco °C):</label>
+                <input type="number" id="in_tbs" value="30.0" step="0.1" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-mono text-sm" oninput="calcularTGBH()">
+              </div>
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Vestimenta Utilizada:</label>
+              <select id="in_vestimenta" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs" onchange="calcularTGBH()">
+                <option value="0">Uniforme estándar de verano (Adición: +0 °C)</option>
+                <option value="3.5">Buzo de tela / tejido (Adición: +3.5 °C)</option>
+                <option value="5.0">Buzo de doble tela / ignífugo (Adición: +5.0 °C)</option>
+              </select>
+            </div>
+
+            <!-- RESULTADO TGBH -->
+            <div class="p-4 bg-slate-900 text-white rounded-xl flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-sky-400 block">TGBH Corregido Resultante:</span>
+                <span id="out_tgbh" class="text-2xl font-extrabold font-mono text-white">27.0 °C</span>
+                <span id="out_formula_str" class="text-[10px] text-slate-400 block mt-0.5">0.7*(24.0) + 0.3*(34.0) + 0</span>
+              </div>
+              <div id="out_badge_tgbh" class="px-3 py-1 bg-amber-500/20 border border-amber-500 text-amber-300 rounded-lg text-xs font-bold">
+                Valor Crítico
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTIMADOR DE CARGA METABÓLICA -->
+        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+          <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-person-walking text-amber-600"></i> 2. Estimación de Carga Metabólica (\(M = M_B + M_I + M_{II}\))
+          </h3>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Metabolismo Basal (\(M_B\)):</label>
+              <select id="in_mb" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs" onchange="calcularMetabolismo()">
+                <option value="70">Hombre estándar (70 W / 1.8 m²)</option>
+                <option value="65">Mujer estándar (65 W / 1.6 m²)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Componente Postural (\(M_I\)):</label>
+              <select id="in_mi" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs" onchange="calcularMetabolismo()">
+                <option value="15">Sentado (15 W)</option>
+                <option value="20">Arrodillado / Agachado (20 W)</option>
+                <option value="30" selected>De pie / inclinado (30 W)</option>
+                <option value="140">Caminando en llano (140 W)</option>
+                <option value="290">Subiendo pendiente (290 W)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Tipo de Tarea Dinámica (\(M_{II}\)):</label>
+              <select id="in_mii" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs" onchange="calcularMetabolismo()">
+                <option value="28">Trabajo manual liviano (28 W)</option>
+                <option value="63">Trabajo manual pesado (63 W)</option>
+                <option value="70">Un brazo liviano (70 W)</option>
+                <option value="105">Dos brazos liviano (105 W)</option>
+                <option value="175">Dos brazos pesado (175 W)</option>
+                <option value="245" selected>Trabajo con el cuerpo liviano (245 W)</option>
+                <option value="350">Trabajo con el cuerpo moderado (350 W)</option>
+                <option value="490">Trabajo con el cuerpo pesado (490 W)</option>
+                <option value="630">Trabajo con el cuerpo muy pesado (630 W)</option>
+              </select>
+            </div>
+
+            <!-- RESULTADO METABOLISMO -->
+            <div class="p-4 bg-slate-900 text-white rounded-xl flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-yellow-400 block">Carga Metabólica Total (\(M\)):</span>
+                <span id="out_m_total" class="text-2xl font-extrabold font-mono text-white">345 W</span>
+                <span id="out_m_cat" class="text-xs font-bold text-amber-300 block mt-0.5">Categoría: MODERADA (230 - 400 W)</span>
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] text-slate-400 block">Potencia Específica:</span>
+                <span id="out_m_especifica" class="font-mono text-sm text-slate-200">191.7 W/m²</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARADOR DE CUMPLIMIENTO LEGAL AUTOMÁTICO -->
+      <div class="mt-6 p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="space-y-1 text-xs">
+          <strong class="text-slate-900 font-bold text-sm flex items-center gap-2">
+            <i class="fa-solid fa-scale-balanced text-indigo-600"></i> Evaluación de Criterio Primario (TGBH vs Límite Legal)
+          </strong>
+          <p id="eval_resumen_str" class="text-slate-600">
+            Con un TGBH corregido de <strong>27.0 °C</strong> y una carga <strong>Moderada</strong>:
+          </p>
+        </div>
+        <div id="eval_dictamen_box" class="flex items-center gap-3">
+          <span class="px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-100 text-emerald-800 border border-emerald-300">
+            Cumple para Aclimatado al 100% (Límite: 27.5 °C)
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 11: BANCO DE PREGUNTAS Y CASOS DE EXAMEN (ACORDEÓN) -->
+    <section id="preguntas-examen" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl font-bold">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-purple-600">Autoevaluación para Parciales y Finales</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Preguntas Frecuentes y Casos Prácticos de Examen</h2>
+        </div>
+      </div>
+
+      <div class="space-y-3" id="accordionContainer">
+        <!-- Pregunta 1 -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+          <button onclick="toggleAccordion('p1')" class="w-full px-4 py-3 text-left font-semibold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center text-sm transition">
+            <span>1. ¿Por qué se dice que el rendimiento termodinámico de los músculos es del 20% y qué relevancia tiene en higiene laboral?</span>
+            <i id="icon-p1" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div id="ans-p1" class="hidden px-4 py-3 text-xs text-slate-700 bg-white border-t border-slate-200 leading-relaxed">
+            De toda la energía química liberada mediante los enlaces de ATP en la contracción muscular, solo el <strong>20% se transforma efectivamente en trabajo mecánico exterior</strong> (fuerza por desplazamiento). El <strong>80% restante se disipa inevitablemente en forma de calor metabólico</strong>. En higiene laboral esto es fundamental porque significa que a mayor exigencia física de la tarea, el cuerpo se convierte internamente en un emisor térmico de gran magnitud, debiendo transferir ese calor al entorno para no elevar la temperatura central más allá de los 38.0 °C.
+          </div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+          <button onclick="toggleAccordion('p2')" class="w-full px-4 py-3 text-left font-semibold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center text-sm transition">
+            <span>2. ¿Cuál es la diferencia exacta entre la fórmula de TGBH en interiores y en exteriores con sol?</span>
+            <i id="icon-p2" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div id="ans-p2" class="hidden px-4 py-3 text-xs text-slate-700 bg-white border-t border-slate-200 leading-relaxed">
+            En <strong>ambientes interiores o a la sombra</strong>, la fórmula es \(\text{TGBH}_i = 0.7\, t_{bh} + 0.3\, t_g\). En <strong>ambientes exteriores con radiación solar directa</strong>, la ecuación es \(\text{TGBH}_e = 0.7\, t_{bh} + 0.2\, t_g + 0.1\, t_{bs}\). La diferencia estriba en que al aire libre el sol incide sobre el termómetro de bulbo seco y calienta directamente el aire por convección circundante; por ello, se extrae un 10% de peso a la temperatura de globo (\(t_g\)) y se introduce la temperatura del aire a la sombra (\(t_{bs}\)) con un factor de ponderación de 0.1. En ambos casos, el bulbo húmedo natural (\(t_{bh}\)) conserva el 70% de la ponderación total debido a la preeminencia del enfriamiento evaporativo en el ser humano.
+          </div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+          <button onclick="toggleAccordion('p3')" class="w-full px-4 py-3 text-left font-semibold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center text-sm transition">
+            <span>3. ¿Qué condiciones definen formalmente si un trabajador está aclimatado según la normativa?</span>
+            <i id="icon-p3" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div id="ans-p3" class="hidden px-4 py-3 text-xs text-slate-700 bg-white border-t border-slate-200 leading-relaxed">
+            Para catalogar a un operario como <strong>aclimatado</strong>, la persona debe haber atravesado un proceso progresivo de hasta <strong>3 semanas de actividad física continua</strong> en el ambiente térmicamente severo, manteniendo una serie reciente de exposiciones (por ejemplo, haber trabajado activamente al menos <strong>5 de los últimos 7 días</strong> en dichas condiciones). Asimismo, debe recordarse que si el trabajador suspende la tarea durante 4 días consecutivos (por licencia, enfermedad o fin de semana prolongado), la aclimatación se pierde de manera notable y debe reintroducirse gradualmente.
+          </div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+          <button onclick="toggleAccordion('p4')" class="w-full px-4 py-3 text-left font-semibold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center text-sm transition">
+            <span>4. En el análisis detallado de la ISO 7933, ¿qué indica un valor de IEC = 120?</span>
+            <i id="icon-p4" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div id="ans-p4" class="hidden px-4 py-3 text-xs text-slate-700 bg-white border-t border-slate-200 leading-relaxed">
+            El Índice de Esfuerzo Calórico se calcula como \(\text{IEC} = (E_{req} / E_{max}) \times 100\). Un valor de <strong>IEC = 120</strong> significa que el calor metabólico que el cuerpo requiere disipar por sudoración supera en un 20% la capacidad física máxima del ambiente para evaporar ese sudor. Por consiguiente, la sudoración escurrirá sin evaporarse eficazmente, el balance térmico no cerrará (\(S &gt; 0\)) y <strong>el cuerpo acumulará calor continuamente</strong>, aumentando la temperatura central de forma peligrosa hacia el colapso térmico.
+          </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+          <button onclick="toggleAccordion('p5')" class="w-full px-4 py-3 text-left font-semibold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center text-sm transition">
+            <span>5. ¿Por qué el cese de la transpiración con piel caliente es un síntoma de máxima gravedad médica?</span>
+            <i id="icon-p5" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div id="ans-p5" class="hidden px-4 py-3 text-xs text-slate-700 bg-white border-t border-slate-200 leading-relaxed">
+            La piel seca, caliente y enrojecida con ausencia súbita de sudor en un ambiente caluroso indica la instauración del <strong>Golpe de Calor (Heatstroke)</strong>. Evidencia que el centro termorregulador en el hipotálamo ha colapsado o que existe una deshidratación extrema que agotó el volumen plasmático. Sin evaporación, la temperatura interna se dispara rápidamente por encima de los 40.5 °C - 41 °C, produciendo desnaturalización de proteínas enzimáticas, edema cerebral, daño multiorgánico y muerte si no se practica enfriamiento activo inmediato y soporte hospitalario de urgencia.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 12: RESUMEN DE FÓRMULAS Y FACTORES DE CONVERSIÓN -->
+    <section id="resumen-formulas" class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-xl font-bold">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Machete de Fórmulas y Constantes</span>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">Guía de Ecuaciones y Factores Clave</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl">
+          <span class="text-[10px] font-bold uppercase text-sky-700 block mb-1">Índices TGBH</span>
+          <div class="font-mono text-slate-800 space-y-1">
+            <div>\(\text{TGBH}_i = 0.7 t_{bh} + 0.3 t_g\)</div>
+            <div>\(\text{TGBH}_e = 0.7 t_{bh} + 0.2 t_g + 0.1 t_{bs}\)</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl">
+          <span class="text-[10px] font-bold uppercase text-amber-700 block mb-1">Carga Metabólica</span>
+          <div class="font-mono text-slate-800 space-y-1">
+            <div>\(M = M_B + M_I + M_{II}\)</div>
+            <div>\(A_b = 0.202 \cdot w^{0.425} \cdot l^{0.725}\)</div>
+            <div>\(\bar{M} = \sum (M_i t_i) / \sum t_i\)</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl">
+          <span class="text-[10px] font-bold uppercase text-rose-700 block mb-1">Balance Térmico (ISO 7933)</span>
+          <div class="font-mono text-slate-800 space-y-1">
+            <div>\(E_{req} = M - R - C - C_{res} - E_{res}\)</div>
+            <div>\(E_{max} = (p_{sk,s} - p_a) / R_t\)</div>
+            <div>\(\text{IEC} = (E_{req} / E_{max}) \times 100\)</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl">
+          <span class="text-[10px] font-bold uppercase text-emerald-700 block mb-1">Factores de Conversión</span>
+          <div class="font-mono text-slate-800 space-y-1">
+            <div>\(1\text{ kcal} = 4.184\text{ kJ}\)</div>
+            <div>\(1\text{ W} = 0.864\text{ kcal/h}\)</div>
+            <div>\(1\text{ Clo} = 0.156\text{ m}^2\text{K/W}\)</div>
+            <div>\(1\text{ cm}^3\text{ sudor} = 0.6\text{ kcal}\)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 px-4 border-t border-slate-800 text-xs text-center mt-12">
+    <div class="max-w-7xl mx-auto space-y-2">
+      <p class="font-medium text-slate-300">
+        Material Didáctico Universitario | Materia de Higiene y Seguridad
+      </p>
+      <p class="text-slate-500">
+        Material generado con IA, puede contener errores – Material generado con IA, puede contener errores. Basado en el marco técnico de la Res. SRT 295/03 y normas ISO 7933 / ISO 8996.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT DINÁMICO PARA CALCULADORAS Y ACORDEÓN -->
+  <script>
+    // Alternar tema Dark / Light
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
+
+    function toggleAccordion(id) {
+      const content = document.getElementById('ans-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    function calcularTGBH() {
+      const entorno = document.querySelector('input[name="entorno"]:checked').value;
+      const tbh = parseFloat(document.getElementById('in_tbh').value) || 0;
+      const tg = parseFloat(document.getElementById('in_tg').value) || 0;
+      const tbs = parseFloat(document.getElementById('in_tbs').value) || 0;
+      const addVest = parseFloat(document.getElementById('in_vestimenta').value) || 0;
+      const divTbs = document.getElementById('div_tbs');
+
+      let tgbhBase = 0;
+      let formulaText = "";
+
+      if (entorno === 'interior') {
+        divTbs.classList.add('opacity-50', 'pointer-events-none');
+        tgbhBase = (0.7 * tbh) + (0.3 * tg);
+        formulaText = `0.7*(${tbh.toFixed(1)}) + 0.3*(${tg.toFixed(1)}) + ${addVest.toFixed(1)}`;
+      } else {
+        divTbs.classList.remove('opacity-50', 'pointer-events-none');
+        tgbhBase = (0.7 * tbh) + (0.2 * tg) + (0.1 * tbs);
+        formulaText = `0.7*(${tbh.toFixed(1)}) + 0.2*(${tg.toFixed(1)}) + 0.1*(${tbs.toFixed(1)}) + ${addVest.toFixed(1)}`;
+      }
+
+      const tgbhFinal = tgbhBase + addVest;
+      document.getElementById('out_tgbh').innerText = tgbhFinal.toFixed(1) + " °C";
+      document.getElementById('out_formula_str').innerText = formulaText;
+
+      // Actualizar badge
+      const badge = document.getElementById('out_badge_tgbh');
+      if (tgbhFinal > 30) {
+        badge.className = "px-3 py-1 bg-red-500/20 border border-red-500 text-red-300 rounded-lg text-xs font-bold";
+        badge.innerText = "Peligro Severo";
+      } else if (tgbhFinal >= 26) {
+        badge.className = "px-3 py-1 bg-amber-500/20 border border-amber-500 text-amber-300 rounded-lg text-xs font-bold";
+        badge.innerText = "Precaución / Límite";
+      } else {
+        badge.className = "px-3 py-1 bg-emerald-500/20 border border-emerald-500 text-emerald-300 rounded-lg text-xs font-bold";
+        badge.innerText = "Condición Segura";
+      }
+
+      actualizarEvaluacionLegal(tgbhFinal);
+    }
+
+    function calcularMetabolismo() {
+      const mb = parseFloat(document.getElementById('in_mb').value) || 70;
+      const mi = parseFloat(document.getElementById('in_mi').value) || 30;
+      const mii = parseFloat(document.getElementById('in_mii').value) || 245;
+
+      const mTotal = mb + mi + mii;
+      document.getElementById('out_m_total').innerText = mTotal + " W";
+
+      let categoria = "";
+      let catColor = "";
+      if (mTotal <= 117) {
+        categoria = "REPOSADA (M ≤ 117 W)";
+        catColor = "text-emerald-400";
+      } else if (mTotal <= 234) {
+        categoria = "LIVIANA (117 < M ≤ 234 W)";
+        catColor = "text-sky-400";
+      } else if (mTotal <= 360) {
+        categoria = "MODERADA (234 < M ≤ 360 W)";
+        catColor = "text-amber-400";
+      } else if (mTotal <= 468) {
+        categoria = "PESADA (360 < M ≤ 468 W)";
+        catColor = "text-orange-400";
+      } else {
+        categoria = "MUY PESADA (M > 468 W)";
+        catColor = "text-rose-400";
+      }
+
+      const catElement = document.getElementById('out_m_cat');
+      catElement.innerText = "Categoría: " + categoria;
+      catElement.className = `text-xs font-bold ${catColor} block mt-0.5`;
+
+      const area = (mb === 70) ? 1.8 : 1.6;
+      const mEsp = mTotal / area;
+      document.getElementById('out_m_especifica').innerText = mEsp.toFixed(1) + " W/m²";
+
+      // Re-evaluar cumplimiento legal con el nuevo metabolismo
+      const tgbhActual = parseFloat(document.getElementById('out_tgbh').innerText) || 27.0;
+      actualizarEvaluacionLegal(tgbhActual, mTotal);
+    }
+
+    function actualizarEvaluacionLegal(tgbh, mVal) {
+      if (!mVal) {
+        const mb = parseFloat(document.getElementById('in_mb').value) || 70;
+        const mi = parseFloat(document.getElementById('in_mi').value) || 30;
+        const mii = parseFloat(document.getElementById('in_mii').value) || 245;
+        mVal = mb + mi + mii;
+      }
+
+      const evalResumen = document.getElementById('eval_resumen_str');
+      const evalBox = document.getElementById('eval_dictamen_box');
+
+      let tipo = "Ligero";
+      let lim100Aclim = 29.5;
+      let lim100NoAclim = 27.5;
+
+      if (mVal <= 230) {
+        tipo = "Ligero (M < 230 W)";
+        lim100Aclim = 29.5;
+        lim100NoAclim = 27.5;
+      } else if (mVal <= 400) {
+        tipo = "Moderado (230 ≤ M ≤ 400 W)";
+        lim100Aclim = 27.5;
+        lim100NoAclim = 25.0;
+      } else if (mVal <= 600) {
+        tipo = "Pesado (400 < M ≤ 600 W)";
+        lim100Aclim = 26.0;
+        lim100NoAclim = 22.5;
+      } else {
+        tipo = "Muy Pesado (M > 600 W)";
+        lim100Aclim = 27.5; // solo con 50% descanso
+        lim100NoAclim = 25.0;
+      }
+
+      evalResumen.innerHTML = `Con TGBH corregido de <strong>${tgbh.toFixed(1)} °C</strong> y trabajo <strong>${tipo}</strong>:`;
+
+      if (tgbh <= lim100Aclim) {
+        evalBox.innerHTML = `
+          <span class="px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-check"></i> Cumple 100% Trabajo Continuo para Aclimatado (Límite: ${lim100Aclim.toFixed(1)} °C)
+          </span>`;
+      } else {
+        evalBox.innerHTML = `
+          <span class="px-3 py-1.5 rounded-lg font-bold text-xs bg-rose-100 dark:bg-rose-950/60 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-exclamation-triangle"></i> Supera Límite Continuo (${lim100Aclim.toFixed(1)} °C). Se requieren Pausas de Descanso (Ver Tabla SRT).
+          </span>`;
+      }
+    }
+
+    // Inicializar al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      calcularTGBH();
+      calcularMetabolismo();
+    });
+  </script>
+
+  <!-- BOTÓN FLOTANTE: VOLVER AL ÍNDICE -->
+  <a href="index.html" class="no-print fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-900/90 dark:bg-slate-800/90 hover:bg-sky-600 dark:hover:bg-sky-600 text-white text-xs font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 border border-slate-700 hover:border-sky-400 backdrop-blur-md group" title="Volver al Índice General">
+    <i class="fa-solid fa-arrow-left group-hover:-translate-x-0.5 transition-transform"></i>
+    <span>Volver al Índice</span>
+  </a>
+</body>
+</html>

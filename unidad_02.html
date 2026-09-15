@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 2: Accidentes y Aspectos Legales | Guía de Estudio HyS</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            amberCustom: '#d97706',
+            emeraldCustom: '#059669',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    html.dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Dark mode color enhancements */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #020617;
+      color: #f1f5f9;
+    }
+    html.dark .bg-white {
+      background-color: #0f172a;
+    }
+    html.dark .bg-slate-50,
+    html.dark .bg-slate-50\/50,
+    html.dark .bg-slate-50\/70 {
+      background-color: #1e293b;
+    }
+    html.dark .bg-slate-100 {
+      background-color: #1e293b;
+    }
+    html.dark .border-slate-200,
+    html.dark .border-slate-200\/80,
+    html.dark .border-slate-100,
+    html.dark .border-slate-300 {
+      border-color: #334155;
+    }
+    html.dark .text-slate-900 {
+      color: #f8fafc;
+    }
+    html.dark .text-slate-800 {
+      color: #f1f5f9;
+    }
+    html.dark .text-slate-700 {
+      color: #cbd5e1;
+    }
+    html.dark .text-slate-600 {
+      color: #94a3b8;
+    }
+    html.dark .text-slate-500 {
+      color: #94a3b8;
+    }
+    html.dark .hover\:bg-slate-100:hover {
+      background-color: #334155;
+    }
+    html.dark .hover\:bg-slate-50:hover {
+      background-color: #1e293b;
+    }
+    html.dark .bg-sky-50,
+    html.dark .bg-sky-50\/50,
+    html.dark .bg-sky-50\/70 {
+      background-color: rgba(14, 165, 233, 0.12);
+    }
+    html.dark .bg-indigo-50,
+    html.dark .bg-indigo-50\/50 {
+      background-color: rgba(99, 102, 241, 0.12);
+    }
+    html.dark .bg-emerald-50,
+    html.dark .bg-emerald-50\/50,
+    html.dark .bg-emerald-50\/60 {
+      background-color: rgba(16, 185, 129, 0.12);
+    }
+    html.dark .bg-amber-50,
+    html.dark .bg-amber-50\/50,
+    html.dark .bg-amber-50\/60 {
+      background-color: rgba(245, 158, 11, 0.12);
+    }
+    html.dark .bg-purple-50,
+    html.dark .bg-purple-50\/50 {
+      background-color: rgba(168, 85, 247, 0.12);
+    }
+    html.dark .bg-rose-50,
+    html.dark .bg-rose-50\/50,
+    html.dark .bg-rose-50\/60 {
+      background-color: rgba(244, 63, 94, 0.12);
+    }
+    html.dark .bg-teal-50 {
+      background-color: rgba(20, 184, 166, 0.12);
+    }
+    html.dark .text-sky-900,
+    html.dark .text-sky-800,
+    html.dark .text-sky-700 {
+      color: #38bdf8;
+    }
+    html.dark .text-indigo-900,
+    html.dark .text-indigo-800,
+    html.dark .text-indigo-700 {
+      color: #818cf8;
+    }
+    html.dark .text-emerald-900,
+    html.dark .text-emerald-800,
+    html.dark .text-emerald-700 {
+      color: #34d399;
+    }
+    html.dark .text-amber-900,
+    html.dark .text-amber-800,
+    html.dark .text-amber-700 {
+      color: #fbbf24;
+    }
+    html.dark .text-purple-900,
+    html.dark .text-purple-800,
+    html.dark .text-purple-700 {
+      color: #c084fc;
+    }
+    html.dark .text-rose-950,
+    html.dark .text-rose-900,
+    html.dark .text-rose-800 {
+      color: #fb7185;
+    }
+    html.dark .text-teal-950,
+    html.dark .text-teal-900,
+    html.dark .text-teal-700 {
+      color: #2dd4bf;
+    }
+    html.dark input {
+      background-color: #0f172a !important;
+      border-color: #334155 !important;
+      color: #f8fafc !important;
+    }
+
+    /* Print styles */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        font-size: 11pt;
+        color: #111827;
+        background: white;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .card-print {
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- Floating Back Button (Bottom Right) -->
+  <a href="index.html" class="no-print fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs shadow-lg shadow-sky-600/30 hover:shadow-sky-600/50 hover:-translate-y-0.5 transition-all duration-200 group" title="Volver al índice principal">
+    <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+    <span>Volver al Índice</span>
+  </a>
+
+
+  <!-- TOP HEADER BAR -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo / Title with integrated Back link -->
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Volver al índice">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="hidden sm:inline">Volver</span>
+          </a>
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-600 to-indigo-700 flex items-center justify-center text-white font-bold shadow-md shadow-sky-500/20">
+            <i class="fa-solid fa-shield-halved text-lg"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Higiene y Seguridad &bull; Guía de Estudio</span>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">Unidad 2: Accidentes y Marco Legal</h1>
+          </div>
+        </div>
+
+        <!-- Navigation Badges & Actions -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <a href="#calculadora" class="hidden md:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-900/50 border border-sky-200/60 dark:border-sky-800 transition">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Calculadora</span>
+          </a>
+          <a href="#autoevaluacion" class="hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 border border-emerald-200/60 dark:border-emerald-800 transition">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+          </a>
+
+          <!-- Dark Mode Toggle Button -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition" title="Cambiar tema claro/oscuro">
+            <i class="fa-solid fa-moon text-sm dark:hidden"></i>
+            <i class="fa-solid fa-sun text-sm hidden dark:inline"></i>
+          </button>
+
+          <button onclick="window.print()" class="no-print inline-flex items-center space-x-2 text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white transition shadow-sm">
+            <i class="fa-solid fa-print"></i>
+            <span class="hidden sm:inline">Imprimir / PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Progress Indicator Bar -->
+    <div id="readingProgress" class="h-1 bg-gradient-to-r from-sky-500 to-indigo-600 w-0 transition-all duration-100"></div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-semibold mb-4">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Guía de Estudio Teórico-Práctica Universitaria</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+            Accidentes del Trabajo, Aspectos Legales y Gestión de la Siniestralidad
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+            Compendio riguroso y pedagógico desarrollado para la Materia de Higiene y Seguridad. Cubre la Ley 19.587, normativas específicas por actividad, costos de Heinrich y Simonds, fórmulas de siniestralidad SRT e investigación profunda mediante el Método del Árbol de Causas.
+          </p>
+          
+          <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-300">
+            
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-sky-400"></i> Lectura estimada: 35 min</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-double text-emerald-400"></i> Alineado a normativa SRT y OIT</span>
+          </div>
+        </div>
+
+        <!-- Quick Summary Box -->
+        <div class="lg:w-96 bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-6 shadow-2xl">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-sky-300 flex items-center gap-2 mb-3">
+            <i class="fa-solid fa-compass"></i> Mapa de Aprendizaje
+          </h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+              <span><strong>Marco Normativo:</strong> Ley 19.587, Dec. 351/79, Dec. 911/96 y Res. SRT.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+              <span><strong>Costos de la No Seguridad:</strong> Heinrich (1:4) y Simonds (Asegurados vs. No Asegurados).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+              <span><strong>Indicadores:</strong> Tasas relativas II, IF, IG y Duración Media (Dm).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+              <span><strong>Árbol de Causas:</strong> INRS, hechos vs. juicios, lógica gráfica inductiva.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK NAVIGATION STICKY TABS -->
+  <div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-40 shadow-sm no-print overflow-x-auto transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex space-x-1 sm:space-x-4 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap">
+        <a href="#modulo1" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">1. Marco Legal</a>
+        <a href="#modulo2" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">2. Costos de No Seguridad</a>
+        <a href="#modulo3" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">3. Indicadores SRT</a>
+        <a href="#modulo4" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">4. Árbol de Causas</a>
+        <a href="#modulo5" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">5. Factores SRT</a>
+        <a href="#modulo6" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">6. Gestión OHSAS/ISO</a>
+        <a href="#calculadora" class="px-3 py-1.5 rounded-lg text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/50 transition"><i class="fa-solid fa-calculator mr-1"></i>Calculadora</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-16">
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 1: MARCO LEGAL Y NORMATIVO          -->
+    <!-- ========================================== -->
+    <section id="modulo1" class="scroll-mt-32 space-y-8">
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-scale-balanced"></i> Módulo 1
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Marco Jurídico e Institucional de la Higiene y Seguridad en Argentina
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          De los principios constitucionales a las obligaciones operativas del empleador y del trabajador.
+        </p>
+      </div>
+
+      <!-- 1.1 Constitución y Ley 19.587 -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- CN Card -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-landmark"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Constitución Nacional</h3>
+          <span class="inline-block px-2.5 py-0.5 rounded-md bg-purple-50 text-purple-700 text-xs font-semibold mb-3">Artículo 14 Bis</span>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Consagra que el trabajo en sus diversas formas gozará de la protección de las leyes, garantizando al trabajador <strong>condiciones dignas y equitativas de labor</strong>, jornada limitada, descanso y retribución justa. Es la piedra basal de todo el derecho de seguridad y salud en el trabajo en Argentina.
+          </p>
+        </div>
+
+        <!-- Ley 19587 General Card -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-book-bookmark"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Ley 19.587 de Higiene y Seguridad en el Trabajo</h3>
+                <span class="text-xs text-slate-500">Sancionada y promulgada el 21 de abril de 1972</span>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-xs font-bold">Orden Público Nacional</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-600">
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+              <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 text-sky-700">Finalidad & Alcance</h4>
+              <p class="leading-snug">
+                Regular las condiciones de higiene y seguridad en <strong>todos los establecimientos y explotaciones</strong> del territorio nacional, sean con o sin fines de lucro, públicos o privados.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+              <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 text-sky-700">Concepto de Establecimiento</h4>
+              <p class="leading-snug">
+                Lugar donde se realizan tareas con presencia física de personas (permanente, circunstancial, transitoria o eventual), comprendiendo puestos principales y dependencias anexas.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+              <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 text-sky-700">Motivo de Presencia</h4>
+              <p class="leading-snug">
+                Aplica cuando la presencia se deba por el hecho del trabajo, en ocasión del mismo, o por consentimiento expreso o tácito del dador de trabajo.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+              <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 text-rose-700">Responsabilidad Solidaria</h4>
+              <p class="leading-snug">
+                El dador de trabajo responde tanto por sus <strong>dependientes directos</strong> como de manera <strong>solidaria</strong> sobre contratistas y subcontratistas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.2 Objetivos, Peligro vs Riesgo y Axiomas -->
+      <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+        <div class="max-w-4xl">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2.5">
+            <i class="fa-solid fa-bullseye text-sky-400"></i>
+            Objetivos Fundamentales de la Ley 19.587 (Art. 4)
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/10">
+              <div class="text-sky-300 text-2xl font-extrabold mb-1">01</div>
+              <h4 class="font-semibold text-sm mb-1 text-white">Proteger la Vida</h4>
+              <p class="text-xs text-slate-300">Preservar la integridad psicofísica de los trabajadores en todo el ámbito laboral.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/10">
+              <div class="text-sky-300 text-2xl font-extrabold mb-1">02</div>
+              <h4 class="font-semibold text-sm mb-1 text-white">Controlar Riesgos</h4>
+              <p class="text-xs text-slate-300">Prevenir, reducir, eliminar o aislar los riesgos de los centros y puestos de trabajo.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/10">
+              <div class="text-sky-300 text-2xl font-extrabold mb-1">03</div>
+              <h4 class="font-semibold text-sm mb-1 text-white">Cultura Positiva</h4>
+              <p class="text-xs text-slate-300">Estimular y desarrollar una actitud positiva hacia la prevención de siniestros y enfermedades.</p>
+            </div>
+          </div>
+
+          <!-- Peligro vs Riesgo + Axiomas -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 border-t border-white/10">
+            <!-- Peligro vs Riesgo -->
+            <div class="space-y-4">
+              <h4 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i> Definiciones IRAM 3800 (Pregunta Típica de Final)
+              </h4>
+              <div class="space-y-3">
+                <div class="bg-white/5 p-3.5 rounded-xl border border-white/10">
+                  <span class="text-xs font-bold uppercase text-amber-300 block mb-0.5">Peligro</span>
+                  <p class="text-xs text-slate-300">
+                    <strong>Fuente o situación</strong> con potencial intrínseco para producir lesiones a personas, enfermedades profesionales, daños a la propiedad, al ambiente de trabajo o una combinación de estos.
+                  </p>
+                </div>
+                <div class="bg-white/5 p-3.5 rounded-xl border border-white/10">
+                  <span class="text-xs font-bold uppercase text-sky-300 block mb-0.5">Riesgo</span>
+                  <p class="text-xs text-slate-300">
+                    <strong>Combinación</strong> de la probabilidad de que ocurra un hecho o suceso peligroso y la magnitud o severidad de sus consecuencias.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Axiomas de la Seguridad -->
+            <div class="space-y-4">
+              <h4 class="text-sm font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group"></i> Axiomas de la Seguridad (Jerarquía de Control)
+              </h4>
+              <p class="text-xs text-slate-300">
+                Orden riguroso de prelación técnica para intervenir sobre cualquier riesgo laboral:
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 bg-emerald-950/40 p-2.5 rounded-lg border border-emerald-500/30 text-xs">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center shrink-0">1</span>
+                  <span><strong>Eliminar el riesgo:</strong> Rediseñar o suprimir la fuente peligrosa.</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg border border-white/5 text-xs text-slate-300">
+                  <span class="w-6 h-6 rounded-full bg-slate-700 text-white font-bold flex items-center justify-center shrink-0">2</span>
+                  <span><strong>Alejar al trabajador:</strong> Automatización o control a distancia.</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg border border-white/5 text-xs text-slate-300">
+                  <span class="w-6 h-6 rounded-full bg-slate-700 text-white font-bold flex items-center justify-center shrink-0">3</span>
+                  <span><strong>Aislar el riesgo:</strong> Resguardos físicos, enclavamientos, ventilación localizada.</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg border border-white/5 text-xs text-slate-300">
+                  <span class="w-6 h-6 rounded-full bg-slate-700 text-white font-bold flex items-center justify-center shrink-0">4</span>
+                  <span><strong>Proteger al trabajador:</strong> EPP individual (última barrera, nunca la primera).</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.3 Artículos Clave: 5, 6, 7, 8, 9 y 10 -->
+      <div class="space-y-6">
+        <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-gavel text-sky-600"></i> Estructura Operativa de la Ley 19.587
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Art. 5: Métodos de Ejecución -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold px-2 py-1 bg-blue-50 text-blue-700 rounded-md">Art. 5</span>
+                <span class="text-xs text-slate-400">Principios y Métodos</span>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Administrativos y Operativos</h4>
+              <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                Establece la obligatoriedad de crear servicios especializados de Higiene y Seguridad y Medicina Laboral.
+              </p>
+              <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Reglamentar por sector y clasificar tareas (normales, penosas, riesgosas).</li>
+                <li>Centralizar estadísticas y registrar siniestros.</li>
+                <li>Exámenes preocupacionales y periódicos obligatorios.</li>
+                <li>Investigación de factores causales de accidentes y enfermedades.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Art. 6: Condiciones de Higiene -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold px-2 py-1 bg-teal-50 text-teal-700 rounded-md">Art. 6</span>
+                <span class="text-xs text-slate-400">Ambiente Físico</span>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Condiciones de Higiene</h4>
+              <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                Regula el diseño ambiental y los agentes que pueden producir enfermedades a corto o largo plazo:
+              </p>
+              <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Diseño de establecimientos, naves y servicios auxiliares.</li>
+                <li>Factores físicos: carga térmica, ventilación, iluminación, ruido.</li>
+                <li>Contaminantes ambientales: agentes físicos, químicos y biológicos.</li>
+                <li>Gestión de residuos y efluentes industriales.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Art. 7: Condiciones de Seguridad -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold px-2 py-1 bg-amber-50 text-amber-700 rounded-md">Art. 7</span>
+                <span class="text-xs text-slate-400">Protección Física</span>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Condiciones de Seguridad</h4>
+              <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                Medidas preventivas frente al trauma mecánico y siniestralidad aguda inmediata:
+              </p>
+              <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Protección mecánica en máquinas y órganos de transmisión.</li>
+                <li>Instalaciones y protecciones eléctricas normalizadas.</li>
+                <li>Elementos de protección personal (EPP) homologados.</li>
+                <li>Protección contra incendios y explosiones; señalización de áreas de peligro.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Las 5M del Empleador (Art. 8 y 9) vs Obligaciones del Trabajador (Art. 10) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Las 5M -->
+          <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-sitemap text-sky-600"></i> Obligaciones del Empleador (Art. 8 y 9) — Esquema de las "5M"
+              </h4>
+              <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2.5 py-1 rounded-md">Gestión Integral</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="font-bold text-slate-800 flex items-center gap-1.5 mb-1 text-sky-700">
+                  <i class="fa-solid fa-users"></i> Mano de Obra
+                </div>
+                <p class="text-slate-600">Exámenes médicos de ingreso y periódicos. Capacitación obligatoria continua.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="font-bold text-slate-800 flex items-center gap-1.5 mb-1 text-sky-700">
+                  <i class="fa-solid fa-gears"></i> Medios Productivos
+                </div>
+                <p class="text-slate-600">Mantenimiento de maquinaria, instalaciones eléctricas seguras, provisión de agua potable y sistemas contra incendio.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="font-bold text-slate-800 flex items-center gap-1.5 mb-1 text-sky-700">
+                  <i class="fa-solid fa-boxes-stacked"></i> Materiales
+                </div>
+                <p class="text-slate-600">Almacenamiento seguro de sustancias peligrosas, inflamables o reactivas.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="font-bold text-slate-800 flex items-center gap-1.5 mb-1 text-sky-700">
+                  <i class="fa-solid fa-clipboard-list"></i> Métodos
+                </div>
+                <p class="text-slate-600">Cartelería y señalización visible, servicio de primeros auxilios y denuncia obligatoria de siniestros.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 sm:col-span-2 md:col-span-1">
+                <div class="font-bold text-slate-800 flex items-center gap-1.5 mb-1 text-sky-700">
+                  <i class="fa-solid fa-leaf"></i> Medio Ambiente
+                </div>
+                <p class="text-slate-600">Control de ruidos molestos, vibraciones perjudiciales, ventilación y aseo integral permanente.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Obligaciones del Trabajador -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <i class="fa-solid fa-user-shield text-emerald-600"></i> Obligaciones del Trabajador
+                </h4>
+                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Art. 10</span>
+              </div>
+              <p class="text-xs text-slate-600 mb-3">
+                El marco legal impone al trabajador deberes activos cuyo incumplimiento configura falta laboral pasible de sanción:
+              </p>
+              <ul class="text-xs text-slate-700 space-y-2.5">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Cumplir normas e instructivos:</strong> uso debido y obligatorio de los EPP asignados.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Cuidado de equipos:</strong> uso prudente de herramientas, resguardos y máquinas.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Someterse a exámenes médicos:</strong> pre-ocupacionales y periódicos obligatorios.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Cuidar avisos y carteles:</strong> respetar la señalización de seguridad.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                  <span><strong>Participar activamente:</strong> asistir a las jornadas de capacitación en prevención.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.4 Reglamentación por Rama de Actividad -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-diagram-project text-indigo-600"></i> Mapa de Decretos Reglamentarios y Resoluciones SRT
+        </h3>
+        <p class="text-sm text-slate-600 mb-6">
+          La Ley 19.587 se instrumenta mediante un reglamento general y decretos sectoriales que responden a los riesgos específicos de cada rama económica:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <!-- Dec 351/79 -->
+          <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/50">
+            <span class="text-xs font-extrabold text-sky-800 bg-sky-100 px-2 py-0.5 rounded">General</span>
+            <h4 class="text-base font-bold text-slate-900 mt-2">Decreto 351/79</h4>
+            <p class="text-xs text-slate-600 mt-1">Reglamento general para la industria manufacturera, comercio y servicios generales.</p>
+            <div class="mt-3 text-[11px] bg-white p-2 rounded border border-sky-100 text-slate-700">
+              <strong>Complemento Clave:</strong> Res. SRT 295/03 (Ergonomía NAM/LMC, radiaciones, estrés térmico por frío/calor, contaminantes químicos y ruido).
+            </div>
+          </div>
+
+          <!-- Dec 911/96 -->
+          <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/50">
+            <span class="text-xs font-extrabold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Construcción</span>
+            <h4 class="text-base font-bold text-slate-900 mt-2">Decreto 911/96</h4>
+            <p class="text-xs text-slate-600 mt-1">Obras de ingeniería y arquitectura, excavaciones, demoliciones, montajes y refuncionalizaciones.</p>
+            <div class="mt-3 text-[11px] bg-white p-2 rounded border border-amber-100 text-slate-700">
+              <strong>Resoluciones asociadas:</strong> Res. SRT 231/96, 51/97, 35/98 y 319/99.
+            </div>
+          </div>
+
+          <!-- Dec 617/97 -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
+            <span class="text-xs font-extrabold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Agropecuario</span>
+            <h4 class="text-base font-bold text-slate-900 mt-2">Decreto 617/97</h4>
+            <p class="text-xs text-slate-600 mt-1">Actividades agrícolas, forestales, pecuarias y tambo. Uso de agroquímicos y maquinaria agrícola.</p>
+          </div>
+
+          <!-- Dec 249/07 & Otros -->
+          <div class="p-4 rounded-xl border border-purple-200 bg-purple-50/50">
+            <span class="text-xs font-extrabold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Minería & TV</span>
+            <h4 class="text-base font-bold text-slate-900 mt-2">Dec. 249/07 & Res. 311/03</h4>
+            <p class="text-xs text-slate-600 mt-1">Reglamento de Higiene y Seguridad para la Actividad Minera (subterránea y a cielo abierto) y TV por cable.</p>
+          </div>
+        </div>
+
+        <!-- FOCUS ESPECIAL CONSTRUCCIÓN (Muy evaluado) -->
+        <div class="border border-slate-200 rounded-xl p-5 bg-slate-50">
+          <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2 text-sky-800">
+            <i class="fa-solid fa-helmet-safety"></i> Foco Examen: El Bloque Normativo de la Construcción (Dec. 911/96)
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-sky-700 block mb-1">Res. SRT 231/96</span>
+              <p class="text-slate-600 mb-2">Condiciones básicas iniciales: baños, agua potable, EPP, extintores ABC de 10 kg, tablero eléctrico con disyuntor y puesta a tierra, protecciones de caídas.</p>
+              <strong class="text-slate-800 block text-[11px]">Legajo Técnico de Obra:</strong> Memoria descriptiva, programa de prevención, programa de capacitación, registro de visitas del servicio de HyS, organigrama y plano de obrador.
+            </div>
+
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-sky-700 block mb-1">Res. SRT 51/97 (y 552/01)</span>
+              <p class="text-slate-600 mb-2"><strong>Aviso de Inicio de Obra a la ART:</strong> Comunicación fehaciente con al menos <span class="bg-amber-100 px-1 font-bold text-amber-900">5 días hábiles</span> de anticipación.</p>
+              <strong class="text-slate-800 block text-[11px]">Programa de Seguridad Obligatorio:</strong> Excavación, demolición, &gt;1000 m², altura &gt;4 m, medios de izaje/montacargas, silletas/andamios, alta/media tensión. Firmado por Empleador, Director de Obra, Resp. HyS y aprobado por la ART.
+            </div>
+
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-sky-700 block mb-1">Res. SRT 35/98</span>
+              <p class="text-slate-600"><strong>Programa de Seguridad Único:</strong> El contratista principal o comitente coordina un único programa que engloba todas las tareas propias y de subcontratistas. Los subcontratistas deben generar su aviso de inicio.</p>
+            </div>
+
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-sky-700 block mb-1">Res. SRT 319/99</span>
+              <p class="text-slate-600"><strong>Obras Repetitivas y de Corta Duración:</strong> Mismo procedimiento de trabajo que no exceda los <span class="bg-amber-100 px-1 font-bold text-amber-900">7 días corridos</span>. Se presenta un Programa de Seguridad ante la ART con validez semestral (6 meses).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 2: ECONOMÍA DE LA SEGURIDAD         -->
+    <!-- ========================================== -->
+    <section id="modulo2" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-coins"></i> Módulo 2
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Economía de la Seguridad: Los Costos de la No Seguridad
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Análisis del impacto económico de los siniestros: el Iceberg de Heinrich y la metodología de Simonds.
+        </p>
+      </div>
+
+      <!-- Comparativa Heinrich vs Simonds -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Heinrich -->
+        <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-icicles text-sky-600"></i> Modelo de Heinrich (La Regla 1:4)
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-sky-100 text-sky-800 text-xs font-bold font-mono">Cta = Cd + 4·Cd</span>
+            </div>
+            
+            <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
+              H.W. Heinrich propuso la célebre analogía del <strong>iceberg</strong>: por cada unidad monetaria de costo directo visible que la empresa asume tras un accidente, existen en promedio cuatro unidades de costos indirectos ocultos.
+            </p>
+
+            <div class="bg-slate-900 text-white p-4 rounded-xl font-mono text-xs mb-5 space-y-1">
+              <div class="text-sky-400 font-bold">// Ecuación de Heinrich:</div>
+              <div>C<sub>ta</sub> = C<sub>d</sub> + C<sub>i</sub> = C<sub>d</sub> + k &middot; C<sub>d</sub></div>
+              <div class="text-slate-400">donde k = 4 &rarr; <strong>C<sub>ta</sub> = 5 &middot; C<sub>d</sub></strong></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 rounded-lg bg-sky-50 border border-sky-100">
+                <h4 class="font-bold text-sky-900 mb-1 flex items-center gap-1">
+                  <i class="fa-solid fa-eye text-sky-600"></i> Costos Directos (Cd) [1]
+                </h4>
+                <ul class="text-slate-600 space-y-1 list-disc pl-3 text-[11px]">
+                  <li>Salarios pagados sin baja laboral.</li>
+                  <li>Pago de primas del seguro (ART).</li>
+                  <li>Gastos médicos no asegurados.</li>
+                  <li>Pérdida de productividad en puestos afectados directos.</li>
+                  <li>Indemnizaciones y subsidios.</li>
+                  <li>Capacitación del reemplazante.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-lg bg-indigo-50 border border-indigo-100">
+                <h4 class="font-bold text-indigo-900 mb-1 flex items-center gap-1">
+                  <i class="fa-solid fa-eye-slash text-indigo-600"></i> Costos Indirectos (Ci) [4]
+                </h4>
+                <ul class="text-slate-600 space-y-1 list-disc pl-3 text-[11px]">
+                  <li>Horas invertidas en la investigación.</li>
+                  <li>Pérdida de ritmo de los compañeros.</li>
+                  <li>Daño a máquinas, matrices e insumos.</li>
+                  <li>Pérdida de producción por rechazos.</li>
+                  <li>Paradas técnicas por conmoción.</li>
+                  <li>Multas comerciales por retrasos.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500 italic">
+            * Heinrich demostró por primera vez al empresariado que los accidentes no son sólo un costo de aseguradora, sino una fuga masiva de margen operativo interno.
+          </div>
+        </div>
+
+        <!-- Simonds -->
+        <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie text-emerald-600"></i> Modelo de Simonds (Asegurados vs. No Asegurados)
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 text-xs font-bold font-mono">Cta = CA + CNA</span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
+              Rollin H. Simonds sustituyó los términos ambiguos "directos/indirectos" por <strong>Costos Asegurados (C<sub>A</sub>)</strong> y <strong>Costos No Asegurados (C<sub>NA</sub>)</strong>, calculados empíricamente por clases de accidentes:
+            </p>
+
+            <div class="bg-slate-900 text-white p-4 rounded-xl font-mono text-xs mb-5 space-y-1">
+              <div class="text-emerald-400 font-bold">// Ecuación de Simonds:</div>
+              <div>C<sub>ta</sub> = C<sub>A</sub> + C<sub>NA</sub> = C<sub>A</sub> + &sum; (C<sub>i</sub>)</div>
+              <div class="text-slate-400">donde C<sub>i</sub> es el costo medio no asegurado por clase de accidente.</div>
+            </div>
+
+            <div class="space-y-2.5 text-xs">
+              <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-100">
+                <strong class="text-emerald-900 block text-xs mb-0.5">Clasificación Económica según Severidad:</strong>
+                <ul class="text-slate-700 space-y-1 list-disc pl-4 text-[11px]">
+                  <li><strong>Clase A (Con Bajas):</strong> Incapacidad temporal total/parcial o incapacidad permanente.</li>
+                  <li><strong>Clase B (Sin Bajas):</strong> Asistencia en dispensario/enfermería interna (primeros auxilios menores).</li>
+                  <li><strong>Clase C (Incidentes sin lesiones):</strong> Daños a activos, bienes, paradas de línea sin daño a personas.</li>
+                </ul>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-rose-50 border border-rose-100 text-rose-950 text-[11px]">
+                <strong class="block text-rose-900 mb-0.5"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Dato Legal Crítico (Ley 24.557 - Art. 13):</strong>
+                La prestación dineraria de los <strong>primeros DIEZ (10) días</strong> de baja está a cargo exclusivo del <em>empleador</em>. A partir del día 11, la ART asume los salarios (las prestaciones en especie médicas las brinda la ART desde el día 1).
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500 italic">
+            * Los costos no asegurados incluyen también horas extras de compensación, horas de supervisores en peritajes y pérdida de rendimiento al retornar el operario por miedo.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 3: INDICADORES DE SINIESTRALIDAD    -->
+    <!-- ========================================== -->
+    <section id="modulo3" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-calculator"></i> Módulo 3
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Indicadores de Siniestralidad: Fórmulas y Cálculos Internacionales
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Las tasas estandarizadas por la SRT y la OIT para medir, comparar y gestionar el desempeño en seguridad.
+        </p>
+      </div>
+
+      <!-- Fórmulas en Cards Modernas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Índice de Incidencia -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold px-2 py-0.5 bg-sky-100 text-sky-800 rounded">II</span>
+              <span class="text-[11px] text-slate-400">Por 1.000 trabajadores</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-1">Índice de Incidencia</h3>
+            <p class="text-xs text-slate-500 mb-3">Vincula la cantidad de accidentes con el promedio de trabajadores expuestos en un periodo dado.</p>
+            
+            <div class="bg-slate-900 text-center py-3 px-2 rounded-xl text-white font-mono text-sm mb-3">
+              <span class="text-sky-400 font-bold">II = (A / N) &times; 1.000</span>
+            </div>
+
+            <div class="text-[11px] text-slate-600 space-y-0.5">
+              <div><strong>A:</strong> N&deg; de accidentes en el período.</div>
+              <div><strong>N:</strong> N&deg; promedio de trabajadores expuestos.</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+            Responde a: <em>"¿Cuántos trabajadores de cada mil se accidentan al año?"</em>
+          </div>
+        </div>
+
+        <!-- Índice de Frecuencia -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded">IF</span>
+              <span class="text-[11px] text-slate-400">Por 1.000.000 horas</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-1">Índice de Frecuencia</h3>
+            <p class="text-xs text-slate-500 mb-3">Relaciona los accidentes con la cantidad real de horas-hombre trabajadas.</p>
+            
+            <div class="bg-slate-900 text-center py-3 px-2 rounded-xl text-white font-mono text-sm mb-3">
+              <span class="text-indigo-300 font-bold">IF = (A / H) &times; 10<sup>6</sup></span>
+            </div>
+
+            <div class="text-[11px] text-slate-600 space-y-0.5">
+              <div><strong>A:</strong> N&deg; de accidentes con baja.</div>
+              <div><strong>H:</strong> Horas-hombre efectivamente trabajadas.</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+            Responde a: <em>"¿Cuántos siniestros ocurren por cada millón de horas de exposición?"</em>
+          </div>
+        </div>
+
+        <!-- Índice de Gravedad -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold px-2 py-0.5 bg-rose-100 text-rose-800 rounded">IG</span>
+              <span class="text-[11px] text-slate-400">Por 1.000 horas</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-1">Índice de Gravedad</h3>
+            <p class="text-xs text-slate-500 mb-3">Mide el impacto en tiempo perdido, relacionando los días de baja con las horas trabajadas.</p>
+            
+            <div class="bg-slate-900 text-center py-3 px-2 rounded-xl text-white font-mono text-sm mb-3">
+              <span class="text-rose-400 font-bold">IG = (D / H) &times; 1.000</span>
+            </div>
+
+            <div class="text-[11px] text-slate-600 space-y-0.5">
+              <div><strong>D:</strong> Días laborales perdidos (jornadas de baja).</div>
+              <div><strong>H:</strong> Horas-hombre trabajadas.</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+            Responde a: <em>"¿Cuántos días de trabajo se pierden por cada mil horas laboradas?"</em>
+          </div>
+        </div>
+
+        <!-- Duración Media -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold px-2 py-0.5 bg-amber-100 text-amber-800 rounded">Dm</span>
+              <span class="text-[11px] text-slate-400">Días / Accidente</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-1">Duración Media</h3>
+            <p class="text-xs text-slate-500 mb-3">Severidad promedio por cada siniestro que produjo pérdida de jornada.</p>
+            
+            <div class="bg-slate-900 text-center py-3 px-2 rounded-xl text-white font-mono text-sm mb-3">
+              <span class="text-amber-300 font-bold">Dm = D / A = (IG &times; 10<sup>3</sup>) / IF</span>
+            </div>
+
+            <div class="text-[11px] text-slate-600 space-y-0.5">
+              <div><strong>D:</strong> Total de días perdidos.</div>
+              <div><strong>A:</strong> Total de accidentes con baja.</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+            Responde a: <em>"¿Cuánto dura en promedio la convalecencia de un trabajador herido?"</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALCULADORA INTERACTIVA Y CASO PRÁCTICO -->
+      <div id="calculadora" class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-700">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+          <div>
+            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders"></i> Herramienta Práctica de Taller
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white">Calculadora Interactiva de Siniestralidad</h3>
+          </div>
+          <span class="text-xs bg-sky-500/20 text-sky-200 border border-sky-400/30 px-3 py-1 rounded-full">Validación automática de examen</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Inputs Form -->
+          <div class="lg:col-span-6 space-y-4">
+            <p class="text-xs text-slate-300">
+              Ingresa los datos estadísticos de tu empresa o del enunciado de examen para computar en vivo los cuatro índices:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1" for="calcA">
+                  N° de Accidentes con Baja (A):
+                </label>
+                <input type="number" id="calcA" value="12" min="0" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1" for="calcN">
+                  Trabajadores Expuestos (N):
+                </label>
+                <input type="number" id="calcN" value="250" min="1" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1" for="calcH">
+                  Horas-Hombre Trabajadas (H):
+                </label>
+                <input type="number" id="calcH" value="500000" min="1" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1" for="calcD">
+                  Días Perdidos por Baja (D):
+                </label>
+                <input type="number" id="calcD" value="180" min="0" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition">
+              </div>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+              <button onclick="calcularIndices()" class="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition shadow-md shadow-sky-500/20">
+                <i class="fa-solid fa-calculator mr-1.5"></i> Recalcular Índices
+              </button>
+              <button onclick="cargarEjemploExamen()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition">
+                Cargar Caso Tipo Examen
+              </button>
+            </div>
+          </div>
+
+          <!-- Output Results Dashboard -->
+          <div class="lg:col-span-6 grid grid-cols-2 gap-3.5">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-between">
+              <span class="text-xs text-sky-300 font-medium">Índice de Incidencia (II)</span>
+              <div id="resII" class="text-2xl sm:text-3xl font-black text-white my-1 font-mono">48.00</div>
+              <span class="text-[11px] text-slate-400">acc. / 1.000 operarios</span>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-between">
+              <span class="text-xs text-indigo-300 font-medium">Índice Frecuencia (IF)</span>
+              <div id="resIF" class="text-2xl sm:text-3xl font-black text-white my-1 font-mono">24.00</div>
+              <span class="text-[11px] text-slate-400">acc. / 10<sup>6</sup> horas</span>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-between">
+              <span class="text-xs text-rose-300 font-medium">Índice de Gravedad (IG)</span>
+              <div id="resIG" class="text-2xl sm:text-3xl font-black text-white my-1 font-mono">0.360</div>
+              <span class="text-[11px] text-slate-400">días / 1.000 horas</span>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-between">
+              <span class="text-xs text-amber-300 font-medium">Duración Media (Dm)</span>
+              <div id="resDm" class="text-2xl sm:text-3xl font-black text-white my-1 font-mono">15.00</div>
+              <span class="text-[11px] text-slate-400">días / accidente</span>
+            </div>
+
+            <div id="calcAnalisis" class="col-span-2 text-xs bg-sky-950/60 border border-sky-800/60 p-3 rounded-xl text-sky-200">
+              <i class="fa-solid fa-circle-info mr-1 text-sky-400"></i>
+              <strong>Interpretación:</strong> La planta presenta 48 accidentes por cada 1.000 trabajadores al año. Cada accidente produce en promedio 15 jornadas completas de incapacidad temporal.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 4: MÉTODO DEL ÁRBOL DE CAUSAS       -->
+    <!-- ========================================== -->
+    <section id="modulo4" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-tree"></i> Módulo 4
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Investigación de Accidentes: El Método del Árbol de Causas
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Metodología científica recomendada por la SRT desarrollada por el INRS francés. Lógica gráfica, retroceso ascendente y enfoque no punitivo.
+        </p>
+      </div>
+
+      <!-- 4.1 Principios Epistemológicos y Marco Histórico -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold mb-3">
+            <i class="fa-solid fa-timeline"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1">Génesis y Respaldo</h3>
+          <p class="text-xs text-slate-600 leading-relaxed space-y-2">
+            <span><strong>1970-1982:</strong> El <em>Institut National de Recherche et de Sécurité</em> (INRS) publica <em>"Travail et Sécurité - La causa y el culpable"</em>, incorporando lógicos y matemáticos para formalizar el código gráfico.</span><br><br>
+            <span><strong>1990:</strong> Difundido en Argentina por el Centro de Estudios e Investigaciones Laborales (<strong>CEIL-CONICET</strong>).</span><br><br>
+            <span><strong>Actualidad:</strong> La <strong>SRT</strong> lo adopta formalmente como el método de referencia para la investigación en todo el país.</span>
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-3">
+            <i class="fa-solid fa-people-arrows"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1">Sistema Socio-Técnico (H-M)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            El accidente no es un hecho fortuito aislado ni un "error humano individual", sino la manifestación última de <strong>disfunciones combinadas</strong> en el sistema Hombre - Máquina - Entorno.
+            <br><br>
+            El análisis del sistema permite reconstruir la génesis del evento y comprender la interacción entre entradas, procesos, barreras preventivas y desvíos no estabilizados.
+          </p>
+        </div>
+
+        <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-rose-200 text-rose-800 flex items-center justify-center font-bold mb-3">
+              <i class="fa-solid fa-handshake-slash"></i>
+            </div>
+            <h3 class="text-base font-bold text-rose-950 mb-1">Exclusión de la Culpabilidad</h3>
+            <p class="text-xs text-rose-900 leading-relaxed font-medium">
+              <strong>PRINCIPIO CARDINAL:</strong> El método excluye taxativamente la búsqueda de la culpa o responsabilidad penal/disciplinaria.
+            </p>
+            <p class="text-xs text-rose-800 mt-2 leading-relaxed">
+              Buscar culpables destruye la confianza, incentiva la ocultación de desvíos y sesga el testimonio. El objetivo exclusivo es <em>identificar disfunciones del sistema para que no vuelvan a repetirse jamás</em>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.2 Tarea Prescripta vs Actividad Real -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <div class="max-w-3xl mb-6">
+          <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Concepto Clave de Ergonomía</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1">La Brecha entre Tarea Prescripta y Actividad Real</h3>
+          <p class="text-sm text-slate-600 mt-1">
+            Uno de los pilares del método es reconocer que el trabajo real nunca es una copia idéntica del manual de procedimientos. En esa discrepancia suelen originarse las situaciones de riesgo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Tarea Prescripta -->
+          <div class="bg-slate-50 rounded-xl p-5 border-l-4 border-slate-700">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-file-lines text-slate-700"></i> Tarea Prescripta (El Diseño Formal)
+              </h4>
+              <span class="text-[11px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-semibold">Lo que se manda a hacer</span>
+            </div>
+            <p class="text-xs text-slate-600 mb-3">Es la manera como la dirección y la ingeniería organizan y definen el puesto:</p>
+            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+              <li>Procedimientos formales, manuales y normas impuestas.</li>
+              <li>Objetivos de producción y tiempos estándar de ciclo.</li>
+              <li>Medios técnicos y herramientas formalmente asignadas.</li>
+              <li>División técnica y jerárquica del trabajo.</li>
+              <li>Condiciones ambientales y contractuales previstas.</li>
+            </ul>
+          </div>
+
+          <!-- Actividad Real -->
+          <div class="bg-sky-50/70 rounded-xl p-5 border-l-4 border-sky-600">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-sky-950 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-person-digging text-sky-600"></i> Actividad Real (La Operación Viva)
+              </h4>
+              <span class="text-[11px] bg-sky-200 text-sky-900 px-2 py-0.5 rounded font-semibold">Lo que realmente se hace</span>
+            </div>
+            <p class="text-xs text-slate-600 mb-3">Es la conducta efectiva y las soluciones que el trabajador despliega en el terreno:</p>
+            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+              <li>Adaptación constante a materias primas imperfectas o desgastadas.</li>
+              <li>Respuestas a imprevistos, roturas o ritmos acelerados de entrega.</li>
+              <li>Adecuación de medios ante herramientas faltantes o no ergonómicas.</li>
+              <li>Compromisos cognitivos entre productividad y auto-protección.</li>
+              <li>Modificaciones tácticas impuestas por condiciones del entorno cambiante.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Flujo del proceso: Estabilidad vs Inestabilidad -->
+        <div class="mt-6 p-4 rounded-xl bg-slate-900 text-white text-xs">
+          <div class="font-bold text-sky-400 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-arrows-split-up-and-left"></i> Dinámica de las Perturbaciones en el Proceso
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="border border-emerald-500/30 bg-emerald-950/30 p-3 rounded-lg">
+              <strong class="text-emerald-300 block mb-1"><i class="fa-solid fa-check-circle mr-1"></i>Situación Estabilizada:</strong>
+              Ocurre una perturbación (desviación del diseño). Los controles operacionales, barreras y dispositivos de seguridad corrigen el desvío oportunamente y reingresan el proceso a su flujo seguro normal.
+            </div>
+            <div class="border border-rose-500/30 bg-rose-950/30 p-3 rounded-lg">
+              <strong class="text-rose-300 block mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Situación Inestable &rarr; Accidente:</strong>
+              Los dispositivos de barrera fallan o son inexistentes. El sistema no se reestabiliza, se aparta progresivamente de las condiciones de diseño hasta alcanzar la pérdida total de control y el desenlace accidental.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.3 Recolección de Información: Hechos vs Interpretaciones vs Juicios -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+        <div>
+          <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Regla de Oro en la Toma de Datos</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1">La Triada Epistemológica: Hecho, Interpretación y Juicio</h3>
+          <p class="text-sm text-slate-600 mt-1">
+            Para construir un árbol válido, es imperativo filtrar la subjetividad humana. Solo los <strong>hechos objetivos</strong> pueden formar parte de los nodos del árbol.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- HECHO -->
+          <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4">
+            <div class="flex items-center gap-2 text-emerald-800 font-bold text-sm mb-2">
+              <i class="fa-solid fa-circle-check text-emerald-600"></i> HECHO (Válido)
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed mb-3">
+              Unidad de información objetiva, concreta, constatable y verificable fehacientemente en la realidad. No admite discusión de opinión.
+            </p>
+            <div class="bg-white p-2.5 rounded border border-emerald-200 text-[11px] text-emerald-950 font-medium">
+              <i class="fa-solid fa-quote-left text-emerald-400 mr-1"></i>
+              "El piso presentaba una película de aceite mineral de 2 mm de espesor".
+            </div>
+          </div>
+
+          <!-- INTERPRETACIÓN -->
+          <div class="bg-amber-50/60 border border-amber-200 rounded-xl p-4">
+            <div class="flex items-center gap-2 text-amber-800 font-bold text-sm mb-2">
+              <i class="fa-solid fa-scale-unbalanced text-amber-600"></i> INTERPRETACIÓN (Revisable)
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed mb-3">
+              Conclusión o deducción formulada sobre los hechos a partir de normas técnicas, científicas o jurídicas establecidas.
+            </p>
+            <div class="bg-white p-2.5 rounded border border-amber-200 text-[11px] text-amber-950 font-medium">
+              <i class="fa-solid fa-quote-left text-amber-400 mr-1"></i>
+              "El coeficiente de fricción del suelo era inferior a la norma de seguridad".
+            </div>
+          </div>
+
+          <!-- JUICIO DE VALOR -->
+          <div class="bg-rose-50/60 border border-rose-200 rounded-xl p-4">
+            <div class="flex items-center gap-2 text-rose-800 font-bold text-sm mb-2">
+              <i class="fa-solid fa-circle-xmark text-rose-600"></i> JUICIO DE VALOR (Prohibido)
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed mb-3">
+              Opinión puramente subjetiva, moral o calificativa basada en la escala de valores o prejuicios del investigador o testigo.
+            </p>
+            <div class="bg-white p-2.5 rounded border border-rose-200 text-[11px] text-rose-950 font-medium">
+              <i class="fa-solid fa-quote-left text-rose-400 mr-1"></i>
+              "El trabajador caminaba distraído por negligencia e imprudencia temeraria".
+            </div>
+          </div>
+        </div>
+
+        <!-- Protocolo de Preguntas y Psicología del Testigo -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-comments text-sky-600"></i> Formulación de Preguntas en la Entrevista
+            </h4>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-900">
+                <strong>PREGUNTAS CORRECTAS (Inductivas / Objetivas):</strong>
+                <div class="mt-1 font-mono text-[11px] space-x-2">
+                  <span>¿Qué hizo?</span> &bull; <span>¿Quién lo hizo?</span> &bull; <span>¿Cuándo?</span> &bull; <span>¿Cómo?</span>
+                </div>
+              </div>
+              <div class="p-2.5 bg-rose-50 rounded-lg border border-rose-200 text-rose-900">
+                <strong>PREGUNTAS INCORRECTAS (Inducen Sesgo y Culpabilidad):</strong>
+                <div class="mt-1 font-mono text-[11px] space-x-2">
+                  <span class="line-through">&iquest;Por qu&eacute; lo hizo?</span> (Justificativa) &bull; 
+                  <span class="line-through">&iquest;Qu&eacute; deb&iacute;a hacer?</span> (Normativa)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-brain text-purple-600"></i> Psicología del Testimonio (Manzanero y Recio, Myers)
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              El trauma y el estrés agudo colapsan la atención, produciendo <strong>"conjunciones ilusorias"</strong>: el testigo posee las piezas de la memoria pero las ensambla erróneamente. Con el paso de las horas, los relatos se contaminan con conjeturas ajenas.
+            </p>
+            <div class="mt-2 flex flex-wrap gap-2 text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">&bull; Recabar in situ inmediatamente</span>
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">&bull; No interrogar en grupo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.4 Código Gráfico y Conexiones Lógicas -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+        <div>
+          <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Formalismo Matemático</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1">Código Gráfico y Relaciones Lógicas del Árbol</h3>
+          <p class="text-sm text-slate-600 mt-1">
+            El árbol se dibuja en sentido cronológico inverso: <strong>de derecha a izquierda</strong>, partiendo del daño final hacia las causas primarias más alejadas.
+          </p>
+        </div>
+
+        <!-- Simbología -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-sky-100 border-2 border-sky-600 flex items-center justify-center text-sky-800 font-bold shrink-0">
+              <i class="fa-solid fa-bolt text-xs"></i>
+            </div>
+            <div>
+              <strong class="text-xs font-bold text-slate-900 block">Círculo</strong>
+              <span class="text-[11px] text-slate-500">Hecho variable, acción o cambio puntual.</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-teal-100 border-2 border-teal-600 flex items-center justify-center text-teal-800 font-bold shrink-0">
+              <i class="fa-solid fa-cube text-xs"></i>
+            </div>
+            <div>
+              <strong class="text-xs font-bold text-slate-900 block">Rectángulo</strong>
+              <span class="text-[11px] text-slate-500">Hecho permanente o condición de estado continuo.</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+            <div class="w-9 h-9 rounded bg-slate-100 border border-slate-300 flex items-center justify-center text-slate-700 font-bold shrink-0 font-mono text-xs">
+              &rarr;
+            </div>
+            <div>
+              <strong class="text-xs font-bold text-slate-900 block">Flecha Continua</strong>
+              <span class="text-[11px] text-slate-500">Relación causal verificada y comprobada.</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+            <div class="w-9 h-9 rounded bg-slate-100 border border-slate-300 border-dashed flex items-center justify-center text-slate-500 font-bold shrink-0 font-mono text-xs">
+              --&gt;
+            </div>
+            <div>
+              <strong class="text-xs font-bold text-slate-900 block">Flecha Punteada</strong>
+              <span class="text-[11px] text-slate-500">Relación causal aparente o hipotética.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipos de Conexiones Lógicas en Diagramas SVG/HTML -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+          <!-- CASO 1: Cadena -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-xs text-sky-900 uppercase tracking-wide">1. Cadena (Serie Lineal)</h4>
+                <span class="text-[10px] bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded font-mono">Y &rarr; Z</span>
+              </div>
+              <p class="text-xs text-slate-600 mb-4">
+                El hecho <strong>Z</strong> tiene un único antecedente directo <strong>Y</strong>. Para que ocurriera Z no hizo falta ningún otro suceso.
+              </p>
+              <!-- Visual Diagram -->
+              <div class="flex items-center justify-center gap-2 py-4 bg-white rounded-lg border border-slate-200">
+                <div class="w-16 h-16 rounded-full bg-sky-100 border-2 border-sky-500 flex flex-col items-center justify-center text-[10px] text-center p-1 text-slate-700 leading-tight">
+                  <span class="font-bold text-sky-700">Y</span>
+                  <span>Llovió</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                <div class="w-16 h-16 rounded-full bg-slate-100 border-2 border-slate-600 flex flex-col items-center justify-center text-[10px] text-center p-1 text-slate-700 leading-tight">
+                  <span class="font-bold text-slate-800">Z</span>
+                  <span>Calzada mojada</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-3 italic">Pregunta: ¿Fue necesario otro hecho para que ocurra Z? NO.</div>
+          </div>
+
+          <!-- CASO 2: Conjunción -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-xs text-indigo-900 uppercase tracking-wide">2. Conjunción (Concurrencia)</h4>
+                <span class="text-[10px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-mono">(X + Y) &rarr; Z</span>
+              </div>
+              <p class="text-xs text-slate-600 mb-4">
+                El hecho <strong>Z</strong> requiere que ocurran <strong>simultáneamente</strong> dos o más hechos (X e Y). Ninguno por sí solo basta.
+              </p>
+              <!-- Visual Diagram -->
+              <div class="flex items-center justify-center gap-2 py-2 bg-white rounded-lg border border-slate-200">
+                <div class="flex flex-col gap-2">
+                  <div class="w-14 h-14 rounded-full bg-indigo-50 border-2 border-indigo-400 flex flex-col items-center justify-center text-[9px] text-center p-1 text-slate-700 leading-tight">
+                    <span class="font-bold text-indigo-700">Y</span>
+                    <span>Nieve</span>
+                  </div>
+                  <div class="w-14 h-14 rounded-lg bg-teal-50 border-2 border-teal-500 flex flex-col items-center justify-center text-[9px] text-center p-1 text-slate-700 leading-tight">
+                    <span class="font-bold text-teal-700">X</span>
+                    <span>Neumáticos lisos</span>
+                  </div>
+                </div>
+                <div class="flex items-center text-slate-400 text-lg">&rbrace;&rarr;</div>
+                <div class="w-16 h-16 rounded-full bg-rose-100 border-2 border-rose-600 flex flex-col items-center justify-center text-[10px] text-center p-1 text-slate-800 leading-tight">
+                  <span class="font-bold text-rose-800">Z</span>
+                  <span>Vehículo derrapa</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-3 italic">Ambos hechos son necesarios; ninguno suficiente por separado.</div>
+          </div>
+
+          <!-- CASO 3: Disyunción -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-xs text-purple-900 uppercase tracking-wide">3. Disyunción (Bifurcación)</h4>
+                <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-mono">X &rarr; (Y, Z)</span>
+              </div>
+              <p class="text-xs text-slate-600 mb-4">
+                Un único antecedente <strong>X</strong> genera de forma simultánea e independiente dos o más consecuencias diversas (Y y Z).
+              </p>
+              <!-- Visual Diagram -->
+              <div class="flex items-center justify-center gap-2 py-2 bg-white rounded-lg border border-slate-200">
+                <div class="w-14 h-14 rounded-full bg-purple-50 border-2 border-purple-500 flex flex-col items-center justify-center text-[9px] text-center p-1 text-slate-700 leading-tight">
+                  <span class="font-bold text-purple-700">X</span>
+                  <span>Corte de luz</span>
+                </div>
+                <div class="flex items-center text-slate-400 text-lg">&rarr;&lbrace;</div>
+                <div class="flex flex-col gap-2">
+                  <div class="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-500 flex flex-col items-center justify-center text-[9px] text-center p-1 text-slate-700 leading-tight">
+                    <span class="font-bold text-slate-700">Y</span>
+                    <span>Parada horno</span>
+                  </div>
+                  <div class="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-500 flex flex-col items-center justify-center text-[9px] text-center p-1 text-slate-700 leading-tight">
+                    <span class="font-bold text-slate-700">Z</span>
+                    <span>Ascensor trabado</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-3 italic">Dos ramas causales independientes originadas en la misma causa.</div>
+          </div>
+        </div>
+
+        <!-- Regla de retroceso y límites del árbol -->
+        <div class="p-4 rounded-xl bg-sky-50 border border-sky-200 text-xs space-y-2 text-slate-700">
+          <strong class="text-sky-900 block text-xs font-bold">
+            <i class="fa-solid fa-backward mr-1.5"></i> Protocolo de Retroceso Continuo:
+          </strong>
+          <p>
+            Una vez determinado cualquier hecho, el investigador se sitúa en él y pregunta:
+            <span class="font-bold text-sky-900">"¿Qué fue necesario que ocurriera para que este hecho se produzca?"</span> y luego repite:
+            <span class="font-bold text-sky-900">"¿Qué otra cosa fue necesaria?"</span>. Se repite inductivamente hasta llegar a las causas básicas u organizacionales.
+          </p>
+          <div class="p-2.5 bg-white rounded border border-sky-200 text-[11px] text-slate-600">
+            <strong>Límites Prácticos:</strong> El árbol no busca remontarse hasta el infinito ni explicar la historia universal. Se detiene allí donde se identifican <em>disfunciones del sistema organizacional sobre las cuales la empresa tiene capacidad técnica y de gestión para actuar e implantar barreras preventivas eficaces</em>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 5: CODIFICACIÓN Y FACTORES SRT      -->
+    <!-- ========================================== -->
+    <section id="modulo5" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-list-check"></i> Módulo 5
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Estratificación y Factores de Investigación (Codificación SRT)
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Estructura normalizada de datos para la denuncia e investigación estadística según estándares oficiales de la Superintendencia de Riesgos del Trabajo.
+        </p>
+      </div>
+
+      <!-- Buscador dinámico de factores -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Catálogo Normalizado de Factores SRT</h3>
+            <p class="text-xs text-slate-500">Selecciona o filtra para consultar la clasificación estandarizada oficial.</p>
+          </div>
+          <div class="relative sm:w-64">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+            <input type="text" id="factorFilter" oninput="filtrarFactores()" placeholder="Filtrar factores..." class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs" id="factoresContainer">
+          <!-- Formas del Accidente -->
+          <div class="factor-group p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <div class="font-bold text-slate-900 flex items-center justify-between border-b border-slate-200 pb-2">
+              <span class="flex items-center gap-1.5 text-sky-700"><i class="fa-solid fa-person-falling"></i> Formas de Ocurrencia</span>
+              <span class="text-[10px] bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded">SRT</span>
+            </div>
+            <ul class="space-y-1 text-slate-600 max-h-56 overflow-y-auto pr-1 text-[11px] list-disc pl-4" id="listFormas">
+              <li>Caída a nivel (resbalón, tropiezo)</li>
+              <li>Caída de altura (andamios, escaleras)</li>
+              <li>Caída de objetos / derrumbe</li>
+              <li>Atrapamiento por / entre partes móviles</li>
+              <li>Choque contra o por objetos móviles</li>
+              <li>Contacto con electricidad</li>
+              <li>Contacto con sustancias químicas</li>
+              <li>Contacto con frío o calor extremo / fuego</li>
+              <li>Esfuerzo excesivo o falso movimiento</li>
+              <li>Explosión o implosión</li>
+              <li>Mordedura / picadura de animales</li>
+              <li><strong>Accidente In Itinere</strong> (trayecto al trabajo)</li>
+            </ul>
+          </div>
+
+          <!-- Actos Inseguros vs Condiciones Inseguras -->
+          <div class="factor-group p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <div class="font-bold text-slate-900 flex items-center justify-between border-b border-slate-200 pb-2">
+              <span class="flex items-center gap-1.5 text-amber-700"><i class="fa-solid fa-triangle-exclamation"></i> Actos & Condiciones</span>
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded">Causas Inmediatas</span>
+            </div>
+            <div class="space-y-3 max-h-56 overflow-y-auto pr-1 text-[11px]">
+              <div>
+                <span class="font-bold text-slate-800 block text-amber-900">Actos Inseguros:</span>
+                <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                  <li>Operar sin autorización o a velocidad inadecuada.</li>
+                  <li>Limpiar o ajustar máquinas en movimiento.</li>
+                  <li>Uso incorrecto o falta de uso de EPP provisto.</li>
+                  <li>Anulación o remoción de dispositivos de seguridad.</li>
+                  <li>Adopción de posturas inseguras o cargas manuales indebidas.</li>
+                </ul>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800 block text-sky-900">Condiciones Inseguras:</span>
+                <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                  <li>Maquinaria sin resguardos o defectuosa.</li>
+                  <li>Falta de señalización o carteles dañados.</li>
+                  <li>Falta de orden, aseo y limpieza en pasillos.</li>
+                  <li>Instalaciones eléctricas fuera de norma.</li>
+                  <li>Iluminación deficiente o ventilación inadecuada.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agentes Materiales & Tipos de Lesión -->
+          <div class="factor-group p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <div class="font-bold text-slate-900 flex items-center justify-between border-b border-slate-200 pb-2">
+              <span class="flex items-center gap-1.5 text-purple-700"><i class="fa-solid fa-kit-medical"></i> Agente, Lesión y Zona</span>
+              <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded">Médico / Técnico</span>
+            </div>
+            <div class="space-y-3 max-h-56 overflow-y-auto pr-1 text-[11px]">
+              <div>
+                <span class="font-bold text-slate-800 block text-purple-900">Agentes Materiales:</span>
+                <p class="text-slate-600">Herramientas manuales/eléctricas, máquinas-herramientas, aparatos de izaje, sustancias químicas, escaleras/andamios, vehículos.</p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800 block text-purple-900">Naturaleza de la Lesión:</span>
+                <p class="text-slate-600">Fractura, amputación, escoriación, herida cortante/punzante, contusión, quemadura, lumbalgia, intoxicación aguda, trauma ocular.</p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800 block text-purple-900">Parte del Cuerpo:</span>
+                <p class="text-slate-600">Cabeza/ojos, columna (región lumbo-sacra), miembros superiores (manos/dedos), miembros inferiores (tobillo/pie).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 6: SISTEMAS DE GESTIÓN (OHSAS/ISO)  -->
+    <!-- ========================================== -->
+    <section id="modulo6" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-teal-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-arrows-spin"></i> Módulo 6
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Sistemas de Gestión de la Seguridad (OHSAS 18001 / ISO 45001)
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          El enfoque de procesos: del análisis reactivo de accidentes a la gestión preventiva y proactiva de riesgos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Enfoque de Procesos -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-teal-700 font-bold text-sm mb-3">
+              <i class="fa-solid fa-network-wired text-base"></i> Enfoque por Procesos
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              La gestión moderna no considera la seguridad como un compartimento estanco, sino como un proceso integrado a la producción con entradas, transformaciones y salidas controladas.
+            </p>
+            <ul class="text-xs text-slate-700 space-y-2">
+              <li class="p-2 bg-slate-50 rounded border border-slate-100 flex items-center justify-between">
+                <span><strong>1. Política de HyS:</strong> Compromiso directivo formal.</span>
+                <i class="fa-solid fa-chevron-right text-slate-400 text-[10px]"></i>
+              </li>
+              <li class="p-2 bg-slate-50 rounded border border-slate-100 flex items-center justify-between">
+                <span><strong>2. IER:</strong> Identificación y Evaluación de Riesgos.</span>
+                <i class="fa-solid fa-chevron-right text-slate-400 text-[10px]"></i>
+              </li>
+              <li class="p-2 bg-slate-50 rounded border border-slate-100 flex items-center justify-between">
+                <span><strong>3. Requisitos Legales:</strong> Matriz de cumplimiento obligatorio.</span>
+                <i class="fa-solid fa-chevron-right text-slate-400 text-[10px]"></i>
+              </li>
+              <li class="p-2 bg-slate-50 rounded border border-slate-100 flex items-center justify-between">
+                <span><strong>4. Documentación:</strong> Manual, instructivos y registros.</span>
+                <i class="fa-solid fa-chevron-right text-slate-400 text-[10px]"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Flujo de Información: Estático vs Dinámico -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2 text-sky-700 font-bold text-sm">
+                <i class="fa-solid fa-diagram-next text-base"></i> Flujo Integral de Información de Seguridad
+              </div>
+              <span class="text-xs bg-sky-50 text-sky-700 px-2.5 py-0.5 rounded font-semibold">Circuito Operativo</span>
+            </div>
+            <p class="text-xs text-slate-600 mb-4">
+              El sistema combina dos canales permanentes de retroalimentación para alimentar el plan de acción correctivo y preventivo:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-800 text-sky-800 block mb-1">
+                  <i class="fa-solid fa-file-waveform mr-1"></i> Canal Estático (Planificado)
+                </span>
+                <ul class="text-slate-600 space-y-1 list-disc pl-4 text-[11px]">
+                  <li>Auditorías periódicas de cumplimiento legal.</li>
+                  <li>Análisis de seguridad en el puesto de trabajo (AST).</li>
+                  <li>Inspecciones programadas de orden y limpieza.</li>
+                  <li>Monitoreo ambiental higiénico (ruido, iluminación).</li>
+                </ul>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-800 text-indigo-800 block mb-1">
+                  <i class="fa-solid fa-bolt mr-1"></i> Canal Dinámico (En Tiempo Real)
+                </span>
+                <ul class="text-slate-600 space-y-1 list-disc pl-4 text-[11px]">
+                  <li>Reportes de Hechos Relevantes (HR) de usuarios.</li>
+                  <li>Notificación inmediata de cuasi-accidentes (incidentes).</li>
+                  <li>Observación preventiva del comportamiento.</li>
+                  <li>Reclamos gremiales, sindicales o de inspección oficial.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Síntesis del ciclo -->
+            <div class="mt-4 p-3 bg-teal-50 border border-teal-200 rounded-xl text-teal-950 text-xs flex items-center gap-3">
+              <i class="fa-solid fa-arrows-spin text-teal-600 text-lg"></i>
+              <div>
+                <strong>Cierre del Ciclo:</strong> Ambas entradas convergen en la matriz IER &rarr; Investigación por Árbol de Causas &rarr; Ejecución de Acciones Correctivas/Preventivas &rarr; Denuncia a la ART y actualización estadística.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- AUTOEVALUACIÓN INTERACTIVA (QUIZ)          -->
+    <!-- ========================================== -->
+    <section id="autoevaluacion" class="scroll-mt-32 space-y-8 no-print">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-circle-check"></i> Autoevaluación
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Quiz de Autoevaluación: ¿Listo para el Examen?
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Ponte a prueba con 5 preguntas conceptuales extraídas directamente de exámenes universitarios de Higiene y Seguridad.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+        <!-- Pregunta 1 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3" id="q1">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+            <span>En el Método del Árbol de Causas, ¿cuál de las siguientes preguntas está terminantemente PROHIBIDA durante la investigación de campo?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q1', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">A) ¿Qué hizo el operario instantes previos?</button>
+            <button onclick="checkAnswer('q1', 2, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">B) ¿Por qué hizo eso el trabajador?</button>
+            <button onclick="checkAnswer('q1', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">C) ¿Quién operaba el equipo en ese turno?</button>
+            <button onclick="checkAnswer('q1', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">D) ¿Cómo se encontraba dispuesto el material?</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3" id="q2">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+            <span>Según la Ley de Riesgos del Trabajo (Ley 24.557, Art. 13), en un accidente con baja médica laboral, ¿a cargo de quién está la prestación dineraria de los primeros 10 días?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q2', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">A) A cargo exclusivo de la Aseguradora de Riesgos del Trabajo (ART).</button>
+            <button onclick="checkAnswer('q2', 2, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">B) A cargo del Estado Nacional mediante ANSES.</button>
+            <button onclick="checkAnswer('q2', 3, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">C) A cargo exclusivo del empleador.</button>
+            <button onclick="checkAnswer('q2', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">D) Se descuenta del fondo solidario de la obra social.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3" id="q3">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+            <span>Según la teoría de costos de Heinrich, si los costos directos de un accidente sumaron $10.000, ¿a cuánto asciende el Costo Total Aproximado según su factor k=4?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q3', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">A) $40.000</button>
+            <button onclick="checkAnswer('q3', 2, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">B) $50.000 (Cta = Cd + 4·Cd = 5·Cd)</button>
+            <button onclick="checkAnswer('q3', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">C) $14.000</button>
+            <button onclick="checkAnswer('q3', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">D) $25.000</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3" id="q4">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
+            <span>Bajo la Resolución SRT 51/97, ¿con cuánta anticipación debe presentarse el Aviso de Inicio de Obra a la ART?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q4', 1, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">A) Al menos 5 días hábiles de anticipación.</button>
+            <button onclick="checkAnswer('q4', 2, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">B) 48 horas corridas previas.</button>
+            <button onclick="checkAnswer('q4', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">C) 30 días calendario.</button>
+            <button onclick="checkAnswer('q4', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">D) El mismo día en que comienza el obrador.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3" id="q5">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">5</span>
+            <span>¿Qué tipo de relación causal se representa en el Árbol de Causas cuando dos o más antecedentes fueron necesarios de manera concurrente para que suceda el hecho Z?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q5', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">A) Disyunción.</button>
+            <button onclick="checkAnswer('q5', 2, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">B) Conjunción.</button>
+            <button onclick="checkAnswer('q5', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">C) Cadena simple.</button>
+            <button onclick="checkAnswer('q5', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">D) Condición nula.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMEN EJECUTIVO / CHEAT SHEET IMPRIMIBLE -->
+    <section class="page-break bg-slate-100 rounded-2xl p-6 sm:p-8 border border-slate-300">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-300">
+        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-file-contract text-sky-700"></i> Síntesis Ejecutiva para Repaso Rápido (Cheat Sheet)
+        </h3>
+        <span class="text-xs font-semibold text-slate-600">Unidad 2 &bull; HyS</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-700">
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Ley 19.587 (1972)</strong>
+          <span>Alcanza a todo establecimiento físico en el país. Responsabilidad patronal solidaria sobre contratistas. Axiomas: eliminar &gt; alejar &gt; aislar &gt; proteger con EPP.</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Construcción (Dec. 911/96)</strong>
+          <span>Res. 231/96 (Legajo técnico y condiciones básicas). Res. 51/97 (Aviso de obra con 5 días hábiles). Res. 35/98 (Programa único). Res. 319/99 (Obras cortas &le;7 días, validez 6 meses).</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Costos de Accidentes</strong>
+          <span><strong>Heinrich:</strong> Cta = Cd + 4&middot;Cd = 5&middot;Cd (Iceberg). <strong>Simonds:</strong> Cta = CA + CNA. Primeros 10 días de salario a cargo exclusivo de la empresa (Ley 24.557).</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Fórmulas Clave</strong>
+          <span><strong>II:</strong> (A/N)&times;1000<br><strong>IF:</strong> (A/H)&times;1.000.000<br><strong>IG:</strong> (D/H)&times;1000<br><strong>Dm:</strong> D/A = (IG&times;1000)/IF</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Árbol de Causas (INRS)</strong>
+          <span>Lógica inductiva retrospectiva de derecha a izquierda. Jamás buscar culpables. Diferencia Tarea Prescripta vs. Actividad Real. Preguntar siempre: <em>¿Qué fue necesario que ocurra?</em></span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Datos Válidos</strong>
+          <span>Solo se incorporan <strong>Hechos objetivos</strong>. Se descartan de plano juicios de valor e interpretaciones no verificadas. Círculo (acción/variable) y Rectángulo (permanente).</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-16 no-print text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-shield-halved text-sky-400 text-base"></i>
+        <span class="text-slate-200 font-semibold">Materia de Higiene y Seguridad</span>
+      </div>
+      <p class="text-center sm:text-right text-slate-400">
+        Material pedagógico de soporte &bull; Guía de Estudio Oficial Unidad 2
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 0. Modo Oscuro (Dark Mode Toggle)
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('readingProgress').style.width = scrolled + '%';
+    });
+
+    // 2. Calculadora de Siniestralidad
+    function calcularIndices() {
+      const A = parseFloat(document.getElementById('calcA').value) || 0;
+      const N = parseFloat(document.getElementById('calcN').value) || 1;
+      const H = parseFloat(document.getElementById('calcH').value) || 1;
+      const D = parseFloat(document.getElementById('calcD').value) || 0;
+
+      const II = (A / N) * 1000;
+      const IF = (A / H) * 1000000;
+      const IG = (D / H) * 1000;
+      const Dm = A > 0 ? (D / A) : 0;
+
+      document.getElementById('resII').textContent = II.toFixed(2);
+      document.getElementById('resIF').textContent = IF.toFixed(2);
+      document.getElementById('resIG').textContent = IG.toFixed(3);
+      document.getElementById('resDm').textContent = Dm.toFixed(2);
+
+      const analisisBox = document.getElementById('calcAnalisis');
+      analisisBox.innerHTML = `
+        <i class="fa-solid fa-circle-info mr-1 text-sky-400"></i>
+        <strong>Interpretación Técnica:</strong> Se registran <strong>${II.toFixed(1)}</strong> trabajadores accidentados por cada 1.000 operarios expuestos. En términos de exposición horaria, ocurren <strong>${IF.toFixed(1)}</strong> siniestros por cada millón de horas trabajadas, con un costo en jornadas de <strong>${IG.toFixed(3)}</strong> días perdidos por cada 1.000 horas laboradas (severidad media: <strong>${Dm.toFixed(1)}</strong> días/accidente).
+      `;
+    }
+
+    function cargarEjemploExamen() {
+      document.getElementById('calcA').value = 8;
+      document.getElementById('calcN').value = 160;
+      document.getElementById('calcH').value = 320000;
+      document.getElementById('calcD').value = 120;
+      calcularIndices();
+    }
+
+    // 3. Filtro interactivo de factores SRT
+    function filtrarFactores() {
+      const term = document.getElementById('factorFilter').value.toLowerCase();
+      const groups = document.querySelectorAll('.factor-group');
+
+      groups.forEach(group => {
+        const text = group.textContent.toLowerCase();
+        if (text.includes(term)) {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Quiz Interactivo
+    function checkAnswer(qid, optIndex, isCorrect) {
+      const qBox = document.getElementById(qid);
+      const feedback = qBox.querySelector('.quiz-feedback');
+      const buttons = qBox.querySelectorAll('.q-opt');
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-slate-100');
+      });
+
+      feedback.classList.remove('hidden');
+
+      if (isCorrect) {
+        feedback.className = 'quiz-feedback text-xs p-3 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-900 block font-medium';
+        feedback.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5 text-emerald-600 text-sm"></i> <strong>¡Correcto!</strong> Respuesta acertada con rigor conceptual.';
+      } else {
+        feedback.className = 'quiz-feedback text-xs p-3 rounded-lg bg-rose-50 border border-rose-300 text-rose-900 block font-medium';
+        feedback.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1.5 text-rose-600 text-sm"></i> <strong>Incorrecto.</strong> Revisa el texto explicativo de la sección correspondiente para afianzar este axioma.';
+      }
+    }
+
+    // Inicialización
+    window.addEventListener('DOMContentLoaded', () => {
+      calcularIndices();
+    });
+  </script>
+</body>
+</html>

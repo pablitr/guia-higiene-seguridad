@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 8: Contaminación Química del Ambiente Laboral - Guía de Estudio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef8ff',
+              100: '#d9efff',
+              200: '#bce2ff',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            danger: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            },
+            warning: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+            },
+            success: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Script para prevenir parpadeo de modo oscuro (FOUC) -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <style>
+    body {
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .print-break { page-break-after: always; }
+    }
+    /* Estilos para el rombo NFPA */
+    .nfpa-box {
+      width: 140px;
+      height: 140px;
+      position: relative;
+      transform: rotate(45deg);
+      margin: 35px auto;
+    }
+    .nfpa-quadrant {
+      position: absolute;
+      width: 68px;
+      height: 68px;
+      display: inline-flex; width: max-content; align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+    .nfpa-inner {
+      transform: rotate(-45deg);
+      text-align: center;
+      line-height: 1;
+    }
+    .nfpa-health { top: 0; left: 0; background-color: #2563eb; color: white; }
+    .nfpa-flammability { top: 0; right: 0; background-color: #dc2626; color: white; }
+    .nfpa-special { bottom: 0; left: 0; background-color: #f8fafc; color: #0f172a; }
+    .nfpa-reactivity { bottom: 0; right: 0; background-color: #facc15; color: #1e293b; }
+
+    /* Estilos globales para Modo Oscuro */
+    .dark {
+      color-scheme: dark;
+    }
+    .dark body {
+      background-color: #0b0f17 !important;
+      color: #e2e8f0 !important;
+    }
+    .dark header {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-color: #1e293b !important;
+    }
+    .dark aside .bg-white,
+    .dark main .bg-white,
+    .dark footer.bg-white {
+      background-color: #111827 !important;
+      border-color: #1f2937 !important;
+      color: #e5e7eb;
+    }
+    .dark .bg-slate-50 {
+      background-color: #0f172a !important;
+      border-color: #1e293b !important;
+      color: #cbd5e1;
+    }
+    .dark .bg-slate-100 {
+      background-color: #1e293b !important;
+      border-color: #334155 !important;
+      color: #e2e8f0 !important;
+    }
+    .dark .border-slate-200,
+    .dark .border-slate-300 {
+      border-color: #1f2937 !important;
+    }
+    .dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+      border-color: #1f2937 !important;
+    }
+    .dark .text-slate-900 {
+      color: #f9fafb !important;
+    }
+    .dark .text-slate-800 {
+      color: #f3f4f6 !important;
+    }
+    .dark .text-slate-700 {
+      color: #d1d5db !important;
+    }
+    .dark .text-slate-600 {
+      color: #9ca3af !important;
+    }
+    .dark .text-slate-500 {
+      color: #9ca3af !important;
+    }
+    .dark .text-slate-400 {
+      color: #6b7280 !important;
+    }
+    .dark input, .dark select, .dark textarea {
+      background-color: #1f2937 !important;
+      color: #f9fafb !important;
+      border-color: #374151 !important;
+    }
+    .dark input:focus {
+      border-color: #38bdf8 !important;
+      outline: none;
+    }
+    .dark .hover\:bg-slate-50:hover {
+      background-color: #1e293b !important;
+    }
+    .dark .hover\:bg-slate-100:hover {
+      background-color: #1f2937 !important;
+    }
+    .dark .bg-sky-50,
+    .dark .bg-sky-50\/40 {
+      background-color: rgba(14, 165, 233, 0.12) !important;
+      color: #7dd3fc !important;
+    }
+    .dark .bg-brand-50 {
+      background-color: rgba(2, 132, 199, 0.15) !important;
+      color: #38bdf8 !important;
+    }
+    .dark .bg-brand-100 {
+      background-color: rgba(2, 132, 199, 0.25) !important;
+      color: #7dd3fc !important;
+    }
+    .dark .bg-brand-200 {
+      background-color: rgba(2, 132, 199, 0.35) !important;
+      color: #bae6fd !important;
+    }
+    .dark .text-brand-600,
+    .dark .text-brand-700 {
+      color: #38bdf8 !important;
+    }
+    .dark .text-brand-800 {
+      color: #7dd3fc !important;
+    }
+    .dark .border-brand-200,
+    .dark .border-brand-300,
+    .dark .border-sky-200 {
+      border-color: rgba(56, 189, 248, 0.3) !important;
+    }
+    .dark .bg-amber-50,
+    .dark .bg-gradient-to-br.from-amber-50 {
+      background-color: rgba(245, 158, 11, 0.1) !important;
+      background-image: none !important;
+      border-color: rgba(245, 158, 11, 0.3) !important;
+      color: #fde68a !important;
+    }
+    .dark .text-amber-700,
+    .dark .text-amber-800,
+    .dark .text-amber-900 {
+      color: #fcd34d !important;
+    }
+    .dark .border-amber-200,
+    .dark .border-amber-200\/80 {
+      border-color: rgba(245, 158, 11, 0.3) !important;
+    }
+    .dark .bg-rose-50 {
+      background-color: rgba(244, 63, 94, 0.12) !important;
+      border-color: rgba(244, 63, 94, 0.3) !important;
+      color: #fecdd3 !important;
+    }
+    .dark .bg-emerald-50 {
+      background-color: rgba(16, 185, 129, 0.12) !important;
+      border-color: rgba(16, 185, 129, 0.3) !important;
+      color: #a7f3d0 !important;
+    }
+    .dark .bg-blue-50,
+    .dark .bg-blue-50\/70 {
+      background-color: rgba(37, 99, 235, 0.12) !important;
+      border-color: rgba(37, 99, 235, 0.3) !important;
+      color: #bfdbfe !important;
+    }
+    .dark .bg-red-50,
+    .dark .bg-red-50\/70 {
+      background-color: rgba(220, 38, 38, 0.12) !important;
+      border-color: rgba(220, 38, 38, 0.3) !important;
+      color: #fecaca !important;
+    }
+    .dark .bg-yellow-50,
+    .dark .bg-yellow-50\/70 {
+      background-color: rgba(234, 179, 8, 0.12) !important;
+      border-color: rgba(234, 179, 8, 0.3) !important;
+      color: #fef08a !important;
+    }
+    .dark .bg-orange-50 {
+      background-color: rgba(249, 115, 22, 0.12) !important;
+      border-color: rgba(249, 115, 22, 0.3) !important;
+      color: #fed7aa !important;
+    }
+    .dark .text-blue-950 {
+      color: #bfdbfe !important;
+    }
+    .dark .text-red-950 {
+      color: #fecaca !important;
+    }
+    .dark .text-yellow-950 {
+      color: #fef08a !important;
+    }
+    .dark .text-rose-900 {
+      color: #fecdd3 !important;
+    }
+    .dark .text-emerald-900 {
+      color: #a7f3d0 !important;
+    }
+    .dark .nfpa-special {
+      background-color: #1e293b !important;
+      color: #f8fafc !important;
+    }
+    /* Visibilidad de iconos Modo Claro / Modo Oscuro */
+    html.dark #theme-toggle .fa-moon {
+      display: none !important;
+    }
+    html:not(.dark) #theme-toggle .fa-sun {
+      display: none !important;
+    }
+    html.dark #theme-toggle .fa-sun {
+      display: inline-block !important;
+    }
+    html:not(.dark) #theme-toggle .fa-moon {
+      display: inline-block !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- TOP HEADER / NAV BAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 dark:bg-slate-900/95 dark:border-slate-800 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="flex items-center space-x-3 group" title="Volver al índice general">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-sky-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-flask-vial text-lg"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Material generado con IA, puede contener errores – Material generado con IA, puede contener errores | Higiene y Seguridad</span>
+              <h1 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">Unidad 8: Contaminación Química</h1>
+            </div>
+          </a>
+        </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <a href="index.html" class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm" title="Volver al índice general">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="hidden sm:inline">Volver</span>
+          </a>
+          <button onclick="window.print()" class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm" title="Imprimir o exportar PDF">
+            <i class="fa-solid fa-print"></i>
+            <span class="hidden sm:inline">Imprimir Guía</span>
+          </button>
+          <a href="#herramientas" class="no-print inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm shadow-brand-600/30">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Calculadoras</span>
+          </a>
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Cambiar modo claro/oscuro">
+            <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+            <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER HERO -->
+  <div class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-brand-800">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 text-brand-200 border border-brand-400/30 text-xs font-medium mb-3">
+          <i class="fa-solid fa-graduation-cap"></i> Materia de Higiene y Seguridad
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+          Contaminación Química del Ambiente Laboral
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Guía pedagógica integral para estudiantes de ingeniería y ciencias aplicadas: fundamentos teóricos, toxicología laboral, marco normativo argentino (Ley 19.587, Dec. 351/79, Res. MTESS 295/03), cálculo de concentraciones, mezclas, protección respiratoria y rotulado (SGA y NFPA 704).
+        </p>
+      </div>
+      <div class="flex flex-wrap md:flex-col gap-3 shrink-0">
+        <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-white/10 text-center min-w-[140px]">
+          <div class="text-xs uppercase text-slate-300 font-semibold">Norma Clave</div>
+          <div class="text-sm font-bold text-sky-300">Res. 295/03 MTESS</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-white/10 text-center min-w-[140px]">
+          <div class="text-xs uppercase text-slate-300 font-semibold">Valor Molar Ref.</div>
+          <div class="text-sm font-bold text-amber-300">24,45 L/mol (25°C)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER WITH SIDEBAR & CONTENT -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow flex flex-col lg:flex-row gap-8">
+    
+    <!-- SIDEBAR NAVIGATION (STICKY) -->
+    <aside class="w-full lg:w-64 shrink-0 no-print">
+      <div class="sticky top-24 space-y-4">
+        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+          <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-list-ul text-brand-600"></i> Contenido Temático
+          </h3>
+          <nav class="space-y-1 text-sm font-medium">
+            <a href="#clasificacion" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">1. Clasificación General</a>
+            <a href="#fMaterial generado con IA, puede contener erroresiones-ramas" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">2. Ramas de la Higiene</a>
+            <a href="#vias-ingreso" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">3. Vías de Ingreso al Cuerpo</a>
+            <a href="#aerosoles-gases" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">4. Estados Físicos y Partículas</a>
+            <a href="#unidades-conversion" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">5. Unidades y Conversiones</a>
+            <a href="#toxicologia" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">6. Toxicología y Efectos</a>
+            <a href="#criterios-legales" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">7. Normativa Argentina (CMP)</a>
+            <a href="#mezclas" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">8. Mezclas de Contaminantes</a>
+            <a href="#proteccion-respiratoria" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">9. EPP y Filtros Respiratorios</a>
+            <a href="#senalizacion-sga-nfpa" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">10. SGA y Rombo NFPA</a>
+            <a href="#herramientas" class="block px-3 py-1.5 rounded-lg font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 transition flex items-center justify-between">
+              <span>Calculadoras</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-brand-200 text-brand-800">Interactivo</span>
+            </a>
+            <a href="#autoevaluacion" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-brand-600 transition">11. Test de Autoevaluación</a>
+          </nav>
+        </div>
+
+        <!-- Tip Box -->
+        <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-4 border border-amber-200/80 text-xs text-amber-900 space-y-2">
+          <div class="font-bold flex items-center gap-1.5 text-amber-800">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i> Tip de Examen
+          </div>
+          <p>
+            ¡Ojo con la diferencia entre <strong>CMP</strong> (8 horas diarias), <strong>CMP-CPT</strong> (máx 15 min, hasta 4 veces/día separadas 1 h) y <strong>CMP-C</strong> (valor techo instantáneo jamás superable)!
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT BODY -->
+    <main class="w-full lg:max-w-4xl space-y-12">
+
+      <!-- SECCIÓN 1: CLASIFICACIÓN GENERAL DE CONTAMINANTES -->
+      <section id="clasificacion" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">1</span>
+          <h3 class="text-2xl font-bold text-slate-900">Clasificación General de los Contaminantes Laborales</h3>
+        </div>
+        
+        <p class="text-slate-600 leading-relaxed">
+          Un contaminante en el ambiente de trabajo es cualquier agente físico, químico o biológico presente que pueda agredir la salud o alterar el bienestar de los trabajadores durante sus tareas.
+        </p>
+
+        <!-- Grid de Contaminantes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Químicos -->
+          <div class="bg-white rounded-xl p-5 border-2 border-sky-200 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-sky-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-sky-500 text-white flex items-center justify-center mb-3">
+                <i class="fa-solid fa-atom"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base mb-1">Contaminantes Químicos</h4>
+              <p class="text-xs text-slate-500 mb-3">Materia inerte en sus distintos estados de agregación.</p>
+              <ul class="text-xs text-slate-700 space-y-1.5">
+                <li><strong>Forma molecular:</strong> Gases y Vapores.</li>
+                <li><strong>Agregado molecular:</strong>
+                  <ul class="pl-3 mt-1 space-y-1 list-disc text-slate-600">
+                    <li>Sólidos: Polvos, Fibras, Humos.</li>
+                    <li>Líquidos: Nieblas y Aerosoles.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Físicos -->
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-violet-500 text-white flex items-center justify-center mb-3">
+              <i class="fa-solid fa-wave-square"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">Contaminantes Físicos</h4>
+            <p class="text-xs text-slate-500 mb-3">Distintas formas de energía presentes en el ambiente.</p>
+            <ul class="text-xs text-slate-700 space-y-1.5">
+              <li><strong>Mecánica:</strong> Ruido y Vibraciones.</li>
+              <li><strong>Térmica:</strong> Estrés por Frío y Calor.</li>
+              <li><strong>Electromagnética:</strong>
+                <ul class="pl-3 mt-1 space-y-1 list-disc text-slate-600">
+                  <li>Ionizantes (corpuscular y ondulatoria: rayos X, gamma).</li>
+                  <li>No ionizantes (UV, IR, visible, microondas, radiofrecuencia).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Biológicos -->
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500 text-white flex items-center justify-center mb-3">
+              <i class="fa-solid fa-biohazard"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">Contaminantes Biológicos</h4>
+            <p class="text-xs text-slate-500 mb-3">Organismos vivos con capacidad patógena.</p>
+            <ul class="text-xs text-slate-700 space-y-1.5">
+              <li>Bacterias (ej. legionella, ántrax)</li>
+              <li>Virus (ej. hepatitis, gripe)</li>
+              <li>Hongos y Esporas</li>
+              <li>Parásitos y Protozoos</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: FMaterial generado con IA, puede contener erroresIONES Y RAMAS DE LA HIGIENE -->
+      <section id="fMaterial generado con IA, puede contener erroresiones-ramas" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">2</span>
+          <h3 class="text-2xl font-bold text-slate-900">FMaterial generado con IA, puede contener erroresiones y Ramas de la Higiene Laboral</h3>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed">
+          La <strong>Higiene Laboral</strong> es una disciplina preventiva que actúa mediante una secuencia metodológica continua: <em>Reconocimiento &rarr; Evaluación &rarr; Control</em>.
+        </p>
+
+        <!-- Tres FMaterial generado con IA, puede contener erroresiones -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-slate-50 border-l-4 border-amber-500 rounded-r-xl p-4 shadow-sm">
+            <div class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-1">Paso 1</div>
+            <h4 class="font-bold text-slate-900 text-base">Reconocimiento</h4>
+            <p class="text-xs text-slate-600 mt-2">
+              Detección e identificación de los agentes contaminantes presentes en materias primas, productos intermedios, subproductos y emisiones de cada proceso.
+            </p>
+          </div>
+          <div class="bg-slate-50 border-l-4 border-sky-500 rounded-r-xl p-4 shadow-sm">
+            <div class="text-xs font-bold uppercase tracking-wider text-sky-700 mb-1">Paso 2</div>
+            <h4 class="font-bold text-slate-900 text-base">Evaluación</h4>
+            <p class="text-xs text-slate-600 mt-2">
+              Medición y cuantificación de las concentraciones ambientales para <strong>contrastarlas con estándares legales</strong> y determinar el riesgo de enfermedad.
+            </p>
+          </div>
+          <div class="bg-slate-50 border-l-4 border-emerald-500 rounded-r-xl p-4 shadow-sm">
+            <div class="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">Paso 3</div>
+            <h4 class="font-bold text-slate-900 text-base">Control</h4>
+            <p class="text-xs text-slate-600 mt-2">
+              Aplicación de medidas técnicas y operativas (en fuente, medio y receptor) para eliminar o reducir los contaminantes por debajo de los límites admisibles.
+            </p>
+          </div>
+        </div>
+
+        <!-- Las 4 Ramas -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-network-wired text-brand-600"></i> Las Cuatro Ramas de la Higiene Laboral
+          </h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h5 class="font-bold text-brand-700 text-sm flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-book-medical"></i> Higiene Teórica
+              </h5>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Estudia la relación dosis-efecto entre contaminantes y el ser humano mediante estudios epidemiológicos (15 a 20 años) y experimentación (animal y humana restringida).
+              </p>
+              <div class="text-[11px] bg-white p-2.5 rounded-lg border border-slate-200 text-slate-700 space-y-1">
+                <div>&bull; <strong>Criterio de Daño:</strong> Dosis con efecto demostrable y estadísticamente válido.</div>
+                <div>&bull; <strong>Factor de Seguridad (Fs):</strong> De 10 a 5.000 según la severidad.</div>
+                <div>&bull; <strong>Límite Admisible:</strong> <span class="font-mono font-bold text-brand-700">Criterio de Daño / Fs</span></div>
+                <div>&bull; <strong>Nivel de Acción:</strong> <span class="font-mono font-bold text-brand-700">Límite Admisible / 2</span> (umbral para iniciar vigilancia médica y ambiental preventiva).</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h5 class="font-bold text-brand-700 text-sm flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-vial-circle-check"></i> Higiene Analítica
+              </h5>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Realiza el análisis cualitativo y cuantitativo de los agentes químicos presentes. Opera en dos niveles:
+              </p>
+              <div class="text-[11px] bg-white p-2.5 rounded-lg border border-slate-200 text-slate-700 space-y-1">
+                <div>&bull; <strong>Nivel de Laboratorio:</strong> Análisis de alta precisión de muestras captadas en puestos (cromatografía de gases, espectrofotometría).</div>
+                <div>&bull; <strong>Nivel de Campo:</strong> Detección directa in situ con instrumental portátil (tubos colorimétricos, bombas de muestreo, detectores multigás, sonómetros).</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h5 class="font-bold text-brand-700 text-sm flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-clipboard-check"></i> Higiene de Campo
+              </h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Estudia las condiciones reales del ambiente laboral in situ. Utiliza encuestas higiénicas, revisión de procesos y auditorías, complementadas con las mediciones de la higiene analítica, para contrastar los resultados con la higiene teórica y emitir el <strong>Informe Higiénico</strong>.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h5 class="font-bold text-brand-700 text-sm flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-gears"></i> Higiene Operativa
+              </h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Etapa ejecutora. Si el informe higiénico arroja resultados desfavorables (<span class="text-rose-600 font-bold">No OK</span>), planifica e implementa medidas correctivas: ventilación localizada, cerramientos, sustitución de materias primas y, como última barrera, EPP.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: VÍAS DE INGRESO AL ORGANISMO -->
+      <section id="vias-ingreso" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">3</span>
+          <h3 class="text-2xl font-bold text-slate-900">Vías de Ingreso de los Agentes Químicos</h3>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed">
+          Para producir intoxicación o lesión, el contaminante debe entrar en contacto e interactuar con el organismo. Existen cuatro vías principales:
+        </p>
+
+        <!-- Grid Vías -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Vía Respiratoria -->
+          <div class="bg-white p-5 rounded-2xl border-2 border-brand-200 shadow-sm relative">
+            <span class="absolute top-4 right-4 text-xs font-bold px-2 py-0.5 rounded-full bg-brand-100 text-brand-800">Vía Principal (&gt;90%)</span>
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-brand-600 text-white flex items-center justify-center">
+                <i class="fa-solid fa-lungs"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base">1. Vía Respiratoria (Inhalatoria)</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Es la vía de ingreso <strong>más importante y rápida</strong> en el ámbito laboral. Los contaminantes ingresan por nariz y boca, atraviesan laringe, tráquea y bronquios hasta los alvéolos pulmonares.
+            </p>
+            <div class="mt-3 p-2.5 bg-slate-50 rounded-xl text-xs text-slate-700 space-y-1">
+              <div>&bull; La gran superficie alveolar (~100 m²) y su profusa vascularización facilitan el paso casi instantáneo al torrente sanguíneo.</div>
+              <div>&bull; <strong>Regla legal:</strong> Salvo especificación contraria, todos los límites de concentración ambiental están referidos a esta vía.</div>
+            </div>
+          </div>
+
+          <!-- Vía Dérmica -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="absolute top-4 right-4 text-xs font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">2ª en Importancia</span>
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-amber-500 text-white flex items-center justify-center">
+                <i class="fa-solid fa-hand-dots"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base">2. Vía Dérmica (Cutánea)</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Penetración a través de la piel por contacto directo o mediante solventes vehículo:
+            </p>
+            <ul class="mt-2 text-xs text-slate-700 space-y-1">
+              <li><strong>Transepidérmica:</strong> Difusión a través de la barrera lipídica (sustancias liposolubles: tolueno, xileno, plaguicidas organoclorados).</li>
+              <li><strong>Transfolicular:</strong> Alrededor del tallo del vello y folículo piloso, eludiendo la barrera de queratina.</li>
+              <li><strong>Glándulas sudoríparas:</strong> Conductos que representan entre 0,1% y 1% de la superficie cutánea.</li>
+            </ul>
+            <div class="mt-2 text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg border border-amber-200">
+              <strong>Atención normativa:</strong> En la legislación argentina (Res. 295/03), la absorción a través de <em>mucosas y conjuntiva ocular</em> se considera legalmente como vía dérmica (notación <strong>"v.d."</strong>). Sustancias como cianuros, fenoles y anilinas causan intoxicación sistémica mortal por contacto cutáneo directo.
+            </div>
+          </div>
+
+          <!-- Vía Digestiva -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-orange-500 text-white flex items-center justify-center">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base">3. Vía Digestiva (Oral)</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Ingreso por la boca hacia el esófago, estómago e intestinos. En el medio laboral suele ser accidental, producida por malos hábitos higiénicos como <strong>fumar, comer, beber o morderse las uñas</strong> con las manos o ropa contaminadas, o por deglución de mucus traqueobronquial con partículas retenidas.
+            </p>
+          </div>
+
+          <!-- Vía Parenteral -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-rose-600 text-white flex items-center justify-center">
+                <i class="fa-solid fa-syringe"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base">4. Vía Parenteral (Heridas)</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Ingreso directo al medio interno a través de discontinuidades de la piel provocadas por <strong>heridas, cortes, raspaduras o pMaterial generado con IA, puede contener erroresiones</strong> accidentales. Es sumamente peligrosa debido a que perfora la barrera mecánica de defensa cutánea, depositando el tóxico o patógeno directamente en tejidos profundos o vasos sanguíneos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: ESTADOS FÍSICOS Y COMPORTAMIENTO DE AEROSOLES -->
+      <section id="aerosoles-gases" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">4</span>
+          <h3 class="text-2xl font-bold text-slate-900">Estados Físicos de Contaminantes en el Aire</h3>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed">
+          Un <strong>agente químico</strong> es toda sustancia orgánica o inorgánica que puede dispersarse en la atmósfera laboral y causar daños o molestias. Su comportamiento físico condiciona el método de muestreo y la retención en el cuerpo.
+        </p>
+
+        <!-- Tabla comparativa de formas en el aire -->
+        <div class="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-sm">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+              <tr>
+                <th class="p-3">Categoría</th>
+                <th class="p-3">Tipo</th>
+                <th class="p-3">Origen y Mecanismo</th>
+                <th class="p-3">Rango de Tamaño</th>
+                <th class="p-3">Ejemplos</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-600">
+              <tr class="hover:bg-slate-50">
+                <td rowspan="5" class="p-3 font-bold text-brand-700 bg-sky-50/40 align-top">
+                  Aerosoles<br><span class="text-[10px] font-normal text-slate-500">Dispersión de partículas sólidas/líquidas en aire (2 nm a 100 &mu;m)</span>
+                </td>
+                <td class="p-3 font-semibold text-slate-800">Polvo (Dust)</td>
+                <td class="p-3">Disgregación mecánica de sólidos (triturado, molienda, corte). Sedimentan por gravedad, no floculan solos.</td>
+                <td class="p-3 font-mono">0,5 &mu;m a 500 &mu;m</td>
+                <td class="p-3">Sílice, asbesto, madera, algodón, granos, metales.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-800">Humo (Smoke)</td>
+                <td class="p-3">Combustión incompleta de materia orgánica. Partículas sólidas de carbón y hollín.</td>
+                <td class="p-3 font-mono">0,1 &mu;m a 10 &mu;m</td>
+                <td class="p-3">Humo de tabaco, escapes diésel, combustión de hidrocarburos.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-800">Humo Metálico (Fume)</td>
+                <td class="p-3">Sublimación o volatilización de metales fundidos que condensa en partículas esféricas y se oxida al contacto con el aire.</td>
+                <td class="p-3 font-mono">&lt; 1 &mu;m</td>
+                <td class="p-3">Humos de soldadura eléctrica, fundición de plomo, corte oxiacetilénico.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-800">Niebla (Fog)</td>
+                <td class="p-3">Condensación de vapores sobre núcleos de condensación a alta humedad relativa. Gotas microscópicas líquidas visibles.</td>
+                <td class="p-3 font-mono">0,1 &mu;m a 10 &mu;m</td>
+                <td class="p-3">Nieblas de ácido sulfúrico, ácido clorhídrico, ácido crómico.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-800">Bruma (Mist)</td>
+                <td class="p-3">Suspensión de gotas líquidas producidas por atomización mecánica, nebulización o burbujeo.</td>
+                <td class="p-3 font-mono">2 &mu;m a 200 &mu;m</td>
+                <td class="p-3">Pintura a soplete, fluidos de corte y mecanizado, aceites minerales.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td colspan="2" class="p-3 font-bold text-amber-700 bg-amber-50/40">Gas</td>
+                <td class="p-3">Estado natural a condiciones normales (25°C y 1 atm). Moléculas individuales sin cohesión que llenan todo el recinto. Compresibles.</td>
+                <td class="p-3 font-mono">Tamaño molecular (~0,3 nm)</td>
+                <td class="p-3">Monóxido de carbono (CO), cloro (Cl<sub>2</sub>), sulfuro de hidrógeno (H<sub>2</sub>S), SO<sub>2</sub>.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td colspan="2" class="p-3 font-bold text-purple-700 bg-purple-50/40">Vapor</td>
+                <td class="p-3">Fase gaseosa de una sustancia que a temperatura y presión ambiente (25°C, 1 atm) es líquida o sólida. Pasa a líquido al enfriar o comprimir.</td>
+                <td class="p-3 font-mono">Tamaño molecular</td>
+                <td class="p-3">Vapores de acetona, tolueno, xileno, benceno, tricloroetileno, naftas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Fracciones de Aerosol según UNE EN 12341 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-lungs-virus text-sky-600"></i> Fracciones de Partículas Inhaladas (Criterios UNE EN 12341)
+            </h4>
+            <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-full">Diámetro Aerodinámico (D)</span>
+          </div>
+
+          <p class="text-xs text-slate-600">
+            Los <strong>aerosoles solubles</strong> se disuelven en el mucus a lo largo de toda la vía aérea y pasan rápidamente al torrente sanguíneo. En cambio, los <strong>aerosoles insolubles</strong> penetran y se depositan de acuerdo con su diámetro aerodinámico:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase">Aerosol Total</div>
+              <div class="text-sm font-bold text-slate-900 mt-1">Fracción Inhalable</div>
+              <div class="text-lg font-extrabold text-brand-600 font-mono my-1">D &lt; 30 &mu;m</div>
+              <p class="text-[11px] text-slate-600">Fracción másica total que penetra a través de la nariz y la boca del trabajador.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase">Vía Aérea Superior</div>
+              <div class="text-sm font-bold text-slate-900 mt-1">Extratorácica</div>
+              <div class="text-lg font-extrabold text-amber-600 font-mono my-1">10 &lt; D &lt; 30 &mu;m</div>
+              <p class="text-[11px] text-slate-600">Partículas que son atrapadas en la nariz, faringe y laringe sin sobrepasarlas.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase">Bronquios</div>
+              <div class="text-sm font-bold text-slate-900 mt-1">Traqueobronquial</div>
+              <div class="text-lg font-extrabold text-indigo-600 font-mono my-1">2,5 &lt; D &lt; 10 &mu;m</div>
+              <p class="text-[11px] text-slate-600">Penetran más allá de la laringe pero quedan retenidas en tráquea y bronquios (PM<sub>10</sub>).</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200">
+              <div class="text-xs font-bold text-rose-600 uppercase">Peligro Alveolar</div>
+              <div class="text-sm font-bold text-rose-900 mt-1">Fracción Respirable</div>
+              <div class="text-lg font-extrabold text-rose-600 font-mono my-1">D &lt; 2,5 &mu;m</div>
+              <p class="text-[11px] text-rose-800">Alcanza los alvéolos pulmonares. Causa directa de <strong>neumoconiosis</strong> irreversible (PM<sub>2.5</sub>).</p>
+            </div>
+          </div>
+
+          <!-- Escala gráfica comparativa -->
+          <div class="p-4 bg-slate-900 text-white rounded-xl text-xs space-y-2">
+            <div class="font-bold text-sky-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-ruler-horizontal"></i> Comparativa Visual de Tamaños:
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 text-slate-300">
+              <span>Cabello humano: <strong>50 - 70 &mu;m</strong></span>
+              <span>&bull;</span>
+              <span>Granos de polen: <strong>10 - 50 &mu;m</strong></span>
+              <span>&bull;</span>
+              <span>PM<sub>10</sub> (polvo torácico): <strong>&le; 10 &mu;m</strong></span>
+              <span>&bull;</span>
+              <span>PM<sub>2.5</sub> (fracción respirable): <strong>&le; 2,5 &mu;m</strong></span>
+              <span>&bull;</span>
+              <span>Humos metálicos: <strong>&lt; 1 &mu;m</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: UNIDADES DE CONCENTRACIÓN Y TERMODINÁMICA -->
+      <section id="unidades-conversion" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">5</span>
+          <h3 class="text-2xl font-bold text-slate-900">Unidades de Concentración y Termodinámica de Gases</h3>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed">
+          En higiene industrial, la concentración representa la cantidad de soluto (contaminante) presente en un volumen o masa de solvente o aire.
+        </p>
+
+        <!-- Unidades Químicas y Físicas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Unidades Químicas -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-square-root-variable text-brand-600"></i> Unidades Químicas
+            </h4>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                <span class="font-bold text-slate-800">Molaridad (M):</span>
+                <div class="font-mono text-brand-700 font-bold mt-0.5">M = Moles de soluto / 1 Litro de solución</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                <span class="font-bold text-slate-800">Molalidad (m):</span>
+                <div class="font-mono text-brand-700 font-bold mt-0.5">m = Moles de soluto / 1 kg de solvente</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                <span class="font-bold text-slate-800">Normalidad (N):</span>
+                <div class="font-mono text-brand-700 font-bold mt-0.5">N = Número de Equivalentes Químicos (EQ) / 1 L solución</div>
+                <div class="text-[11px] text-slate-500 mt-1">
+                  &bull; Ácido: PM / n° de H<sup>+</sup> (H<sub>2</sub>SO<sub>4</sub>: 98/2 = 49 g/EQ)<br>
+                  &bull; Base: PM / n° de OH<sup>-</sup> (NaOH: 40/1 = 40 g/EQ)<br>
+                  &bull; Sal: PM / carga del catión/anión (Na<sub>2</sub>CO<sub>3</sub>: 106/2 = 53 g/EQ)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unidades Físicas -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-scale-balanced text-brand-600"></i> Unidades Físicas y PPM
+            </h4>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                <span class="font-bold text-slate-800">Porcentajes %:</span>
+                <div class="font-mono text-slate-700 mt-0.5">
+                  % P/P = [g soluto / 100 g solución]<br>
+                  % V/V = [cm³ soluto / 100 cm³ solución]<br>
+                  % P/V = [g soluto / 100 cm³ solución]
+                </div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-100">
+                <span class="font-bold text-brand-900">Partes por millón (ppm):</span>
+                <div class="text-slate-700 mt-1">
+                  <div><strong>En Sólidos y Líquidos (peso):</strong></div>
+                  <div class="font-mono text-brand-700 font-bold">ppm = (Peso soluto / Peso total) &times; 10<sup>6</sup></div>
+                  <div class="mt-1"><strong>En Gases y Vapores (volumen):</strong></div>
+                  <div class="font-mono text-brand-700 font-bold">ppm = (Volumen gas / Volumen total de aire) &times; 10<sup>6</sup></div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">1 ppm = 1 cm³ de gas por cada 1 m³ de aire.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deducción de 24,45 L/mol y Fórmulas de Conversión -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-brand-200 shadow-sm space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-900">
+              Conversión Fundamental: ppm &harr; mg/m³ y el Volumen Molar (24,45 L/mol)
+            </h4>
+          </div>
+
+          <div class="text-xs text-slate-600 leading-relaxed space-y-2">
+            <p>
+              A partir de la ecuación de estado de los gases ideales <span class="font-mono font-bold text-slate-900">P &middot; V = n &middot; R &middot; T</span>, el volumen que ocupa un mol de cualquier gas a temperatura absoluta $T$ y presión $P$ es:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-700">Condiciones Normales (CNPT)</span>
+                <p class="text-[11px] text-slate-500 mt-1">P = 101.325 Pa (1 atm), T = 0 °C (273,15 K)</p>
+                <div class="font-mono font-bold text-brand-700 text-sm mt-1">V<sub>molar</sub> = 22,414 L/mol</div>
+              </div>
+              <div class="bg-sky-50 p-3 rounded-xl border border-sky-200">
+                <span class="font-bold text-brand-900">Condiciones Higiénicas de Referencia (Norma)</span>
+                <p class="text-[11px] text-brand-700 mt-1">P = 101.325 Pa (1 atm), T = 25 °C (298,15 K)</p>
+                <div class="font-mono font-extrabold text-brand-700 text-sm mt-1">V<sub>molar</sub> = 24,45 L/mol</div>
+              </div>
+            </div>
+            <p class="text-slate-600">
+              Para condiciones de presión y temperatura distintas de las estándar ($P, T$):
+              <span class="font-mono font-semibold text-slate-800 bg-slate-100 px-2 py-0.5 rounded">V<sub>m</sub> = 22,4 &times; (P<sub>0</sub>/P) &times; (T/T<sub>0</sub>)</span>.
+            </p>
+          </div>
+
+          <!-- Fórmulas destacadas -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-gradient-to-br from-brand-50 to-sky-50 border border-brand-200 text-center">
+              <span class="text-xs font-bold text-brand-800 uppercase tracking-wider">De mg/m³ a ppm (a 25 °C y 1 atm)</span>
+              <div class="text-xl font-extrabold font-mono text-brand-700 my-2">
+                C [ppm] = &leftbracket; <span class="text-brand-900">24,45</span> / PM &rightbracket; &times; C [mg/m³]
+              </div>
+              <span class="text-[11px] text-slate-500">Donde PM es el Peso Molecular del compuesto en g/mol.</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-gradient-to-br from-brand-50 to-sky-50 border border-brand-200 text-center">
+              <span class="text-xs font-bold text-brand-800 uppercase tracking-wider">De ppm a mg/m³ (a 25 °C y 1 atm)</span>
+              <div class="text-xl font-extrabold font-mono text-brand-700 my-2">
+                C [mg/m³] = &leftbracket; PM / <span class="text-brand-900">24,45</span> &rightbracket; &times; C [ppm]
+              </div>
+              <span class="text-[11px] text-slate-500">Unidades indispensables para comparar con los límites legales.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: TOXICOLOGÍA LABORAL Y EFECTOS FISIOPATOLÓGICOS -->
+      <section id="toxicologia" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">6</span>
+          <h3 class="text-2xl font-bold text-slate-900">Toxicología Laboral y Efectos Fisiopatológicos</h3>
+        </div>
+
+        <!-- Toxicidad vs Riesgo -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-amber-500 text-lg"></i>
+            <h4 class="font-bold text-slate-900 text-base">Principio Fundamental: Toxicidad vs. Riesgo</h4>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-200">
+              <span class="font-bold text-amber-900 text-sm">Toxicidad (Peligro Intrínseco)</span>
+              <p class="text-amber-800 mt-1">
+                Capacidad propia y biológica de una sustancia para provocar daño o lesión cuando entra en contacto con el organismo humano. Es fija e inmodificable para cada sustancia.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-sky-50/60 border border-sky-200">
+              <span class="font-bold text-brand-900 text-sm">Riesgo Higiénico (Probabilidad de Daño)</span>
+              <p class="text-brand-800 mt-1">
+                Probabilidad de que dicha sustancia cause efectivamente un daño bajo las condiciones de trabajo reales. Depende de la dosis recibida, la concentración, el tiempo y las medidas de control.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl text-xs text-slate-600">
+            <strong>Factores condicionantes del riesgo:</strong>
+            <ul class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-2">
+              <li class="bg-white p-2 rounded border border-slate-200">
+                <strong>Procedimentales:</strong> Modo de manipulación, hábitos de trabajo, almacenamiento y trasvase.
+              </li>
+              <li class="bg-white p-2 rounded border border-slate-200">
+                <strong>Operativos:</strong> Temperatura de trabajo, tasa de evaporación, ventilación del local, estado de agregación.
+              </li>
+              <li class="bg-white p-2 rounded border border-slate-200">
+                <strong>Individuales:</strong> Susceptibilidad genética, estado de salud previo, superficie de piel expuesta, tasa respiratoria.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Ley de Haber y Parámetros Toxicológicos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <h5 class="font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-hourglass-half text-brand-600"></i> Ley de Haber (Dosis)
+            </h5>
+            <div class="font-mono text-center font-bold text-base text-brand-700 bg-brand-50 p-2 rounded-lg border border-brand-200">
+              D = C &times; t
+            </div>
+            <p class="text-slate-600">
+              Donde <strong>D</strong> es la dosis absorbida, <strong>C</strong> la concentración del contaminante en el aire y <strong>t</strong> el tiempo de exposición.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <h5 class="font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-skull-crossbones text-danger-600"></i> DL50 vs DE50
+            </h5>
+            <p class="text-slate-600">
+              <strong>DL<sub>50</sub> (Dosis Letal 50):</strong> Dosis que produce la muerte del 50% de la población animal de ensayo. <span class="text-danger-700 font-semibold">A menor DL<sub>50</sub>, mayor toxicidad tiene la sustancia.</span><br>
+              <strong>DE<sub>50</sub> (Dosis Efectiva 50):</strong> Dosis que causa un efecto subletal específico en el 50% de los animales.
+            </p>
+          </div>
+        </div>
+
+        <!-- Clasificación Fisiopatológica de Efectos -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            <i class="fa-solid fa-disease text-rose-600"></i> Clasificación de Efectos de los Contaminantes
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <!-- Asfixiantes -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-head-side-cough text-sky-600"></i> 1. Asfixiantes
+              </span>
+              <p class="text-slate-600">Impiden la oxigenación celular en los tejidos vitales:</p>
+              <ul class="space-y-1.5 pl-3 list-disc text-slate-700">
+                <li><strong>Simples (inertes):</strong> Desplazan físicamente al oxígeno en el ambiente. Si la concentración de O<sub>2</sub> baja de 17%, causan asfixia. Ej: Nitrógeno, argón, metano, CO<sub>2</sub>.</li>
+                <li><strong>Químicos:</strong> Bloquean el transporte o aprovechamiento biológico del O<sub>2</sub>:
+                  <ul class="pl-3 mt-1 space-y-1 text-slate-600 list-circle">
+                    <li><em>Carboxihemoglobina:</em> Monóxido de carbono (CO) (afinidad ~200 veces superior al O<sub>2</sub>).</li>
+                    <li><em>Metahemoglobina:</em> Anilina, nitrobenceno.</li>
+                    <li><em>Bloqueo respiración celular:</em> Ácido cianhídrico (HCN, inhibe citocromo c oxidasa).</li>
+                    <li><em>Parálisis del centro respiratorio:</em> Sulfuro de hidrógeno (H<sub>2</sub>S).</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Irritantes y Sensibilizantes -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-hand-sparkles text-amber-600"></i> 2. Irritantes y Sensibilizantes
+              </span>
+              <p class="text-slate-600"><strong>Irritantes:</strong> Causan inflamación cáustica directa en tejidos expuestos (ojos, nariz, piel, árbol bronquial). Ej: Cloro (Cl<sub>2</sub>), SO<sub>2</sub>, nieblas de ácidos (HCl, H<sub>2</sub>SO<sub>4</sub>), soda cáustica, vapores de Cd.</p>
+              <p class="text-slate-600"><strong>Sensibilizantes (Alergénicos):</strong> Producen una reacción inmunológica mediada por anticuerpos en dos etapas: primero inducen la sensibilización sin síntomas aparentes, y en exposiciones posteriores desencadenan crisis asmáticas agudas o dermatitis graves aun a dosis extremadamente bajas (ej. isocianatos, níquel, formaldehído, polvo de maderas duras).</p>
+            </div>
+
+            <!-- Neumoconióticos -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-lungs text-slate-700"></i> 3. Neumoconiosis
+              </span>
+              <p class="text-slate-600">Enfermedades pulmonares crónicas e irreversibles originadas por el depósito de polvos insolubles en los alvéolos que escapan a los macrófagos y generan fibrosis:</p>
+              <ul class="space-y-1 pl-3 list-disc text-slate-700">
+                <li><strong>Silicosis:</strong> Sílice libre cristalina (cuarzo). Produce fibrosis nodular severa. Tareas: arenado, granallado, canteras.</li>
+                <li><strong>Asbestosis:</strong> Fibras de asbesto/amianto. Fibrosis difusa bilateral y riesgo extremo de cáncer pleural (mesotelioma). Latencia: 10 a 40 años.</li>
+                <li><strong>Siderosis:</strong> Polvos y humos de óxido de hierro (soldadores).</li>
+                <li><strong>Estannosis:</strong> Depósito de óxidos de estaño.</li>
+              </ul>
+            </div>
+
+            <!-- Sistémicos y Cancerígenos -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-dna text-danger-600"></i> 4. Sistémicos y Cancerígenos
+              </span>
+              <p class="text-slate-600"><strong>Sistémicos:</strong> Se absorben y viajan por el torrente sanguíneo provocando lesiones en <strong>órganos blanco o diana</strong> lejanos (ej. solventes halogenados sobre hígado y riñón).</p>
+              <p class="text-slate-600"><strong>Cancerígenos:</strong> Inducen mutaciones y proliferación celular maligna descontrolada con largo período de latencia. Clasificación según Res. 295/03:</p>
+              <div class="text-[11px] font-mono space-y-0.5 bg-white p-2 rounded border border-slate-200">
+                <div><strong class="text-danger-700">A1:</strong> Carcinógeno confirmado en humanos (ej. benceno, asbesto).</div>
+                <div><strong class="text-orange-700">A2:</strong> Carcinógeno sospechoso en humanos.</div>
+                <div><strong class="text-amber-700">A3:</strong> Carcinógeno confirmado en animales, efecto humano desconocido.</div>
+                <div><strong class="text-slate-600">A4:</strong> No clasificable como carcinógeno humano (datos insuficientes).</div>
+                <div><strong class="text-emerald-700">A5:</strong> No sospechoso como carcinógeno en humanos.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matriz de Órganos Diana -->
+          <div class="mt-4 pt-4 border-t border-slate-200">
+            <h5 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Tabla de Órganos Diana y Principales Xenobióticos</h5>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs bg-slate-50 rounded-xl overflow-hidden">
+                <thead class="bg-slate-200 text-slate-700 font-bold">
+                  <tr>
+                    <th class="p-2.5">Órgano / Sistema Diana</th>
+                    <th class="p-2.5">Xenobióticos Responsables (Tóxicos)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 text-slate-600">
+                  <tr><td class="p-2 font-semibold text-slate-800">Cerebro / SNC</td><td class="p-2">Plomo (Pb), Mercurio (Hg), Cadmio (Cd), Monóxido de Carbono (CO), Solventes, Plaguicidas.</td></tr>
+                  <tr><td class="p-2 font-semibold text-slate-800">Pulmones</td><td class="p-2">Amianto, NH<sub>3</sub>, Cloro, SO<sub>2</sub>, Humos metálicos, Polvos de sílice, CO.</td></tr>
+                  <tr><td class="p-2 font-semibold text-slate-800">Hígado (Hepatotóxicos)</td><td class="p-2">Hidrocarburos clorados, Plaguicidas, Solventes, Cloruro de vinilo / PVC.</td></tr>
+                  <tr><td class="p-2 font-semibold text-slate-800">Riñones (Nefrotóxicos)</td><td class="p-2">Mercurio (Hg), Cadmio (Cd), Hidrocarburos halogenados, Solventes.</td></tr>
+                  <tr><td class="p-2 font-semibold text-slate-800">Médula Ósea (Hematopoyético)</td><td class="p-2"><strong class="text-danger-700">Benceno</strong> (provoca aplasia medular y leucemia mieloblástica).</td></tr>
+                  <tr><td class="p-2 font-semibold text-slate-800">Sistema Reproductor y Feto</td><td class="p-2">Plomo (Pb), Mercurio (Hg), Formaldehído, Solventes, Organoclorados, PCBs.</td></tr>
+                  <tr><td class="p-2 font-semibold text-slate-800">Piel</td><td class="p-2">Detergentes cáusticos, Ácidos y Álcalis fuertes, Aceites minerales, Plaguicidas.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 7: CRITERIOS LEGALES Y VALORACIÓN (RES. 295/03) -->
+      <section id="criterios-legales" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">7</span>
+          <h3 class="text-2xl font-bold text-slate-900">Marco Normativo Argentino y Criterios de Valoración</h3>
+        </div>
+
+        <!-- Marco Legal -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3 text-xs text-slate-600 leading-relaxed">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-gavel text-brand-600"></i> Marco Regulatorio Nacional
+          </h4>
+          <p>
+            En la República Argentina, el marco de referencia está sustentado en la <strong>Ley 19.587</strong> de Higiene y Seguridad en el Trabajo y su <strong>Decreto Reglamentario 351/79</strong>. Su artículo 61 establece que la autoridad fijará las concentraciones máximas permisibles para los ambientes laborales con revisión periódica.
+          </p>
+          <p>
+            Actualmente, la norma técnica vigente que actualiza y fija los límites umbrales es la <strong>Resolución MTESS 295/2003 (Anexo IV)</strong> (que reemplazó a la derogada Res. 444/91). Esta resolución adopta internacionalmente los lineamientos de la <strong>ACGIH</strong> (American Conference of Governmental Industrial Hygienists) y aplica de forma transversal a:
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-slate-700">&bull; Industria General (Dec. 351/79)</span>
+            <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-slate-700">&bull; Construcción (Dec. 911/96)</span>
+            <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-slate-700">&bull; Trabajo Agrario (Dec. 617/97)</span>
+            <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-slate-700">&bull; Actividad Minera (Dec. 249/07)</span>
+          </div>
+        </div>
+
+        <!-- Tres Criterios de Valoración -->
+        <div class="space-y-4">
+          <h4 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-brand-600"></i> Los Tres Criterios de Concentración Máxima Permisible
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <!-- CMP (TWA) -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-emerald-300 shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold uppercase text-[10px]">TWA</span>
+                <span class="font-mono text-xs text-slate-400">8 h/día - 40 h/sem</span>
+              </div>
+              <h5 class="text-base font-bold text-slate-900">CMP (Ponderada en el Tiempo)</h5>
+              <p class="text-slate-600">
+                Concentración media ponderada para una jornada laboral habitual de 8 horas diarias y 40 semanales, a la que casi todos los trabajadores pueden exponerse repetidamente día tras día sin sufrir efectos adversos.
+              </p>
+              <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 font-mono text-[11px] space-y-1">
+                <div class="font-bold text-emerald-900">Fórmula de ponderación:</div>
+                <div class="text-emerald-800">CMP<sub>m</sub> = &Sigma;(C<sub>i</sub> &times; t<sub>i</sub>) / T</div>
+                <div class="text-[10px] text-emerald-700 mt-1">Se admiten picos por encima de la CMP siempre que la media ponderada de 8 horas esté por debajo (<span class="font-bold">CMP<sub>m</sub> &le; CMP</span>).</div>
+              </div>
+            </div>
+
+            <!-- CMP - CPT (STEL) -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-amber-300 shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold uppercase text-[10px]">STEL</span>
+                <span class="font-mono text-xs text-slate-400">Corto Período (15 min)</span>
+              </div>
+              <h5 class="text-base font-bold text-slate-900">CMP - CPT (Cortos Períodos)</h5>
+              <p class="text-slate-600">
+                Concentración máxima a la que se puede exponer de forma continua durante un corto período sin sufrir irritación severa, daños crónicos tisulares o narcosis que reduzca la capacidad de reacción ante emergencias.
+              </p>
+              <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] text-amber-900 space-y-1">
+                <div class="font-bold">Reglas estrictas de aplicación:</div>
+                <div>1. Duración máxima continua de <strong>15 minutos</strong>.</div>
+                <div>2. No repetirse más de <strong>4 veces por jornada</strong>.</div>
+                <div>3. Intervalo mínimo de <strong>60 minutos</strong> entre picos.</div>
+                <div>4. Jamás superar la CMP ponderada de 8 horas.</div>
+              </div>
+            </div>
+
+            <!-- CMP - C (Ceiling) -->
+            <div class="bg-white p-5 rounded-2xl border-2 border-rose-300 shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold uppercase text-[10px]">Ceiling (Techo)</span>
+                <span class="font-mono text-xs text-slate-400">Instantáneo</span>
+              </div>
+              <h5 class="text-base font-bold text-slate-900">CMP - C (Valor Techo)</h5>
+              <p class="text-slate-600">
+                Concentración que <strong>NO DEBE SOBREPASARSE EN NINGÚN MOMENTO</strong> de la jornada de trabajo, ni siquiera por una fracción de segundo.
+              </p>
+              <div class="p-3 bg-rose-50 rounded-xl border border-rose-200 text-[11px] text-rose-900 space-y-1">
+                <div>&bull; Se aplica prioritariamente a sustancias irritantes inmediatas o gases asfixiantes veloces (ej. cloro, ácido clorhídrico, formaldehído).</div>
+                <div>&bull; Si no es factible medición continua instantánea, se evalúa con muestreos de máximo 15 minutos.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notaciones Especiales: CAS, Vía Dérmica y B.E.I. -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-tags text-brand-600"></i> Notaciones y Marcadores Especiales en Tablas Legales
+          </h4>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-bold text-slate-900 mb-1">N° de Registro CAS</div>
+              <p class="text-slate-600 text-[11px]">
+                Identificador numérico universal único asignado por el <em>Chemical Abstracts Service</em> (Sociedad Americana de Química). Evita confusiones derivadas de nombres comerciales o sinónimos.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-bold text-slate-900 mb-1">Notación Vía Dérmica ("v.d.")</div>
+              <p class="text-slate-600 text-[11px]">
+                Señala que la sustancia puede absorberse significativamente a través de la piel y mucosas, contribuyendo de modo sustancial a la dosis interna tóxica además de la inhalación.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-bold text-slate-900 mb-1">B.E.I. (Biological Exposure Index)</div>
+              <p class="text-slate-600 text-[11px]">
+                Índice Biológico de Exposición. Evalúa la <strong>dosis interna</strong> mediante el dosaje de la sustancia o sus metabolitos en sangre, orina o aire exhalado (vigilancia médica).
+              </p>
+            </div>
+          </div>
+
+          <!-- Caso de Estudio del PDF: Benceno -->
+          <div class="p-4 bg-slate-900 text-white rounded-xl text-xs space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass"></i> Caso de Estudio Legal: Benceno (C<sub>6</sub>H<sub>6</sub>, CAS 71-43-2)
+              </span>
+              <span class="px-2 py-0.5 rounded bg-danger-600 text-white font-mono text-[10px] font-bold">Cat. A1 - Cancerígeno Humano</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-slate-300 text-[11px]">
+              <div>&bull; <strong>Límites legales:</strong> CMP = 0,5 ppm | CMP-CPT = 2,5 ppm | Notaciones: <span class="text-white font-semibold">A1, BEI, v.d.</span></div>
+              <div>&bull; <strong>Efecto crítico:</strong> Leucemia mieloblástica, aplasia medular. Órgano diana: Médula ósea.</div>
+              <div>&bull; <strong>Vigilancia Biológica (BEI):</strong> Ácido t,t-mucónico en orina (500 &mu;g/g creatinina) o Ácido S-fenilmercaptúrico (25 &mu;g/g creatinina). Hemograma semestral.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 8: MEZCLAS DE CONTAMINANTES QUÍMICOS -->
+      <section id="mezclas" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">8</span>
+          <h3 class="text-2xl font-bold text-slate-900">Evaluación de Mezclas de Contaminantes Químicos</h3>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed text-sm">
+          En los ambientes de trabajo es común la presencia simultánea de varios agentes químicos. La evaluación depende de si sus efectos toxicológicos actúan sobre el mismo órgano o sistema (efecto aditivo) o sobre órganos diferentes (efecto independiente).
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Efecto Aditivo -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-brand-200 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-plus text-brand-600"></i> Efecto Aditivo (Mismo Órgano Diana)
+              </h4>
+              <span class="px-2 py-0.5 rounded bg-brand-100 text-brand-800 text-[10px] font-bold">Criterio Estándar</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Si dos o más sustancias afectan el mismo órgano o sistema fisiológico, se suman sus cocientes de concentración respecto a sus respectivos límites legales. <em>Nota: Ante la duda o falta de información toxicológica, la normativa exige considerarlos como aditivos.</em>
+            </p>
+            <div class="p-3 bg-brand-50 rounded-xl border border-brand-200 text-center font-mono font-bold text-brand-900 text-sm">
+              &sum; (C<sub>i</sub> / CMP<sub>i</sub>) = (C<sub>1</sub> / CMP<sub>1</sub>) + (C<sub>2</sub> / CMP<sub>2</sub>) + ... + (C<sub>n</sub> / CMP<sub>n</sub>)
+            </div>
+            <div class="p-2.5 bg-rose-50 rounded-lg border border-rose-200 text-xs text-rose-800 font-semibold">
+              <i class="fa-solid fa-circle-exclamation"></i> Si la sumatoria es &ge; 1 &rarr; Se SOBREPASA el límite umbral permitido (HAY RIESGO HIGIÉNICO).
+            </div>
+          </div>
+
+          <!-- Efecto Independiente -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-arrows-split-up-and-left text-slate-600"></i> Efecto Independiente
+              </h4>
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold">Órganos Distintos</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Cuando existe evidencia científica concluyente de que las sustancias actúan de manera totalmente independiente y sobre órganos diana dispares, cada contaminante se evalúa por separado de forma aislada.
+            </p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center font-mono font-bold text-slate-800 text-sm">
+              C<sub>1</sub> / CMP<sub>1</sub> &ge; 1 &nbsp;&oacute;&nbsp; C<sub>2</sub> / CMP<sub>2</sub> &ge; 1 &nbsp;&oacute;&nbsp; C<sub>n</sub> / CMP<sub>n</sub> &ge; 1
+            </div>
+            <div class="p-2.5 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-800 font-semibold">
+              <i class="fa-solid fa-circle-info"></i> Si cualquiera de los cocientes individuales es &ge; 1 &rarr; Se sobrepasa el límite umbral para esa sustancia.
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejemplos Prácticos Resueltos de las Diapositivas -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+          <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-pencil text-brand-600"></i> Ejemplos Resueltos de la Materia (Diapositivas 68 y 69)
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <!-- Ejemplo Aditivo -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+              <div class="font-bold text-slate-900 text-sm">Ejemplo 1: Sustancias con Efecto Aditivo</div>
+              <p class="text-slate-600">
+                En un puesto de trabajo se detecta <strong>Fluoruro de vinilo</strong> (C = 75 ppm; CMP = 1 ppm, diana: hígado) y <strong>Fluoruro de vinilideno</strong> (C = 200 ppm; CMP = 500 ppm, diana: hígado).
+              </p>
+              <div class="p-2.5 bg-slate-50 rounded font-mono text-[11px] text-slate-800 space-y-1">
+                <div>Cociente 1: 75 ppm / 1 ppm = 75</div>
+                <div>Cociente 2: 200 ppm / 500 ppm = 0,4</div>
+                <div class="font-bold text-brand-700">Suma: 75 + 0,4 = 75,4 &gt; 1</div>
+              </div>
+              <div class="text-danger-700 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-xmark"></i> Conclusión: Se sobrepasa ampliamente el límite umbral. Hay riesgo higiénico intolerable.
+              </div>
+            </div>
+
+            <!-- Ejemplo No Aditivo -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+              <div class="font-bold text-slate-900 text-sm">Ejemplo 2: Sustancias de Acción Independiente</div>
+              <p class="text-slate-600">
+                Se detecta <strong>Fluoruro de vinilo</strong> (C = 75 ppm; CMP = 1 ppm, hígado) y <strong>Fluoruro de perclorilo</strong> (C = 5 ppm; CMP = 6 ppm, sangre/irritación).
+              </p>
+              <div class="p-2.5 bg-slate-50 rounded font-mono text-[11px] text-slate-800 space-y-1">
+                <div>Evaluación Fluoruro de vinilo: 75 / 1 = <strong class="text-rose-600">75 &gt; 1 (Excede)</strong></div>
+                <div>Evaluación Fluoruro de perclorilo: 5 / 6 = <strong class="text-emerald-600">0,83 &lt; 1 (No excede)</strong></div>
+              </div>
+              <div class="text-amber-800 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-triangle-exclamation"></i> Conclusión: Como al menos un cociente supera 1, el ambiente sigue siendo inseguro por el fluoruro de vinilo.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 9: ELEMENTOS DE PROTECCIÓN PERSONAL Y PROTECCIÓN RESPIRATORIA -->
+      <section id="proteccion-respiratoria" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">9</span>
+          <h3 class="text-2xl font-bold text-slate-900">Elementos de Protección Personal (EPP) y Protección Respiratoria</h3>
+        </div>
+
+        <!-- Principio de Jerarquía -->
+        <div class="bg-gradient-to-r from-slate-900 to-brand-950 text-white rounded-2xl p-6 shadow-sm space-y-3">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+            <i class="fa-solid fa-shield-halved"></i> Principio Fundamental de Seguridad Laboral
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            El EPP es la <strong>última barrera</strong> entre el trabajador y el contaminante. Es una medida de mitigación complementaria a la protección colectiva. Antes de recurrir al EPP, se debe intentar eliminar el peligro, sustituir materias primas, aislar el proceso o instalar ventilación por extracción localizada.
+          </p>
+        </div>
+
+        <!-- Equipos y Filtros -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Tipos de Mascaras -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-mask-ventilator text-brand-600"></i> Tipos de Protectores Respiratorios
+            </h4>
+            <ul class="space-y-2 text-slate-700">
+              <li class="p-2 bg-slate-50 rounded-lg">
+                <strong>Mascarillas descartables para partículas (ej. N95):</strong> Retienen aerosoles y polvos no aceitosos. Deben reemplazarse cuando se incrementa la resistencia al paso del aire (dificultad para respirar).
+              </li>
+              <li class="p-2 bg-slate-50 rounded-lg">
+                <strong>Semimáscaras elastoméricas (medio rostro):</strong> Cubren nariz y boca. Permiten acoplar cartuchos químicos para gases/vapores y pre-filtros mecánicos para partículas.
+              </li>
+              <li class="p-2 bg-slate-50 rounded-lg">
+                <strong>Máscaras completas (full face):</strong> Cubren además los ojos y todo el rostro, brindando protección ocular simultánea contra sustancias corrosivas o irritantes.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pruebas de Hermeticidad y Mantenimiento -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-check-double text-emerald-600"></i> Pruebas de Ajuste y Mantenimiento
+            </h4>
+            <div class="space-y-2">
+              <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-100 text-slate-700">
+                <strong>Prueba de Presión Positiva:</strong> Tapar con la palma de la mano la válvula de exhalación y soplar suavemente hacia afuera. Si el equipo ajusta bien, la máscara se infla ligeramente y retiene la presión sin fugas laterales.
+              </div>
+              <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-100 text-slate-700">
+                <strong>Prueba de Presión Negativa:</strong> Tapar las entradas de aire de los filtros con ambas manos e inhalar suavemente. La máscara debe colapsar levemente hacia la cara y mantenerse pegada sin ingreso de aire.
+              </div>
+              <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-100 text-amber-900">
+                <strong>Limpieza y Guardado:</strong> Lavar periódicamente con solución jabonosa neutra, secar a la sombra y <strong>guardar en bolsas herméticas cerradas</strong> para evitar que el carbón activado se sature con el aire ambiental mientras está en reposo.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Código de Colores de Filtros Respiratorios (Norma EN 14387) -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-palette text-brand-600"></i> Código Internacional de Colores de Cartuchos y Filtros (EN 14387)
+            </h4>
+            <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded">Identificación visual rápida</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs">
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-amber-900/5">
+              <span class="w-8 h-4 rounded bg-[#8B4513] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo A (Marrón)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Gases y vapores orgánicos con punto de ebullición &gt; 65 °C.</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-amber-900/10">
+              <span class="w-8 h-4 rounded bg-[#5c2c16] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo AX (Marrón oscuro)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Gases y vapores orgánicos con PE &lt; 65 °C (un solo uso, no reutilizable).</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-slate-100">
+              <span class="w-8 h-4 rounded bg-[#94a3b8] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo B (Gris)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Gases y vapores inorgánicos (cloro, H<sub>2</sub>S, cianuro de hidrógeno).</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-yellow-50">
+              <span class="w-8 h-4 rounded bg-[#eab308] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo E (Amarillo)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Dióxido de azufre (SO<sub>2</sub>), ácido clorhídrico y gases ácidos.</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-emerald-50">
+              <span class="w-8 h-4 rounded bg-[#22c55e] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo K (Verde)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Amoníaco y sus derivados orgánicos aminados.</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-slate-900/5">
+              <span class="w-8 h-4 rounded bg-[#0f172a] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo CO (Negro)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Monóxido de carbono (filtro de un solo uso).</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-rose-50">
+              <span class="w-8 h-4 rounded bg-[#e11d48] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo Hg (Rojo)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Vapor de mercurio (máximo 50 horas de uso según EN 14387).</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-blue-50">
+              <span class="w-8 h-4 rounded bg-[#2563eb] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo NO (Azul)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Gases nitrosos (óxido nítrico, dióxido de nitrógeno; un solo uso).</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-orange-50">
+              <span class="w-8 h-4 rounded bg-[#f97316] mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Reactor (Naranja)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Yodo radioactivo y yoduro de metilo radioactivo.</span>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 flex flex-col items-center text-center bg-slate-50">
+              <span class="w-8 h-4 rounded bg-white border border-slate-300 mb-2 shadow-sm"></span>
+              <strong class="text-slate-800">Tipo P (Blanco)</strong>
+              <span class="text-[11px] text-slate-600 mt-1">Material particulado, polvos, humos y nieblas en suspensión.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 10: SEÑALIZACIÓN Y COMUNICACIÓN DE PELIGROS: SGA Y NFPA -->
+      <section id="senalizacion-sga-nfpa" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">10</span>
+          <h3 class="text-2xl font-bold text-slate-900">Comunicación de Peligros: SGA / GHS y Rombo NFPA 704</h3>
+        </div>
+
+        <!-- SGA / GHS -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+              <i class="fa-solid fa-tags text-brand-600"></i> Sistema Globalmente Armonizado (SGA / GHS) - Res. SRT 901/2015
+            </h4>
+            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">Norma Legal Obligatoria</span>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed">
+            El SGA unifica a nivel mundial la clasificación y el etiquetado de productos químicos peligrosos. Una etiqueta normalizada debe incluir obligatoriamente:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="font-bold text-slate-800">1. Identificador del Producto:</span>
+              <p class="text-slate-600 text-[11px] mt-1">Nombre químico oficial, número CAS coincidente con la Ficha de Datos de Seguridad (FDS).</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="font-bold text-slate-800">2. Palabra de Advertencia:</span>
+              <p class="text-slate-600 text-[11px] mt-1"><strong class="text-danger-700">"PELIGRO"</strong> (para categorías más graves) o <strong class="text-amber-700">"ATENCIÓN"</strong> (para peligros menos graves).</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="font-bold text-slate-800">3. Pictogramas de Peligro:</span>
+              <p class="text-slate-600 text-[11px] mt-1">Composiciones gráficas en rombo blanco con marco rojo vivo que comunican el tipo de daño al instante.</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="font-bold text-slate-800">4. Indicaciones de Peligro (Frases H):</span>
+              <p class="text-slate-600 text-[11px] mt-1">Describen la naturaleza y severidad del riesgo (ej. <em>"Líquido y vapores muy inflamables"</em>).</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="font-bold text-slate-800">5. Consejos de Prudencia (Frases P):</span>
+              <p class="text-slate-600 text-[11px] mt-1">Medidas aconsejadas de almacenamiento, uso, EPP y primeros auxilios.</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="font-bold text-slate-800">6. Identificación del Proveedor:</span>
+              <p class="text-slate-600 text-[11px] mt-1">Nombre, teléfono de emergencia y dirección del fabricante o distribuidor.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rombo NFPA 704 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+              <i class="fa-solid fa-fire text-danger-600"></i> Rombo NFPA 704 (Respuesta ante Emergencias)
+            </h4>
+            <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded">Escala 0 (sin riesgo) a 4 (máximo peligro)</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <!-- Diagrama Rombo CSS -->
+            <div class="md:col-span-4 flex flex-col items-center justify-center p-4 bg-slate-50 rounded-2xl border border-slate-200">
+              <div class="nfpa-box shadow-lg">
+                <div class="nfpa-quadrant nfpa-flammability" title="Inflamabilidad (Rojo)">
+                  <div class="nfpa-inner">
+                    <span id="nfpa-val-red">3</span>
+                    <span class="block text-[8px] tracking-normal font-normal">INFLAM</span>
+                  </div>
+                </div>
+                <div class="nfpa-quadrant nfpa-health" title="Salud (Azul)">
+                  <div class="nfpa-inner">
+                    <span id="nfpa-val-blue">2</span>
+                    <span class="block text-[8px] tracking-normal font-normal">SALUD</span>
+                  </div>
+                </div>
+                <div class="nfpa-quadrant nfpa-reactivity" title="Inestabilidad / Reactividad (Amarillo)">
+                  <div class="nfpa-inner">
+                    <span id="nfpa-val-yellow">0</span>
+                    <span class="block text-[8px] tracking-normal font-normal">REACT</span>
+                  </div>
+                </div>
+                <div class="nfpa-quadrant nfpa-special" title="Riesgo Específico (Blanco)">
+                  <div class="nfpa-inner text-xs">
+                    <span id="nfpa-val-white" class="font-mono font-bold">W</span>
+                    <span class="block text-[7px] tracking-normal font-normal">ESPEC</span>
+                  </div>
+                </div>
+              </div>
+              <span class="text-[11px] text-slate-500 font-medium mt-6 text-center">Modelo visual para tanques e instalaciones fijas</span>
+            </div>
+
+            <!-- Explicación de los 4 colores -->
+            <div class="md:col-span-8 space-y-2 text-xs">
+              <div class="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-blue-950">
+                <strong class="text-blue-700">AZUL &rarr; Riesgo a la Salud:</strong><br>
+                <strong>4:</strong> Mortal | <strong>3:</strong> Muy peligroso | <strong>2:</strong> Peligroso | <strong>1:</strong> Poco peligroso | <strong>0:</strong> Sin riesgo.
+              </div>
+              <div class="p-3 bg-red-50/70 border border-red-200 rounded-xl text-red-950">
+                <strong class="text-red-700">ROJO &rarr; Inflamabilidad:</strong><br>
+                <strong>4:</strong> Arde por debajo de 25 °C | <strong>3:</strong> Debajo de 37 °C | <strong>2:</strong> Debajo de 93 °C | <strong>1:</strong> Sobre 93 °C | <strong>0:</strong> No se inflama.
+              </div>
+              <div class="p-3 bg-yellow-50/70 border border-yellow-200 rounded-xl text-yellow-950">
+                <strong class="text-yellow-700">AMARILLO &rarr; Inestabilidad / Reactividad:</strong><br>
+                <strong>4:</strong> Puede explotar súbitamente | <strong>3:</strong> Explota por calor o golpe fuerte | <strong>2:</strong> Reacción química violenta | <strong>1:</strong> Inestable si se calienta | <strong>0:</strong> Estable.
+              </div>
+              <div class="p-3 bg-slate-100 border border-slate-300 rounded-xl text-slate-900">
+                <strong class="text-slate-800">BLANCO &rarr; Riesgos Especiales:</strong><br>
+                <strong>W:</strong> Reactivo con agua (no arrojar agua) | <strong>OX:</strong> Oxidante comburente | <strong>COR:</strong> Corrosivo | <strong>Radioactivo</strong> | <strong>Biológico</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 11: HERRAMIENTAS INTERACTIVAS Y CALCULADORAS -->
+      <section id="herramientas" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">11</span>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900">Calculadoras de Higiene Industrial</h3>
+            <p class="text-xs text-slate-500">Herramientas interactivas para ejercitación y resolución de casos de estudio.</p>
+          </div>
+        </div>
+
+        <!-- CALCULADORA 1: CMP Ponderada en el Tiempo -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-brand-300 shadow-md space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+              <i class="fa-solid fa-stopwatch text-brand-600"></i> Calculadora 1: Ponderación de Exposición Diaria (CMP<sub>m</sub>)
+            </h4>
+            <span class="text-xs bg-brand-50 text-brand-700 font-mono font-bold px-2 py-0.5 rounded">Jornada 8 Horas</span>
+          </div>
+          <p class="text-xs text-slate-600">
+            Ingresa las concentraciones medidas en cada período de tiempo de la jornada laboral. La herramienta calcula el valor medio ponderado y lo contrasta automáticamente contra la CMP legal.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Nombre del Contaminante:</label>
+              <input type="text" id="calc1-name" value="Fluoruro de vinilo" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-800 font-medium text-xs">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">CMP Legal de Referencia (ppm):</label>
+              <input type="number" step="any" id="calc1-cmp" value="1.0" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-800 font-medium text-xs">
+            </div>
+          </div>
+
+          <!-- Tabla dinámica de mediciones -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2">Tramo</th>
+                  <th class="p-2">Concentración C<sub>i</sub> (ppm)</th>
+                  <th class="p-2">Tiempo t<sub>i</sub> (horas)</th>
+                  <th class="p-2">C<sub>i</sub> &times; t<sub>i</sub></th>
+                </tr>
+              </thead>
+              <tbody id="calc1-tbody" class="divide-y divide-slate-100 font-mono">
+                <tr>
+                  <td class="p-2 font-sans text-slate-500">Intervalo 1</td>
+                  <td class="p-2"><input type="number" step="any" value="78" class="calc1-c w-24 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2"><input type="number" step="any" value="1.25" class="calc1-t w-20 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2 font-bold text-slate-700 calc1-prod">97.5</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-sans text-slate-500">Intervalo 2</td>
+                  <td class="p-2"><input type="number" step="any" value="34" class="calc1-c w-24 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2"><input type="number" step="any" value="0.77" class="calc1-t w-20 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2 font-bold text-slate-700 calc1-prod">26.18</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-sans text-slate-500">Intervalo 3</td>
+                  <td class="p-2"><input type="number" step="any" value="89" class="calc1-c w-24 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2"><input type="number" step="any" value="4.32" class="calc1-t w-20 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2 font-bold text-slate-700 calc1-prod">384.48</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-sans text-slate-500">Intervalo 4</td>
+                  <td class="p-2"><input type="number" step="any" value="2" class="calc1-c w-24 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2"><input type="number" step="any" value="0.50" class="calc1-t w-20 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2 font-bold text-slate-700 calc1-prod">1.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-sans text-slate-500">Intervalo 5</td>
+                  <td class="p-2"><input type="number" step="any" value="18" class="calc1-c w-24 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2"><input type="number" step="any" value="1.16" class="calc1-t w-20 px-2 py-1 rounded border border-slate-300"></td>
+                  <td class="p-2 font-bold text-slate-700 calc1-prod">20.88</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="calcularCMP()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-xs transition shadow-sm">
+              <i class="fa-solid fa-calculator mr-1"></i> Calcular CMP Ponderada
+            </button>
+            <button onclick="cargarCasoSeguro()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition">
+              Cargar Caso Fluoruro de Vinilideno (No Riesgo)
+            </button>
+          </div>
+
+          <!-- Resultado CMP -->
+          <div id="calc1-resultado" class="p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-all bg-rose-50 border-rose-200 text-rose-900">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider">Resultado de la Evaluación:</div>
+              <div class="text-lg font-black font-mono mt-0.5">
+                CMP<sub>medido</sub> = <span id="calc1-res-val">66,25</span> ppm &nbsp;|&nbsp; CMP<sub>legal</sub> = <span id="calc1-res-legal">1,00</span> ppm
+              </div>
+              <div id="calc1-res-badge" class="text-xs font-semibold mt-1 flex items-center gap-1.5 text-danger-700">
+                <i class="fa-solid fa-triangle-exclamation"></i> CMP<sub>m</sub> &gt; CMP: ¡HAY RIESGO HIGIÉNICO INTOLERABLE!
+              </div>
+            </div>
+            <div class="text-right text-[11px] font-mono text-slate-500">
+              Tiempo total sumado: <span id="calc1-total-t">8.00</span> hs
+            </div>
+          </div>
+        </div>
+
+        <!-- CALCULADORA 2: Conversor mg/m³ <-> ppm -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+              <i class="fa-solid fa-arrows-rotate text-brand-600"></i> Calculadora 2: Conversión ppm &harr; mg/m³
+            </h4>
+            <span class="text-xs bg-slate-100 text-slate-700 font-mono px-2 py-0.5 rounded">T = 25 °C | P = 1 atm</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Peso Molecular (PM en g/mol):</label>
+              <input type="number" step="any" id="calc2-pm" value="78.11" placeholder="Ej: 78.11 para Benceno" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-800 font-medium text-xs">
+              <span class="text-[10px] text-slate-500">Ejemplos: Benceno = 78.11 | Tolueno = 92.14 | Acetona = 58.08</span>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Concentración en ppm:</label>
+              <input type="number" step="any" id="calc2-ppm" value="0.5" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-800 font-medium text-xs">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Concentración en mg/m³:</label>
+              <input type="number" step="any" id="calc2-mgm3" value="1.60" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-800 font-medium text-xs">
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="convertirPpmAMg()" class="px-3.5 py-1.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-xs transition">
+              Convertir ppm &rarr; mg/m³
+            </button>
+            <button onclick="convertirMgAPpm()" class="px-3.5 py-1.5 bg-slate-700 hover:bg-slate-800 text-white font-semibold rounded-lg text-xs transition">
+              Convertir mg/m³ &rarr; ppm
+            </button>
+          </div>
+
+          <div id="calc2-explicacion" class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 font-mono">
+            0,50 ppm &times; (78,11 / 24,45) = <strong>1,60 mg/m³</strong> (Valor exacto para Benceno según tabla Res. 295/03)
+          </div>
+        </div>
+
+        <!-- CALCULADORA 3: Mezcla de Contaminantes Aditivos -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+              <i class="fa-solid fa-cubes-stacked text-brand-600"></i> Calculadora 3: Evaluación de Mezclas con Efecto Aditivo
+            </h4>
+            <span class="text-xs bg-slate-100 text-slate-700 font-mono px-2 py-0.5 rounded">&sum; (C<sub>i</sub> / CMP<sub>i</sub>)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <div class="font-bold text-slate-800">Sustancia 1</div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-slate-500">Concentración C<sub>1</sub>:</label>
+                  <input type="number" step="any" id="calc3-c1" value="75" class="w-full px-2 py-1 rounded border border-slate-300">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-slate-500">CMP<sub>1</sub>:</label>
+                  <input type="number" step="any" id="calc3-cmp1" value="1" class="w-full px-2 py-1 rounded border border-slate-300">
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <div class="font-bold text-slate-800">Sustancia 2</div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-slate-500">Concentración C<sub>2</sub>:</label>
+                  <input type="number" step="any" id="calc3-c2" value="200" class="w-full px-2 py-1 rounded border border-slate-300">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-slate-500">CMP<sub>2</sub>:</label>
+                  <input type="number" step="any" id="calc3-cmp2" value="500" class="w-full px-2 py-1 rounded border border-slate-300">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="calcularMezcla()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-xs transition shadow-sm">
+            Evaluar Mezcla Aditiva
+          </button>
+
+          <div id="calc3-resultado" class="p-4 rounded-xl border text-xs transition-all bg-rose-50 border-rose-200 text-rose-900 font-mono">
+            &Sigma; = (75 / 1) + (200 / 500) = 75 + 0,4 = <strong>75,40 &gt; 1</strong> &rarr; <span class="text-danger-700 font-bold">¡SE SOBREPASA EL LÍMITE UMBRAL DE LA MEZCLA!</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 12: TEST DE AUTOEVALUACIÓN INTERACTIVO -->
+      <section id="autoevaluacion" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-sky-100 text-brand-700 flex items-center justify-center font-bold text-sm">12</span>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900">Test de Autoevaluación Universitaria</h3>
+            <p class="text-xs text-slate-500">Preguntas tipo parcial y examen final con retroalimentación pedagógica inmediata.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4" id="quiz-container">
+          <!-- Pregunta 1 -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3" id="q1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-brand-600">Pregunta 1</span>
+              <span class="text-[11px] text-slate-400">Ramas de la Higiene</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800">
+              ¿Cuál es la fMaterial generado con IA, puede contener erroresión específica del "Nivel de Acción" determinado por la Higiene Teórica?
+            </p>
+            <div class="space-y-2 text-xs">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="a" class="text-brand-600">
+                <span>Es la concentración a partir de la cual el trabajador fallece inmediatamente.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="b" class="text-brand-600">
+                <span>Es la mitad del límite admisible (Límite / 2), a partir del cual se inician exámenes médicos y monitoreos ambientales periódicos preventivos.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="c" class="text-brand-600">
+                <span>Es el valor que nMaterial generado con IA, puede contener erroresa debe sobrepasarse durante más de 15 minutos en la jornada.</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q1', 'b', '¡Correcto! El Nivel de Acción es Dosis Admisible / 2. Señala el umbral a partir del cual se debe realizar seguimiento médico del personal y mediciones ambientales más frecuentes para evitar que se alcance el límite máximo.', 'Incorrecto. Revisa el concepto de Nivel de Acción en la diapositiva 5.')" class="px-3 py-1 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3" id="q2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-brand-600">Pregunta 2</span>
+              <span class="text-[11px] text-slate-400">Tamaño de Partículas</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800">
+              Según la norma UNE EN 12341, ¿qué rango de diámetro aerodinámico define a la "Fracción Respirable" capaz de llegar a los alvéolos y provocar neumoconiosis?
+            </p>
+            <div class="space-y-2 text-xs">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q2_opt" value="a" class="text-brand-600">
+                <span>D &lt; 30 &mu;m</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q2_opt" value="b" class="text-brand-600">
+                <span>2,5 &mu;m &lt; D &lt; 10 &mu;m</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q2_opt" value="c" class="text-brand-600">
+                <span>D &lt; 2,5 &mu;m</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q2', 'c', '¡Excelente! La fracción respirable tiene D < 2,5 µm. Es la que penetra hasta los alvéolos pulmonares escapando a los cilios protectores y originando patologías crónicas como silicosis y asbestosis.', 'Incorrecto. Recuerda que D < 30 µm es inhalable total, entre 2,5 y 10 µm es traqueobronquial, y < 2,5 µm es respirable alveolar.')" class="px-3 py-1 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3" id="q3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-brand-600">Pregunta 3</span>
+              <span class="text-[11px] text-slate-400">Límites Legales Res. 295/03</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800">
+              ¿Cuáles son las 4 condiciones simultáneas que rigen para la Concentración Máxima Permisible para Cortos Períodos de Tiempo (CMP-CPT / STEL)?
+            </p>
+            <div class="space-y-2 text-xs">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q3_opt" value="a" class="text-brand-600">
+                <span>Máx 15 min de duración; máx 4 veces por jornada; mínimo 60 min de separación entre picos; y que nMaterial generado con IA, puede contener erroresa se sobrepase la CMP ponderada diaria de 8 horas.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q3_opt" value="b" class="text-brand-600">
+                <span>Máx 30 min continuos; sin límite de repeticiones; separación de 15 min; siempre que se use mascarilla N95.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q3_opt" value="c" class="text-brand-600">
+                <span>No puede sobrepasarse en ningún instante de la jornada, ni siquiera durante 1 segundo.</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q3', 'a', '¡Exacto! Esas son las 4 condiciones reglamentarias del Anexo IV de la Res. 295/03 para el valor CMP-CPT.', 'Incorrecto. La opción C corresponde al valor techo (CMP-C). La opción correcta es la A.')" class="px-3 py-1 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3" id="q4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-brand-600">Pregunta 4</span>
+              <span class="text-[11px] text-slate-400">Protección Respiratoria</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800">
+              ¿Qué color de filtro respiratorio normalizado (EN 14387) se debe seleccionar para protegerse frente a Amoníaco y sus derivados orgánicos?
+            </p>
+            <div class="space-y-2 text-xs">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q4_opt" value="a" class="text-brand-600">
+                <span>Marrón (Tipo A)</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q4_opt" value="b" class="text-brand-600">
+                <span>Verde (Tipo K)</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q4_opt" value="c" class="text-brand-600">
+                <span>Amarillo (Tipo E)</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q4', 'b', '¡Correcto! El código verde (Tipo K) corresponde a amoníaco y aminas. Marrón es para vapores orgánicos y amarillo para gases ácidos como SO2.', 'Incorrecto. Recuerda: Marrón = Vapores orgánicos, Amarillo = Gases ácidos, Verde = Amoníaco (Tipo K).')" class="px-3 py-1 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUMEN FINAL / GLOSARIO PARA EXAMEN -->
+      <section class="bg-slate-900 text-slate-200 rounded-2xl p-6 shadow-md space-y-4 text-xs">
+        <h4 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-bookmark text-sky-400"></i> Síntesis Ejecutiva para el Examen
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ul class="space-y-2 text-slate-300">
+            <li>&bull; <strong>CMP:</strong> Concentración media ponderada a 8 hs diarias / 40 hs semanales. Se admiten picos si la media ponderada &le; CMP.</li>
+            <li>&bull; <strong>CMP-CPT:</strong> Máximo 15 min, máx 4 veces al día, separados 60 min, sin exceder CMP diaria.</li>
+            <li>&bull; <strong>CMP-C:</strong> Límite instantáneo techo que jamás se puede sobrepasar.</li>
+            <li>&bull; <strong>Conversión:</strong> En condiciones de referencia (25°C, 1 atm), el volumen molar es <strong>24,45 L/mol</strong>.</li>
+          </ul>
+          <ul class="space-y-2 text-slate-300">
+            <li>&bull; <strong>Mezclas aditivas:</strong> Se suman los cocientes $\sum \frac{C_i}{CMP_i}$. Si la suma es $\ge 1$, hay riesgo higiénico.</li>
+            <li>&bull; <strong>Filtros:</strong> Marrón (Orgánicos A), Gris (Inorgánicos B), Amarillo (Ácidos E), Verde (Amoníaco K), Blanco (Partículas P).</li>
+            <li>&bull; <strong>Pruebas de ajuste:</strong> Positiva (soplar tapando válvula) y Negativa (inhalar tapando filtros).</li>
+            <li>&bull; <strong>SGA (Res. SRT 901/15):</strong> Etiqueta con producto, palabra de advertencia, pictogramas, Frases H y P.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Material pedagógico desarrollado para la Materia de <strong>Seguridad, Higiene Industrial y Medio Ambiente</strong></p>
+      <p class="mt-1">Material generado con IA, puede contener errores &mdash; Material generado con IA, puede contener errores</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante Volver al Índice -->
+  <a href="index.html" class="no-print fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/40 hover:shadow-brand-600/60 transition-all duration-200 hover:-translate-y-0.5 group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500" title="Volver al índice de unidades">
+    <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+    <span>Volver al Índice</span>
+  </a>
+
+  <!-- JAVASCRIPT: LÓGICA DE LAS CALCULADORAS Y QUIZ -->
+  <script>
+    // Theme toggle logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
+
+    // Calculadora 1: CMP Ponderada
+    function calcularCMP() {
+      const cInputs = document.querySelectorAll('.calc1-c');
+      const tInputs = document.querySelectorAll('.calc1-t');
+      const prodCells = document.querySelectorAll('.calc1-prod');
+      const cmpLegal = parseFloat(document.getElementById('calc1-cmp').value) || 1.0;
+
+      let sumaProd = 0;
+      let sumaT = 0;
+
+      for (let i = 0; i < cInputs.length; i++) {
+        const c = parseFloat(cInputs[i].value) || 0;
+        const t = parseFloat(tInputs[i].value) || 0;
+        const prod = c * t;
+        prodCells[i].textContent = prod.toFixed(2);
+        sumaProd += prod;
+        sumaT += t;
+      }
+
+      const tiempoTotal = sumaT > 0 ? sumaT : 8.0;
+      const cmpm = sumaProd / tiempoTotal;
+
+      document.getElementById('calc1-res-val').textContent = cmpm.toFixed(2);
+      document.getElementById('calc1-res-legal').textContent = cmpLegal.toFixed(2);
+      document.getElementById('calc1-total-t').textContent = sumaT.toFixed(2);
+
+      const resBox = document.getElementById('calc1-resultado');
+      const resBadge = document.getElementById('calc1-res-badge');
+
+      if (cmpm > cmpLegal) {
+        resBox.className = "p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-all bg-rose-50 border-rose-200 text-rose-900";
+        resBadge.className = "text-xs font-semibold mt-1 flex items-center gap-1.5 text-danger-700";
+        resBadge.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> CMP<sub>m</sub> (' + cmpm.toFixed(2) + ') > CMP (' + cmpLegal.toFixed(2) + '): ¡HAY RIESGO HIGIÉNICO!';
+      } else {
+        resBox.className = "p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-all bg-emerald-50 border-emerald-200 text-emerald-900";
+        resBadge.className = "text-xs font-semibold mt-1 flex items-center gap-1.5 text-emerald-700";
+        resBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> CMP<sub>m</sub> (' + cmpm.toFixed(2) + ') &le; CMP (' + cmpLegal.toFixed(2) + '): NO HAY RIESGO HIGIÉNICO (ACEPTABLE)';
+      }
+    }
+
+    function cargarCasoSeguro() {
+      document.getElementById('calc1-name').value = "Fluoruro de vinilideno";
+      document.getElementById('calc1-cmp').value = "500";
+      const cValues = [62, 5, 15, 50, 12];
+      const tValues = [1.25, 0.77, 4.32, 0.50, 1.16];
+      
+      const cInputs = document.querySelectorAll('.calc1-c');
+      const tInputs = document.querySelectorAll('.calc1-t');
+
+      for(let i = 0; i < cInputs.length; i++) {
+        cInputs[i].value = cValues[i];
+        tInputs[i].value = tValues[i];
+      }
+      calcularCMP();
+    }
+
+    // Calculadora 2: ppm <-> mg/m3
+    function convertirPpmAMg() {
+      const pm = parseFloat(document.getElementById('calc2-pm').value);
+      const ppm = parseFloat(document.getElementById('calc2-ppm').value);
+      if(!pm || pm <= 0) { alert('Ingresa un peso molecular válido'); return; }
+      
+      const mgm3 = (pm / 24.45) * ppm;
+      document.getElementById('calc2-mgm3').value = mgm3.toFixed(3);
+      document.getElementById('calc2-explicacion').innerHTML = 
+        `${ppm.toFixed(2)} ppm &times; (${pm.toFixed(2)} / 24,45) = <strong>${mgm3.toFixed(3)} mg/m³</strong>`;
+    }
+
+    function convertirMgAPpm() {
+      const pm = parseFloat(document.getElementById('calc2-pm').value);
+      const mgm3 = parseFloat(document.getElementById('calc2-mgm3').value);
+      if(!pm || pm <= 0) { alert('Ingresa un peso molecular válido'); return; }
+
+      const ppm = (24.45 / pm) * mgm3;
+      document.getElementById('calc2-ppm').value = ppm.toFixed(3);
+      document.getElementById('calc2-explicacion').innerHTML = 
+        `${mgm3.toFixed(3)} mg/m³ &times; (24,45 / ${pm.toFixed(2)}) = <strong>${ppm.toFixed(3)} ppm</strong>`;
+    }
+
+    // Calculadora 3: Mezclas
+    function calcularMezcla() {
+      const c1 = parseFloat(document.getElementById('calc3-c1').value) || 0;
+      const cmp1 = parseFloat(document.getElementById('calc3-cmp1').value) || 1;
+      const c2 = parseFloat(document.getElementById('calc3-c2').value) || 0;
+      const cmp2 = parseFloat(document.getElementById('calc3-cmp2').value) || 1;
+
+      const q1 = c1 / cmp1;
+      const q2 = c2 / cmp2;
+      const suma = q1 + q2;
+
+      const resDiv = document.getElementById('calc3-resultado');
+      if(suma >= 1) {
+        resDiv.className = "p-4 rounded-xl border text-xs transition-all bg-rose-50 border-rose-200 text-rose-900 font-mono";
+        resDiv.innerHTML = `&Sigma; = (${c1} / ${cmp1}) + (${c2} / ${cmp2}) = ${q1.toFixed(2)} + ${q2.toFixed(2)} = <strong>${suma.toFixed(2)} &ge; 1</strong> &rarr; <span class="text-danger-700 font-bold">¡SE SOBREPASA EL LÍMITE UMBRAL! HAY RIESGO HIGIÉNICO.</span>`;
+      } else {
+        resDiv.className = "p-4 rounded-xl border text-xs transition-all bg-emerald-50 border-emerald-200 text-emerald-900 font-mono";
+        resDiv.innerHTML = `&Sigma; = (${c1} / ${cmp1}) + (${c2} / ${cmp2}) = ${q1.toFixed(2)} + ${q2.toFixed(2)} = <strong>${suma.toFixed(2)} &lt; 1</strong> &rarr; <span class="text-emerald-700 font-bold">LÍMITE RESPETADO (CONCENTRACIÓN ACEPTABLE).</span>`;
+      }
+    }
+
+    // Quiz feedback
+    function checkAnswer(qId, correctVal, successMsg, failMsg) {
+      const container = document.getElementById(qId);
+      const selected = container.querySelector('input[type="radio"]:checked');
+      const feedback = container.querySelector('.quiz-feedback');
+
+      feedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'bg-rose-50', 'text-rose-900', 'border-rose-200');
+      feedback.classList.add('border');
+
+      if (!selected) {
+        feedback.classList.add('bg-amber-50', 'text-amber-900', 'border-amber-200');
+        feedback.textContent = 'Por favor, selecciona una opción antes de verificar.';
+        return;
+      }
+
+      if (selected.value === correctVal) {
+        feedback.classList.add('bg-emerald-50', 'text-emerald-900', 'border-emerald-200');
+        feedback.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> ' + successMsg;
+      } else {
+        feedback.classList.add('bg-rose-50', 'text-rose-900', 'border-rose-200');
+        feedback.innerHTML = '<i class="fa-solid fa-circle-xmark text-rose-600 mr-1"></i> ' + failMsg;
+      }
+    }
+  </script>
+</body>
+</html>

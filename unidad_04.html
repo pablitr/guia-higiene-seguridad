@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 4: Riesgo Mecánico y Seguridad en Máquinas | Guía de Estudio HyS</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            danger: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            },
+            warning: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            safety: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Early Theme Detection to prevent flicker -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Dark Mode Global Styles */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+    html.dark body {
+      background-color: #020617;
+      color: #f1f5f9;
+    }
+    html.dark header {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-color: #1e293b !important;
+    }
+    html.dark .sticky-subnav {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-color: #1e293b !important;
+    }
+    html.dark .bg-white {
+      background-color: #0f172a !important;
+    }
+    html.dark .bg-slate-50 {
+      background-color: #020617 !important;
+    }
+    html.dark .bg-slate-100 {
+      background-color: #1e293b !important;
+    }
+    html.dark .text-slate-900 {
+      color: #f8fafc !important;
+    }
+    html.dark .text-slate-800 {
+      color: #f1f5f9 !important;
+    }
+    html.dark .text-slate-700 {
+      color: #cbd5e1 !important;
+    }
+    html.dark .text-slate-600 {
+      color: #94a3b8 !important;
+    }
+    html.dark .border-slate-200 {
+      border-color: #1e293b !important;
+    }
+    html.dark .border-slate-100 {
+      border-color: #1e293b !important;
+    }
+    html.dark .border-slate-300 {
+      border-color: #334155 !important;
+    }
+    html.dark .bg-sky-50 {
+      background-color: rgba(14, 165, 233, 0.12) !important;
+    }
+    html.dark .bg-indigo-50 {
+      background-color: rgba(99, 102, 241, 0.12) !important;
+    }
+    html.dark .bg-emerald-50 {
+      background-color: rgba(16, 185, 129, 0.12) !important;
+    }
+    html.dark .bg-amber-50 {
+      background-color: rgba(245, 158, 11, 0.12) !important;
+    }
+    html.dark .bg-rose-50 {
+      background-color: rgba(244, 63, 94, 0.12) !important;
+    }
+    html.dark .bg-purple-50 {
+      background-color: rgba(168, 85, 247, 0.12) !important;
+    }
+    html.dark .text-sky-700, html.dark .text-sky-800, html.dark .text-sky-900 {
+      color: #38bdf8 !important;
+    }
+    html.dark .text-indigo-700, html.dark .text-indigo-800, html.dark .text-indigo-900 {
+      color: #818cf8 !important;
+    }
+    html.dark .text-emerald-700, html.dark .text-emerald-800, html.dark .text-emerald-900 {
+      color: #34d399 !important;
+    }
+    html.dark .text-amber-700, html.dark .text-amber-800, html.dark .text-amber-900 {
+      color: #fbbf24 !important;
+    }
+    html.dark .text-rose-700, html.dark .text-rose-800, html.dark .text-rose-900 {
+      color: #fb7185 !important;
+    }
+    html.dark .text-purple-700, html.dark .text-purple-900, html.dark .text-purple-950 {
+      color: #c084fc !important;
+    }
+    html.dark .border-sky-200, html.dark .border-sky-300 {
+      border-color: rgba(56, 189, 248, 0.3) !important;
+    }
+    html.dark .border-indigo-200, html.dark .border-indigo-300 {
+      border-color: rgba(129, 140, 248, 0.3) !important;
+    }
+    html.dark .border-emerald-200, html.dark .border-emerald-300 {
+      border-color: rgba(52, 211, 153, 0.3) !important;
+    }
+    html.dark .border-amber-200, html.dark .border-amber-300 {
+      border-color: rgba(251, 191, 36, 0.3) !important;
+    }
+    html.dark .border-rose-200, html.dark .border-rose-300 {
+      border-color: rgba(251, 113, 133, 0.3) !important;
+    }
+    html.dark .border-purple-200, html.dark .border-purple-300 {
+      border-color: rgba(192, 132, 252, 0.3) !important;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        font-size: 10pt;
+        color: #0f172a;
+        background: white;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .card-print {
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-sky-100 selection:text-sky-900 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Brand / Identity -->
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition shadow-sm" title="Volver al índice general">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="hidden sm:inline">Volver</span>
+          </a>
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-600 via-blue-700 to-indigo-800 flex items-center justify-center text-white font-bold shadow-md shadow-sky-500/20 shrink-0">
+            <i class="fa-solid fa-gears text-lg"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Material generado con IA, puede contener errores &bull; HyS</span>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">Unidad 4: Riesgo Mecánico y Seguridad en Máquinas</h1>
+          </div>
+        </div>
+
+        <!-- Action Badges -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <a href="#simulador-fiabilidad" class="hidden md:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-900/60 transition">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Simulador RBD</span>
+          </a>
+          <a href="#selector-resguardos" class="hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Selector Resguardos</span>
+          </a>
+          <a href="#autoevaluacion" class="hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+          </a>
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Cambiar tema claro/oscuro">
+            <i class="fa-solid fa-moon text-sm dark:hidden"></i>
+            <i class="fa-solid fa-sun text-sm hidden dark:inline"></i>
+          </button>
+          <!-- Print Button -->
+          <button onclick="window.print()" class="no-print inline-flex items-center space-x-2 text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white transition shadow-sm" title="Imprimir o exportar PDF">
+            <i class="fa-solid fa-print"></i>
+            <span class="hidden sm:inline">Imprimir</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Progress Indicator Bar -->
+    <div id="readingProgress" class="h-1 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 w-0 transition-all duration-100"></div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-semibold mb-4">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Guía de Estudio Teórico-Práctica Universitaria</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+            Riesgo Mecánico: Seguridad Integral en Máquinas y Equipos Industriales
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+            Compendio exhaustivo basado en la Materia oficial de Higiene y Seguridad de la Material generado con IA, puede contener errores. Cubre desde los fundamentos ontológicos de una máquina y el ciclo de vida (LCM), la teoría matemática de confiabilidad (RBD y curva de la bañera), hasta los principios de prevención intrínseca, selección normalizada de resguardos fijos y móviles con enclavamiento, distancias antropométricas seguras (ISO 13857), dispositivos sensibles y protocolo de consignación cero (LOTO).
+          </p>
+          
+          <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-300">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-university text-sky-400"></i> Material generado con IA, puede contener errores &bull; Material generado con IA, puede contener errores</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-sky-400"></i> Lectura estimada: 40 min</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-book-shield text-emerald-400"></i> Alineado a Norma ISO 12100, 13857, 14120 y Ley 19.587</span>
+          </div>
+        </div>
+
+        <!-- Quick Summary Box -->
+        <div class="lg:w-96 bg-white/10 backdrop-blur-lg border border-white/15 rounded-2xl p-6 shadow-2xl">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-sky-300 flex items-center gap-2 mb-3">
+            <i class="fa-solid fa-list-check"></i> Ejes Temáticos Fundamentales
+          </h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+              <span><strong>Anatomía y LCM:</strong> Sistemas primarios, secundarios y gestión del ciclo de vida.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+              <span><strong>Fiabilidad (RBD):</strong> Curva de la bañera, sistemas serie vs. paralelo y paradoja fMaterial generado con IA, puede contener erroresional.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+              <span><strong>Cinemática Peligrosa:</strong> Formas de contacto, atrapamientos y agentes mecánicos.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+              <span><strong>Resguardos y Enclavamientos:</strong> Fijos, móviles, lógicas de bloqueo y algoritmo de selección.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-full bg-sky-500/30 text-sky-300 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</span>
+              <span><strong>Distancias y Mandos:</strong> ISO 13857, mando bimanual (Δt &le; 0.2s), finales de carrera positivos y LOTO.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK NAVIGATION STICKY TABS -->
+  <div class="sticky-subnav bg-white dark:bg-slate-900/95 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-40 shadow-sm no-print overflow-x-auto transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex space-x-1 sm:space-x-3 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap">
+        <a href="#modulo1" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">1. Conceptos y LCM</a>
+        <a href="#modulo2" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">2. Fiabilidad y RBD</a>
+        <a href="#modulo3" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">3. Cinemática del Riesgo</a>
+        <a href="#modulo4" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">4. Prevención Intrínseca</a>
+        <a href="#modulo5" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">5. Resguardos y Bloqueos</a>
+        <a href="#modulo6" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">6. Distancias ISO 13857</a>
+        <a href="#modulo7" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">7. Dispositivos Sensibles</a>
+        <a href="#modulo8" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">8. Máquinas Tipo y LOTO</a>
+        <a href="#simulador-fiabilidad" class="px-3 py-1.5 rounded-lg text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 transition"><i class="fa-solid fa-calculator mr-1"></i>Simuladores</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-16">
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 1: CONCEPTOS Y CICLO DE VIDA (LCM)  -->
+    <!-- ========================================== -->
+    <section id="modulo1" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-cube"></i> Módulo 1
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Definición Técnica de Máquina, Zonas Peligrosas y Ciclo de Vida (LCM)
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Bases ontológicas de la ingeniería de seguridad en equipos de trabajo industriales.
+        </p>
+      </div>
+
+      <!-- Definición de Máquina y LCM Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-cogs"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">¿Qué es una Máquina?</h3>
+          <span class="inline-block px-2.5 py-0.5 rounded-md bg-sky-50 text-sky-700 text-xs font-semibold mb-3">Definición Normalizada</span>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Conjunto de piezas u órganos unidos entre sí de modo solidario en una estructura o cuerpo, de los cuales <strong>al menos uno debe ser móvil</strong>. Dispone de órganos de accionamiento, circuitos de mando, circuitos de potencia y sistemas auxiliares para ejecutar operaciones como conformación, mecanizado, tratamiento, ensamblado o desplazamiento de materiales.
+          </p>
+        </div>
+
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-arrows-spin text-sky-600"></i>
+                Seguridad de una Máquina y Gestión del Ciclo de Vida (LCM)
+              </h3>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">Life Cycle Management</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              La seguridad <strong>no es un accesorio</strong> que se agrega al final del montaje, sino la <em>capacidad intrínseca</em> del equipo para ser transportado, instalado, utilizado, ajustado, mantenido, desmontado y finalmente retirado de acuerdo a las condiciones previstas por el fabricante, sin provocar lesiones a personas, daños ambientales ni pérdidas patrimoniales.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+                <i class="fa-solid fa-truck-ramp-box text-sky-600 text-lg mb-1 block"></i>
+                <strong>Transporte & Montaje</strong>
+                <p class="text-slate-500 mt-1">Cáncamos, izaje seguro, apoyos de base.</p>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+                <i class="fa-solid fa-person-digging text-emerald-600 text-lg mb-1 block"></i>
+                <strong>Operación Normal</strong>
+                <p class="text-slate-500 mt-1">Alimentación, ciclo productivo y descarga.</p>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+                <i class="fa-solid fa-wrench text-amber-600 text-lg mb-1 block"></i>
+                <strong>Reglaje & Ajuste</strong>
+                <p class="text-slate-500 mt-1">Puesta a punto y mantenimiento seguro.</p>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+                <i class="fa-solid fa-recycle text-rose-600 text-lg mb-1 block"></i>
+                <strong>Desmantelamiento</strong>
+                <p class="text-slate-500 mt-1">Desarme, reciclaje y retiro definitivo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600 text-base"></i>
+            <span><strong>Axioma Fundamental de Examen:</strong> Una máquina diseñada sin contemplar la fase de mantenimiento o reglaje forzará al operario a anular las protecciones para lubricar o calibrar. ¡El diseño seguro debe cubrir todas las fases del LCM!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arquitectura de Sistemas de una Máquina -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <i class="fa-solid fa-network-wired text-sky-600"></i>
+          Estructura de Sistemas: Primarios vs. Secundarios
+        </h3>
+        <p class="text-sm text-slate-600 mb-6">
+          Toda máquina industrial descompone su fMaterial generado con IA, puede contener erroresionamiento en dos familias estructurales de subsistemas. Identificar a qué sistema pertenece un elemento permite predecir el tipo de peligro que genera:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Sistemas Primarios -->
+          <div class="border border-sky-200 bg-sky-50/50 rounded-xl p-5">
+            <h4 class="font-bold text-sky-900 text-base flex items-center gap-2 mb-3">
+              <span class="w-6 h-6 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+              Sistemas Primarios (FMaterial generado con IA, puede contener erroresión Esencial)
+            </h4>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-microchip text-sky-600 mt-1"></i>
+                <div><strong>Control:</strong> Interfaz hombre-máquina (HMI), pulsadores, PLC, relés y circuitos lógicos de mando.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-bolt text-sky-600 mt-1"></i>
+                <div><strong>Motriz:</strong> Motores eléctricos, motores hidráulicos, cilindros de fuerza primaria.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrows-spin text-sky-600 mt-1"></i>
+                <div><strong>Transmisión:</strong> Árboles, poleas, correas trapezoidales, cadenas, piñones, cardanes y engranajes.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-crosshairs text-sky-600 mt-1"></i>
+                <div><strong>Receptor (Punto de Operación):</strong> Husillo, mandril, matriz, cuchilla, disco abrasivo, émbolo de compresión.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-layer-group text-sky-600 mt-1"></i>
+                <div><strong>Sustentación:</strong> Bancada, chasis, columnas guías y estructura portante sismorresistente.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sistemas Secundarios -->
+          <div class="border border-indigo-200 bg-indigo-50/50 rounded-xl p-5">
+            <h4 class="font-bold text-indigo-900 text-base flex items-center gap-2 mb-3">
+              <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">2</span>
+              Sistemas Secundarios (Auxiliares y Regulación)
+            </h4>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-sliders text-indigo-600 mt-1"></i>
+                <div><strong>Regulación:</strong> Válvulas de presión, reguladores de caudal, potenciómetros, variadores de frecuencia.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-boxes-packing text-indigo-600 mt-1"></i>
+                <div><strong>Alimentación:</strong> Tolvas vibratorias, alimentadores automáticos, cintas de carga y brazos robotizados.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-snowflake text-indigo-600 mt-1"></i>
+                <div><strong>Refrigeración:</strong> Circuitos de taladrina/soluble, ventiladores forzados, intercambiadores de calor.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-hand text-indigo-600 mt-1"></i>
+                <div><strong>Frenado:</strong> Frenos de disco neumáticos, frenos de zapata electromagnéticos, inyección de corriente continua.</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-oil-can text-indigo-600 mt-1"></i>
+                <div><strong>Lubricación:</strong> Bombas de grasa centralizada, depósitos de aceite, lubricadores por niebla de aire comprimido.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla Comparativa de Zonas de Peligro -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm overflow-hidden">
+        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-table-cells text-sky-600"></i>
+          Mapeo de Zonas de Peligro en la Máquina
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                <th class="p-3 font-bold">Zona de Peligro</th>
+                <th class="p-3 font-bold">Descripción del Elemento Agresor</th>
+                <th class="p-3 font-bold">Sistema Asociado</th>
+                <th class="p-3 font-bold">Consecuencia Típica</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-600">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">Punto de Operación</td>
+                <td class="p-3">Herramienta de corte, puntos de contacto punzón-matriz, fragmentos proyectados.</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-sky-100 text-sky-800 rounded font-semibold text-xs">Receptor</span></td>
+                <td class="p-3 text-rose-600 font-semibold">Corte, amputación, aplastamiento severo.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">Elementos Cinemáticos y Tubos Oleohidráulicos</td>
+                <td class="p-3">Engranajes, correas, cadenas, flechas rotantes, latiguillos sometidos a 200 bar de presión.</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-semibold text-xs">Motriz / Transmisión</span></td>
+                <td class="p-3 text-rose-600 font-semibold">Atrapamiento, arrastre, inyección subcutánea de fluido.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">Alimentación y Evacuación de Piezas</td>
+                <td class="p-3">Sistemas de carga/descarga, empujadores neumáticos, puertas de acceso a tolva.</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded font-semibold text-xs">Alimentación</span></td>
+                <td class="p-3 text-amber-600 font-semibold">Pellizco, cizallamiento de extremidades superiores.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">Sistemas Auxiliares</td>
+                <td class="p-3">Líquidos refrigerantes calientes, líneas de soplado de viruta, pérdidas de lubricante.</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-purple-100 text-purple-800 rounded font-semibold text-xs">Refrigeración / Frenado</span></td>
+                <td class="p-3 text-amber-600 font-semibold">Quemaduras térmicas, resbalones, impactos de viruta.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">Entorno y Plataforma</td>
+                <td class="p-3">Pasarelas de acceso, iluminación deficiente, vibraciones transmitidas a la base.</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-slate-100 text-slate-800 rounded font-semibold text-xs">Externo</span></td>
+                <td class="p-3 text-slate-700">Caídas a distinto nivel, fatiga visual, tropiezos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 2: FIABILIDAD Y DIAGRAMAS RBD       -->
+    <!-- ========================================== -->
+    <section id="modulo2" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-chart-area"></i> Módulo 2
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Ingeniería de la Fiabilidad: Curva de la Bañera y Diagramas de Bloques (RBD)
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Tratamiento analítico de la probabilidad de falla y diseño de redundancias fMaterial generado con IA, puede contener erroresionales para salvaguardar la vida humana.
+        </p>
+      </div>
+
+      <!-- Definición de Fiabilidad y FMaterial generado con IA, puede contener erroresión Matemática -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <h3 class="text-base font-bold text-slate-900 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-calculator text-sky-600"></i>
+            Definición de Fiabilidad (R)
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+            Concepto atribuible a sistemas, máquinas y componentes que expresa la <strong>probabilidad estadística</strong> de que cumplan con la fMaterial generado con IA, puede contener erroresión para la cual fueron diseñados, bajo condiciones ambientales y operativas especificadas, durante un período de tiempo determinado ($t$).
+          </p>
+          <div class="p-3 bg-slate-900 rounded-xl text-white font-mono text-center text-sm mb-3">
+            R(t) = e<sup>- &int; &lambda;(t) dt</sup>
+          </div>
+          <p class="text-xs text-slate-500">
+            Donde <strong>&lambda;(t)</strong> es la tasa instantánea de fallas. Cuando &lambda; es constante en el período de vida útil:
+          </p>
+          <div class="p-3 bg-sky-900/40 border border-sky-600/30 rounded-xl text-sky-200 font-mono text-center text-base font-bold mt-2">
+            R(t) = e<sup>- &lambda; t</sup>
+          </div>
+        </div>
+
+        <!-- Curva de la Bañera Explicada -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-water-ladder text-sky-600"></i>
+                La Curva de la Bañera (Bathtub Curve)
+              </h3>
+              <span class="px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-bold">&lambda;(t) vs. Tiempo</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 mb-4">
+              La evolución temporal de la tasa de fallas &lambda;(t) de cualquier equipo mecánico sigue una trayectoria característica dividida en tres etapas nítidas:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs mb-4">
+              <div class="p-3 rounded-xl border border-sky-200 bg-sky-50/60">
+                <span class="font-bold text-sky-900 block mb-1">1. Etapa de Inicio (Infantil)</span>
+                <p class="text-slate-600">Tasa de fallas <strong>decreciente</strong>. Causada por defectos de fabricación, tolerancias fuera de norma, fallas de montaje inicial o errores de lubricación.</p>
+              </div>
+              <div class="p-3 rounded-xl border border-emerald-200 bg-emerald-50/60">
+                <span class="font-bold text-emerald-900 block mb-1">2. Servicio Normal (Vida Útil)</span>
+                <p class="text-slate-600">Tasa de fallas <strong>constante (&lambda; &asymp; cte)</strong>. Fallas puramente aleatorias por solicitaciones imprevistas. Es la zona donde opera el modelo $R(t) = e^{-\lambda t}$.</p>
+              </div>
+              <div class="p-3 rounded-xl border border-rose-200 bg-rose-50/60">
+                <span class="font-bold text-rose-900 block mb-1">3. Desgaste Excesivo (Vejez)</span>
+                <p class="text-slate-600">Tasa de fallas <strong>creciente exponencialmente</strong>. Cansancio de materiales por fatiga, abrasión, corrosión o degradación de sellos y aislamientos.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3 bg-slate-100 rounded-xl border border-slate-200 text-slate-700 text-xs flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-lightbulb text-amber-500 text-base"></i>
+              <strong>Objetivo de la Ingeniería:</strong> Reducir el valor de &lambda; constante (mediante diseño robusto y componentes certificados) y retrasar la llegada a la zona de desgaste mediante mantenimiento predictivo y preventivo.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagramas de Bloques de Confiabilidad: Serie vs Paralelo -->
+      <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+        <h3 class="text-xl font-bold mb-2 flex items-center gap-2.5">
+          <i class="fa-solid fa-boxes-stacked text-sky-400"></i>
+          Reliability Block Diagram (RBD): Arquitectura Serie vs. Paralelo
+        </h3>
+        <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-4xl leading-relaxed">
+          El análisis de confiabilidad mediante RBD evalúa cómo la disposición de las fMaterial generado con IA, puede contener erroresiones influye en la probabilidad de supervivencia del conjunto. <em>Advertencia crucial de Materia:</em> el RBD representa la <strong>confiabilidad de las fMaterial generado con IA, puede contener erroresiones</strong>, no necesariamente la disposición física de los tubos o cables.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Sistema Serie -->
+          <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/15 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-sky-300 text-base flex items-center gap-2">
+                  <i class="fa-solid fa-link"></i> Sistema en Serie (Lógica Y / AND)
+                </h4>
+                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 text-xs font-mono font-bold">R<sub>s</sub> &lt; R<sub>min</sub></span>
+              </div>
+              <p class="text-xs text-slate-300 mb-4">
+                Para que el sistema cumpla su fMaterial generado con IA, puede contener erroresión global, <strong>todos y cada uno</strong> de los bloques deben operar satisfactoriamente. Si uno solo falla, el sistema colapsa de inmediato.
+              </p>
+
+              <!-- SVG Bloques Serie -->
+              <div class="bg-slate-950/70 p-3 rounded-xl border border-white/10 flex items-center justify-center space-x-2 font-mono text-xs text-center mb-4">
+                <span class="text-slate-400 text-lg">&rarr;</span>
+                <div class="border border-sky-400 bg-sky-950/80 px-3 py-2 rounded text-sky-200">R<sub>1</sub></div>
+                <span class="text-sky-400">&mdash;</span>
+                <div class="border border-sky-400 bg-sky-950/80 px-3 py-2 rounded text-sky-200">R<sub>2</sub></div>
+                <span class="text-sky-400">&mdash;</span>
+                <div class="border border-sky-400 bg-sky-950/80 px-3 py-2 rounded text-sky-200">R<sub>i</sub></div>
+                <span class="text-sky-400">&mdash;</span>
+                <div class="border border-sky-400 bg-sky-950/80 px-3 py-2 rounded text-sky-200">R<sub>n</sub></div>
+                <span class="text-slate-400 text-lg">&rarr;</span>
+              </div>
+
+              <div class="p-3 bg-white/5 rounded-lg border border-white/10 font-mono text-center text-sm text-sky-300 mb-3">
+                R<sub>s</sub> = R<sub>1</sub> &times; R<sub>2</sub> &times; ... &times; R<sub>n</sub> = &prod; R<sub>i</sub>
+              </div>
+            </div>
+
+            <div class="text-xs text-rose-300 bg-rose-950/40 p-3 rounded-lg border border-rose-500/30">
+              <strong>Teorema de la Cadena Débil:</strong> En una configuración serie, la confiabilidad resultante es <em>estrictamente menor que la fiabilidad del componente menos confiable</em>: <br>
+              <code class="font-bold text-white">R<sub>s</sub> &lt; R<sub>i,min</sub></code>. Cuantos más elementos en serie, peor es la confiabilidad del sistema.
+            </div>
+          </div>
+
+          <!-- Sistema Paralelo / Redundancia -->
+          <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/15 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-emerald-300 text-base flex items-center gap-2">
+                  <i class="fa-solid fa-bezier-curve"></i> Sistema Paralelo / Redundante (Lógica O / OR)
+                </h4>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold">R<sub>p</sub> &gt; R<sub>max</sub></span>
+              </div>
+              <p class="text-xs text-slate-300 mb-4">
+                El sistema fMaterial generado con IA, puede contener erroresiona si <strong>al menos uno</strong> de los canales alternativos opera. Para que el sistema falle por completo, <em>deben fallar simultáneamente todos los bloques</em>.
+              </p>
+
+              <!-- SVG Bloques Paralelo -->
+              <div class="bg-slate-950/70 p-2 rounded-xl border border-white/10 flex items-center justify-center font-mono text-xs text-center mb-4">
+                <div class="flex flex-col space-y-2 w-full max-w-[200px]">
+                  <div class="border border-emerald-400 bg-emerald-950/80 py-1 rounded text-emerald-200">Canal A (R<sub>A</sub>)</div>
+                  <div class="text-emerald-400 text-center font-bold">|| (OR)</div>
+                  <div class="border border-emerald-400 bg-emerald-950/80 py-1 rounded text-emerald-200">Canal B (R<sub>B</sub>)</div>
+                </div>
+              </div>
+
+              <div class="p-3 bg-white/5 rounded-lg border border-white/10 font-mono text-center text-xs sm:text-sm text-emerald-300 mb-3 space-y-1">
+                <div>F<sub>p</sub> = F<sub>1</sub> &times; F<sub>2</sub> &times; ... &times; F<sub>n</sub> = &prod; (1 - R<sub>i</sub>)</div>
+                <div class="font-bold text-white">R<sub>p</sub> = 1 - &prod; (1 - R<sub>i</sub>)</div>
+              </div>
+            </div>
+
+            <div class="text-xs text-emerald-300 bg-emerald-950/40 p-3 rounded-lg border border-emerald-500/30">
+              <strong>Efecto de la Redundancia:</strong> La confiabilidad global de una estructura paralela siempre es <em>mayor que la fiabilidad de cualquiera de sus componentes por separado</em>: <br>
+              <code class="font-bold text-white">R<sub>p</sub> &gt; R<sub>i,max</sub></code>. Es la herramienta principal para diseñar fMaterial generado con IA, puede contener erroresiones críticas de seguridad.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- La Gran Paradoja: Diagrama FMaterial generado con IA, puede contener erroresional vs. Físico -->
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-6 sm:p-8 text-slate-800 shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-2xl shrink-0 mt-1 shadow-md">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-800 block">Pregunta Clásica y Filtro de Examen</span>
+              <h3 class="text-xl font-extrabold text-slate-900">
+                Diagrama de Confiabilidad de FMaterial generado con IA, puede contener erroresiones &ne; Diagrama Físico de Instalación
+              </h3>
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Muchos ingenieros cometen el grave error de graficar el RBD copiando la cañería o el cableado físico. <strong>¡El RBD no modela cables, modela la probabilidad de cumplimiento de la fMaterial generado con IA, puede contener erroresión de diseño!</strong> Analicemos los dos casos de la Materia:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Caso 1: Válvulas de retención -->
+              <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
+                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2 mb-2 text-sky-800">
+                  <i class="fa-solid fa-faucet-drip"></i> 1. Bombas y Válvulas de Retención (Check Valves)
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                  <strong>Instalación física:</strong> En la tubería se colocan la bomba <em>B</em>, seguida en serie de la válvula <em>V<sub>1</sub></em> y luego la válvula <em>V<sub>2</sub></em> en la misma línea (físicamente una detrás de la otra).
+                </p>
+                <div class="p-2 bg-sky-50 rounded text-xs text-slate-700 border border-sky-100">
+                  <strong>FMaterial generado con IA, puede contener erroresión analizada:</strong> <em>"Evitar el flujo inverso de líquido hacia la bomba"</em>.<br>
+                  Para cumplir la fMaterial generado con IA, puede contener erroresión, ¿deben cerrar ambas o alcanza con que cierre cualquiera de las dos? <strong>¡Basta con que una sola de las válvulas cierre para detener el retorno!</strong><br>
+                  <span class="font-bold text-sky-900">&there4; En el RBD fMaterial generado con IA, puede contener erroresional, V<sub>1</sub> y V<sub>2</sub> están en PARALELO (Redundantes).</span>
+                </div>
+              </div>
+
+              <!-- Caso 2: Banco de capacitores -->
+              <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
+                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2 mb-2 text-indigo-800">
+                  <i class="fa-solid fa-bolt"></i> 2. Batería de Condensadores en Paralelo Eléctrico
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                  <strong>Instalación física:</strong> Se conectan 4 condensadores <em>(C<sub>1</sub>, C<sub>2</sub>, C<sub>3</sub>, C<sub>4</sub>)</em> en paralelo entre dos barras colectoras.
+                </p>
+                <div class="p-2 bg-indigo-50 rounded text-xs text-slate-700 border border-indigo-100">
+                  <strong>Modo de falla temido:</strong> <em>"Falla por cortocircuito entre placas"</em>.<br>
+                  Si uno solo de los capacitores se pone en cortocircuito, cortocircuita las barras principales y <strong>hace colapsar a toda la batería de potencia</strong>.<br>
+                  <span class="font-bold text-indigo-900">&there4; Respecto a la falla de cortocircuito, ¡en el RBD fMaterial generado con IA, puede contener erroresional están en SERIE!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Redundancia Secuencial y Caso de Bombeo de Incendio -->
+            <div class="p-4 bg-white rounded-xl border border-amber-200">
+              <h4 class="font-bold text-slate-900 text-sm mb-1 text-emerald-800">
+                <i class="fa-solid fa-shield-heart"></i> Redundancia Secuencial (Standby) &mdash; Bombeo Red de Incendio
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                A diferencia de la redundancia activa (donde todos los equipos operan a la vez), en la <strong>redundancia secuencial</strong> hay una unidad primaria activa (Bomba 1) y una secundaria en reserva pasiva (Bomba 2). Se requiere un elemento sensor confiable (presostato con lógica en cascada) que detecte la caída de presión al fallar la primera y conmute el arranque de la segunda. Es más económica en desgaste y combustible, pero su confiabilidad final depende de la confiabilidad del sistema de detección y conmutación.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 3: CINEMÁTICA Y MODOS DE CONTACTO   -->
+    <!-- ========================================== -->
+    <section id="modulo3" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-person-falling-burst"></i> Módulo 3
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Cinemática del Peligro, Movimientos Mecánicos y Modos de Contacto
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Cómo se generan las fuerzas lesivas y qué zonas anatómicas son vulneradas por cada tipo de movimiento.
+        </p>
+      </div>
+
+      <!-- Tipos de Movimientos de los Órganos Mecánicos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Rotación -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold mb-3">
+              <i class="fa-solid fa-rotate"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">1. Movimiento Rotatorio</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              El más común y traicionero en planta. Presenta tres configuraciones de altísimo riesgo:
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li><strong>Ejes y árboles lisos:</strong> Parece inofensivo, pero atrapa ropa, pelo o guantes en milisegundos.</li>
+              <li><strong>Ruedas con resaltes:</strong> Chavetas salientes, tornillos de fijación, radios huecos de volantes.</li>
+              <li><strong>Herramientas rotativas:</strong> Fresas, brocas helicoidales, discos abrasivos, hojas de sierra.</li>
+            </ul>
+          </div>
+          <span class="mt-4 inline-block px-2.5 py-1 rounded bg-rose-50 text-rose-700 text-xs font-bold text-center">Atrapamiento & Arrastre</span>
+        </div>
+
+        <!-- Contrarrotación y Tangenciales -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-3">
+              <i class="fa-solid fa-arrows-to-dot"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">2. Puntos de Entrada</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Zonas de convergencia donde la fuerza mecánica succiona cualquier objeto:
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li><strong>Piezas en contrarrotación:</strong> Rodillos laminadores, engranajes engranando, rodillos de calandras.</li>
+              <li><strong>Rotatorio + tangencial:</strong> Correa sobre polea, cadena sobre piñón, cremallera con engranaje.</li>
+              <li><strong>Rotatorio contra fijo:</strong> Radios de volante pasando frente al bastidor de una máquina.</li>
+            </ul>
+          </div>
+          <span class="mt-4 inline-block px-2.5 py-1 rounded bg-rose-50 text-rose-700 text-xs font-bold text-center">Pellizco & Aplastamiento</span>
+        </div>
+
+        <!-- Traslación y Alternativo -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold mb-3">
+              <i class="fa-solid fa-arrows-up-down"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">3. Traslación & Vaivén</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Movimientos rectilíneos que varían la distancia contra partes fijas:
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li><strong>Aproximación de partes móviles:</strong> Corredera o martinete de prensa contra la mesa fija.</li>
+              <li><strong>Sobrepaso de piezas móviles:</strong> Carro de cepilladora o bancada móvil superando el límite del bastidor.</li>
+              <li><strong>Traslación simple continua:</strong> Cintas transportadoras, hojas de sierra de cinta sinfín.</li>
+            </ul>
+          </div>
+          <span class="mt-4 inline-block px-2.5 py-1 rounded bg-rose-50 text-rose-700 text-xs font-bold text-center">Cizallamiento & Choque</span>
+        </div>
+
+        <!-- Oscilación y Combinados -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-sky-300 transition">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-3">
+              <i class="fa-solid fa-repeat"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">4. Oscilación & Mixtos</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Mecanismos con trayectorias no lineales complejas:
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li><strong>Mecanismos biela-manivela:</strong> Combinan rotación continua con traslación y oscilación angular.</li>
+              <li><strong>Tijeras y guillotinas pendulares:</strong> Movimiento tijera oscilante de alto esfuerzo cortante.</li>
+              <li><strong>Brazos de alimentación y robots:</strong> Trayectorias programadas tridimensionales de alta inercia.</li>
+            </ul>
+          </div>
+          <span class="mt-4 inline-block px-2.5 py-1 rounded bg-rose-50 text-rose-700 text-xs font-bold text-center">Impacto & Seccionamiento</span>
+        </div>
+      </div>
+
+      <!-- Modos de Contacto y Formas de Accidente -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-user-shield text-sky-600"></i>
+          Modos de Contacto Anatómico y Tipos de Lesión Mecánica
+        </h3>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-2 text-sky-800 flex items-center gap-2">
+              <i class="fa-solid fa-hand"></i> Miembros Superiores (Manos / Brazos)
+            </h4>
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+              Es el punto de contacto más frecuente (más del 70% de accidentes en máquinas). Ocurre por manipulación directa en el receptor:
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Volantes, poleas, correas:</strong> Pellizco digital o desgarro de antebrazo.</div>
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Cabezales de mecanizado:</strong> Fricción, quemadura y amputación de falanges.</div>
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Alimentación manual de piezas:</strong> Atrapamiento bajo el troquel en carrera descendente.</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-2 text-indigo-800 flex items-center gap-2">
+              <i class="fa-solid fa-child"></i> Contacto de Todo el Cuerpo (Tronco / Cabeza)
+            </h4>
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+              Generado por máquinas de gran porte o piezas con traslación extensa:
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Mesas móviles / carros:</strong> Aplastamiento del operario contra columnas o paredes del taller.</div>
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Ejes cardánicos descubiertos:</strong> Enganche de ropa que enrolla el cuerpo entero provocando politraumatismos mortales.</div>
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Contrapesos y masas suspendidas:</strong> Caída por pérdida de tensión o rotura de cable.</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-2 text-rose-800 flex items-center gap-2">
+              <i class="fa-solid fa-burst"></i> Por Proyección de Partículas o Fluidos
+            </h4>
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+              No requiere contacto directo con la máquina; el agente lesivo viaja hacia el operario:
+            </p>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Virutas metálicas:</strong> Desprendimiento de esquirlas al rojo vivo hacia los ojos o piel.</div>
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Discos amoladores y muelas:</strong> Rotura por exceso de RPM o golpe, saliendo fragmentos a más de 80 m/s.</div>
+              <div class="p-1.5 bg-white rounded border border-slate-200"><strong>Fluidos a alta presión:</strong> Chorro de aceite oleohidráulico que perfora la piel y necrosa el tejido.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipología de Lesiones Mecánicas -->
+        <div class="mt-6 pt-6 border-t border-slate-200">
+          <span class="text-xs font-bold uppercase text-slate-500 block mb-3">Glosario Taxonómico de Lesiones Mecánicas (Preguntado en Finales)</span>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-xs text-slate-700">
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Aplastamiento:</strong> Entre parte móvil y fija o entre dos móviles.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Cizallamiento:</strong> Dos partes filosas cruzándose a escasa luz.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Pellizco:</strong> Convergencia de elementos en rotación.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Seccionamiento:</strong> Corte limpio por cuchillas o sierras.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Enganche:</strong> Sujeción de vestimenta por salientes o árboles.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Arrastre:</strong> Succión provocada por rotación hacia el interior.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Impacto:</strong> Golpe con masa móvil dotada de inercia.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Punzonamiento:</strong> Perforación por extremos agudos o brocas.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Fricción / Abrasión:</strong> Quemadura mecánica por contacto tangencial.</div>
+            <div class="p-2 rounded bg-slate-100 border border-slate-200"><strong>Proyección:</strong> Eyección balística de fragmentos o líquidos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 4: PREVENCIÓN INTRÍNSECA            -->
+    <!-- ========================================== -->
+    <section id="modulo4" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-compass-drafting"></i> Módulo 4
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Técnicas de Seguridad Integrada: Prevención Intrínseca
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          La máxima jerarquía de control: eliminar los peligros desde la mesa de diseño sin depender de protecciones agregadas.
+        </p>
+      </div>
+
+      <!-- Jerarquía de Seguridad Integrada vs No Integrada -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-sitemap text-sky-600"></i>
+          Estructura de las Técnicas de Seguridad en Máquinas (Diapositiva 42)
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          La Materia divide taxativamente la seguridad en dos grandes mundos: la seguridad integrada al diseño de la máquina y la seguridad no integrada gestionada por la empresa usuaria.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Seguridad Integrada -->
+          <div class="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-200 rounded-xl p-5">
+            <span class="text-xs font-bold uppercase text-sky-700 block mb-1">A cargo del Fabricante / Diseñador</span>
+            <h4 class="font-extrabold text-slate-900 text-base mb-3">1. Seguridad Integrada a la Máquina</h4>
+            
+            <div class="space-y-3">
+              <div class="p-3 bg-white rounded-lg border border-sky-200">
+                <strong class="text-sky-900 block text-xs uppercase mb-1">A) Prevención Intrínseca (Jerarquía 1)</strong>
+                <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside">
+                  <li><strong>Eliminar peligros durante el diseño:</strong> geometrías romas, distancias seguras de piezas móviles, limitación de velocidades y fuerzas.</li>
+                  <li><strong>Limitar la exposición al peligro:</strong> tolvas automáticas, robotización, lubricación centralizada exterior.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 bg-white rounded-lg border border-sky-200">
+                <strong class="text-sky-900 block text-xs uppercase mb-1">B) Medidas de Protección (Jerarquía 2)</strong>
+                <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside">
+                  <li><strong>Colocar Resguardos:</strong> Barreras físicas materiales (fijos envolventes, distanciadores, móviles).</li>
+                  <li><strong>Colocar Dispositivos de Protección:</strong> Enclavamientos, mandos bimanuales, cortinas ópticas, alfombras.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seguridad No Integrada -->
+          <div class="bg-gradient-to-br from-slate-50 to-amber-50/50 border border-amber-200 rounded-xl p-5">
+            <span class="text-xs font-bold uppercase text-amber-700 block mb-1">A cargo de la Empresa Usuaria</span>
+            <h4 class="font-extrabold text-slate-900 text-base mb-3">2. Seguridad No Integrada a la Máquina</h4>
+            
+            <div class="space-y-2 text-xs text-slate-700">
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200 flex items-start gap-2">
+                <i class="fa-solid fa-book-open text-amber-600 mt-0.5"></i>
+                <div><strong>Método de Operaciones:</strong> Manuales de procedimientos de trabajo seguro (PTS) y límites de uso.</div>
+              </div>
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200 flex items-start gap-2">
+                <i class="fa-solid fa-chalkboard-user text-amber-600 mt-0.5"></i>
+                <div><strong>Capacitación del Personal Operativo:</strong> Entrenamiento continuo en maniobras críticas y uso de mandos.</div>
+              </div>
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200 flex items-start gap-2">
+                <i class="fa-solid fa-calendar-check text-amber-600 mt-0.5"></i>
+                <div><strong>Plan de Mantenimiento Preventivo / Predictivo:</strong> Inspecciones periódicas de cables, frenos y resortes.</div>
+              </div>
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200 flex items-start gap-2">
+                <i class="fa-solid fa-user-gear text-amber-600 mt-0.5"></i>
+                <div><strong>Capacitación de Mantenimiento:</strong> Habilitación especial en consignación de energías y LOTO.</div>
+              </div>
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200 flex items-start gap-2">
+                <i class="fa-solid fa-wrench text-amber-600 mt-0.5"></i>
+                <div><strong>Mejoras Técnicas en Planta:</strong> Agregado de protecciones locales tras análisis de siniestralidad.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Los 9 Mandamientos de la Prevención Intrínseca -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-check-double text-emerald-600"></i>
+          Los Principios Operativos de la Prevención Intrínseca (Diapositiva 43)
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">1. Geometría No Agresiva</span>
+            <p class="text-slate-600 text-xs">Eliminar aristas cortantes, bordes agudos, salientes innecesarias y formas con efecto cuña o pellizco.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">2. Distancias Seguras en Partes Móviles</span>
+            <p class="text-slate-600 text-xs">Ubicar las piezas móviles intrínsecamente alejadas de donde el trabajador se ubica para operar.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">3. Limitación de Fuerzas y Velocidades</span>
+            <p class="text-slate-600 text-xs">Ajustar presiones, masas móviles y RPM estrictamente a la resistencia de los materiales y umbrales no lesivos.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">4. Lógica Segura de Mandos (No Rearranque)</span>
+            <p class="text-slate-600 text-xs">Evitar que la máquina se accione de manera espontánea al restablecerse la tensión eléctrica luego de un corte.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">5. Cargas Admisibles y Resistencia</span>
+            <p class="text-slate-600 text-xs">Calcular todos los órganos sometidos a fatiga y torsión con coeficientes de seguridad generosos.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">6. Factores Ergonómicos</span>
+            <p class="text-slate-600 text-xs">Garantizar posturas naturales, esfuerzos musculares reducidos y visibilidad despejada del punto de trabajo.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">7. Alta Fiabilidad de Diseño</span>
+            <p class="text-slate-600 text-xs">Minimizar fallas técnicas y microparadas para evitar que los operarios intervengan de forma reiterada a destrabar material.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">8. Puesta a Punto Fuera de Peligro</span>
+            <p class="text-slate-600 text-xs">Colocar graseras, visores de nivel de aceite y mandos de calibración fuera del recinto de partes móviles.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-sky-800 block mb-1">9. Automatización de Carga/Descarga</span>
+            <p class="text-slate-600 text-xs">Incorporar robots manipuladores, alimentadores neumáticos o guías de gravedad que eliminen el acceso manual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 5: RESGUARDOS Y ENCLAVAMIENTOS       -->
+    <!-- ========================================== -->
+    <section id="modulo5" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-shield-virus"></i> Módulo 5
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Medidas de Protección: Resguardos, Enclavamientos y Bloqueos
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Barreras materiales, principios constructivos y algoritmo decisional de selección de protecciones.
+        </p>
+      </div>
+
+      <!-- Definición y Clasificación de Resguardos -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Resguardo Fijo -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-xs font-bold">Tipo 1</span>
+              <i class="fa-solid fa-lock text-sky-600"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Resguardos Fijos</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Se mantienen en posición cerrada de forma permanente por medios de fijación mecánicos (tornillos, bulones, soldadura) que <strong>impiden que puedan ser retirados o abiertos sin el empleo de una herramienta</strong> (llave fija, destornillador, etc.).
+            </p>
+            <div class="space-y-2 text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div><strong>Envolventes:</strong> Encierran completamente la zona peligrosa en todas las direcciones (carcasas de correas y poleas).</div>
+              <div><strong>Distanciadores:</strong> No encierran totalmente, pero por sus dimensiones perimetrales y distancia física hacen inaccesible la zona móvil.</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-sky-700 font-semibold">
+            Recomendado: Cuando el acceso a la zona es nulo u ocasional (mantenimiento mayor).
+          </div>
+        </div>
+
+        <!-- Resguardo Móvil -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">Tipo 2</span>
+              <i class="fa-solid fa-door-open text-indigo-600"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Resguardos Móviles</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Resguardos articulados mediante bisagras, correderas o guías que <strong>se pueden abrir manualmente sin herramientas</strong>.
+            </p>
+            <div class="p-3 bg-indigo-50/70 rounded-xl border border-indigo-200 text-xs text-indigo-900 leading-relaxed">
+              <strong>Condición Sine Qua Non:</strong> Deben ir <em>indefectiblemente asociados a un dispositivo de enclavamiento</em> (con o sin bloqueo). La apertura del resguardo debe detener la máquina antes de que el operario alcance el órgano móvil.
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-indigo-700 font-semibold">
+            Recomendado: Cuando se debe acceder frecuentemente (carga de piezas, reglajes).
+          </div>
+        </div>
+
+        <!-- Resguardo Regulable -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">Tipo 3</span>
+              <i class="fa-solid fa-sliders text-purple-600"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Resguardos Regulables</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Resguardos fijos o móviles regulables en su totalidad o en partes para adaptarse a las distintas dimensiones de la pieza a procesar.
+            </p>
+            <div class="space-y-2 text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div><strong>Reglaje Manual:</strong> El operador fija manualmente la altura según el espesor de la pieza (pantalla de taladro de columna o sierra).</div>
+              <div><strong>Autorregulables:</strong> Empujados por la propia pieza al avanzar (puente basculante de tupí o cepilladora de madera) y regresan por resorte.</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-purple-700 font-semibold">
+            Recomendado: Zonas donde la pieza debe entrar físicamente en contacto con la herramienta.
+          </div>
+        </div>
+      </div>
+
+      <!-- Enclavamiento Simple vs Enclavamiento con Bloqueo -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2.5 text-sky-300">
+          <i class="fa-solid fa-key"></i>
+          Enclavamiento Simple vs. Enclavamiento con Bloqueo (Diferencia Vital)
+        </h3>
+        <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-4xl">
+          El enclavamiento es un dispositivo de seguridad que subordina el fMaterial generado con IA, puede contener erroresionamiento de la máquina a la posición física del resguardo:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Enclavamiento Simple -->
+          <div class="bg-white/10 p-5 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-sky-400 text-base">Enclavamiento Eléctrico Sin Bloqueo</h4>
+                <span class="text-xs px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">Interlock Simple</span>
+              </div>
+              <ul class="text-xs sm:text-sm text-slate-300 space-y-2 leading-relaxed">
+                <li>&bull; Impide que la máquina arranque mientras el resguardo no esté plenamente cerrado.</li>
+                <li>&bull; Si el resguardo se abre con la máquina en marcha, envía una <strong>orden de parada inmediata</strong> a los contactores.</li>
+                <li>&bull; <strong>Requisito Crítico:</strong> Solo se puede usar si el <em>tiempo de parada total de la máquina</em> es inferior al <em>tiempo que tarda la persona en alcanzar la zona peligrosa</em>.</li>
+                <li>&bull; Al cerrar el resguardo, la máquina <strong>jamás debe arrancar automáticamente</strong>; debe requerir una acción separada en la botonera de arranque.</li>
+              </ul>
+            </div>
+            <div class="mt-4 p-2.5 bg-amber-500/20 rounded border border-amber-400/30 text-xs text-amber-200">
+              <strong>Limitación:</strong> Inservible para máquinas con alta inercia (volantes, discos de amolar pesados) que tardan varios segundos en detenerse.
+            </div>
+          </div>
+
+          <!-- Enclavamiento Con Bloqueo -->
+          <div class="bg-white/10 p-5 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold text-emerald-400 text-base">Enclavamiento Eléctrico Con Bloqueo</h4>
+                <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Guard Locking</span>
+              </div>
+              <ul class="text-xs sm:text-sm text-slate-300 space-y-2 leading-relaxed">
+                <li>&bull; Además del enclavamiento, cuenta con un cerrojo mecánico retenido por solenoide electromagnético.</li>
+                <li>&bull; <strong>Impide físicamente que el resguardo se abra</strong> mientras la máquina esté en marcha o existan peligros residuales (inercia rotativa, presión hidráulica, alta temperatura).</li>
+                <li>&bull; El desbloqueo solo se habilita cuando los sensores de velocidad cero verifican la detención total.</li>
+                <li>&bull; <strong>Ejemplo universal:</strong> Cerraduras de puertas de ascensores con patín retráctil y gancho electromecánico (Diapositiva 52).</li>
+              </ul>
+            </div>
+            <div class="mt-4 p-2.5 bg-emerald-500/20 rounded border border-emerald-400/30 text-xs text-emerald-200">
+              <strong>Máxima Seguridad:</strong> Obligatorio cuando el tiempo de acceso humano es más rápido que el frenado del elemento agresor.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Algoritmo Interactivo de Selección de Resguardos -->
+      <div id="selector-resguardos" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm scroll-mt-32">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 block">Herramienta Didáctica Interactiva</span>
+            <h3 class="text-xl font-bold text-slate-900">
+              Árbol de Decisión para Selección de Resguardos (Norma Diapositiva 60)
+            </h3>
+          </div>
+          <button onclick="reiniciarSelectorResguardos()" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition self-start">
+            <i class="fa-solid fa-arrow-rotate-left mr-1"></i> Reiniciar Algoritmo
+          </button>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          Sigue el camino lógico guiado respondiendo a las preguntas sobre el proceso productivo para determinar con precisión normativa el resguardo que debes proyectar:
+        </p>
+
+        <!-- Selector Wizard Container -->
+        <div id="wizardContainer" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+          <div id="step1" class="space-y-4">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-100 text-sky-800">Paso 1 de 4</span>
+            <h4 class="text-base font-bold text-slate-900">¿Se puede acceder físicamente a los órganos móviles de la máquina?</h4>
+            <div class="flex gap-3">
+              <button onclick="selectorResguardoNext(1, 'si')" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition">SÍ, existe accesibilidad</button>
+              <button onclick="selectorResguardoNext(1, 'no')" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-bold transition">NO, están totalmente inaccesibles</button>
+            </div>
+          </div>
+
+          <div id="step2" class="space-y-4 hidden">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-100 text-sky-800">Paso 2 de 4</span>
+            <h4 class="text-base font-bold text-slate-900">¿Se debe acceder a esa zona durante la operación de producción normal?</h4>
+            <div class="flex gap-3">
+              <button onclick="selectorResguardoNext(2, 'si')" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition">SÍ, se accede en operación (carga/ajuste)</button>
+              <button onclick="selectorResguardoNext(2, 'no')" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-bold transition">NO, sólo por mantenimiento ocasional</button>
+            </div>
+          </div>
+
+          <div id="step3" class="space-y-4 hidden">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-100 text-sky-800">Paso 3 de 4</span>
+            <h4 class="text-base font-bold text-slate-900">¿El acceso es para que la pieza ingrese continuamente en contacto con la herramienta (ej. madera/metal en sierra o cizalla)?</h4>
+            <div class="flex gap-3">
+              <button onclick="selectorResguardoNext(3, 'si')" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition">SÍ, la pieza entra directamente</button>
+              <button onclick="selectorResguardoNext(3, 'no')" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-bold transition">NO, se abre para cargar y luego se cierra</button>
+            </div>
+          </div>
+
+          <div id="step4" class="space-y-4 hidden">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-100 text-sky-800">Paso 4 de 4</span>
+            <h4 class="text-base font-bold text-slate-900">Al abrir el resguardo, ¿se detiene por completo el órgano móvil antes de que la persona pueda alcanzarlo físicamente?</h4>
+            <div class="flex gap-3">
+              <button onclick="selectorResguardoNext(4, 'si')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition">SÍ, frena instantáneamente (t_freno &lt; t_acceso)</button>
+              <button onclick="selectorResguardoNext(4, 'no')" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition">NO, tiene inercia o movimiento residual</button>
+            </div>
+          </div>
+
+          <!-- Resultado Dinámico -->
+          <div id="selectorResultado" class="hidden p-5 rounded-xl border"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 6: DISTANCIAS DE SEGURIDAD (13857)  -->
+    <!-- ========================================== -->
+    <section id="modulo6" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-ruler-combined"></i> Módulo 6
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Dimensionamiento Antropométrico y Distancias de Seguridad (Norma ISO 13857)
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Cálculo exacto para impedir que los miembros del cuerpo alcancen las zonas de peligro a través de aperturas o por encima de barreras.
+        </p>
+      </div>
+
+      <!-- Alcance por encima de barreras (a, b, c) -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-arrows-left-right text-sky-600"></i>
+          Alcance por Encima de Estructuras de Protección (Variables a, b, c)
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+          Cuando una barrera perimetral no encierra por el techo a la máquina, un operario puede estirar su brazo por encima. La norma establece tres dimensiones acopladas:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="p-4 rounded-xl bg-sky-50 border border-sky-200">
+            <span class="w-7 h-7 rounded-full bg-sky-600 text-white flex items-center justify-center font-bold text-xs mb-2">a</span>
+            <strong class="text-slate-900 block text-xs uppercase mb-1">Altura del Punto de Peligro</strong>
+            <p class="text-xs text-slate-600">Distancia vertical medida desde el plano del piso hasta la zona móvil agresiva (mm).</p>
+          </div>
+          <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+            <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs mb-2">b</span>
+            <strong class="text-slate-900 block text-xs uppercase mb-1">Altura del Borde Superior del Resguardo</strong>
+            <p class="text-xs text-slate-600">Altura vertical de la baranda o chapa de protección respecto al piso (mm).</p>
+          </div>
+          <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-200">
+            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs mb-2">c</span>
+            <strong class="text-slate-900 block text-xs uppercase mb-1">Distancia Horizontal de Seguridad</strong>
+            <p class="text-xs text-slate-600">Distancia horizontal mínima que debe separar la barrera respecto del punto de peligro (mm).</p>
+          </div>
+        </div>
+
+        <!-- Extracto de Tabla de la Diapositiva 53 -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-center text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b border-slate-300">
+                <th rowspan="2" class="p-2.5 border-r border-slate-300 font-bold">Altura Peligro a (mm)</th>
+                <th colspan="8" class="p-2 border-b border-slate-300 font-bold bg-sky-50 text-sky-900">Altura del Borde de la Barrera b (mm)</th>
+              </tr>
+              <tr class="bg-slate-200 text-slate-800">
+                <th class="p-2 font-semibold">2400</th>
+                <th class="p-2 font-semibold">2200</th>
+                <th class="p-2 font-semibold">2000</th>
+                <th class="p-2 font-semibold">1800</th>
+                <th class="p-2 font-semibold">1600</th>
+                <th class="p-2 font-semibold">1400</th>
+                <th class="p-2 font-semibold">1200</th>
+                <th class="p-2 font-semibold">1000</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-700">
+              <tr class="hover:bg-slate-50"><td class="p-2 font-bold bg-slate-50 border-r border-slate-300">2400</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td></tr>
+              <tr class="hover:bg-slate-50"><td class="p-2 font-bold bg-slate-50 border-r border-slate-300">2000</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td>350</td><td>500</td><td>600</td><td>700</td><td>900</td><td>1100</td></tr>
+              <tr class="hover:bg-slate-50"><td class="p-2 font-bold bg-slate-50 border-r border-slate-300">1600</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td>500</td><td>900</td><td>900</td><td>1000</td><td>1300</td></tr>
+              <tr class="hover:bg-slate-50"><td class="p-2 font-bold bg-slate-50 border-r border-slate-300">1200</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td>500</td><td>900</td><td>1000</td><td>1400</td></tr>
+              <tr class="hover:bg-slate-50"><td class="p-2 font-bold bg-slate-50 border-r border-slate-300">800</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td>600</td><td>900</td><td>1300</td></tr>
+              <tr class="hover:bg-slate-50"><td class="p-2 font-bold bg-slate-50 border-r border-slate-300">400</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td class="text-slate-400">-</td><td>300</td><td>1200</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-slate-500 mt-2">
+          * Valores de distancia horizontal <strong>c</strong> en milímetros. Los campos con guion indican que la altura de la barrera (b) ya es suficiente para impedir el acceso sin importar la distancia c.
+        </p>
+      </div>
+
+      <!-- Distancias según Abertura del Resguardo (Ranuras, Cuadradas, Circulares) -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-border-all text-sky-600"></i>
+          Distancias de Seguridad respecto a Aberturas en Mallas y Rejillas
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          La forma geométrica del orificio condiciona directamente la penetración de las extremidades humanas. Las ranuras longitudinales permiten mayor penetración que las aberturas cuadradas o circulares:
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b border-slate-300">
+                <th class="p-3 font-bold">Parte Anatómica</th>
+                <th class="p-3 font-bold">Abertura "a" (mm)</th>
+                <th class="p-3 font-bold text-center">Ranura Rectangular</th>
+                <th class="p-3 font-bold text-center">Malla Cuadrada</th>
+                <th class="p-3 font-bold text-center">Orificio Circular</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-600">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Punta del dedo</td>
+                <td class="p-3 font-mono">4 &lt; a &le; 6</td>
+                <td class="p-3 text-center font-mono font-bold text-sky-700">d<sub>s</sub> &ge; 10 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-emerald-700">d<sub>s</sub> &ge; 5 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-emerald-700">d<sub>s</sub> &ge; 5 mm</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Dedo hasta la base</td>
+                <td class="p-3 font-mono">12 &lt; a &le; 20</td>
+                <td class="p-3 text-center font-mono font-bold text-sky-700">d<sub>s</sub> &ge; 120 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-emerald-700">d<sub>s</sub> &ge; 120 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-emerald-700">d<sub>s</sub> &ge; 120 mm</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Mano hasta la muñeca</td>
+                <td class="p-3 font-mono">20 &lt; a &le; 30</td>
+                <td class="p-3 text-center font-mono font-bold text-rose-600">d<sub>s</sub> &ge; 850 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-emerald-700">d<sub>s</sub> &ge; 120 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-emerald-700">d<sub>s</sub> &ge; 120 mm</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Brazo completo (desde la axila)</td>
+                <td class="p-3 font-mono">40 &lt; a &le; 120</td>
+                <td class="p-3 text-center font-mono font-bold text-rose-600">d<sub>s</sub> &ge; 850 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-rose-600">d<sub>s</sub> &ge; 850 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-rose-600">d<sub>s</sub> &ge; 850 mm</td>
+              </tr>
+              <tr class="hover:bg-slate-50 bg-rose-50/50">
+                <td class="p-3 font-semibold text-rose-900">Pierna entera (Diapositiva 56)</td>
+                <td class="p-3 font-mono">180 &lt; a &le; 240</td>
+                <td class="p-3 text-center font-bold text-rose-700"><i class="fa-solid fa-ban mr-1"></i>NO ADMITIDO</td>
+                <td class="p-3 text-center font-mono font-bold text-slate-700">d<sub>s</sub> &gt; 1100 mm</td>
+                <td class="p-3 text-center font-mono font-bold text-slate-700">d<sub>s</sub> &gt; 1100 mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600">
+          <strong>Regla de Oro en Carpintería Metálica:</strong> Para aberturas de ranura en el rango 20 a 30 mm, la distancia de seguridad se dispara a <strong>850 mm</strong> (brazo completo), mientras que con una malla electro-soldada cuadrada basta con <strong>120 mm</strong>. ¡Elegir malla cuadrada o perforación circular ahorra un 85% de espacio en planta!
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 7: DISPOSITIVOS SENSIBLES Y PARADA  -->
+    <!-- ========================================== -->
+    <section id="modulo7" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-toggle-on"></i> Módulo 7
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Dispositivos Sensibles, Mandos Bimanuales y Parada de Emergencia
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Sistemas activos mecánicos, optoelectrónicos y lógicas de comando seguro para interrupción de la energía.
+        </p>
+      </div>
+
+      <!-- Mando Bimanual y Prensas -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2.5">
+            <i class="fa-solid fa-hands text-sky-600"></i>
+            Mando Sensible a Dos Manos (Two-Hand Control)
+          </h3>
+          <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">Prensas & Balancines</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+          Dispositivo de protección que obliga al operador a mantener ambas manos ocupadas fuera de la matriz peligrosa durante la carrera de descenso. Para evitar que el trabajador trabe un pulsador con cinta adhesiva o una cuña de madera (trampa común), el relé de control impone <strong>estrictas condiciones lógicas</strong>:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/60">
+            <div class="text-sky-600 text-2xl font-black mb-1">&Delta;t &le; 0.2 s</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Simultaneidad Temporal</h4>
+            <p class="text-xs text-slate-600">
+              Ambos pulsadores deben accionarse de manera simultánea. Si la diferencia temporal entre el primer y segundo botón supera los <strong>0.2 segundos (200 ms)</strong>, el sistema bloquea el arranque.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-indigo-200 bg-indigo-50/60">
+            <div class="text-indigo-600 text-2xl font-black mb-1">t &ge; 0.4 s</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Activación por Tiempo Mínimo</h4>
+            <p class="text-xs text-slate-600">
+              El operario debe mantener ambos botones presionados al menos <strong>0.4 segundos continuos</strong>. Si suelta cualquiera antes de que el punzón alcance el punto muerto inferior, la prensa frena en el acto.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/60">
+            <div class="text-emerald-600 text-2xl font-black mb-1">1 Ciclo</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Lógica Anti-Repetición</h4>
+            <p class="text-xs text-slate-600">
+              Aunque el operador deje los botones apretados permanentemente, la máquina completa un solo ciclo y se detiene. Para un nuevo golpe es obligatorio soltar ambos mandos y volver a oprimirlos de forma sincrónica.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finales de Carrera: Positivo vs Negativo -->
+      <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2.5 text-sky-400">
+          <i class="fa-solid fa-microchip"></i>
+          Interruptores Fin de Carrera: Seguridad Positiva vs. Modo Negativo
+        </h3>
+        <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-4xl">
+          El final de carrera es el sensor de contacto más extendido en máquinas para detectar posiciones de resguardos y topes móviles. Su diseño interno define si es apto o mortal en seguridad:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Modo Negativo -->
+          <div class="bg-white/10 p-4 rounded-xl border border-rose-500/40">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-rose-300 text-sm">Modo Negativo (NO SEGURO)</h4>
+              <i class="fa-solid fa-circle-xmark text-rose-400 text-lg"></i>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+              El actuador mecánico empuja la leva, pero la apertura del contacto eléctrico depende exclusivamente de la <strong>fuerza de un resorte interno</strong>.
+            </p>
+            <div class="text-xs bg-rose-950/60 p-2.5 rounded border border-rose-400/30 text-rose-200">
+              <strong>Falla catastrófica:</strong> Si el resorte se rompe, se fatiga o el vástago se traba por grasa/viruta, el contacto permanece cerrado aunque la puerta se abra. ¡La máquina no frena!
+            </div>
+          </div>
+
+          <!-- Modo Positivo -->
+          <div class="bg-white/10 p-4 rounded-xl border border-emerald-500/40">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-emerald-300 text-sm">Modo Positivo (SEGURO)</h4>
+              <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+              El movimiento del resguardo o elemento móvil <strong>fuerza mecánicamente la separación de los contactos</strong> de manera directa, sin depender de ningún muelle.
+            </p>
+            <div class="text-xs bg-emerald-950/60 p-2.5 rounded border border-emerald-400/30 text-emerald-200">
+              <strong>Garantía de apertura:</strong> Si los contactos se hubieran soldado por sobrecorriente, la propia fuerza de apertura del resguardo los arranca físicamente (símbolo de flecha con círculo).
+            </div>
+          </div>
+
+          <!-- Modo Redundante Combinado -->
+          <div class="bg-white/10 p-4 rounded-xl border border-sky-500/40">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-sky-300 text-sm">Redundancia Combinada</h4>
+              <i class="fa-solid fa-check-double text-sky-400 text-lg"></i>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+              Se instalan dos microinterruptores mecánicos acoplados: uno en modo positivo y otro en modo negativo con contactos complementarios (NA + NC).
+            </p>
+            <div class="text-xs bg-sky-950/60 p-2.5 rounded border border-sky-400/30 text-sky-200">
+              <strong>Categoría 4:</strong> Un relé de seguridad monitorea la simultaneidad de cambio de estado. Si detecta discrepancia entre ambos, bloquea el rearranque.
+            </div>
+          </div>
+        </div>
+
+        <!-- Buenas Prácticas de Montaje -->
+        <div class="mt-6 p-4 bg-white/5 rounded-xl border border-white/10 text-xs text-slate-300">
+          <strong class="text-amber-300 block mb-1 font-semibold"><i class="fa-solid fa-wrench mr-1"></i> Reglas de Montaje Mecánico (Diapositivas 68 y 69):</strong>
+          1) Rigidez de la placa soporte para evitar que las vibraciones descalibren el rodillo. 2) Ángulo suave de la leva para evitar impactos que doblen el vástago. 3) Orientar el cuerpo del interruptor con la entrada de cables hacia abajo para impedir el ingreso de agua, refrigerantes solubles o aceite que provoquen cortocircuitos.
+        </div>
+      </div>
+
+      <!-- Dispositivos Sensibles: Barras, Bordes, Alfombras, Cortinas y Escáner Láser -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-satellite-dish text-sky-600"></i>
+          Dispositivos Sensibles Mecánicos y Optoelectrónicos
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+          <!-- Borde Sensible -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-1 text-sky-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-grip-lines-vertical"></i> Borde Sensible de Goma
+            </h4>
+            <p class="text-slate-600 mb-2 leading-relaxed">
+              Perfil de caucho conductivo y elastómero acolchado montado en puertas corredizas y mesas de cizallas. Si golpea contra el cuerpo, se deforma amortiguando el impacto e interrumpe el circuito.
+            </p>
+            <span class="text-sky-700 font-semibold">Ventaja: Reduce el choque por inercia sólida.</span>
+          </div>
+
+          <!-- Tirón de Cable -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-1 text-sky-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-route"></i> Cable de Parada (Lifeline)
+            </h4>
+            <p class="text-slate-600 mb-2 leading-relaxed">
+              Cable de acero extendido a lo largo de transportadores continuos. Dispone de un interruptor biestable que se dispara tanto si el trabajador <strong>tira del cable</strong> como si el cable se <strong>destensa o corta</strong>.
+            </p>
+            <span class="text-sky-700 font-semibold">Seguridad intrínseca anti-rotura.</span>
+          </div>
+
+          <!-- Alfombra Sensible -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-1 text-sky-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-shoe-prints"></i> Alfombras Sensibles a la Presión
+            </h4>
+            <p class="text-slate-600 mb-2 leading-relaxed">
+              Placas conductoras separadas por elastómero compresible colocadas en el piso frente a celdas robotizadas. Al pisar el operario, el peso comprime el separador y activa la orden de parada.
+            </p>
+            <span class="text-sky-700 font-semibold">Ideal para áreas de carga/descarga amplias.</span>
+          </div>
+
+          <!-- Barreras Fotoeléctricas -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm mb-1 text-indigo-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-barcode"></i> Cortinas Ópticas Infrarrojas
+            </h4>
+            <p class="text-slate-600 mb-2 leading-relaxed">
+              Emisor y receptor sincronizado de múltiples haces infrarrojos. Al interrumpirse cualquier haz por el ingreso de un dedo o mano, el relé optoelectrónico corta en milisegundos la alimentación de electroválvulas.
+            </p>
+            <span class="text-indigo-700 font-semibold">Sin desgaste mecánico ni fatiga.</span>
+          </div>
+
+          <!-- Escáner Láser LiDAR -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 lg:col-span-2">
+            <h4 class="font-bold text-slate-900 text-sm mb-1 text-indigo-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-radar"></i> Escáner Láser de Seguridad 2D (LiDAR Industrial)
+            </h4>
+            <p class="text-slate-600 mb-2 leading-relaxed">
+              Emite un barrido láser infrarrojo radial continuo de hasta 190&deg; o 275&deg;. Permite parametrizar dos zonas por software: 
+              <strong>1) Campo de Advertencia (Warning Field):</strong> emite sirena o baliza al aproximarse el operario.
+              <strong>2) Campo de Protección (Protective Field):</strong> frena en seco el cabezal o robot si la persona cruza el límite crítico.
+            </p>
+            <span class="text-indigo-700 font-semibold">No requiere instalación de barreras físicas perimetrales en pisos despejados.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parada de Emergencia (Pulsador Golpe de Puño) -->
+      <div class="bg-rose-50 border-2 border-rose-300 rounded-2xl p-6 sm:p-8 text-slate-800 shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-rose-600 text-white flex items-center justify-center text-2xl shrink-0 mt-1 shadow-md">
+            <i class="fa-solid fa-hand-fist"></i>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-800 block">Norma Internacional ISO 13850 / Dec. 351/79</span>
+              <h3 class="text-xl font-extrabold text-slate-900">
+                Pulsador de Parada de Emergencia (Golpe de Puño)
+              </h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              Es el último recurso ante una situación de peligro inminente no evitada por las protecciones primarias. Sus características normativas son de cumplimiento obligatorio:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-3 bg-white rounded-xl border border-rose-200">
+                <strong class="text-rose-900 block mb-1">Lo que DEBE tener:</strong>
+                <ul class="space-y-1 list-disc list-inside text-slate-600">
+                  <li>Cabeza tipo hongo roja sobre fondo amarillo contrastado.</li>
+                  <li>Accesible, visible y sin obstáculos desde cualquier puesto de labor.</li>
+                  <li>Enclavamiento biestable mecánico (queda trabado abajo al golpearse).</li>
+                  <li>Desbloqueo manual intencional (giro de 1/4 de vuelta o tirón).</li>
+                  <li>Comprobación periódica registrada de fMaterial generado con IA, puede contener erroresionamiento.</li>
+                </ul>
+              </div>
+              <div class="p-3 bg-white rounded-xl border border-rose-200">
+                <strong class="text-rose-900 block mb-1">Lo que JAMÁS se debe hacer:</strong>
+                <ul class="space-y-1 list-disc list-inside text-slate-600">
+                  <li><strong>NO debe rearrancar la máquina al liberarse:</strong> destrabar el hongo solo habilita el circuito; el arranque exige pulsar "Marcha".</li>
+                  <li><strong>NO usarlo para parada normal:</strong> no es el botón de apagar de fin de turno.</li>
+                  <li><strong>NO usarlo como sustituto de resguardos:</strong> la máquina debe ser segura por sus protecciones, no porque el operario "esté atento a pulsar".</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 8: MÁQUINAS TÍPICAS Y PROTOCOLO LOTO -->
+    <!-- ========================================== -->
+    <section id="modulo8" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-industry"></i> Módulo 8
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Seguridad en Máquinas Industriales Típicas y Procedimiento LOTO
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Análisis práctico de máquinas evaluadas en los parciales y consignación segura de energías en tareas de mantenimiento.
+        </p>
+      </div>
+
+      <!-- Galería Técnica de Máquinas de Examen -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Torno Mecánico Convencional vs CNC -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-slate-900 text-base">Tornos (Convencional vs. CNC)</h4>
+            <i class="fa-solid fa-circle-notch text-sky-600"></i>
+          </div>
+          <div class="space-y-2 text-xs text-slate-600">
+            <p><strong>Peligros:</strong> Plato de garras rotando a alta velocidad, enganche de mangas o cabellos, viruta continua caliente, llave del plato olvidada.</p>
+            <p><strong>Protecciones Torno Paralelo:</strong> Pantalla semicircular con microinterruptor sobre el plato de garras; pantalla corrediza sobre el carro portaherramientas; bandeja colectora de viruta; pedal de parada de emergencia longitudinal.</p>
+            <p><strong>Evolución al CNC:</strong> Carenado totalmente cerrado con resguardo móvil enclavado; la máquina no gira si la compuerta está abierta.</p>
+          </div>
+        </div>
+
+        <!-- Prensas Excéntricas y Balancines -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-slate-900 text-base">Prensas y Balancines</h4>
+            <i class="fa-solid fa-weight-hanging text-indigo-600"></i>
+          </div>
+          <div class="space-y-2 text-xs text-slate-600">
+            <p><strong>Peligros:</strong> Aplastamiento total de manos entre punzón y matriz; volante de inercia pesado acumulando miles de joules de energía cinética.</p>
+            <p><strong>Protecciones Clave:</strong> Carenado fijo envolvente sobre poleas y volante; resguardo enclavado en la zona de matriz o cortina óptica categoría 4; mando bimanual sincronizado (&Delta;t &le; 0.2 s) y bloque mecánico anti-caída del carro durante mantenimientos.</p>
+          </div>
+        </div>
+
+        <!-- Fresadoras Universales y Punteadoras -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-slate-900 text-base">Fresadoras & Punteadoras</h4>
+            <i class="fa-solid fa-fan text-emerald-600"></i>
+          </div>
+          <div class="space-y-2 text-xs text-slate-600">
+            <p><strong>Peligros:</strong> Dientes de la fresa afilados a elevadas RPM; proyección tangencial de virutas; atrapamiento en el eje portafresas horizontal.</p>
+            <p><strong>Protecciones Clave:</strong> Pantalla envolvente de policarbonato con enclavamiento que rodea el cabezal portafresas; barras de parada de emergencia periféricas; colectores de refrigerante con pantalla antisalpicaduras.</p>
+          </div>
+        </div>
+
+        <!-- Inyectora de Plástico -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-slate-900 text-base">Inyectoras de Plástico</h4>
+            <i class="fa-solid fa-cube text-purple-600"></i>
+          </div>
+          <div class="space-y-2 text-xs text-slate-600">
+            <p><strong>Peligros:</strong> Cierre de molde con fuerzas hidráulicas de cientos de toneladas; cilindro calefactor a más de 250 &deg;C; proyección de polímero fundido.</p>
+            <p><strong>Protecciones Clave:</strong> Puerta deslizante transparente dotada de <em>triple enclavamiento</em>: 1) eléctrico al PLC, 2) hidráulico que desvía la bomba al tanque, y 3) traba mecánica directa para impedir el avance físico de los platos.</p>
+          </div>
+        </div>
+
+        <!-- Perforadora Radial y de Banco -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-slate-900 text-base">Perforadoras Radiales</h4>
+            <i class="fa-solid fa-arrow-down-up-across-line text-amber-600"></i>
+          </div>
+          <div class="space-y-2 text-xs text-slate-600">
+            <p><strong>Peligros:</strong> Giro libre de broca y mandril; giro incontrolado de la pieza si no está firmemente sujeta a la mesa (latigazo); enrollamiento de guantes.</p>
+            <p><strong>Protecciones Clave:</strong> Pantalla telescópica transparente con micro de seguridad positivo sobre el mandril; mordazas mecánicas obligatorias (prohibido sostener piezas con la mano); barra telescópica sensible de parada de rodilla.</p>
+          </div>
+        </div>
+
+        <!-- Sierras Circulares y Amasadoras -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-slate-900 text-base">Sierras Circulares & Amasadoras</h4>
+            <i class="fa-solid fa-triangle-exclamation text-rose-600"></i>
+          </div>
+          <div class="space-y-2 text-xs text-slate-600">
+            <p><strong>Peligros Sierra:</strong> Rechazo de madera (kickback) hacia el operario; corte de dedos. <em>Protecciones:</em> Cuchillo divisor de acero tras la hoja + caperuza autorregulable + empujador de madera.</p>
+            <p><strong>Peligros Amasadora:</strong> Aspa helicoidal rotante. <em>Protecciones:</em> Rejilla de protección enclavada que permite arrojar harina sin meter las manos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Protocolo de Consignación Cero (LOTO) -->
+      <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block">Intervención Segura en Máquinas (Diapositiva 83)</span>
+            <h3 class="text-xl sm:text-2xl font-bold">
+              Protocolo LOTO: Bloqueo, Etiquetado y Nivel Energético Cero
+            </h3>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl border border-amber-500/30">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+          Más del 40% de los accidentes mortales en mantenimiento ocurren porque alguien encendió la máquina mientras un compañero estaba dentro, o por liberación imprevista de energías residuales. Las 7 etapas obligatorias para intervenir:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <div class="text-amber-400 font-extrabold text-base mb-1">01. Seccionar</div>
+            <p class="text-slate-300">Desconectar físicamente la máquina de <strong>todas</strong> sus fuentes: interruptor general termomagnético, llaves de paso de aire comprimido y bombas hidráulicas.</p>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <div class="text-amber-400 font-extrabold text-base mb-1">02. Bloquear (Lockout)</div>
+            <p class="text-slate-300">Colocar candado de seguridad físico en el seccionador en posición abierta. Cada técnico coloca su propio candado personal (porta-candados múltiple si hay varios operarios).</p>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <div class="text-amber-400 font-extrabold text-base mb-1">03. Etiquetar (Tagout)</div>
+            <p class="text-slate-300">Colocar tarjeta de consignación individual indeleble con nombre, foto, motivo del trabajo y teléfono del responsable de la intervención.</p>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <div class="text-amber-400 font-extrabold text-base mb-1">04. Disipar Energías</div>
+            <p class="text-slate-300">Purgar depósitos de aire, descargar condensadores de alta tensión, aliviar presión residual de mangueras y colocar calzos mecánicos en émbolos suspendidos.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3.5 bg-amber-500/10 rounded-xl border border-amber-500/30 text-xs text-amber-200 flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-amber-400 text-base"></i>
+            <strong>Etapa 5 Vital &mdash; Verificación de Energía Cero:</strong> Intentar pulsar "Marcha" en la botonera principal para verificar que efectivamente la máquina no responde. Verificar con voltímetro multímetro la ausencia de tensión en bornes antes de tocar ningún componente.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- CALCULADORA Y SIMULADOR INTERACTIVO RBD    -->
+    <!-- ========================================== -->
+    <section id="simulador-fiabilidad" class="scroll-mt-32 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-calculator"></i> Herramienta de Cálculo Aplicada
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Simulador Interactivo de Fiabilidad: Análisis Serie vs. Paralelo
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Modifica las fiabilidades de los bloques para comprobar empíricamente cómo la redundancia salva vidas y cómo la conexión en serie degrada el sistema.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Inputs de Configuración -->
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-sliders text-sky-600"></i> Parámetros de los Bloques
+          </h3>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Fiabilidad Bloque A (R<sub>A</sub>):</label>
+            <div class="flex items-center gap-3">
+              <input type="range" id="inputRA" min="0.5" max="0.999" step="0.005" value="0.95" oninput="actualizarSimuladorRBD()" class="w-full accent-sky-600">
+              <span id="labelRA" class="font-mono text-xs font-bold text-slate-900 w-12 text-right">0.950</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Fiabilidad Bloque B (R<sub>B</sub>):</label>
+            <div class="flex items-center gap-3">
+              <input type="range" id="inputRB" min="0.5" max="0.999" step="0.005" value="0.90" oninput="actualizarSimuladorRBD()" class="w-full accent-sky-600">
+              <span id="labelRB" class="font-mono text-xs font-bold text-slate-900 w-12 text-right">0.900</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Fiabilidad Bloque C (R<sub>C</sub>):</label>
+            <div class="flex items-center gap-3">
+              <input type="range" id="inputRC" min="0.5" max="0.999" step="0.005" value="0.85" oninput="actualizarSimuladorRBD()" class="w-full accent-sky-600">
+              <span id="labelRC" class="font-mono text-xs font-bold text-slate-900 w-12 text-right">0.850</span>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="presetRBD('alta')" class="text-xs px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded font-semibold text-slate-700 mr-2">Valores Altos</button>
+            <button onclick="presetRBD('baja')" class="text-xs px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded font-semibold text-slate-700">Valores Críticos</button>
+          </div>
+        </div>
+
+        <!-- Resultados Comparados Serie vs Paralelo -->
+        <div class="lg:col-span-2 space-y-4">
+          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-chart-column text-sky-600"></i> Comportamiento del Sistema según Arquitectura
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Serie -->
+            <div class="p-4 rounded-xl border border-rose-200 bg-rose-50/50">
+              <span class="text-xs font-bold text-rose-800 uppercase block mb-1">Configuración en Serie (A & B & C)</span>
+              <div class="text-2xl sm:text-3xl font-black text-rose-700 font-mono" id="resRBDSerie">0.7268</div>
+              <p class="text-xs text-rose-900/80 mt-2 leading-relaxed">
+                R<sub>s</sub> = R<sub>A</sub> &times; R<sub>B</sub> &times; R<sub>C</sub>.
+                La confiabilidad cae al <span id="porcSerie" class="font-bold">72.7%</span>, siendo muy inferior al bloque más débil (0.85). ¡Falla cualquiera y el sistema cae!
+              </p>
+            </div>
+
+            <!-- Paralelo -->
+            <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
+              <span class="text-xs font-bold text-emerald-800 uppercase block mb-1">Configuración en Paralelo (Redundancia Triple)</span>
+              <div class="text-2xl sm:text-3xl font-black text-emerald-700 font-mono" id="resRBDParalelo">0.9993</div>
+              <p class="text-xs text-emerald-900/80 mt-2 leading-relaxed">
+                R<sub>p</sub> = 1 - (1 - R<sub>A</sub>)(1 - R<sub>B</sub>)(1 - R<sub>C</sub>).
+                La confiabilidad se eleva al <span id="porcParalelo" class="font-bold">99.93%</span>. Solo colapsa si fallan los tres componentes simultáneamente.
+              </p>
+            </div>
+          </div>
+
+          <!-- Conclusión Didáctica -->
+          <div id="conclusionRBD" class="p-4 bg-sky-50 rounded-xl border border-sky-200 text-xs text-sky-900 leading-relaxed">
+            <!-- Dinámico -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- AUTOEVALUACIÓN INTERACTIVA (QUIZ)          -->
+    <!-- ========================================== -->
+    <section id="autoevaluacion" class="scroll-mt-32 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-list-check"></i> Autoevaluación
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Quiz de Simulación de Examen: Riesgo Mecánico
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">
+          Preguntas de opción múltiple con justificación técnica detallada para afianzar conceptos previo al parcial.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Pregunta 1 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-white space-y-3" id="q1">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+            <span>En un sistema hidráulico, dos válvulas de retención (check valves) están instaladas en serie física una detrás de otra en la cañería para evitar el contraflujo a la bomba. ¿Cómo deben modelarse en el Diagrama de Confiabilidad de FMaterial generado con IA, puede contener erroresiones (RBD)?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q1', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">A) En serie, porque físicamente el agua atraviesa primero una y luego la otra.</button>
+            <button onclick="checkAnswer('q1', 2, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">B) En paralelo, porque basta con que cualquiera de las dos cierre para cumplir la fMaterial generado con IA, puede contener erroresión de evitar el retroflujo.</button>
+            <button onclick="checkAnswer('q1', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">C) No se pueden modelar en RBD por tratarse de elementos pasivos sin alimentación eléctrica.</button>
+            <button onclick="checkAnswer('q1', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">D) En serie-paralelo mixto considerando la bomba como bloque neutro.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-white space-y-3" id="q2">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+            <span>¿Cuáles son las dos condiciones temporales normativas que debe cumplir un mando sensible a dos manos en una prensa hidráulica para considerarse seguro y antifraude?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q2', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">A) Diferencia temporal menor a 1 segundo y pulsación continua de 2 segundos.</button>
+            <button onclick="checkAnswer('q2', 2, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">B) Simultaneidad con diferencia &Delta;t &le; 0.2 s entre pulsadores y mantenimiento mínimo de 0.4 s.</button>
+            <button onclick="checkAnswer('q2', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">C) Pulsación secuencial primero de la mano derecha y luego la izquierda en menos de 0.5 s.</button>
+            <button onclick="checkAnswer('q2', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">D) No importa el tiempo de desfase siempre que al llegar al punto muerto inferior se suelten.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-white space-y-3" id="q3">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+            <span>¿Por qué un interruptor fin de carrera operando en "Modo Negativo" está terminantemente desaconsejado para fMaterial generado con IA, puede contener erroresiones críticas de resguardos de seguridad?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q3', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">A) Porque genera sobrecalentamiento excesivo en los contactores de potencia.</button>
+            <button onclick="checkAnswer('q3', 2, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">B) Porque solo admite corrientes continuas y no alterna industrial de 380V.</button>
+            <button onclick="checkAnswer('q3', 3, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">C) Porque la apertura del contacto depende de un resorte interno; si el resorte se rompe o se traba, el contacto no abre y la máquina no se detiene.</button>
+            <button onclick="checkAnswer('q3', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">D) Porque requiere que la puerta se abra con una fuerza superior a 50 kg para vencer la leva.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-white space-y-3" id="q4">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
+            <span>¿Cuál es la diferencia operativa determinante entre un "resguardo con enclavamiento simple" y un "resguardo con enclavamiento y bloqueo"?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q4', 1, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">A) El enclavamiento simple ordena parada al abrirse la puerta; el enclavamiento con bloqueo mantiene mecánicamente trabada la puerta impidiendo su apertura hasta que el movimiento peligroso cesó por completo.</button>
+            <button onclick="checkAnswer('q4', 2, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">B) El enclavamiento con bloqueo requiere una contraseña digital en pantalla HMI para poder operar la máquina.</button>
+            <button onclick="checkAnswer('q4', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">C) El enclavamiento simple sólo se aplica a resguardos fijos atornillados.</button>
+            <button onclick="checkAnswer('q4', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">D) No existe diferencia técnica; son sinónimos utilizados en distintas normas de la OIT.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="quiz-item p-4 rounded-xl border border-slate-200 bg-white space-y-3" id="q5">
+          <div class="font-bold text-sm text-slate-900 flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">5</span>
+            <span>Bajo la norma ISO 13857, si un resguardo tiene ranuras longitudinales con apertura entre 20 y 30 mm, ¿cuál es la distancia de seguridad mínima d_s respecto al peligro, y cómo varía si se usa malla cuadrada?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <button onclick="checkAnswer('q5', 1, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">A) Requiere 120 mm en ranura y 850 mm en malla cuadrada.</button>
+            <button onclick="checkAnswer('q5', 2, true)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">B) Requiere d_s &ge; 850 mm para ranura (pasa el brazo completo de lado) y d_s &ge; 120 mm para malla cuadrada (hace tope en la mano).</button>
+            <button onclick="checkAnswer('q5', 3, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">C) En ambos casos la distancia normativa uniforme es de 550 mm.</button>
+            <button onclick="checkAnswer('q5', 4, false)" class="q-opt text-left p-3 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">D) Las ranuras entre 20 y 30 mm están terminantemente prohibidas en cualquier máquina.</button>
+          </div>
+          <div class="quiz-feedback hidden text-xs p-3 rounded-lg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SÍNTESIS EJECUTIVA / CHEAT SHEET IMPRIMIBLE -->
+    <section class="page-break bg-slate-100 rounded-2xl p-6 sm:p-8 border border-slate-300">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-300">
+        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-file-contract text-sky-700"></i> Síntesis Ejecutiva de Repaso (Cheat Sheet para Final)
+        </h3>
+        <span class="text-xs font-semibold text-slate-600">Unidad 4 &bull; Riesgo Mecánico</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-700">
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Concepto de Máquina y LCM</strong>
+          <span>Órganos unidos con al menos uno móvil. LCM abarca: transporte, montaje, producción, ajuste/reglaje, mantenimiento y retiro definitivo.</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Fiabilidad (RBD)</strong>
+          <span><strong>Serie:</strong> R<sub>s</sub> = &prod; R<sub>i</sub> (&lt; R<sub>min</sub>). <strong>Paralelo:</strong> R<sub>p</sub> = 1 - &prod; (1-R<sub>i</sub>) (&gt; R<sub>max</sub>). El diagrama representa fMaterial generado con IA, puede contener erroresiones de diseño, no cableado físico.</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Resguardos</strong>
+          <span><strong>Fijo:</strong> Sólo se retira con herramienta (envolvente o distanciador). <strong>Móvil:</strong> Sin herramienta, obligado con enclavamiento (con o sin bloqueo). <strong>Regulable:</strong> Manual o autorregulable.</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Mando a 2 Manos</strong>
+          <span>Simultaneidad &Delta;t &le; 0.2 s. Mantenimiento t &ge; 0.4 s. Lógica anti-repetición de ciclo. Impide burlar el mando trabando un botón.</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Fin de Carrera Positivo</strong>
+          <span>Separación mecánica forzada directa de contactos (corte garantizado). En modo negativo depende de un resorte y puede fallar trabado.</span>
+        </div>
+
+        <div class="p-3 bg-white rounded-lg border border-slate-200">
+          <strong class="text-sky-800 block mb-1">Parada de Emergencia & LOTO</strong>
+          <span>Seta roja con fondo amarillo y retención mecánica. No debe rearrancar al destrabarse. LOTO: Seccionar + Candado + Etiqueta + Purgar + Verificar Energía 0.</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-16 no-print text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-gears text-sky-400 text-base"></i>
+        <span class="text-slate-200 font-semibold">Materia de Higiene y Seguridad</span>
+      </div>
+      <p class="text-center sm:text-right text-slate-400">
+        Material generado con IA, puede contener errores &bull; Material generado con IA, puede contener errores &bull; Guía de Estudio Oficial Unidad 4
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button: Volver al Índice -->
+  <a href="index.html" class="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-sky-600/30 hover:shadow-xl hover:scale-105 transition-all duration-200 group no-print" title="Volver al índice general">
+    <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+    <span>Volver al índice</span>
+  </a>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Barra de progreso de lectura
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('readingProgress').style.width = scrolled + '%';
+    });
+
+    // 2. Simulador de Fiabilidad RBD
+    function actualizarSimuladorRBD() {
+      const ra = parseFloat(document.getElementById('inputRA').value);
+      const rb = parseFloat(document.getElementById('inputRB').value);
+      const rc = parseFloat(document.getElementById('inputRC').value);
+
+      document.getElementById('labelRA').textContent = ra.toFixed(3);
+      document.getElementById('labelRB').textContent = rb.toFixed(3);
+      document.getElementById('labelRC').textContent = rc.toFixed(3);
+
+      const rSerie = ra * rb * rc;
+      const rParalelo = 1 - ((1 - ra) * (1 - rb) * (1 - rc));
+
+      document.getElementById('resRBDSerie').textContent = rSerie.toFixed(4);
+      document.getElementById('resRBDParalelo').textContent = rParalelo.toFixed(4);
+
+      document.getElementById('porcSerie').textContent = (rSerie * 100).toFixed(1) + '%';
+      document.getElementById('porcParalelo').textContent = (rParalelo * 100).toFixed(2) + '%';
+
+      const conclusion = document.getElementById('conclusionRBD');
+      conclusion.innerHTML = `
+        <i class="fa-solid fa-calculator text-sky-600 mr-1.5"></i>
+        <strong>Análisis de Ingeniería:</strong> En serie, el riesgo acumulado reduce la supervivencia al <strong>${(rSerie * 100).toFixed(1)}%</strong>. En contraste, configurando una redundancia triple fMaterial generado con IA, puede contener erroresional, la tasa de falla se desploma a solo <strong>${((1 - rParalelo) * 100).toFixed(3)}%</strong>, cumpliendo los más exigentes estándares de seguridad fMaterial generado con IA, puede contener erroresional (SIL 3 / Ple).
+      `;
+    }
+
+    function presetRBD(tipo) {
+      if (tipo === 'alta') {
+        document.getElementById('inputRA').value = 0.99;
+        document.getElementById('inputRB').value = 0.98;
+        document.getElementById('inputRC').value = 0.95;
+      } else {
+        document.getElementById('inputRA').value = 0.80;
+        document.getElementById('inputRB').value = 0.75;
+        document.getElementById('inputRC').value = 0.70;
+      }
+      actualizarSimuladorRBD();
+    }
+
+    // 3. Selector Guiado de Resguardos (Algoritmo Diapositiva 60)
+    let wizardState = {};
+
+    function selectorResguardoNext(step, choice) {
+      wizardState['step' + step] = choice;
+
+      // Ocultar pasos posteriores
+      for (let s = step; s <= 4; s++) {
+        const el = document.getElementById('step' + s);
+        if (el && s > step) el.classList.add('hidden');
+      }
+      document.getElementById('selectorResultado').classList.add('hidden');
+
+      if (step === 1) {
+        if (choice === 'no') {
+          mostrarResultadoResguardo('No es necesario colocar resguardo.', 'emerald', 'fa-check', 'Los órganos móviles ya se encuentran fuera del alcance humano por diseño intrínseco de la máquina o por ubicación distante inaccesible.');
+        } else {
+          document.getElementById('step2').classList.remove('hidden');
+        }
+      } else if (step === 2) {
+        if (choice === 'no') {
+          // No se accede en producción -> Mantenimiento ocasional
+          mostrarResultadoResguardo('Resguardo Fijo', 'sky', 'fa-lock', 'Dado que el acceso no se requiere durante el ciclo productivo y solo se interviene en mantenimiento programado, se debe instalar un <strong>Resguardo Fijo (envolvente o distanciador)</strong> con fijaciones que requieran herramienta para su desmontaje.');
+        } else {
+          document.getElementById('step3').classList.remove('hidden');
+        }
+      } else if (step === 3) {
+        if (choice === 'si') {
+          mostrarResultadoResguardo('Resguardo Regulable o Autorregulable', 'purple', 'fa-sliders', 'Como la pieza debe ingresar en continuo contacto con la herramienta (ej. sierra circular de mesa, tupi, garlopa), se requiere un <strong>Resguardo Regulable</strong> fijado a la altura de la pieza o un <strong>Resguardo Autorregulable</strong> accionado por el propio avance de la madera.');
+        } else {
+          document.getElementById('step4').classList.remove('hidden');
+        }
+      } else if (step === 4) {
+        if (choice === 'si') {
+          mostrarResultadoResguardo('Resguardo Móvil con Dispositivo de Enclavamiento', 'blue', 'fa-door-open', 'Como el elemento móvil frena de inmediato y se detiene antes de que el operario pueda alcanzarlo físicamente, basta con un <strong>Resguardo Móvil con Enclavamiento Eléctrico Simple</strong> (sin bloqueo mecánico).');
+        } else {
+          mostrarResultadoResguardo('Resguardo Móvil con Enclavamiento y Bloqueo', 'rose', 'fa-key', 'Dado que la máquina posee inercia o movimiento residual que continúa tras enviar la orden de parada, es <strong>obligatorio un Resguardo Móvil con Enclavamiento y Dispositivo de Bloqueo</strong> (guard locking). La puerta debe permanecer mecánicamente trabada hasta la parada total comprobada a velocidad cero.');
+        }
+      }
+    }
+
+    function mostrarResultadoResguardo(titulo, color, icon, descripcion) {
+      const res = document.getElementById('selectorResultado');
+      res.className = `p-5 rounded-xl border bg-${color}-50 border-${color}-300 text-${color}-950 block`;
+      res.innerHTML = `
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-lg bg-${color}-600 text-white flex items-center justify-center text-lg shrink-0">
+            <i class="fa-solid ${icon}"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-${color}-700 block">Solución Técnica Determinada:</span>
+            <h4 class="text-base sm:text-lg font-extrabold mb-1">${titulo}</h4>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${descripcion}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function reiniciarSelectorResguardos() {
+      wizardState = {};
+      for (let s = 2; s <= 4; s++) {
+        const el = document.getElementById('step' + s);
+        if (el) el.classList.add('hidden');
+      }
+      document.getElementById('step1').classList.remove('hidden');
+      document.getElementById('selectorResultado').classList.add('hidden');
+    }
+
+    // 4. Quiz Interactivo con Explicación Rigurosa
+    const quizExplanations = {
+      q1: {
+        correct: "¡Exacto! El RBD expresa confiabilidad de fMaterial generado con IA, puede contener erroresiones, no cableado ni tuberías. Si la fMaterial generado con IA, puede contener erroresión es evitar el flujo inverso hacia la bomba, basta con que una sola de las dos válvulas cierre herméticamente para cumplir el objetivo. Por ende, fMaterial generado con IA, puede contener erroresionalmente operan en PARALELO (redundantes).",
+        incorrect: "Incorrecto. No confundas la instalación física en la cañería con el RBD. Para que no haya contraflujo, ¿deben cerrar ambas obligatoriamente? No, con que cierre una ya se cumple la fMaterial generado con IA, puede contener erroresión. Por ende, en el RBD de la fMaterial generado con IA, puede contener erroresión de sellado están en PARALELO."
+      },
+      q2: {
+        correct: "¡Respuesta Correcta! La Materia y las normas de prensas exigen que la diferencia temporal entre ambos pulsadores sea &Delta;t &le; 0.2 segundos (evita trabar un botón previamente) y que se mantengan oprimidos al menos 0.4 s durante el descenso peligroso.",
+        incorrect: "Incorrecto. Los parámetros normativos exactos de la diapositiva 64 son: diferencia máxima &Delta;t &le; 0.2 segundos y mantenimiento continuo durante al menos 0.4 segundos."
+      },
+      q3: {
+        correct: "¡Excelente! En el modo negativo la fuerza para abrir el circuito proviene del muelle interno. Si el resorte se fatiga o rompe, el contacto se queda cerrado pegado y la máquina seguirá operando aunque la puerta esté abierta. Por eso en seguridad se exige el Modo Positivo.",
+        incorrect: "Incorrecto. La falla letal del modo negativo es que depende del resorte interno para separar los contactos. Si se rompe o traba el resorte, la máquina no frena al abrir el resguardo."
+      },
+      q4: {
+        correct: "¡Preciso! En máquinas con inercia (volantes, amoladoras, centrifugadoras), el tiempo de frenado es mayor que el tiempo de acceso humano. Por eso el enclavamiento simple no alcanza: se requiere bloqueo mecánico (cerrojo por solenoide) que mantenga la puerta trabada hasta velocidad cero.",
+        incorrect: "Incorrecto. La diferencia vital es que el enclavamiento con bloqueo mantiene mecánicamente trabada la puerta impidiendo su apertura física hasta que los órganos móviles se hayan detenido totalmente."
+      },
+      q5: {
+        correct: "¡Magistral! La tabla de la norma ISO 13857 (diapositiva 55) demuestra que por una ranura alargada de 20-30 mm pasa el brazo entero de lado (d_s &ge; 850 mm), mientras que una malla cuadrada frena la mano en la muñeca (d_s &ge; 120 mm).",
+        incorrect: "Incorrecto. Revisa la tabla de la diapositiva 55: una ranura de 20-30 mm permite el paso de lado de todo el brazo (requiere d_s &ge; 850 mm), mientras que la malla cuadrada limita el acceso a la mano (d_s &ge; 120 mm)."
+      }
+    };
+
+    function checkAnswer(qid, optIndex, isCorrect) {
+      const qBox = document.getElementById(qid);
+      const feedback = qBox.querySelector('.quiz-feedback');
+      const buttons = qBox.querySelectorAll('.q-opt');
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-slate-100');
+      });
+
+      feedback.classList.remove('hidden');
+
+      if (isCorrect) {
+        feedback.className = 'quiz-feedback text-xs p-3 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-900 block font-medium';
+        feedback.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5 text-emerald-600 text-sm"></i> <strong>¡Correcto!</strong> ${quizExplanations[qid].correct}`;
+      } else {
+        feedback.className = 'quiz-feedback text-xs p-3 rounded-lg bg-rose-50 border border-rose-300 text-rose-900 block font-medium';
+        feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1.5 text-rose-600 text-sm"></i> <strong>Incorrecto.</strong> ${quizExplanations[qid].incorrect}`;
+      }
+    }
+
+    // 5. Control de Modo Oscuro (Dark Mode)
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
+
+    // Inicialización al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      actualizarSimuladorRBD();
+    });
+  </script>
+</body>
+</html>

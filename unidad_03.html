@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Estudio: Toxicología Laboral</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            darkBg: '#1f2937',
+            darkText: '#f3f4f6'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .equation-box {
+      background-color: #f3f4f6;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-family: 'Courier New', Courier, monospace;
+      overflow-x: auto;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .dark .equation-box {
+      background-color: #374151;
+      border-left-color: #60a5fa;
+      color: #e5e7eb;
+    }
+    .example-box {
+      background-color: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+    }
+    .dark .example-box {
+      background-color: #1e3a8a;
+      border-color: #1e40af;
+      color: #eff6ff;
+    }
+    details > summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.5rem 0;
+    }
+    details[open] > summary {
+      color: #2563eb;
+    }
+    .dark details[open] > summary {
+      color: #60a5fa;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById('theme-toggle');
+      if (localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+           window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+      if(toggle) {
+        toggle.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark');
+          localStorage.theme =
+            document.documentElement.classList.contains('dark')
+              ? 'dark' : 'light';
+        });
+      }
+    });
+  </script>
+</head>
+<body class="bg-white text-gray-800 dark:bg-darkBg dark:text-darkText transition-colors duration-300 antialiased">
+  
+  <header class="bg-gray-100 dark:bg-gray-800 shadow-md sticky top-0 z-50 border-b dark:border-gray-700">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Unidad 03: Toxicología Laboral</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Guía de Estudio Avanzada</p>
+      </div>
+      <nav class="flex items-center gap-6">
+        <a href="#indice" class="text-primary dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors">Volver al índice</a>
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Alternar modo oscuro">
+          🌓
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-10 space-y-16 text-lg leading-relaxed">
+    
+    <!-- INDICE -->
+    <section id="indice" class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+      <h2 class="text-3xl font-extrabold mb-6 text-gray-900 dark:text-white">Índice Temático</h2>
+      <ul class="list-disc pl-6 space-y-3 text-primary dark:text-blue-400 font-medium">
+        <li><a href="#toma-muestras" class="hover:underline">1. Toma de Muestras para el Laboratorio de Toxicología Ocupacional</a></li>
+        <li><a href="#higiene-seguridad" class="hover:underline">2. Aspectos de Higiene y Seguridad en la Exposición</a></li>
+        <li><a href="#metales" class="hover:underline">3. Elementos Químicos (Metales Pesados y Metaloides)</a></li>
+        <li><a href="#hidrocarburos" class="hover:underline">4. Hidrocarburos y Solventes Orgánicos</a></li>
+        <li><a href="#gases" class="hover:underline">5. Gases Irritantes y Asfixiantes Químicos</a></li>
+        <li><a href="#quiz" class="hover:underline">6. Quiz de Autoevaluación</a></li>
+      </ul>
+    </section>
+
+    <!-- SECCION 1 -->
+    <section id="toma-muestras" class="scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b-2 border-primary pb-2">1. Toma de Muestras para Toxicología Ocupacional</h2>
+      <p class="mb-4">
+        El monitoreo biológico es una herramienta fundamental en la medicina del trabajo. Permite evaluar la exposición global de un trabajador a sustancias químicas (inhalación, absorción dérmica e ingestión) mediante la medición de los xenobióticos o sus metabolitos en fluidos corporales, principalmente <strong>sangre</strong> y <strong>orina</strong>.
+      </p>
+      
+      <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-800 dark:text-gray-100">1.1. Criterios para Sangre</h3>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        <li>Se debe utilizar <strong>jeringa heparinizada</strong> (salvo indicaciones especiales), remitida sin aguja y con obturador.</li>
+        <li>El volumen recomendado es de <strong>5 a 10 ml</strong> de sangre entera.</li>
+        <li>Conservación: en heladera a 4°C o freezer según el analito.</li>
+        <li><strong>Dato Crítico:</strong> Para sustancias volátiles (ej. benceno, tolueno), <em>no debe quedar espacio vacío (sin cámara de aire)</em> en la jeringa para evitar la volatilización y pérdida del analito hacia la fase gaseosa.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-800 dark:text-gray-100">1.2. Criterios para Orina</h3>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        <li>La recolección debe realizarse <strong>alejada del puesto de trabajo</strong>, previa higiene personal, para evitar contaminación cruzada de la muestra.</li>
+        <li>En muestras de micción única, es obligatorio determinar la <strong>creatinina urinaria</strong>. Esto se debe a que la concentración de un analito varía según el grado de hidratación del trabajador. La creatinina, al excretarse a un ritmo relativamente constante, permite estandarizar el resultado.</li>
+        <li>Se consideran válidas muestras con creatinina entre <strong>0,3 g/L y 3,0 g/L</strong>. Fuera de este rango, la orina está excesivamente diluida o concentrada y debe repetirse.</li>
+      </ul>
+
+      <div class="equation-box">
+        <strong>Fórmula de Ajuste por Creatinina:</strong><br><br>
+        Concentración Ajustada = (Concentración del Analito [mg/L]) / (Concentración de Creatinina [g/L])<br><br>
+        <em>El resultado se expresa en miligramos de analito por gramo de creatinina (mg/g creat).</em>
+      </div>
+
+      <div class="example-box">
+        <h4 class="font-bold text-xl mb-2">Ejemplo Resuelto 1: Ajuste de Muestra Urinaria</h4>
+        <p class="mb-4"><strong>Situación:</strong> Un trabajador expuesto a cadmio presenta en su análisis de orina de fin de jornada una concentración de Cadmio de 6 µg/L. Su nivel de creatinina urinaria es de 1.2 g/L. El Índice Biológico de Exposición (BEI) para cadmio es de 5 µg/g de creatinina. ¿Está el trabajador sobreexpuesto?</p>
+        <p class="mb-2"><strong>Desarrollo:</strong></p>
+        <ul class="list-none pl-4 space-y-1 mb-4">
+          <li>1. Verificamos que la creatinina esté en rango válido: 1.2 g/L está entre 0.3 y 3.0 g/L. (Válido).</li>
+          <li>2. Aplicamos la fórmula de ajuste:</li>
+          <li>   Cd Ajustado = 6 µg/L / 1.2 g/L = <strong>5 µg/g creatinina</strong></li>
+        </ul>
+        <p><strong>Conclusión:</strong> El valor se encuentra exactamente en el límite del BEI (5 µg/g creat). Requiere evaluación del medio ambiente laboral y seguimiento periódico, pero no lo supera ampliamente. Pedagógicamente, este caso ilustra cómo un valor bruto "alto" (6) puede estar dentro del límite al ajustarse por concentración urinaria.</p>
+      </div>
+    </section>
+
+    <!-- SECCION 2 -->
+    <section id="higiene-seguridad" class="scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b-2 border-primary pb-2">2. Aspectos de Higiene y Seguridad</h2>
+      <p class="mb-4">
+        El riesgo químico deriva de la exposición no controlada a agentes tóxicos. La gestión preventiva debe aplicarse en todo el ciclo de vida de la sustancia: desde la compra, recepción, almacenamiento, manipulación, hasta la disposición final.
+      </p>
+      <h3 class="text-2xl font-semibold mt-6 mb-3 text-gray-800 dark:text-gray-100">Derecho a la Información y Trazabilidad</h3>
+      <p class="mb-4">
+        Todo trabajador tiene derecho a conocer las propiedades peligrosas de las sustancias que manipula. Es mandatario el uso de las <strong>Hojas de Seguridad (SDS)</strong> y el correcto etiquetado. Los depósitos deben contar con instalaciones antideflagrantes, ventilación adecuada, contención de derrames (canaletas y pozos) y separación estricta por incompatibilidad química.
+      </p>
+
+      <div class="example-box">
+        <h4 class="font-bold text-xl mb-2">Ejemplo Resuelto 2: Medidas Preventivas</h4>
+        <p class="mb-2"><strong>Situación:</strong> Una planta utiliza Ácido Fluorhídrico (HF). Se debe diseñar el protocolo de contingencia y almacenamiento.</p>
+        <p class="mb-2"><strong>Desarrollo:</strong></p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><strong>Almacenamiento:</strong> Lejos de fuentes de calor y separado de sustancias incompatibles (bases fuertes). Recipientes íntegros (el HF ataca el vidrio, debe usarse polímeros específicos).</li>
+          <li><strong>Manipulación:</strong> Obligatorio el uso de EPP completo (protección facial, guantes de nitrilo/neopreno gruesos, delantal).</li>
+          <li><strong>Contingencia Médica:</strong> Ante quemadura dérmica por HF, no basta con lavar con agua; el ion fluoruro penetra tejidos causando necrosis profunda y quelando calcio. Se debe aplicar gluconato de calcio en gel para precipitar el fluoruro in situ.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCION 3 -->
+    <section id="metales" class="scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b-2 border-primary pb-2">3. Elementos Químicos (Metales Pesados)</h2>
+      
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">3.1. Plomo (Inorgánico)</h3>
+          <p class="mb-2"><strong>Fuentes:</strong> Metalurgia, fabricación de baterías, pinturas, cerámicas.</p>
+          <p class="mb-2"><strong>Toxicidad (Saturnismo):</strong> Órganos blancos o "targets": Sistema Nervioso (Central y Periférico), Médula Ósea, Riñón, Gónadas. Provoca anemia secundaria (inhibición de la síntesis del hemo), cólico saturnino, ribete de Burton (encías) y neuropatía motora periférica (típica "mano péndula").</p>
+          <p class="mb-4"><strong>Vigilancia Biológica:</strong> Plombemia (Plomo en sangre). BEI: 30 µg/100 ml. Adicionalmente, Zinc Protoporfirina Eritrocitaria (ZPP).</p>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">3.2. Arsénico</h3>
+          <p class="mb-2"><strong>Toxicidad:</strong> El arsénico crónico produce compromiso multiparenquimatoso. Es un <strong>Carcinógeno Grupo 1 (IARC)</strong> (piel, broncopulmonar, angiosarcoma hepático). Clínicamente destaca la hiperqueratosis palmo-plantar, melanodermia y "despigmentación en gota" (rain-drop hipopigmentation).</p>
+          <p class="mb-4"><strong>Vigilancia Biológica:</strong> Arsénico inorgánico y metabolitos metilados en orina. BEI: 35 µg/L.</p>
+        </div>
+      </div>
+
+      <div class="example-box mt-6">
+        <h4 class="font-bold text-xl mb-2">Ejemplo Resuelto 3: Exposición a Plomo</h4>
+        <p class="mb-2"><strong>Situación:</strong> Trabajador de fábrica de baterías presenta astenia, dolores abdominales paroxísticos (cólicos) y una plombemia de 65 µg/100 ml.</p>
+        <p class="mb-2"><strong>Conducta:</strong></p>
+        <p>El valor supera el límite tolerable (30 µg/100 ml) e incluso el límite que exige retiro de exposición (>60 µg/100ml). La presencia de síntomas clínicos (cólico saturnino, astenia) clasifica el cuadro como enfermedad profesional. <br><strong>Pasos a seguir:</strong> Alejamiento inmediato del puesto de exposición. Evaluación de corrección del medio ambiente (ventilación, EPP). Tratamiento médico quelante. Control estricto de plumbemia hasta normalización antes de considerar reinserción.</p>
+      </div>
+    </section>
+
+    <!-- SECCION 4 -->
+    <section id="hidrocarburos" class="scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b-2 border-primary pb-2">4. Hidrocarburos y Solventes Orgánicos</h2>
+      
+      <p class="mb-4">Los solventes orgánicos se caracterizan por su alta liposolubilidad, lo que facilita su penetración dérmica y su afinidad por el Sistema Nervioso Central (SNC), actuando generalmente como depresores.</p>
+
+      <ul class="list-disc pl-6 space-y-4 mb-6">
+        <li><strong>Benceno:</strong> Hidrocarburo aromático. <em>Mielotóxico severo</em>. Causa aplasia medular y es un <strong>Carcinógeno Grupo 1</strong> (Leucemia). Su biomarcador de exposición es el Ácido t,t-mucónico en orina (BEI: 500 µg/g creatinina) o el Ácido S-fenilmercaptúrico.</li>
+        <li><strong>Tolueno:</strong> Menos tóxico que el benceno. Afecta SNC, hígado y riñón. Biomarcador: o-Cresol en orina.</li>
+        <li><strong>n-Hexano:</strong> Hidrocarburo alifático. Se metaboliza a 2,5-hexanodiona. Es neurotóxico, causando <em>polineuropatía sensitivo-motora periférica</em>. Biomarcador: 2,5-Hexanodiona en orina.</li>
+      </ul>
+
+      <div class="equation-box">
+        <strong>Cinética de Solventes:</strong><br>
+        La vida media de los solventes condiciona el momento de la toma de muestra. Para solventes de vida media corta, la muestra debe tomarse <strong>al final de la jornada laboral</strong> (ej. metabolitos del Tolueno). Para los de acumulación progresiva, <strong>al final del último turno de la semana laboral</strong>.
+      </div>
+    </section>
+
+    <!-- SECCION 5 -->
+    <section id="gases" class="scroll-mt-24">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b-2 border-primary pb-2">5. Gases Irritantes y Asfixiantes</h2>
+      
+      <p class="mb-4">
+        Los gases ejercen sus efectos de acuerdo a su hidrosolubilidad. Gases muy hidrosolubles (Amoníaco) irritan vías aéreas superiores inmediatamente. Gases poco hidrosolubles (Dióxido de nitrógeno) penetran hasta los alvéolos pudiendo causar edema agudo de pulmón diferido.
+      </p>
+
+      <h3 class="text-2xl font-semibold mt-6 mb-3 text-gray-800 dark:text-gray-100">Monóxido de Carbono (CO)</h3>
+      <p class="mb-4">Gas incoloro, inodoro, asfixiante químico. Posee una afinidad por la hemoglobina ~240 veces mayor que el oxígeno, formando <strong>carboxihemoglobina (COHb)</strong> y desplazando la curva de disociación de O2 hacia la izquierda, causando hipoxia tisular severa.</p>
+
+      <div class="example-box">
+        <h4 class="font-bold text-xl mb-2">Ejemplo Resuelto 4: Monitoreo de CO</h4>
+        <p class="mb-2"><strong>Situación:</strong> Se mide la Carboxihemoglobina de un trabajador de metalurgia. Resulta en 4.5%. El BEI indica un máximo de 3.5%.</p>
+        <p class="mb-2"><strong>Interpretación:</strong> Supera el BEI. Sin embargo, antes de atribuirlo exclusivamente a la exposición industrial, se debe indagar sobre el hábito tabáquico, ya que los fumadores crónicos pueden presentar niveles basales de COHb entre 4% y 8%. Si el trabajador no fuma, hay una exposición ocupacional riesgosa.</p>
+      </div>
+    </section>
+
+    <!-- SECCION 6: QUIZ -->
+    <section id="quiz" class="scroll-mt-24 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white border-b-2 border-primary pb-2">6. Quiz de Autoevaluación</h2>
+      
+      <div class="space-y-4">
+        <details class="bg-gray-50 dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+          <summary class="text-lg">¿Por qué es obligatorio medir la creatinina en muestras de orina aisladas para toxicología?</summary>
+          <div class="mt-4 text-gray-700 dark:text-gray-300 pl-4 border-l-2 border-primary">
+            La creatinina se excreta a un ritmo constante en individuos sanos. Su medición permite corregir las fluctuaciones de concentración del tóxico debidas al grado de hidratación (diuresis) del trabajador en ese momento específico.
+          </div>
+        </details>
+
+        <details class="bg-gray-50 dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+          <summary class="text-lg">¿Cuál es el "órgano blanco" característico de la exposición crónica al Benceno y qué patología severa desencadena?</summary>
+          <div class="mt-4 text-gray-700 dark:text-gray-300 pl-4 border-l-2 border-primary">
+            El órgano blanco es la médula ósea. La exposición crónica provoca mielotoxicidad severa, comenzando con citopenias y pudiendo progresar a aplasia medular y leucemia (Carcinógeno Grupo 1).
+          </div>
+        </details>
+
+        <details class="bg-gray-50 dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+          <summary class="text-lg">¿Qué precaución específica se debe tomar al extraer sangre venosa para determinar solventes volátiles?</summary>
+          <div class="mt-4 text-gray-700 dark:text-gray-300 pl-4 border-l-2 border-primary">
+            La muestra debe recolectarse en una jeringa heparinizada, asegurando que <strong>no quede cámara de aire (espacio vacío)</strong>, ya que los compuestos volátiles pasarían a la fase gaseosa, subestimando los resultados del análisis.
+          </div>
+        </details>
+
+        <details class="bg-gray-50 dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+          <summary class="text-lg">Un trabajador de una fábrica de baterías presenta "mano péndula", cólicos y astenia. ¿Qué tóxico es el probable causante y qué indicador biológico mediría?</summary>
+          <div class="mt-4 text-gray-700 dark:text-gray-300 pl-4 border-l-2 border-primary">
+            La clínica es típica de intoxicación crónica por <strong>Plomo (Saturnismo)</strong>. Se debe medir la Plombemia (Plomo en sangre) y secundariamente la Zinc Protoporfirina Eritrocitaria (ZPP).
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-8 text-center mt-12">
+    <p class="max-w-3xl mx-auto px-4">
+      Material de estudio compilado a partir del texto de referencia en Toxicología Laboral y Criterios de Monitoreo. Se ruega a los estudiantes referirse a las normativas de la Superintendencia de Riesgos del Trabajo vigentes (ej. Res. 295/03 y ACGIH) para actualizaciones de Valores Límite (CMP) e Índices Biológicos de Exposición (BEI).
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 1: Conceptos Preliminares y Definiciones | Higiene y Seguridad</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#082f49',
+                        },
+                        accent: {
+                            amber: '#f59e0b',
+                            emerald: '#10b981',
+                            rose: '#f43f5e',
+                            violet: '#8b5cf6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        heading: ['Outfit', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(2, 132, 199, 0.3);
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(2, 132, 199, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200 selection:bg-sky-500 selection:text-white">
+
+    <!-- Barra de Progreso de Lectura -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 z-50 w-0 transition-all duration-150"></div>
+
+    <!-- Navegación Superior -->
+    <header class="fixed top-0 inset-x-0 z-40 glass-header border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- Botón Volver integrado en la cabecera -->
+                <a href="index.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-600 dark:hover:text-white border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-150 group" title="Volver al menú principal">
+                    <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-0.5"></i>
+                    <span class="hidden sm:inline">Volver</span>
+                </a>
+
+                <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block"></div>
+
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-brand-700 flex items-center justify-center text-white shadow-md shadow-sky-500/20">
+                        <i class="fa-solid fa-shield-halved text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">HyS</span>
+                        <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-none">Higiene, Seguridad y Medio Ambiente</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="theme-toggle" type="button" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition shadow-sm" title="Cambiar tema (Claro / Oscuro)">
+                    <i class="fa-solid fa-moon dark:hidden text-sm"></i>
+                    <i class="fa-solid fa-sun hidden dark:inline text-sm text-amber-400"></i>
+                </button>
+                <a href="#autoevaluacion" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-sky-600 hover:bg-sky-700 text-white shadow-sm transition">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span>Autoevaluación</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- SIDEBAR DE NAVEGACIÓN RÁPIDA (Desktop) -->
+            <aside class="hidden lg:block lg:col-span-3">
+                <div class="sticky top-24 space-y-6">
+                    <div class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 mb-3 pb-3 border-b border-slate-100 dark:border-slate-800 w-full transition group">
+                            <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+                            <span>Volver al índice general</span>
+                        </a>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-list-ul text-sky-500"></i> Tabla de Contenidos
+                        </h3>
+                        <nav class="space-y-1.5 text-sm font-medium">
+                            <a href="#introduccion" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">1. Fundamentos y Ética</a>
+                            <a href="#hombre-trabajo" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">2. El Hombre y los Sistemas</a>
+                            <a href="#estadisticas" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">3. Siniestralidad Mundial y País</a>
+                            <a href="#conceptos-nucleares" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">4. Peligro vs. Riesgo</a>
+                            <a href="#teorias-causalidad" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">5. Teorías de Causalidad</a>
+                            <a href="#factor-humano" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">6. Factor Humano y Cognición</a>
+                            <a href="#arbol-causal" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">7. Esquema Causal Integral</a>
+                            <a href="#prevencion-axiomas" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">8. Axiomas y Técnicas</a>
+                            <a href="#marco-legal" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">9. Leyes 19.587 y 24.557</a>
+                            <a href="#calculadora" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">10. Laboratorio de Índices SRT</a>
+                            <a href="#autoevaluacion" class="block px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800/60 transition">11. Autoevaluación</a>
+                        </nav>
+                    </div>
+
+                    <div class="p-4 bg-gradient-to-br from-sky-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800/80 rounded-2xl border border-sky-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                        <div class="font-bold text-sky-800 dark:text-sky-300 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-graduation-cap"></i> Material de Materia
+                        </div>
+                        <p class="leading-relaxed">Preparado para estudiantes universitarios de ingeniería.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <main class="lg:col-span-9 space-y-12">
+
+                <!-- HERO SECTION -->
+                <section class="relative overflow-hidden p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-brand-900 via-brand-800 to-slate-900 text-white shadow-xl shadow-brand-950/20">
+                    <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-semibold">
+                            <i class="fa-solid fa-book-open"></i> Guía Pedagógica Universitaria
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                            Unidad 1: Conceptos Preliminares y Definiciones
+                        </h1>
+                        <p class="text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+                            Una aproximación epistemológica, humanística, sistémica y técnica al universo de la Higiene y Seguridad Laboral. Desde los dilemas éticos de la ingeniería hasta los modelos cognitivos de causalidad de accidentes y el marco legal argentino.
+                        </p>
+                        <div class="pt-4 flex flex-wrap gap-4 text-xs sm:text-sm text-slate-300">
+                            <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                                <i class="fa-regular fa-clock text-sky-400"></i> Lectura estimada: 35 min
+                            </div>
+                            <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                                <i class="fa-solid fa-shield-virus text-emerald-400"></i> Enfoque preventivo integral
+                            </div>
+                            <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                                <i class="fa-solid fa-scale-balanced text-amber-400"></i> Marco Ley 19.587 & 24.557
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 1: FUNDAMENTOS, ÉTICA Y EL FIN HUMANO -->
+                <section id="introduccion" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 1</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">1. Fundamentos Filosóficos, Éticos y el Fin Humano</h2>
+                    </div>
+
+                    <div class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
+                        <p>
+                            En el imaginario común suele pensarse la <strong>Higiene y Seguridad</strong> como una simple compilación de normativas tediosas, extintores y cascos de protección. Sin embargo, para un profesional de la ingeniería representa el núcleo ético de su profesión: <em>la preservación de la vida y la dignidad del ser humano en su interacción con los procesos productivos</em>.
+                        </p>
+
+                        <!-- Estatuto Card -->
+                        <div class="p-6 rounded-2xl bg-sky-50/70 dark:bg-slate-900/80 border-l-4 border-sky-600 dark:border-sky-500 shadow-sm space-y-3">
+                            <div class="flex items-center gap-2 text-sky-800 dark:text-sky-300 font-bold text-sm">
+                                <i class="fa-solid fa-landmark"></i> El Mandato Social del Universitario 
+                            </div>
+                            <p class="text-sm italic text-slate-600 dark:text-slate-300">
+                                «<strong>Art. 2:</strong> Promover la actuación del universitario en el seno del pueblo al que pertenece, destacando su sensibilidad para los problemas de su época y las soluciones de los mismos... Colaborando desinteresadamente en su esclarecimiento y solución.»<br>
+                                «<strong>Art. 4 inc. b:</strong> Los universitarios tienen un fin común que es <strong>el fin humano</strong>, que nos justifica socialmente...»
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">
+                                La tecnología nunca es un fin en sí misma; carece de sentido si destruye la salud o la vida de las personas que la operan.
+                            </p>
+                        </div>
+
+                        <!-- Tríada Axiológica - Keeney -->
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white pt-2">La Trampa Instrumental y el Pensamiento Basado en Valores</h3>
+                        <p>
+                            A menudo, la ingeniería contemporánea cae fascinada en el uso de herramientas sofisticadas (cálculo numérico, automatización, IA) sin cuestionarse los <strong>fines</strong> ni los <strong>valores</strong> que las orientan. Como advertía el profesor <strong>Ralph L. Keeney</strong> (Duke University / MIT):
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 text-center">
+                            <div class="p-5 rounded-2xl bg-amber-50 dark:bg-slate-900 border border-amber-200 dark:border-amber-900/50 shadow-sm">
+                                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">1</div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Ámbito Axiológico</h4>
+                                <span class="text-xs uppercase tracking-wider font-semibold text-amber-600 dark:text-amber-400">VALORES</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">¿Qué nos importa realmente? La vida, la salud psicofísica, la dignidad, el ambiente.</p>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-sky-50 dark:bg-slate-900 border border-sky-200 dark:border-sky-900/50 shadow-sm">
+                                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold">2</div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Ámbito Metodológico</h4>
+                                <span class="text-xs uppercase tracking-wider font-semibold text-sky-600 dark:text-sky-400">HERRAMIENTAS</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Dispositivos, cálculos, normas, métodos de inspección, protecciones ingenieriles.</p>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-emerald-50 dark:bg-slate-900 border border-emerald-200 dark:border-emerald-900/50 shadow-sm">
+                                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">3</div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Ámbito Teleológico</h4>
+                                <span class="text-xs uppercase tracking-wider font-semibold text-emerald-600 dark:text-emerald-400">FINES</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Bienestar humano, sustentabilidad, productividad segura, trabajo decente.</p>
+                            </div>
+                        </div>
+
+                        <blockquote class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900 border-l-4 border-slate-400 text-sm italic text-slate-700 dark:text-slate-300">
+                            «Un martillo en manos de Miguel Ángel da forma a la Piedad; en manos de un vándalo destruye una obra de arte. <strong>Es solo una herramienta inanimada.</strong> El valor y el fin residen exclusivamente en las intenciones del ser humano que la concibe y ejecuta.»
+                        </blockquote>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: EL HOMBRE Y LOS SISTEMAS SOCIO-TÉCNICOS -->
+                <section id="hombre-trabajo" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 2</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">2. El Hombre, el Trabajo y los Sistemas Socio-Técnicos</h2>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <p>
+                            El ser humano es la única criatura capaz de transformar de manera deliberada y masiva el medio ambiente para satisfacer sus requerimientos. Esta relación se vehicula a través del <strong>trabajo productivo</strong>.
+                        </p>
+
+                        <!-- 4 Dimensiones del Trabajo -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-4">
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-sky-500 mb-2"><i class="fa-solid fa-coins text-xl"></i></div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Función Económica</h4>
+                                <p class="text-xs text-slate-500 mt-1">Generación de sustento, remuneración salarial y bienes transables.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-violet-500 mb-2"><i class="fa-solid fa-brain text-xl"></i></div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Función Social y Psicológica</h4>
+                                <p class="text-xs text-slate-500 mt-1">Pertenencia, autorrealización, estatus, forja de la identidad personal.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-emerald-500 mb-2"><i class="fa-solid fa-hammer text-xl"></i></div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Carácter Práctico y Concreto</h4>
+                                <p class="text-xs text-slate-500 mt-1">Transformación física o intelectual de materiales e información.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-amber-500 mb-2"><i class="fa-solid fa-scale-unbalanced text-xl"></i></div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Carácter Obligatorio</h4>
+                                <p class="text-xs text-slate-500 mt-1">Condición inexorable para la subsistencia y el contrato social.</p>
+                            </div>
+                        </div>
+
+                        <!-- Necesidades Humanas -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-sky-500"></i> Dinámica de las Necesidades Humanas y Pirámide de Maslow
+                            </h3>
+                            <p class="text-sm">
+                                Las necesidades humanas poseen propiedades específicas que impactan en la seguridad laboral:
+                            </p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
+                                <li><strong>Ilimitadas en número:</strong> a medida que se satisfacen unas, surgen nuevas metas culturales.</li>
+                                <li><strong>Limitadas en capacidad (Saturables):</strong> principio económico de satisfacción decreciente.</li>
+                                <li><strong>Jerárquicas:</strong> desde las fisiológicas basales hasta la autorrealización (Maslow).</li>
+                                <li><strong>Recurrentes y complementarias:</strong> reaparecen periódicamente (alimento, descanso) y se asocian entre sí.</li>
+                            </ul>
+                            <div class="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-900/50 text-xs text-amber-900 dark:text-amber-300">
+                                <strong>Correlación con la Seguridad:</strong> Si el puesto de trabajo amenaza las necesidades de <em>Supervivencia</em> (fisiológicas y de seguridad física), el operario entra en conflicto crónico, lo que dispara conductas inseguras para intentar compensar sus carencias.
+                            </div>
+                        </div>
+
+                        <!-- Taylor vs Mayo -->
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white pt-3">La Dialéctica Organizacional: Taylor vs. Mayo</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Taylor -->
+                            <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-xs font-bold uppercase">Taylorismo</span>
+                                    <i class="fa-solid fa-stopwatch text-slate-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Organización Científica del Trabajo</h4>
+                                <p class="text-xs text-slate-500 mb-3">Frederick Winslow Taylor (Enfoque Mecanicista Formal)</p>
+                                <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-sky-500 mt-1"></i>
+                                        <span>Concepción del hombre como <strong>Homo Economicus</strong> movilizado únicamente por incentivo salarial.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-sky-500 mt-1"></i>
+                                        <span>Estudio estricto de <em>tiempos y movimientos</em> para eliminar tiempos muertos.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-sky-500 mt-1"></i>
+                                        <span>Exigencia de rendimiento hasta el <strong>límite fisiológico</strong> bajo condiciones ambientales estándar.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-sky-500 mt-1"></i>
+                                        <span>Foco exclusivo en aspectos formales: autoridad jerárquica y especialización extrema.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Mayo -->
+                            <div class="p-6 rounded-2xl bg-gradient-to-b from-sky-50/50 to-white dark:from-slate-900 dark:to-slate-900/60 border border-sky-200/70 dark:border-slate-800 shadow-sm">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase">Escuela de Relaciones Humanas</span>
+                                    <i class="fa-solid fa-users text-slate-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Experimento de Hawthorne (1927)</h4>
+                                <p class="text-xs text-slate-500 mb-3">Elton Mayo, Chicago (Western Electric Company)</p>
+                                <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                        <span>Descubrimiento clave: la variación de iluminación no determinaba la productividad, sino la <strong>atención y reconocimiento social</strong>.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                        <span>Fuerza de los <strong>grupos informales</strong>: fijan sus propias normas, sanciones y ritmos, superando la orden formal.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                        <span>La motivación económica es secundaria frente al reconocimiento social y la pertenencia grupal.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                        <span>Los individuos no pueden ser tratados de forma aislada, sino como miembros de un colectivo.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Vector Tridimensional de la Actividad -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm mt-4">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">El Espacio Tridimensional de Toda Actividad Laboral</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                                Toda tarea humana en la industria debe entenderse como un vector resultante de tres ejes interdependientes:
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+                                <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">Eje 1: Técnico y Tecnológico</strong>
+                                    Máquinas, herramientas, materiales, infraestructura física, energía e instrumentos.
+                                </div>
+                                <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-indigo-600 dark:text-indigo-400 block mb-1">Eje 2: Administrativo y de Gestión</strong>
+                                    Planificación, procedimientos operativos, supervisión, logística, compras y ritmos.
+                                </div>
+                                <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-emerald-600 dark:text-emerald-400 block mb-1">Eje 3: Social y de Comportamiento</strong>
+                                    Clima de trabajo, cultura informal, comunicación, actitudes, motivación y fatiga.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ciclo Trabajo - Salud -->
+                        <div class="p-6 rounded-2xl bg-gradient-to-r from-red-50/60 via-amber-50/60 to-emerald-50/60 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 border border-slate-200 dark:border-slate-800">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-3">La Dialéctica Trabajo - Salud: Círculo Virtuoso vs. Círculo Vicioso</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+                                <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800/50">
+                                    <div class="font-bold text-emerald-700 dark:text-emerald-400 mb-1 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-heart-pulse"></i> El Círculo Virtuoso
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                        Trabajo en condiciones dignas y seguras &rarr; Satisface necesidades materiales y psicológicas &rarr; Promueve autorrealización &rarr; Eleva la calidad de vida de la persona y su familia &rarr; Mayor compromiso y productividad sustentable.
+                                    </p>
+                                </div>
+                                <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-rose-200 dark:border-rose-800/50">
+                                    <div class="font-bold text-rose-700 dark:text-rose-400 mb-1 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> El Círculo Vicioso Destructivo
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                        Condiciones laborales nocivas &rarr; Accidente de trabajo o enfermedad profesional &rarr; Pérdida de la salud &rarr; Imposibilidad de trabajar (baja médica) &rarr; Pérdida de ingresos y gastos sobrevinientes &rarr; Generación de nuevas carencias &rarr; Marginación y degradación psicofísica.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: LA SINIESTRALIDAD EN CIFRAS (MUNDO Y ARGENTINA) -->
+                <section id="estadisticas" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 3</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">3. La Siniestralidad Laboral en Cifras: Mundo y Argentina</h2>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <p>
+                            Las estadísticas no son fríos números: representan trabajadores lesionados, familias destrozadas y recursos económicos dilapidados. Como declaró <strong>Guy Ryder</strong> (Director General de la OIT en el XX Congreso Mundial sobre Seguridad y Salud en el Trabajo): <em>«El trabajo cobra más víctimas en el mundo que la guerra»</em>.
+                        </p>
+
+                        <!-- Estadísticas Mundiales Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-4">
+                            <div class="p-4 rounded-2xl bg-rose-50 dark:bg-slate-900 border border-rose-200 dark:border-rose-900/50 text-center">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-rose-600 dark:text-rose-400">2.3 M</div>
+                                <div class="text-xs font-semibold text-slate-600 dark:text-slate-400 mt-1">Muertes anuales por trabajo</div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-amber-50 dark:bg-slate-900 border border-amber-200 dark:border-amber-900/50 text-center">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-amber-600 dark:text-amber-400">Cada 15s</div>
+                                <div class="text-xs font-semibold text-slate-600 dark:text-slate-400 mt-1">Muere 1 trabajador en el mundo</div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-slate-900 border border-sky-200 dark:border-sky-900/50 text-center">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-sky-600 dark:text-sky-400">270 M</div>
+                                <div class="text-xs font-semibold text-slate-600 dark:text-slate-400 mt-1">Accidentes laborales anuales</div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-indigo-50 dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/50 text-center">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">4% PIB</div>
+                                <div class="text-xs font-semibold text-slate-600 dark:text-slate-400 mt-1">Pérdida global (~2,8 billones USD)</div>
+                            </div>
+                        </div>
+
+                        <!-- Datos Argentina SRT -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-chart-pie text-sky-500"></i> Estadísticas Oficiales de la República Argentina (Informes SRT)
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">
+                                Según el análisis de accidentabilidad laboral elaborado anualmente por la Superintendencia de Riesgos del Trabajo (SRT):
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                                    <h5 class="text-xs font-bold uppercase text-sky-600 dark:text-sky-400 mb-2">Formas de Ocurrencia Más Comunes</h5>
+                                    <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300">
+                                        <li class="flex justify-between"><span>Pisadas, choques o golpes:</span> <strong class="text-slate-900 dark:text-white">26% - 28%</strong></li>
+                                        <li class="flex justify-between"><span>Caídas de personas (nivel/altura):</span> <strong class="text-slate-900 dark:text-white">18% - 20%</strong></li>
+                                        <li class="flex justify-between"><span>Esfuerzos físicos excesivos:</span> <strong class="text-slate-900 dark:text-white">13%</strong></li>
+                                        <li class="flex justify-between"><span>Atrapamiento objeto/partes:</span> <strong class="text-slate-900 dark:text-white">4%</strong></li>
+                                        <li class="flex justify-between"><span>Caída de objetos:</span> <strong class="text-slate-900 dark:text-white">4%</strong></li>
+                                    </ul>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                                    <h5 class="text-xs font-bold uppercase text-indigo-600 dark:text-indigo-400 mb-2">Agentes Materiales Asociados</h5>
+                                    <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300">
+                                        <li class="flex justify-between"><span>Interior del ambiente laboral:</span> <strong class="text-slate-900 dark:text-white">26% - 30%</strong></li>
+                                        <li class="flex justify-between"><span>Medios de transporte terrestre:</span> <strong class="text-slate-900 dark:text-white">16% - 18%</strong></li>
+                                        <li class="flex justify-between"><span>Herramientas manuales/utensilios:</span> <strong class="text-slate-900 dark:text-white">8% - 9%</strong></li>
+                                        <li class="flex justify-between"><span>Almacenamiento y estibas:</span> <strong class="text-slate-900 dark:text-white">6%</strong></li>
+                                        <li class="flex justify-between"><span>Polvos, gases y químicos:</span> <strong class="text-slate-900 dark:text-white">4% - 5%</strong></li>
+                                    </ul>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                                    <h5 class="text-xs font-bold uppercase text-emerald-600 dark:text-emerald-400 mb-2">Naturaleza de la Lesión</h5>
+                                    <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300">
+                                        <li class="flex justify-between"><span>Contusiones y golpes:</span> <strong class="text-slate-900 dark:text-white">32.9%</strong></li>
+                                        <li class="flex justify-between"><span>Distensión muscular:</span> <strong class="text-slate-900 dark:text-white">11.4%</strong></li>
+                                        <li class="flex justify-between"><span>Heridas cortantes:</span> <strong class="text-slate-900 dark:text-white">10.5%</strong></li>
+                                        <li class="flex justify-between"><span>Esguinces:</span> <strong class="text-slate-900 dark:text-white">6.3%</strong></li>
+                                        <li class="flex justify-between"><span>Fracturas cerradas:</span> <strong class="text-slate-900 dark:text-white">5.8%</strong></li>
+                                        <li class="flex justify-between"><span>Cuerpo extraño en ojo:</span> <strong class="text-slate-900 dark:text-white">5.1%</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indicadores Oficiales Definiciones -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                <div class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase">Indicador 1</div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-base mt-1">Índice de Incidencia (II)</h4>
+                                <p class="text-xs text-slate-500 mt-2">Casos notificados con al menos 1 día de baja (o secuelas) por cada mil trabajadores cubiertos en un año.</p>
+                                <div class="mt-3 p-2 bg-slate-100 dark:bg-slate-800 rounded text-center text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+                                    II = (Casos Notificados / Trab. Cubiertos) × 1.000
+                                </div>
+                                <span class="block text-[11px] text-slate-500 mt-2">Mayor incidencia: Construcción (~106-118), Manufacturas (~70-84), Agricultura (~75-79).</span>
+                            </div>
+
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Indicador 2</div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-base mt-1">Índice de Gravedad / Pérdida</h4>
+                                <p class="text-xs text-slate-500 mt-2">Cantidad de jornadas no trabajadas (días de baja perdidos) por cada mil trabajadores cubiertos en el año.</p>
+                                <div class="mt-3 p-2 bg-slate-100 dark:bg-slate-800 rounded text-center text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+                                    IG = (Jornadas Perdidas / Trab. Cubiertos) × 1.000
+                                </div>
+                                <span class="block text-[11px] text-slate-500 mt-2">Mayor gravedad: Construcción (3.000 - 4.100), Agricultura (3.000 - 3.400).</span>
+                            </div>
+
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                <div class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase">Indicador 3</div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-base mt-1">Índice de Letalidad (IL)</h4>
+                                <p class="text-xs text-slate-500 mt-2">Cantidad de casos mortales notificados por cada cien mil casos notificados totales en el año.</p>
+                                <div class="mt-3 p-2 bg-slate-100 dark:bg-slate-800 rounded text-center text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+                                    IL = (Casos Mortales / Casos Notificados) × 100.000
+                                </div>
+                                <span class="block text-[11px] text-slate-500 mt-2">Mayor letalidad: Electricidad (370 - 408), Agricultura (160 - 266), Transporte (150 - 230).</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: CONCEPTOS NUCLEARES: PELIGRO VS RIESGO -->
+                <section id="conceptos-nucleares" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 4</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">4. La Distinción Matriz: Peligro vs. Riesgo</h2>
+                    </div>
+
+                    <div class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
+                        <p class="text-base">
+                            En el lenguaje cotidiano suelen utilizarse como sinónimos; sin embargo, en ingeniería y seguridad laboral constituyen conceptos diametralmente distintos:
+                        </p>
+
+                        <!-- Tabla Comparativa Peligro vs Riesgo -->
+                        <div class="overflow-x-auto my-4">
+                            <table class="min-w-full text-left text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+                                <thead class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">
+                                    <tr>
+                                        <th class="p-4 font-bold border-b border-slate-200 dark:border-slate-700">Dimensión</th>
+                                        <th class="p-4 font-bold border-b border-slate-200 dark:border-slate-700 text-rose-600 dark:text-rose-400">PELIGRO (Condición Intrínseca)</th>
+                                        <th class="p-4 font-bold border-b border-slate-200 dark:border-slate-700 text-amber-600 dark:text-amber-400">RIESGO (Exposición y Probabilidad)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                                    <tr>
+                                        <td class="p-4 font-semibold text-slate-900 dark:text-white">Definición</td>
+                                        <td class="p-4">Propiedad o cualidad intrínseca de una sustancia, equipo o situación capaz de causar daño.</td>
+                                        <td class="p-4">Probabilidad de que el daño ocurra combinada con la magnitud de sus efectos, derivada de la exposición humana.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold text-slate-900 dark:text-white">Naturaleza Lingüística</td>
+                                        <td class="p-4"><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 font-bold text-xs">CALIFICACIÓN</span> (El objeto <em>es</em> peligroso)</td>
+                                        <td class="p-4"><span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold text-xs">ACCIÓN</span> (La tarea <em>es</em> riesgosa)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold text-slate-900 dark:text-white">Presencia Humana</td>
+                                        <td class="p-4">Existe esté o no presente el trabajador.</td>
+                                        <td class="p-4">Requiere interacción o exposición humana por <em>acción u omisión</em>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold text-slate-900 dark:text-white">Ejemplo 1: Electricidad</td>
+                                        <td class="p-4">Una instalación eléctrica viva con barras de cobre expuestas <strong>es peligrosa</strong>.</td>
+                                        <td class="p-4">Reparar la instalación eléctrica desprotegida <strong>es riesgoso</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold text-slate-900 dark:text-white">Ejemplo 2: Obras civiles</td>
+                                        <td class="p-4">Un pozo excavado de 4 metros de profundidad <strong>es peligroso</strong>.</td>
+                                        <td class="p-4">Caminar o trabajar al borde del pozo sin baranda <strong>es riesgoso</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold text-slate-900 dark:text-white">Ejemplo 3: Químicos</td>
+                                        <td class="p-4">El tolueno o solvente inflamable <strong>es peligroso</strong>.</td>
+                                        <td class="p-4">Trasvasar el tolueno de un tambor de 200L a bidones sin descarga a tierra <strong>es riesgoso</strong>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Fórmula Cuantitativa -->
+                        <div class="p-5 rounded-2xl bg-gradient-to-r from-brand-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 border border-sky-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Ecuación Fundamental del Riesgo</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">El riesgo se reduce actuando sobre la frecuencia (probabilidad) o mitigando el daño potencial (efectos).</p>
+                            </div>
+                            <div class="px-6 py-3 rounded-xl bg-white dark:bg-slate-900 border-2 border-sky-500 text-sky-600 dark:text-sky-400 font-mono font-bold text-lg shadow-sm">
+                                Riesgo = Probabilidad (P) × Efectos / Consecuencias (E)
+                            </div>
+                        </div>
+
+                        <!-- El Objeto y las distintas Tareas -->
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white pt-3">Un Mismo Peligro genera Distintos Riesgos según la Tarea</h3>
+                        <p class="text-sm">
+                            Un objeto a transformar (agente peligroso) no genera un riesgo unívoco. El riesgo emerge de la relación operativa concreta:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="font-bold text-sky-600 dark:text-sky-400 mb-1"><i class="fa-solid fa-eye"></i> Tarea A: Inspección Visual</div>
+                                <p class="text-slate-600 dark:text-slate-400">Observación a 3 metros de distancia con barrera interpuesta &rarr; <strong class="text-emerald-600 dark:text-emerald-400">Riesgo Bajo / Controlado</strong>.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="font-bold text-amber-600 dark:text-amber-400 mb-1"><i class="fa-solid fa-wrench"></i> Tarea B: Ajuste Mecánico</div>
+                                <p class="text-slate-600 dark:text-slate-400">Mantenimiento con herramientas cerca de componentes giratorios &rarr; <strong class="text-amber-600 dark:text-amber-400">Riesgo Moderado</strong>.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="font-bold text-rose-600 dark:text-rose-400 mb-1"><i class="fa-solid fa-fire"></i> Tarea C: Soldadura Directa</div>
+                                <p class="text-slate-600 dark:text-slate-400">Intervención en caliente sobre recipiente con restos volátiles &rarr; <strong class="text-rose-600 dark:text-rose-400">Riesgo Crítico / Catastrófico</strong>.</p>
+                            </div>
+                        </div>
+
+                        <!-- Tarea vs Actividad & Volumen de Control -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                                <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-clipboard-list text-sky-500"></i> Tarea Prescripta vs. Actividad Real
+                                </h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    <strong>Tarea (Lo Prescripto):</strong> Es la definición formal elaborada por la empresa (manuales, procedimientos de ingeniería, condiciones ideales). Aquí los riesgos deben ser previstos y controlados en el diseño.
+                                </p>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    <strong>Actividad (Lo Real):</strong> La labor concreta que el operario ejecuta, realizando ajustes continuos frente a variaciones externas (piezas defectuosas, atrasos) o estados internos (fatiga, estrés). <em>Allí germinan los riesgos no evidentes.</em>
+                                </p>
+                            </div>
+
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                                <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-cube text-indigo-500"></i> Concepto de Volumen de Control
+                                </h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    Espacio tridimensional delimitado en la planta industrial (físico o virtual) dentro del cual se concentran los agentes materiales, la energía y los operarios, y donde deben identificarse, evaluarse y neutralizarse sistemáticamente todos los factores de riesgo antes de liberar la operación.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Tipologías de Riesgo y Percepción -->
+                        <div class="p-6 rounded-2xl bg-slate-100/70 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 mt-4">
+                            <h4 class="font-bold text-slate-900 dark:text-white">Gradientes de Riesgo y Fenomenología de la Percepción</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                                <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-slate-500 block mb-1">Riesgo Cero</strong>
+                                    <p class="text-slate-600 dark:text-slate-400"><strong>No existe.</strong> Es una utopía teórica. Toda actividad humana implica una probabilidad finita de fallo o alteración.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">Riesgo Aceptable</strong>
+                                    <p class="text-slate-600 dark:text-slate-400">Nivel residual consensuado bajo estándares técnicos y legales vigentes luego de agotar barreras preventivas.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-amber-600 dark:text-amber-400 block mb-1">Riesgo Aceptado</strong>
+                                    <p class="text-slate-600 dark:text-slate-400">Tolerado fácticamente en entornos precarios o subdesarrollados por hábito o apremio económico. Dista de ser seguro.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-rose-600 dark:text-rose-400 block mb-1">Riesgo Crítico</strong>
+                                    <p class="text-slate-600 dark:text-slate-400">Certeza o inminencia de siniestro con consecuencias graves o letales. Su presencia exige detención inmediata.</p>
+                                </div>
+                            </div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-3">
+                                <strong>Percepción del Riesgo:</strong> Es una construcción social mediada por conocimientos, creencias y sesgos. El riesgo suele <em>subestimarse</em> cuando la persona siente falsa sensación de "control" sobre la situación, y tiende a <em>negarse</em> cuando es impuesto por decisiones ajenas.
+                            </div>
+                        </div>
+
+                        <!-- Accidente vs Incidente vs Enfermedad Profesional -->
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white pt-4">Trilogía de Siniestros: Accidente, Incidente y Enfermedad</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Accidente -->
+                            <div class="p-5 rounded-2xl bg-rose-50/50 dark:bg-slate-900 border border-rose-200 dark:border-rose-900/50 space-y-3">
+                                <div class="flex items-center gap-2 text-rose-700 dark:text-rose-400 font-bold">
+                                    <i class="fa-solid fa-car-burst"></i> Accidente Laboral
+                                </div>
+                                <div class="text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                                    <p><strong>Criterio Técnico:</strong> Concreción súbita y violenta de un riesgo que interrumpe la continuidad laboral ocasionando <strong>lesiones a personas</strong> y posibles daños materiales/ambientales.</p>
+                                    <p><strong>Definición Legal (Ley 24.557, Art. 6):</strong> Acontecimiento súbito y violento ocurrido <em>por el hecho o en ocasión del trabajo</em>, o en el trayecto de ida/vuelta entre el domicilio y el trabajo (<em>in itinere</em>).</p>
+                                    <p><strong>OHSAS 18001 / ISO 45001:</strong> Suceso de trabajo en que ocurre daño, deterioro a la salud o fatalidad.</p>
+                                </div>
+                            </div>
+
+                            <!-- Incidente -->
+                            <div class="p-5 rounded-2xl bg-amber-50/50 dark:bg-slate-900 border border-amber-200 dark:border-amber-900/50 space-y-3">
+                                <div class="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Incidente ("Near Miss")
+                                </div>
+                                <div class="text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                                    <p><strong>Concepto Central:</strong> Concreción de un riesgo en un hecho repentino y violento que altera la actividad, pudiendo generar o no daños patrimoniales, pero <strong>SIN LESIONES A PERSONAS</strong>.</p>
+                                    <p><strong>Valor Preventivo Clave:</strong> Es el "accidente blanco" o cuasi-accidente. Proporciona la mayor oportunidad de intervención analítica gratuita antes de que se consume la tragedia humana.</p>
+                                </div>
+                            </div>
+
+                            <!-- Enfermedad Profesional -->
+                            <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/50 space-y-3">
+                                <div class="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-bold">
+                                    <i class="fa-solid fa-lungs text-lg"></i> Enfermedad Profesional
+                                </div>
+                                <div class="text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                                    <p><strong>Criterio Higiénico:</strong> Deterioro progresivo, lento y acumulativo de la salud debido a la exposición continuada a dosis ambientales excesivas de agentes físicos, químicos o biológicos.</p>
+                                    <p><strong>Criterio Legal Argentino (Ley 24.557):</strong> Rige el <em>Listado de Enfermedades Profesionales</em> taxativo elaborado por el P.E.N. (Decreto 658/96, 659/96 Baremo, y Decreto 49/2014 que incorporó hernias inguinales, várices y lumbalgias).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: MODELOS TEÓRICOS DE CAUSALIDAD -->
+                <section id="teorias-causalidad" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 5</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">5. Modelos Teóricos de Causalidad de Accidentes</h2>
+                    </div>
+
+                    <div class="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <p>
+                            A lo largo del siglo XX, la ingeniería y las ciencias sociales desarrollaron diversos marcos conceptuales para comprender por qué se producen los accidentes. Ningún modelo es único; se complementan para ofrecer una visión holística.
+                        </p>
+
+                        <!-- Pirámide de Bird -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Proporción y Pirámide de Bird (Frank Bird Jr., 1969)
+                                </h3>
+                                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full font-mono text-slate-600 dark:text-slate-400">1 : 10 : 30 : 600</span>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">
+                                Estudio empírico sobre <strong>1.753.498 accidentes</strong> notificados en 297 empresas de EE.UU. (más de 3.000 millones de horas hombre trabajadas):
+                            </p>
+
+                            <!-- Visual Pyramid -->
+                            <div class="space-y-2 max-w-lg mx-auto py-2">
+                                <div class="bg-rose-600 text-white text-center py-2 px-4 rounded-xl font-bold text-xs sm:text-sm shadow-md flex items-center justify-between">
+                                    <span class="w-12 font-extrabold text-base">1</span>
+                                    <span>Accidente Muy Grave o Mortal</span>
+                                    <span class="text-xs opacity-75">Cúspide</span>
+                                </div>
+                                <div class="bg-amber-500 text-white text-center py-2 px-4 rounded-xl font-bold text-xs sm:text-sm shadow-md flex items-center justify-between">
+                                    <span class="w-12 font-extrabold text-base">10</span>
+                                    <span>Accidentes Graves con Lesión Incapacitante</span>
+                                    <span class="text-xs opacity-75">Baja laboral</span>
+                                </div>
+                                <div class="bg-yellow-400 text-slate-900 text-center py-2 px-4 rounded-xl font-bold text-xs sm:text-sm shadow-md flex items-center justify-between">
+                                    <span class="w-12 font-extrabold text-base">30</span>
+                                    <span>Accidentes Leves (Primeros Auxilios)</span>
+                                    <span class="text-xs opacity-75">Sin secuela</span>
+                                </div>
+                                <div class="bg-emerald-600 text-white text-center py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm shadow-md flex items-center justify-between">
+                                    <span class="w-12 font-extrabold text-base">600</span>
+                                    <span>Incidentes Sin Lesión Visible ("Near Misses")</span>
+                                    <span class="text-xs opacity-75">Base Preventiva</span>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl text-xs text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                                <strong>Principio de Gestión:</strong> Pretender eliminar el accidente mortal trabajando únicamente sobre la cima es inútil. La verdadera ingeniería de prevención consiste en detectar y erradicar los <strong>600 incidentes</strong> y los miles de actos y condiciones inseguras que forman la base oculta de la pirámide.
+                            </div>
+                        </div>
+
+                        <!-- Las 5 Teorías Clásicas -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                            <!-- 1. Dominó -->
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center gap-2 text-sky-600 dark:text-sky-400 font-bold">
+                                    <span class="w-7 h-7 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 flex items-center justify-center text-xs">1</span>
+                                    <h4>Efecto Dominó (Heinrich, 1931)</h4>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    Secuencia lineal de 5 factores concatenados que caen en cascada:
+                                </p>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-lg text-xs space-y-1 font-mono text-slate-700 dark:text-slate-300">
+                                    1. Entorno social &rarr; 2. Falla personal &rarr; <span class="text-amber-600 dark:text-amber-400 font-bold">3. Acto Inseguro / Peligro</span> &rarr; 4. Accidente &rarr; 5. Lesión
+                                </div>
+                                <p class="text-xs text-slate-500">
+                                    <strong>Axioma de Heinrich:</strong> Retirando la <em>ficha central (n° 3: Acto inseguro)</em>, la cadena causal se interrumpe y el siniestro no llega a materializarse.
+                                </p>
+                            </div>
+
+                            <!-- 2. Transferencia de Energía -->
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs">2</span>
+                                    <h4>Transferencia de Energía (Gibson / Haddon)</h4>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    Las lesiones ocurren por la liberación incontrolada de energía que impacta en el cuerpo humano más allá de su umbral de tolerancia fisiológica:
+                                </p>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-lg text-xs font-mono text-slate-700 dark:text-slate-300">
+                                    Fuente Energética &rarr; Trayectoria de Propagación &rarr; Receptor (Trabajador)
+                                </div>
+                                <p class="text-xs text-slate-500">
+                                    <strong>Estrategias de control:</strong> Eliminar la fuente en el diseño, instalar barreras en la trayectoria (pantallas, aislantes) o blindar al receptor (EPP).
+                                </p>
+                            </div>
+
+                            <!-- 3. Causalidad Múltiple -->
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-bold">
+                                    <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 flex items-center justify-center text-xs">3</span>
+                                    <h4>Causalidad Múltiple (Multicausalidad)</h4>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    Los siniestros nunca tienen una causa aislada; resultan de la coincidencia sinérgica de múltiples factores ambientales, mecánicos y de comportamiento.
+                                </p>
+                                <blockquote class="text-xs italic text-slate-500 border-l-2 border-amber-400 pl-2">
+                                    «En los mismos ríos entramos y no entramos, pues somos y no somos los mismos» (Heráclito).
+                                </blockquote>
+                                <p class="text-xs text-slate-500">
+                                    Cada accidente es, en rigor, un acontecimiento <strong>irrepetible en su combinación exacta de variables temporales y espaciales</strong>.
+                                </p>
+                            </div>
+
+                            <!-- 4. Teoría de Desviaciones -->
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center gap-2 text-violet-600 dark:text-violet-400 font-bold">
+                                    <span class="w-7 h-7 rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 flex items-center justify-center text-xs">4</span>
+                                    <h4>Teoría de las Desviaciones (Urban Kjellén, 1984)</h4>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
+                                    Fundamentada en la <strong>teoría general de sistemas</strong>. Concibe el accidente como una <em>desviación indeseada</em> del estado normado u operacional previsto de un sistema industrial.
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    La desviación genera no solo lesiones, sino perturbaciones holísticas: rotura de máquinas, pérdidas de calidad, fugas ambientales y pérdidas financieras.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 5. Homeostasis del Riesgo (Full Width Card) -->
+                        <div class="p-6 rounded-2xl bg-gradient-to-br from-indigo-50/70 to-slate-50 dark:from-slate-900 dark:to-slate-800/80 border border-indigo-200 dark:border-indigo-900/50 space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-arrows-spin text-indigo-500"></i> Teoría de la Homeostasis del Riesgo (Gerald Wilde, 1982, 1998)
+                                </h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">Control de Ciclo Cerrado</span>
+                            </div>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                Postula que los seres humanos poseemos un <strong>nivel intrínseco de riesgo aceptado</strong> (un «termostato interno de riesgo»). Cuando introducimos medidas tecnológicas que aumentan la seguridad pasiva aparente (ej.: frenos antibloqueo en autos o guardas automáticas en sierras), las personas perciben menor amenaza y tienden a elevar su audacia o velocidad para compensar las ventajas perdidas, manteniendo la tasa neta de siniestros constante.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs pt-2">
+                                <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-indigo-600 dark:text-indigo-400 block mb-1">Mecanismo de Adaptación Conductual</strong>
+                                    Si el nivel de riesgo percibido cae por debajo del aceptado, el sujeto incrementa el ritmo o descuida la atención hasta recuperar el equilibrio cognitivo de conveniencia/beneficio.
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-indigo-600 dark:text-indigo-400 block mb-1">Comportamiento de Rebaño (Herding Behavior)</strong>
+                                    En entornos industriales o de tráfico, los operarios imitan las conductas arriesgadas de sus pares (efecto rebaño o <em>bandwagon</em>), normalizando la transgresión de normas de seguridad.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: FACTOR HUMANO Y COGNICIÓN -->
+                <section id="factor-humano" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 6</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">6. El Factor Humano: Modelos Cognitivos de Rasmussen y Reason</h2>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <div class="p-4 rounded-xl bg-amber-50 dark:bg-slate-900 border-l-4 border-amber-500 text-xs sm:text-sm">
+                            <strong>La Paradoja de la Confiabilidad Humana (Erik Hollnagel, 1998):</strong> Aunque entre el <strong>60% y el 90%</strong> de los siniestros industriales (centrales nucleares, aeroespacial) se atribuyen al "error humano", la ingeniería moderna no culpa al individuo: analiza las condiciones del sistema sociotécnico que indujeron dicho error.
+                        </div>
+
+                        <!-- Imprudencia, Negligencia, Distracción -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                <span class="text-xs font-bold text-rose-500 uppercase">Conducta</span>
+                                <h4 class="font-bold text-slate-900 dark:text-white mt-1">Imprudencia</h4>
+                                <p class="text-xs text-slate-500 mt-2">Obrar sin cautela, con exceso de confianza o temeridad (hacer lo que no se debe o asumir riesgos innecesarios).</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                <span class="text-xs font-bold text-amber-500 uppercase">Omisión</span>
+                                <h4 class="font-bold text-slate-900 dark:text-white mt-1">Negligencia</h4>
+                                <p class="text-xs text-slate-500 mt-2">Falta de cuidado, pereza o desidia; omitir la aplicación de las precauciones o procedimientos debidos.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                <span class="text-xs font-bold text-sky-500 uppercase">Atención</span>
+                                <h4 class="font-bold text-slate-900 dark:text-white mt-1">Distracción</h4>
+                                <p class="text-xs text-slate-500 mt-2">Pérdida momentánea del foco atencional por fatiga, sobrecarga cognitiva o interferencia de estímulos del entorno.</p>
+                            </div>
+                        </div>
+
+                        <!-- Modelo SRK de Rasmussen -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-microchip text-sky-500"></i> Modelo de Desempeño Cognitivo SRK (Jens Rasmussen)
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">
+                                Rasmussen clasifica el procesamiento mental y el error humano en tres niveles progresivos de consciencia y esfuerzo:
+                            </p>
+
+                            <div class="space-y-4 text-xs sm:text-sm">
+                                <!-- Nivel Destreza -->
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                    <div class="flex items-center justify-between font-bold text-slate-900 dark:text-white">
+                                        <span class="text-sky-600 dark:text-sky-400">1. Basado en Destrezas (Skill-Based)</span>
+                                        <span class="text-xs bg-sky-100 dark:bg-sky-950 px-2 py-0.5 rounded text-sky-700 dark:text-sky-300">Bajo nivel de consciencia / Alta rutina</span>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 mt-1">
+                                        Ciclos de trabajo automáticos aprendidos por repetición continua (ej.: teclear, operar pedal, manejar). Exige bajo esfuerzo atencional.
+                                    </p>
+                                    <div class="mt-2 text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded border border-slate-200 dark:border-slate-800">
+                                        <strong>Tipo de Error: DESLICES (Slips) o LAPSUS.</strong> Son fallas involuntarias en la ejecución motora debidas a interrupción momentánea de la atención o cruce de hábitos similares. <em>La intención era correcta, la acción falló.</em>
+                                    </div>
+                                </div>
+
+                                <!-- Nivel Reglas -->
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                    <div class="flex items-center justify-between font-bold text-slate-900 dark:text-white">
+                                        <span class="text-indigo-600 dark:text-indigo-400">2. Basado en Reglas (Rule-Based)</span>
+                                        <span class="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded text-indigo-700 dark:text-indigo-300">Nivel medio de consciencia</span>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 mt-1">
+                                        Frente a un cambio en el proceso, el operador reconoce el síntoma y ejecuta un procedimiento predeterminado condicional: <em>«Si alarma X, hacer Y»</em>.
+                                    </p>
+                                    <div class="mt-2 text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded border border-slate-200 dark:border-slate-800">
+                                        <strong>Tipo de Error: EQUIVOCACIONES POR REGLA.</strong> Aplicación estricta de una regla adecuada para un contexto en una situación distinta o no contemplada en el manual.
+                                    </div>
+                                </div>
+
+                                <!-- Nivel Conocimiento -->
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                    <div class="flex items-center justify-between font-bold text-slate-900 dark:text-white">
+                                        <span class="text-amber-600 dark:text-amber-400">3. Basado en Conocimiento (Knowledge-Based)</span>
+                                        <span class="text-xs bg-amber-100 dark:bg-amber-950 px-2 py-0.5 rounded text-amber-700 dark:text-amber-300">Máximo nivel consciente</span>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 mt-1">
+                                        Situaciones totalmente nuevas, emergencias imprevistas o etapa de diseño de procesos donde no hay normas preexistentes. Exige análisis conceptual abstracto.
+                                    </p>
+                                    <div class="mt-2 text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded border border-slate-200 dark:border-slate-800">
+                                        <strong>Tipo de Error: ERRORES DE JUICIO Y DISEÑO.</strong> Mal diagnóstico de los fundamentos físicos/químicos del problema, generando decisiones erróneas que luego se codifican en normas.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- La Trampa Organizacional -->
+                            <div class="p-4 bg-rose-50 dark:bg-slate-950 rounded-xl border border-rose-200 dark:border-rose-900/40 text-xs sm:text-sm text-rose-900 dark:text-rose-300">
+                                <h5 class="font-bold mb-1"><i class="fa-solid fa-skull-crossbones"></i> La Peligrosa Trampa de los Procedimientos Intrínsecamente Inseguros</h5>
+                                <p class="leading-relaxed">
+                                    Cuando la gerencia o los ingenieros cometen <em>errores basados en conocimiento</em> al diseñar los sistemas de trabajo, esos errores quedan formalizados como normas estándar de la empresa. El operario de planta, que confía ciegamente en el procedimiento, lo ejecuta con destreza rutinaria hasta que un desliz menor detona un desastre sistémico. ¡La causa raíz estuvo en el diseño y en la cultura corporativa, no en el operario!
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Modelo del Queso Suizo de James Reason -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-cheese text-amber-500"></i> Modelo del Queso Suizo (James Reason, 1990)
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                En los sistemas complejos, la seguridad se organiza mediante capas sucesivas de defensa (ingeniería, procedimientos, supervisión, EPP). Cada capa tiene debilidades o "agujeros".
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                                    <h4 class="font-bold text-slate-900 dark:text-white mb-1 text-sky-600 dark:text-sky-400">Condiciones Latentes (Agujeros Ocultos)</h4>
+                                    <ul class="space-y-1.5 text-slate-600 dark:text-slate-300">
+                                        <li><strong>1. Influencias Organizacionales:</strong> Recortes de presupuesto de mantenimiento, priorización de plazos por sobre seguridad.</li>
+                                        <li><strong>2. Supervisión Insegura:</strong> Tolerancia a la transgresión de normas, falta de capacitación.</li>
+                                        <li><strong>3. Precondiciones para Actos Inseguros:</strong> Turnos excesivos, fatiga crónica, calor o iluminación inadecuada.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                                    <h4 class="font-bold text-slate-900 dark:text-white mb-1 text-rose-600 dark:text-rose-400">Fallos Activos (El Disparador Final)</h4>
+                                    <p class="text-slate-600 dark:text-slate-300 mb-2">
+                                        Son los <strong>Actos Inseguros</strong> cometidos por el personal de primera línea (el operador, el chofer, el cirujano).
+                                    </p>
+                                    <p class="text-xs italic text-slate-500">
+                                        <strong>La Trayectoria de Oportunidad del Siniestro:</strong> El accidente se produce única y exclusivamente cuando los agujeros de todas las rebanadas defensivas se alinean perfectamente en el tiempo y en el espacio.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cultura de la Organización -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-sitemap text-violet-500"></i> Las Tres Dimensiones de la Cultura de Seguridad
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">
+                                La cultura de una organización no es lo que está escrito en los folletos, sino el conjunto de valores y hábitos compartidos que definen el <strong>nivel de riesgo tolerado</strong> en la práctica:
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+                                <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">Dimensión Tecnológica</strong>
+                                    Calidad del parque de máquinas, confiabilidad de herramientas, resguardos instalados y materiales de trabajo.
+                                </div>
+                                <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-emerald-600 dark:text-emerald-400 block mb-1">Dimensión Sociológica</strong>
+                                    Relaciones humanas entre pares y con la línea de mando, estilos de liderazgo, canales de comunicación y clima de equipo.
+                                </div>
+                                <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <strong class="text-amber-600 dark:text-amber-400 block mb-1">Dimensión Ideológica</strong>
+                                    Mitos, rituales no escritos, creencias consagradas (ej.: «acá siempre se hizo así y nunca pasó nada»).
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 7: ESQUEMA CAUSAL INTEGRAL (ILCI / BIRD) -->
+                <section id="arbol-causal" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 7</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">7. Esquema Causal Integral de los Siniestros</h2>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <p>
+                            El marco metodológico más robusto para investigar y prevenir siniestros es el <strong>Árbol de Causalidad</strong> (ILCI / Pontelli), que distingue con precisión los niveles de responsabilidad:
+                        </p>
+
+                        <!-- Diagrama Flujo Causal -->
+                        <div class="p-6 rounded-3xl bg-slate-900 text-white shadow-xl space-y-6 overflow-hidden">
+                            <h4 class="text-center font-bold text-sky-400 uppercase tracking-widest text-xs">Desglose Sistemático de la Cadena de Pérdidas</h4>
+
+                            <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-center text-xs">
+                                <!-- Nivel 1: Deficiencia en Gestión -->
+                                <div class="p-3 bg-slate-800/90 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-6 h-6 mx-auto rounded-full bg-red-500/20 text-red-400 font-bold mb-2 flex items-center justify-center">1</div>
+                                        <h5 class="font-bold text-white text-sm">Deficiencia en Gestión</h5>
+                                        <span class="text-[10px] text-red-400 uppercase font-semibold">Causa Raíz</span>
+                                        <p class="text-slate-400 mt-2 text-[11px]">Falta de políticas, programas inadecuados, ausencia de estándares de control.</p>
+                                    </div>
+                                    <div class="mt-3 text-slate-500 text-lg hidden md:block">&rarr;</div>
+                                </div>
+
+                                <!-- Nivel 2: Causas Básicas -->
+                                <div class="p-3 bg-slate-800/90 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-6 h-6 mx-auto rounded-full bg-amber-500/20 text-amber-400 font-bold mb-2 flex items-center justify-center">2</div>
+                                        <h5 class="font-bold text-white text-sm">Causas Básicas</h5>
+                                        <span class="text-[10px] text-amber-400 uppercase font-semibold">Origen Real</span>
+                                        <p class="text-slate-400 mt-2 text-[11px]"><strong>Factores Personales:</strong> Falta de aptitud, estrés, motivación desviada.<br><strong>Factores de Trabajo:</strong> Diseño pobre, mantenimiento deficitario.</p>
+                                    </div>
+                                    <div class="mt-3 text-slate-500 text-lg hidden md:block">&rarr;</div>
+                                </div>
+
+                                <!-- Nivel 3: Causas Inmediatas -->
+                                <div class="p-3 bg-slate-800/90 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-6 h-6 mx-auto rounded-full bg-yellow-500/20 text-yellow-400 font-bold mb-2 flex items-center justify-center">3</div>
+                                        <h5 class="font-bold text-white text-sm">Causas Inmediatas</h5>
+                                        <span class="text-[10px] text-yellow-400 uppercase font-semibold">Síntomas Visibles</span>
+                                        <p class="text-slate-400 mt-2 text-[11px]"><strong>Actos Inseguros:</strong> Omitir EPP, operar a deshoras.<br><strong>Condiciones Inseguras:</strong> Falta de resguardo, orden deficiente.</p>
+                                    </div>
+                                    <div class="mt-3 text-slate-500 text-lg hidden md:block">&rarr;</div>
+                                </div>
+
+                                <!-- Nivel 4: Siniestro / Contacto -->
+                                <div class="p-3 bg-slate-800/90 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-6 h-6 mx-auto rounded-full bg-sky-500/20 text-sky-400 font-bold mb-2 flex items-center justify-center">4</div>
+                                        <h5 class="font-bold text-white text-sm">Siniestro</h5>
+                                        <span class="text-[10px] text-sky-400 uppercase font-semibold">El Contacto</span>
+                                        <p class="text-slate-400 mt-2 text-[11px]">Intercambio lesivo de energía mecánica, eléctrica, térmica o sustancia química con el agente.</p>
+                                    </div>
+                                    <div class="mt-3 text-slate-500 text-lg hidden md:block">&rarr;</div>
+                                </div>
+
+                                <!-- Nivel 5: Pérdidas -->
+                                <div class="p-3 bg-rose-950/40 rounded-2xl border border-rose-800/50 flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-6 h-6 mx-auto rounded-full bg-rose-500/20 text-rose-400 font-bold mb-2 flex items-center justify-center">5</div>
+                                        <h5 class="font-bold text-rose-300 text-sm">Pérdidas</h5>
+                                        <span class="text-[10px] text-rose-400 uppercase font-semibold">Consecuencias</span>
+                                        <p class="text-slate-300 mt-2 text-[11px]">Lesiones a operarios, daños materiales a máquinas, polución ambiental y quiebra económica.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detalle Causas Básicas vs Inmediatas -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-slate-900 dark:text-white text-base text-amber-600 dark:text-amber-400">
+                                    <i class="fa-solid fa-user-gear"></i> Causas Básicas: Factores Personales y Motivacionales
+                                </h4>
+                                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 list-disc list-inside">
+                                    <li><strong>Falta de conocimientos o habilidades:</strong> el operario nunca fue instruido adecuadamente.</li>
+                                    <li><strong>Capacidad física o mental disminuida:</strong> agudeza visual, fatiga extrema, consumo de sustancias.</li>
+                                    <li><strong>Motivaciones individuales desviadas:</strong>
+                                        <ul class="pl-6 space-y-1 mt-1 text-slate-500 list-circle">
+                                            <li>1. Ahorrar tiempo (presión por terminar antes).</li>
+                                            <li>2. Evitar incomodidades (no ponerse el arnés o la careta).</li>
+                                            <li>3. Atraer atención o reconocimiento de pares (fanfarronería).</li>
+                                            <li>4. Conducta hostil o rebeldía frente a la supervisión.</li>
+                                            <li>5. Deseo mal encauzado de demostrar independencia.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-slate-900 dark:text-white text-base text-sky-600 dark:text-sky-400">
+                                    <i class="fa-solid fa-industry"></i> Agente, Parte del Agente y Formas de Ocurrencia
+                                </h4>
+                                <div class="text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                                    <p>
+                                        <strong>Agente Material:</strong> Es el objeto, máquina o sustancia asociada físicamente a la lesión que, de haber sido controlado eficazmente, habría evitado el siniestro (ej.: torno, caldera, grúa, ácido sulfúrico).
+                                    </p>
+                                    <p>
+                                        <strong>Parte del Agente:</strong> El elemento mecánico o químico puntual donde se concreta el contacto (ej.: mandril del torno, disco abrasivo de amoladora, válvula de purga, fase eléctrica sin aislar).
+                                    </p>
+                                    <div class="p-3 bg-slate-50 dark:bg-slate-800/70 rounded-lg">
+                                        <strong>Formas Clave de Contacto:</strong>
+                                        <div class="grid grid-cols-2 gap-1 mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                                            <span>• Atrapamiento / aprisionamiento</span>
+                                            <span>• Contacto eléctrico de falla</span>
+                                            <span>• Choque o golpe contra objetos</span>
+                                            <span>• Caída a nivel y desde altura</span>
+                                            <span>• Exposición a cáusticos / tóxicos</span>
+                                            <span>• Sobreesfuerzo biomecánico</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 8: PREVENCIÓN, AXIOMAS Y TÉCNICAS -->
+                <section id="prevencion-axiomas" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 8</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">8. Jerarquía de Seguridad, Modelo de Surry y Técnicas</h2>
+                    </div>
+
+                    <div class="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <!-- Los 4 Axiomas de Seguridad -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-emerald-500"></i> Los 4 Axiomas de la Seguridad (Jerarquía Universal de Controles)
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">
+                                Un ingeniero nunca debe saltar directamente a comprar cascos o tapones auditivos. Rige un orden de prelación técnico inquebrantable:
+                            </p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-800/80 border-2 border-emerald-500 text-center flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center text-sm mb-2">1</div>
+                                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Eliminar el Peligro</h4>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Sustitución de procesos o sustancias tóxicas por alternativas inocuas en la etapa de diseño.</p>
+                                    </div>
+                                    <span class="mt-3 text-[10px] uppercase font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 py-1 rounded">Máxima Eficacia</span>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-800/80 border border-sky-300 dark:border-slate-700 text-center flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-8 h-8 mx-auto rounded-full bg-sky-500 text-white font-bold flex items-center justify-center text-sm mb-2">2</div>
+                                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Alejar al Hombre</h4>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Automatización, segregación física, telemando y trabajo por control remoto.</p>
+                                    </div>
+                                    <span class="mt-3 text-[10px] uppercase font-bold text-sky-700 dark:text-sky-400 bg-sky-100 dark:bg-sky-950/60 py-1 rounded">Ingeniería Fuerte</span>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-amber-50 dark:bg-slate-800/80 border border-amber-300 dark:border-slate-700 text-center flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-8 h-8 mx-auto rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-sm mb-2">3</div>
+                                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Cubrir el Peligro</h4>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Resguardos fijos, barreras fotoeléctricas, enclavamientos y aislamiento acústico.</p>
+                                    </div>
+                                    <span class="mt-3 text-[10px] uppercase font-bold text-amber-700 dark:text-amber-400 bg-amber-100 dark:bg-amber-950/60 py-1 rounded">Protección Colectiva</span>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-center flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-8 h-8 mx-auto rounded-full bg-slate-500 text-white font-bold flex items-center justify-center text-sm mb-2">4</div>
+                                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Proteger al Hombre</h4>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Elementos de Protección Personal (EPP). Cascos, guantes, arneses, calzado.</p>
+                                    </div>
+                                    <span class="mt-3 text-[10px] uppercase font-bold text-slate-700 dark:text-slate-400 bg-slate-200 dark:bg-slate-700 py-1 rounded">Última Barrera</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modelo de Surry -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-code-fork text-sky-500"></i> Modelo de Secuencia hacia el Accidente (Surry, 1969)
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Modela el proceso cognitivo secuencial de toma de decisiones del operador ante una amenaza inminente. El siniestro se produce si en <em>cualquiera</em> de estos escalones la respuesta es negativa (NO):
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-5 gap-2 text-center text-xs">
+                                <div class="p-3 bg-sky-50 dark:bg-slate-800 rounded-xl border border-sky-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">1. Percepción</strong>
+                                    ¿Es percibido sensorialmente el peligro?
+                                </div>
+                                <div class="p-3 bg-sky-50 dark:bg-slate-800 rounded-xl border border-sky-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">2. Reconocimiento</strong>
+                                    ¿Es reconocido conscientemente como un riesgo?
+                                </div>
+                                <div class="p-3 bg-sky-50 dark:bg-slate-800 rounded-xl border border-sky-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">3. Conocimiento</strong>
+                                    ¿Se sabe técnicamente cómo evitarlo?
+                                </div>
+                                <div class="p-3 bg-sky-50 dark:bg-slate-800 rounded-xl border border-sky-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">4. Voluntad</strong>
+                                    ¿Quiere evitarse? (Motivación y actitud)
+                                </div>
+                                <div class="p-3 bg-sky-50 dark:bg-slate-800 rounded-xl border border-sky-200 dark:border-slate-700">
+                                    <strong class="text-sky-600 dark:text-sky-400 block mb-1">5. Capacidad</strong>
+                                    ¿Puede materialmente evitarse en tiempo y espacio?
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Técnicas Sanitarias vs No Sanitarias -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                                    <i class="fa-solid fa-stethoscope"></i> Técnicas Sanitarias de Prevención
+                                </h4>
+                                <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                                    <li><strong>Exámenes de Salud:</strong> Ingreso (preocupacional), periódicos de exposición a agentes de riesgo, transferencias y egreso.</li>
+                                    <li><strong>Selección Profesional Médica:</strong> Verificación de compatibilidad psicofísica con los requerimientos ergonómicos de la tarea.</li>
+                                    <li><strong>Medicina Preventiva y Curativa:</strong> Campañas de vacunación, botiquín de primeros auxilios y atención de urgencia.</li>
+                                    <li><strong>Educación Sanitaria:</strong> Promoción de estilos de vida saludables e higiene biológica.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-sky-600 dark:text-sky-400">
+                                    <i class="fa-solid fa-compass-drafting"></i> Técnicas No Sanitarias de Prevención
+                                </h4>
+                                <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                                    <li><strong>Seguridad en el Trabajo:</strong> Previene accidentes eliminando y controlando condiciones materiales y actos inseguros.</li>
+                                    <li><strong>Higiene Laboral:</strong> Elimina contaminantes (químicos, físicos, biológicos) mediante instrumental de medición y ventilación.</li>
+                                    <li><strong>Ergonomía:</strong> Adapta el puesto y herramientas a las capacidades antropométricas y biomecánicas del ser humano.</li>
+                                    <li><strong>Psicosociología y Educación:</strong> Optimiza el clima, la organización de turnos y capacita para generar conductas conscientes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 9: MARCO LEGAL ARGENTINO Y JUSTIFICACIONES -->
+                <section id="marco-legal" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 9</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">9. Justificaciones de la Seguridad y Legislación Argentina</h2>
+                    </div>
+
+                    <div class="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <!-- El Iceberg de Costos -->
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-icicles text-sky-500"></i> Justificación Económica: La Teoría del Iceberg
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">
+                                Los costos de los accidentes laborales se estructuran como un témpano flotante. Muchos empresarios sólo ven los gastos asegurados:
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-800 border-t-4 border-sky-500">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">Pérdidas Directas (35%)</h4>
+                                        <span class="text-xs font-bold text-sky-600 dark:text-sky-400">Sobre la superficie</span>
+                                    </div>
+                                    <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 list-disc list-inside">
+                                        <li>Sueldos y salarios abonados durante la baja.</li>
+                                        <li>Gastos médicos y farmacéuticos iniciales.</li>
+                                        <li>Indemnizaciones fijadas por ley.</li>
+                                        <li>Incremento en las alícuotas del seguro (ART).</li>
+                                        <li>Capacitación del reemplazo temporal.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/80 border-t-4 border-slate-500">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">Pérdidas Indirectas / Ocultas (65%)</h4>
+                                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Bajo el agua</span>
+                                    </div>
+                                    <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 list-disc list-inside">
+                                        <li>Tiempo productivo perdido por compañeros y testigos.</li>
+                                        <li>Horas de supervisores dedicadas al peritaje y reportes.</li>
+                                        <li>Daño a maquinaria, matrices y materia prima.</li>
+                                        <li>Lucro cesante por parada de línea o demoras con clientes.</li>
+                                        <li>Pérdida de imagen corporativa y conflictos gremiales.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Las dos Leyes Pilares -->
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Los Dos Pilares Normativos de la República Argentina</h3>
+
+                            <!-- Ley 19.587 -->
+                            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                                    <div>
+                                        <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Sancionada en 1972</span>
+                                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Ley 19.587 de Higiene y Seguridad en el Trabajo</h4>
+                                    </div>
+                                    <span class="text-xs font-mono px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 font-semibold">Decreto Reglamentario 351/79</span>
+                                </div>
+
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                                    Rige en <strong>todos los establecimientos de la República Argentina</strong>, persiguiendo tres objetivos fundamentales:
+                                </p>
+                                <ol class="text-xs sm:text-sm space-y-1.5 text-slate-700 dark:text-slate-300 list-decimal list-inside font-medium">
+                                    <li>Proteger la vida, preservar y mantener la integridad psicofísica de los trabajadores.</li>
+                                    <li>Prevenir, reducir, eliminar o aislar los riesgos de los distintos centros y puestos de trabajo.</li>
+                                    <li>Estimular y desarrollar una actitud positiva hacia la prevención de siniestros laborales.</li>
+                                </ol>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-xs space-y-1.5 border border-slate-200 dark:border-slate-700">
+                                        <strong class="text-sky-600 dark:text-sky-400 block mb-1">Condiciones de Higiene (Ambiente Físico)</strong>
+                                        <div>• Carga térmica (estrés térmico frío/calor).</div>
+                                        <div>• Contaminación ambiental (polvos, humos, vapores).</div>
+                                        <div>• Radiaciones ionizantes y no ionizantes.</div>
+                                        <div>• Ventilación reglamentaria y renovación de aire.</div>
+                                        <div>• Iluminación natural/artificial y color de seguridad.</div>
+                                        <div>• Ruidos molestos y vibraciones mecánicas.</div>
+                                    </div>
+
+                                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-xs space-y-1.5 border border-slate-200 dark:border-slate-700">
+                                        <strong class="text-emerald-600 dark:text-emerald-400 block mb-1">Condiciones de Seguridad (Instalaciones)</strong>
+                                        <div>• Instalaciones eléctricas seguras (puesta a tierra, disyuntores).</div>
+                                        <div>• Máquinas, motores y herramientas con resguardos fijos.</div>
+                                        <div>• Recipientes y calderas sometidos a presión reglados.</div>
+                                        <div>• Protección y combate contra incendios (carga de fuego).</div>
+                                        <div>• Características constructivas, pasillos y vías de escape.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ley 24.557 -->
+                            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                                    <div>
+                                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Sancionada en 1995</span>
+                                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Ley 24.557 de Riesgos del Trabajo (LRT)</h4>
+                                    </div>
+                                    <span class="text-xs font-mono px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold">Sistema ART / SRT</span>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 dark:text-white mb-2">Objetivos de la Ley:</h5>
+                                        <ul class="space-y-1.5 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                                            <li>Reducir la siniestralidad laboral mediante prevención obligatoria.</li>
+                                            <li>Reparar los daños mediante <em>prestaciones en especie</em> (médicas, quirúrgicas, ortopedia) y <em>dinerarias</em>.</li>
+                                            <li>Promover la rehabilitación, recalificación y recolocación laboral.</li>
+                                            <li>Promover la negociación colectiva para mejorar condiciones.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 dark:text-white mb-2">Estructura del Sistema:</h5>
+                                        <ul class="space-y-1.5 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                                            <li><strong>Empleador:</strong> Afiliación obligatoria a una ART y ejecución de Planes de Mejoras.</li>
+                                            <li><strong>ART (Aseguradora):</strong> Entidad privada supervisada que asesora, audita e indemniza.</li>
+                                            <li><strong>SRT (Superintendencia):</strong> Organismo estatal autárquico de control y fiscalización del sistema.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <h5 class="font-bold text-xs uppercase text-slate-500 mb-2">Clasificación de Incapacidades Laborales (LRT):</h5>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                            <strong class="text-sky-600 dark:text-sky-400 block">Temporaria (ILT)</strong>
+                                            Cese provisorio de actividades mientras dure la curación (máximo 1 año o 2 según prórroga).
+                                        </div>
+                                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                            <strong class="text-amber-600 dark:text-amber-400 block">Permanente Parcial</strong>
+                                            Secuela anatómica o funcional irreversible que no supera el 66% de disminución de la capacidad total.
+                                        </div>
+                                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                            <strong class="text-rose-600 dark:text-rose-400 block">Permanente Total</strong>
+                                            Disminución laboral del 66% o superior que inhabilita definitivamente al trabajador.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 10: CALCULADORA INTERACTIVA DE ÍNDICES SRT -->
+                <section id="calculadora" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 10</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">10. Laboratorio Práctico: Calculadora de Indicadores SRT</h2>
+                    </div>
+
+                    <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Simulador de Índices de Siniestralidad</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Ingresá los datos de tu planta para calcular el Índice de Incidencia, Gravedad y Letalidad según fórmulas de la SRT.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Trabajadores Cubiertos (N)</label>
+                                <input type="number" id="input-trabajadores" value="1250" min="1" class="w-full px-3 py-2 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Casos Notificados con Baja</label>
+                                <input type="number" id="input-casos" value="85" min="0" class="w-full px-3 py-2 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Jornadas Perdidas en el Año</label>
+                                <input type="number" id="input-jornadas" value="2850" min="0" class="w-full px-3 py-2 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Casos Mortales</label>
+                                <input type="number" id="input-mortales" value="1" min="0" class="w-full px-3 py-2 text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-center">
+                            <div class="p-4 rounded-2xl bg-sky-50 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-700">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase">Índice de Incidencia</span>
+                                <div id="res-incidencia" class="text-2xl font-black text-slate-900 dark:text-white mt-1">68.0 ‰</div>
+                                <p class="text-[11px] text-slate-500 mt-1">Casos por cada 1.000 trabajadores</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-amber-50 dark:bg-slate-800/60 border border-amber-200 dark:border-slate-700">
+                                <span class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Índice de Gravedad</span>
+                                <div id="res-gravedad" class="text-2xl font-black text-slate-900 dark:text-white mt-1">2280.0</div>
+                                <p class="text-[11px] text-slate-500 mt-1">Días perdidos por cada 1.000 trabajadores</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-rose-50 dark:bg-slate-800/60 border border-rose-200 dark:border-slate-700">
+                                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase">Índice de Letalidad</span>
+                                <div id="res-letalidad" class="text-2xl font-black text-slate-900 dark:text-white mt-1">1176.5</div>
+                                <p class="text-[11px] text-slate-500 mt-1">Muertes por cada 100.000 siniestros</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 11: AUTOEVALUACIÓN PEDAGÓGICA -->
+                <section id="autoevaluacion" class="space-y-6">
+                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <span class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-wider">Capítulo 11</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">11. Autoevaluación y Casos de Examen Universitario</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Pregunta 1 -->
+                        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+                            <button onclick="toggleFaq('q1')" class="w-full flex items-center justify-between text-left font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                <span>1. ¿Por qué se afirma rigurosamente que el "Riesgo Cero" no existe?</span>
+                                <i id="icon-q1" class="fa-solid fa-chevron-down text-sky-500 transition-transform duration-200"></i>
+                            </button>
+                            <div id="ans-q1" class="hidden mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+                                Porque todo sistema industrial o actividad humana involucra variables complejas, dinámicas e imprevisibles (fatiga, fallas de materiales, factores meteorológicos). El riesgo cero es un ideal asintótico e inalcanzable. El objetivo técnico alcanzable en ingeniería es llevar el riesgo al nivel de <strong>Riesgo Aceptable</strong> mediante la aplicación rigurosa de las barreras de control.
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 2 -->
+                        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+                            <button onclick="toggleFaq('q2')" class="w-full flex items-center justify-between text-left font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                <span>2. ¿Cuál es la diferencia medular entre un Accidente y un Incidente?</span>
+                                <i id="icon-q2" class="fa-solid fa-chevron-down text-sky-500 transition-transform duration-200"></i>
+                            </button>
+                            <div id="ans-q2" class="hidden mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+                                Ambos son hechos súbitos, violentos e imprevistos. La diferencia crítica reside en que el <strong>accidente</strong> genera <em>lesiones a las personas</em> (además de daños materiales), mientras que el <strong>incidente</strong> ("near miss" o accidente blanco) altera el proceso con o sin daño patrimonial, pero <em>sin producir lesiones humanas</em>. El incidente es la alarma preventiva que la pirámide de Bird señala que debemos investigar a fondo.
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 3 -->
+                        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+                            <button onclick="toggleFaq('q3')" class="w-full flex items-center justify-between text-left font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                <span>3. ¿Cómo explica el modelo cognitivo de Rasmussen los "deslices" frente a las equivocaciones de diseño?</span>
+                                <i id="icon-q3" class="fa-solid fa-chevron-down text-sky-500 transition-transform duration-200"></i>
+                            </button>
+                            <div id="ans-q3" class="hidden mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+                                En el nivel de <em>destrezas</em> (rutinas automáticas), los deslices son fallos involuntarios de ejecución por distracciones menores (la persona sabía qué hacer, pero ejecutó otra rutina motriz similar). En cambio, los <em>errores basados en conocimiento</em> ocurren en la etapa de diseño cuando los ingenieros o directivos conciben un proceso con fallas conceptuales profundas. Si ese error de diseño se protocoliza en los manuales de la empresa, el operario de planta cometerá actos inseguros creyendo que cumple con el procedimiento correcto.
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+                            <button onclick="toggleFaq('q4')" class="w-full flex items-center justify-between text-left font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                <span>4. ¿Cuál es el orden irrenunciable de los 4 Axiomas de la Seguridad?</span>
+                                <i id="icon-q4" class="fa-solid fa-chevron-down text-sky-500 transition-transform duration-200"></i>
+                            </button>
+                            <div id="ans-q4" class="hidden mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+                                <strong>1° Eliminar el peligro</strong> en la fuente o diseño &rarr; <strong>2° Alejar al hombre del peligro</strong> (automatización / distancia) &rarr; <strong>3° Cubrir los elementos peligrosos</strong> (resguardos mecánicos fijos y barreras colectivas) &rarr; <strong>4° Proteger a la persona</strong> mediante Elementos de Protección Personal (EPP). El EPP es siempre la última línea de defensa, nunca la primera.
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 5 -->
+                        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+                            <button onclick="toggleFaq('q5')" class="w-full flex items-center justify-between text-left font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                <span>5. ¿Qué diferencia legal y técnica existe entre la Ley 19.587 y la Ley 24.557 en Argentina?</span>
+                                <i id="icon-q5" class="fa-solid fa-chevron-down text-sky-500 transition-transform duration-200"></i>
+                            </button>
+                            <div id="ans-q5" class="hidden mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+                                La <strong>Ley 19.587</strong> (1972, Dec. 351/79) es la <em>ley técnica y preventiva</em>: fija los estándares de ingeniería en planta (ruido, iluminación, carga térmica, aparatos a presión, electricidad, ventilación). En cambio, la <strong>Ley 24.557</strong> (1995, Ley de Riesgos del Trabajo) es la <em>ley del seguro y reparación asistencial</em>: crea el sistema de aseguradoras (ART), la Superintendencia (SRT), define contingencias (accidentes, accidentes in itinere y enfermedades de lista cerrada) y establece las prestaciones dinerarias y de salud.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FOOTER -->
+                <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400 space-y-2">
+                    <p>Guía Didáctica Interactiva para la Higiene y Seguridad.</p>
+                    <p>Material generado con IA, puede contener errores.</p>
+                    <p class="text-[11px] opacity-75">Material pedagógico de soporte al estudio para futuros ingenieros.</p>
+                </footer>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Botón flotante Volver al Menú (abajo a la derecha) -->
+    <a href="index.html" class="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs sm:text-sm shadow-lg shadow-sky-600/30 hover:shadow-sky-600/50 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 group" title="Volver al menú de unidades">
+        <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+        <span>Volver al Menú</span>
+    </a>
+
+    <!-- Scripts de Interactividad -->
+    <script>
+        // Tema Dark/Light
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
+
+        // Barra de progreso de lectura
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            const pb = document.getElementById('progress-bar');
+            if (pb) {
+                pb.style.width = scrolled + '%';
+            }
+        });
+
+        // Calculadora de Índices SRT
+        const inTrab = document.getElementById('input-trabajadores');
+        const inCasos = document.getElementById('input-casos');
+        const inJornadas = document.getElementById('input-jornadas');
+        const inMortales = document.getElementById('input-mortales');
+
+        const outIncidencia = document.getElementById('res-incidencia');
+        const outGravedad = document.getElementById('res-gravedad');
+        const outLetalidad = document.getElementById('res-letalidad');
+
+        function calcularIndices() {
+            if (!inTrab || !inCasos || !inJornadas || !inMortales) return;
+            const n = parseFloat(inTrab.value) || 1;
+            const casos = parseFloat(inCasos.value) || 0;
+            const jornadas = parseFloat(inJornadas.value) || 0;
+            const mortales = parseFloat(inMortales.value) || 0;
+
+            const ii = (casos / n) * 1000;
+            const ig = (jornadas / n) * 1000;
+            const il = casos > 0 ? (mortales / casos) * 100000 : 0;
+
+            if (outIncidencia) outIncidencia.textContent = ii.toFixed(1) + ' ‰';
+            if (outGravedad) outGravedad.textContent = ig.toFixed(1);
+            if (outLetalidad) outLetalidad.textContent = il.toFixed(1);
+        }
+
+        [inTrab, inCasos, inJornadas, inMortales].forEach(el => {
+            if (el) el.addEventListener('input', calcularIndices);
+        });
+
+        // Acordeón FAQ
+        function toggleFaq(id) {
+            const ans = document.getElementById('ans-' + id);
+            const icon = document.getElementById('icon-' + id);
+            if (!ans) return;
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>

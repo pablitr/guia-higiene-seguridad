@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 9: Riesgo Eléctrico - Guía de Estudio Universitaria</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            electric: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            danger: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            },
+            success: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    // Inicialización de tema antes de renderizar para evitar FOUC
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <style>
+    body {
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .print-break { page-break-after: always; }
+    }
+    /* Reglas para Modo Oscuro en elementos con clases utilitarias */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #0b0f19;
+      color: #cbd5e1;
+    }
+    html.dark header {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-color: #1e293b !important;
+    }
+    html.dark .bg-white {
+      background-color: #0f172a !important;
+      color: #e2e8f0;
+    }
+    html.dark .bg-slate-50 {
+      background-color: #1e293b !important;
+      color: #cbd5e1;
+    }
+    html.dark .border-slate-200 {
+      border-color: #334155 !important;
+    }
+    html.dark .border-slate-300 {
+      border-color: #475569 !important;
+    }
+    html.dark .text-slate-900 {
+      color: #f8fafc !important;
+    }
+    html.dark .text-slate-800 {
+      color: #f1f5f9 !important;
+    }
+    html.dark .text-slate-700 {
+      color: #cbd5e1 !important;
+    }
+    html.dark .text-slate-600 {
+      color: #94a3b8 !important;
+    }
+    html.dark .text-slate-500 {
+      color: #64748b !important;
+    }
+    html.dark .hover\:bg-slate-100:hover {
+      background-color: #1e293b !important;
+    }
+    html.dark .hover\:bg-slate-50:hover {
+      background-color: #1e293b !important;
+    }
+    html.dark input, html.dark select {
+      background-color: #1e293b !important;
+      color: #f8fafc !important;
+      border-color: #475569 !important;
+    }
+    html.dark table {
+      border-color: #334155 !important;
+    }
+    html.dark tr.border-b {
+      border-color: #334155 !important;
+    }
+    html.dark th {
+      background-color: #1e293b !important;
+      color: #e2e8f0 !important;
+    }
+    html.dark td {
+      border-color: #334155 !important;
+    }
+    html.dark .bg-amber-50, html.dark .bg-amber-50\/50 {
+      background-color: rgba(120, 53, 15, 0.25) !important;
+      border-color: rgba(245, 158, 11, 0.3) !important;
+      color: #fde68a !important;
+    }
+    html.dark .text-amber-900, html.dark .text-amber-800 {
+      color: #fef3c7 !important;
+    }
+    html.dark .text-amber-700 {
+      color: #fde68a !important;
+    }
+    html.dark .bg-sky-50, html.dark .bg-sky-50\/50 {
+      background-color: rgba(3, 105, 161, 0.25) !important;
+      border-color: rgba(14, 165, 233, 0.3) !important;
+      color: #bae6fd !important;
+    }
+    html.dark .text-sky-900, html.dark .text-sky-800 {
+      color: #e0f2fe !important;
+    }
+    html.dark .bg-emerald-50, html.dark .bg-emerald-50\/50 {
+      background-color: rgba(6, 95, 70, 0.25) !important;
+      border-color: rgba(16, 185, 129, 0.3) !important;
+      color: #a7f3d0 !important;
+    }
+    html.dark .text-emerald-900, html.dark .text-emerald-800 {
+      color: #d1fae5 !important;
+    }
+    html.dark .bg-rose-50, html.dark .bg-rose-50\/50 {
+      background-color: rgba(159, 18, 57, 0.25) !important;
+      border-color: rgba(244, 63, 94, 0.3) !important;
+      color: #fecdd3 !important;
+    }
+    html.dark .text-rose-900, html.dark .text-rose-800 {
+      color: #ffe4e6 !important;
+    }
+    html.dark footer {
+      background-color: #0f172a !important;
+      border-color: #1e293b !important;
+      color: #94a3b8 !important;
+    }
+    html.dark .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    html.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- Barra de progreso de lectura -->
+  <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 z-50 w-0 transition-all duration-150"></div>
+
+  <!-- TOP HEADER / NAV BAR -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition shadow-sm" title="Volver al Menú Principal">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="hidden sm:inline">Volver</span>
+          </a>
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-600 to-yellow-500 flex items-center justify-center text-slate-950 shadow-md shadow-amber-500/20 font-black">
+            <i class="fa-solid fa-bolt text-lg"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Material generado con IA, puede contener errores – Material generado con IA, puede contener errores | Higiene y Seguridad</span>
+            <h1 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">Unidad 9: Riesgo Eléctrico</h1>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <!-- Dark Mode Toggle Button -->
+          <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Cambiar modo claro/oscuro">
+            <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+            <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+          </button>
+
+          <button onclick="window.print()" class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm" title="Imprimir o exportar PDF">
+            <i class="fa-solid fa-print"></i>
+            <span class="hidden sm:inline">Imprimir Guía</span>
+          </button>
+          <a href="#calculadoras" class="no-print inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-950 bg-amber-400 hover:bg-amber-500 transition shadow-sm shadow-amber-400/30">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Simulador de Choque</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER HERO -->
+  <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-amber-950 text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-amber-900/40">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-semibold mb-3">
+          <i class="fa-solid fa-graduation-cap"></i> Materia de Higiene y Seguridad &mdash; Material generado con IA, puede contener errores
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-white mb-2">
+          Seguridad en Instalaciones y Riesgo Eléctrico (BT, MT y AT)
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Tratado integral de ingeniería en higiene y seguridad: fundamentos bioeléctricos de la interacción cuerpo-corriente, contactos directos e indirectos, análisis exhaustivo de esquemas de conexión a tierra (TT, TN-S), protección diferencial y equipotencialidad (AEA 90364-7-771 / DR 351/79), las 5 Reglas de Oro y trabajos con tensión.
+        </p>
+      </div>
+      <div class="flex flex-wrap md:flex-col gap-3 shrink-0">
+        <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-amber-400/20 text-center min-w-[140px]">
+          <div class="text-[11px] uppercase text-slate-300 font-semibold">Tensión Segura (Arg)</div>
+          <div class="text-sm font-black text-amber-400">U<sub>L</sub> &le; 24 V (Dec 351)</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-amber-400/20 text-center min-w-[140px]">
+          <div class="text-[11px] uppercase text-slate-300 font-semibold">Sensibilidad Diferencial</div>
+          <div class="text-sm font-black text-sky-400">I<sub>&Delta;n</sub> &le; 30 mA</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-amber-400/20 text-center min-w-[140px]">
+          <div class="text-[11px] uppercase text-slate-300 font-semibold">Tiempo Máx. Corte</div>
+          <div class="text-sm font-black text-emerald-400">t &le; 60 ms (220V TT)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER WITH SIDEBAR & CONTENT -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow flex flex-col lg:flex-row gap-8">
+    
+    <!-- SIDEBAR NAVIGATION (STICKY) -->
+    <aside class="w-full lg:w-64 shrink-0 no-print">
+      <div class="sticky top-24 space-y-4">
+        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+          <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-list-ul text-amber-600"></i> Contenido Temático
+          </h3>
+          <nav class="space-y-1 text-sm font-medium">
+            <a href="#fundamentos" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">1. Conceptos y Etapas del Accidente</a>
+            <a href="#definiciones" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">2. Marco Normativo (AEA y Dec. 351)</a>
+            <a href="#contactos" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">3. Contactos Directos e Indirectos</a>
+            <a href="#biofisica" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">4. Biofísica e Impedancia del Cuerpo</a>
+            <a href="#efectos" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">5. Efectos Fisiológicos de la Corriente</a>
+            <a href="#factores" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">6. Factores Clave (I, t, Frecuencia, F)</a>
+            <a href="#proteccion-directos" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">7. Protección contra Contacto Directo</a>
+            <a href="#proteccion-indirectos" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">8. Protección contra Contacto Indirecto</a>
+            <a href="#esquemas-puesta-tierra" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">9. Esquemas de Conexión a Tierra (TT vs TN)</a>
+            <a href="#diferencial-ensayos" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">10. Interruptor Diferencial y Ensayos</a>
+            <a href="#reglas-de-oro" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">11. Las 5 Reglas de Oro y Trabajos con Tensión</a>
+            <a href="#calculadoras" class="block px-3 py-1.5 rounded-lg font-semibold text-amber-700 bg-amber-50 hover:bg-amber-100 transition flex items-center justify-between">
+              <span>Simuladores & Cálculos</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-amber-200 text-amber-900 font-bold">Interactivo</span>
+            </a>
+            <a href="#autoevaluacion" class="block px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-amber-600 transition">12. Test de Autoevaluación</a>
+          </nav>
+        </div>
+
+        <!-- Tip Box -->
+        <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-4 border border-amber-200/80 text-xs text-amber-900 space-y-2">
+          <div class="font-bold flex items-center gap-1.5 text-amber-800">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i> Pregunta Clásica de Examen
+          </div>
+          <p>
+            ¿Por qué en un esquema <strong>TT</strong> un fusible o una termomagnética común <em>no protegen</em> a las personas ante un contacto indirecto?
+          </p>
+          <p class="text-[11px] text-amber-700">
+            Porque la corriente de defecto I<sub>d</sub> (aprox. 20-30 A) no alcanza para provocar el disparo magnético instantáneo en 60 ms. Solo el <strong>Interruptor Diferencial</strong> garantiza el corte seguro.
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT BODY -->
+    <main class="w-full lg:max-w-4xl space-y-12">
+
+      <!-- SECCIÓN 1: CONCEPTOS BÁSICOS Y ETAPAS DEL ACCIDENTE -->
+      <section id="fundamentos" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">1</span>
+          <h3 class="text-2xl font-bold text-slate-900">Conceptos Fundamentales y Secuencia del Accidente</h3>
+        </div>
+        
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          El riesgo eléctrico presenta una particularidad crítica: la energía eléctrica <strong>no tiene olor, no produce ruido perceptible y no es visible a simple vista</strong>. Por lo tanto, el peligro solo se percibe cuando el individuo ya ha entrado en contacto físico con un elemento energizado o dentro de la distancia de ruptura dieléctrica.
+        </p>
+
+        <!-- Cuadrícula de Conceptos Clave -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+            <div class="flex items-center gap-2 text-rose-600 font-bold text-sm mb-2">
+              <i class="fa-solid fa-skull-crossbones"></i> Peligro vs. Riesgo
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2">
+              <li><strong>Peligro:</strong> Situación o condición intrínseca con potencialidad para provocar daño (ej. una barra de cobre desprovista de aislación a 220 V).</li>
+              <li><strong>Riesgo:</strong> Combinación probabilística de ocurrencia de un evento y la magnitud de sus consecuencias.</li>
+              <li class="bg-slate-50 p-2 rounded border border-slate-200 font-mono text-slate-800">
+                <strong>Riesgo = P (Probabilidad) &times; E (Efectos / Severidad)</strong>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+            <div class="flex items-center gap-2 text-sky-600 font-bold text-sm mb-2">
+              <i class="fa-solid fa-shield-halved"></i> Prevención vs. Protección
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2">
+              <li><strong>Prevención:</strong> Conjunto de técnicas que tienden a la <em>eliminación</em> del riesgo (ej. trabajar sin tensión mediante consignación).</li>
+              <li><strong>Protección:</strong> Conjunto de medidas técnicas que <em>reducen las consecuencias</em> que una situación peligrosa puede generar (ej. puesta a tierra y disyuntor).</li>
+              <li class="bg-sky-50 text-sky-900 p-2 rounded border border-sky-100 font-medium">
+                Prevención = Eliminar el riesgo | Protección = Mitigar el daño.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Riesgo Aceptable vs Riesgo Aceptado -->
+        <div class="bg-white rounded-xl p-5 border-l-4 border-amber-500 shadow-sm space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-scale-balanced text-amber-500"></i> Riesgo Aceptable vs. Riesgo Aceptado
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-emerald-700 block mb-1">Riesgo Aceptable</span>
+              No se presenta de manera espontánea. Es un objetivo a ser alcanzado mediante el cumplimiento estricto de normas técnicas internacionales y políticas consensuadas de seguridad. Es el estándar de países desarrollados con alta madurez preventiva.
+            </div>
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-rose-700 block mb-1">Riesgo Aceptado</span>
+              Es una realidad fáctica tolerada en países subdesarrollados o por falta de cultura preventiva. Dista enormemente de ser seguro; refleja deficiencias socioeconómicas, de mantenimiento y de fiscalización (ej. instalaciones precarias sin disyuntor).
+            </div>
+          </div>
+        </div>
+
+        <!-- ÁRBOL DE FACTORES HACIA EL ACCIDENTE -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-diagram-project text-brand-600"></i> Secuencia de Etapas Hacia el Accidente: Factores Humanos vs. Técnicos
+          </h4>
+          <p class="text-xs text-slate-500">
+            Para que ocurra un accidente eléctrico, debe existir una falla en la cadena de barreras humanas o técnicas:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-amber-50/50 p-3.5 rounded-xl border border-amber-200">
+              <div class="font-bold text-amber-900 mb-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-user-gear"></i> Factores Humanos (Cadena de Decisión)
+              </div>
+              <ol class="list-decimal pl-4 space-y-1.5 text-slate-700 font-medium">
+                <li><span class="font-bold">¿Es percibido el peligro?</span> Si no se percibe &rarr; <span class="text-rose-600 font-bold">Accidente</span>.</li>
+                <li><span class="font-bold">¿Es reconocido el riesgo?</span> Si no se evalúa su gravedad &rarr; <span class="text-rose-600 font-bold">Accidente</span>.</li>
+                <li><span class="font-bold">¿Sabe evitarse?</span> Requiere formación y capacitación técnica.</li>
+                <li><span class="font-bold">¿Quiere evitarse?</span> Actitud y disciplina laboral (no saltearse pasos).</li>
+                <li><span class="font-bold">¿Puede evitarse?</span> Disponer de herramientas, EPP y tiempo necesario.</li>
+              </ol>
+            </div>
+
+            <div class="bg-sky-50/50 p-3.5 rounded-xl border border-sky-200">
+              <div class="font-bold text-sky-900 mb-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-gears"></i> Factores Técnicos (Ingeniería de Instalación)
+              </div>
+              <ol class="list-decimal pl-4 space-y-1.5 text-slate-700 font-medium">
+                <li><span class="font-bold">¿Es reconocido el riesgo por diseño?</span> Identificación de fuentes de tensión y lazos de falla potenciales.</li>
+                <li><span class="font-bold">¿Es evaluado el riesgo?</span> Cálculo de corrientes de defecto e impedancias de bucle.</li>
+                <li><span class="font-bold">¿Es eliminado o protegido el riesgo?</span> Mediante desconexión automática (ID + PAT), barreras físicas o MBTS.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: DEFINICIONES NORMATIVAS Y MARCO LEGAL ARGENTINO -->
+      <section id="definiciones" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">2</span>
+          <h3 class="text-2xl font-bold text-slate-900">Definiciones Normativas AEA 90364-7-771 y Marco Legal</h3>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed text-sm">
+          El marco regulatorio en Argentina está regido por la <strong>Ley 19.587 de Higiene y Seguridad en el Trabajo</strong>, su <strong>Decreto Reglamentario 351/79 (Capítulo 14 y Anexo VI)</strong> y las reglamentaciones de la <strong>Asociación Electrotécnica Argentina (AEA 90364)</strong>.
+        </p>
+
+        <!-- Glosario Normativo Card Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold uppercase tracking-wider text-[10px]">Definición Clave</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1.5 mb-1">Choque Eléctrico</h4>
+            <p class="text-slate-600">Efecto fisiopatológico resultante del paso de una corriente eléctrica a través del cuerpo de un ser humano o animal.</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold uppercase tracking-wider text-[10px]">AEA 771</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1.5 mb-1">Parte Activa vs. Parte Activa Peligrosa</h4>
+            <p class="text-slate-600"><strong>Parte Activa:</strong> Conductor o elemento conductor destinado a estar bajo tensión en servicio normal (incluye al <em>conductor neutro</em>, excepto el conductor PEN). <strong>Peligrosa:</strong> Aquella capaz de ocasionar un choque eléctrico dañino bajo ciertas condiciones.</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold uppercase tracking-wider text-[10px]">Concepto Crítico</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1.5 mb-1">Masa Eléctrica</h4>
+            <p class="text-slate-600">Parte conductora accesible de un equipo o material eléctrico que <strong>normalmente no está bajo tensión</strong>, pero que puede ponerse bajo tensión cuando falla la aislación básica interna (ej. carcasa metálica de un lavarropas, chasis de motor o envolvente de tablero).</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold uppercase tracking-wider text-[10px]">Equipotencialidad</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1.5 mb-1">Masa Extraña</h4>
+            <p class="text-slate-600">Parte conductora que <strong>no forma parte de la instalación eléctrica</strong>, pero que es susceptible de introducir un potencial eléctrico, típicamente de tierra local (ej. cañerías metálicas de agua, gas, desagüe, guías de ascensores, armaduras de hormigón armado).</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-800 font-bold uppercase tracking-wider text-[10px]">Tensiones</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1.5 mb-1">Tensión de Contacto: Efectiva (U<sub>c</sub>) vs. Presunta (U<sub>t</sub>)</h4>
+            <p class="text-slate-600"><strong>Efectiva (U<sub>c</sub>):</strong> Tensión existente entre dos partes conductoras cuando son <em>tocadas simultáneamente</em> por una persona o animal. <strong>Presunta (U<sub>t</sub>):</strong> Tensión de contacto entre partes conductoras accesibles cuando <em>no</em> están siendo tocadas.</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold uppercase tracking-wider text-[10px]">Protección Pasiva</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1.5 mb-1">Obstáculo de Protección</h4>
+            <p class="text-slate-600">Elemento físico que impide el contacto directo fortuito o involuntario con partes activas, pero que no evita el contacto originado por una acción deliberada o intencional (constituye <em>protección parcial</em>).</p>
+          </div>
+        </div>
+
+        <!-- TABLA DE CLASIFICACIÓN DE NIVELES DE TENSIÓN -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-bolt-lightning text-amber-500"></i> Clasificación de Niveles de Tensión (AEA / Dec. 351/79)
+          </h4>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 uppercase tracking-wider font-bold">
+                  <th class="p-2.5 border-b border-slate-200">Nivel de Tensión</th>
+                  <th class="p-2.5 border-b border-slate-200">Corriente Alterna (CA V<sub>ef</sub> entre fases)</th>
+                  <th class="p-2.5 border-b border-slate-200">Corriente Continua (CC V)</th>
+                  <th class="p-2.5 border-b border-slate-200">Aplicaciones Típicas</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-600">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-emerald-700">Muy Baja Tensión (MBT)</td>
+                  <td class="p-2.5 font-mono">&le; 50 V</td>
+                  <td class="p-2.5 font-mono">&le; 50 V</td>
+                  <td class="p-2.5">Circuitos de comando, señalización, iluminación de piscinas, talleres húmedos.</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-amber-50/30">
+                  <td class="p-2.5 font-bold text-amber-700">Baja Tensión (BT)</td>
+                  <td class="p-2.5 font-mono">50 &lt; V &le; 1000 V</td>
+                  <td class="p-2.5 font-mono">50 &lt; V &le; 1000 V</td>
+                  <td class="p-2.5">Distribución domiciliaria (220 V), industrial (380 V trifásica), iluminación general.</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-sky-700">Media Tensión (MT)</td>
+                  <td class="p-2.5 font-mono">1000 &lt; V &le; 33.000 V (33 kV)</td>
+                  <td class="p-2.5 font-mono">1000 &lt; V &le; 33.000 V</td>
+                  <td class="p-2.5">Redes de distribución urbana y subtransmisión (13,2 kV / 33 kV).</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-rose-700">Alta Tensión (AT)</td>
+                  <td class="p-2.5 font-mono">&gt; 33.000 V (&gt; 33 kV)</td>
+                  <td class="p-2.5 font-mono">&gt; 33.000 V</td>
+                  <td class="p-2.5">Líneas de transmisión troncal interprovincial (66 kV, 132 kV, 500 kV).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- TENSIÓN DE SEGURIDAD EN ARGENTINA -->
+          <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-xs text-amber-900 mt-3">
+            <div class="font-extrabold text-sm text-amber-950 flex items-center gap-2 mb-1">
+              <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Tensión Límite Convencional de Contacto (Tensión de Seguridad U<sub>L</sub>)
+            </div>
+            <p class="leading-relaxed">
+              Según el <strong>Decreto 351/79 (Capítulo XIV, Anexo VI)</strong> y AEA:
+            </p>
+            <ul class="list-disc pl-5 mt-1 space-y-1">
+              <li>En <strong>ambientes secos y húmedos</strong> se considerará como tensión límite de seguridad un máximo de <strong>24 V respecto a tierra</strong> (Curva Lp).</li>
+              <li>En lugares <strong>mojados o impregnados de líquidos conductores</strong>, la tensión de seguridad será fijada en cada caso por el Servicio de Higiene y Seguridad de la empresa (valores del orden de 12 V o MBTS).</li>
+              <li><em>Nota para exámenes:</em> En la normativa internacional IEC se suele adoptar 50 V para ambientes secos, pero en la legislación laboral argentina el límite estricto es <strong>24 V</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: CONTACTOS DIRECTOS E INDIRECTOS -->
+      <section id="contactos" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">3</span>
+          <h3 class="text-2xl font-bold text-slate-900">Mecanismos de Contacto Eléctrico</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm">
+          Para que circule corriente a través de una persona, el cuerpo debe <strong>formar parte de un circuito cerrado</strong> con una diferencia de potencial mayor a cero entre los puntos de entrada y salida, y los tejidos deben presentar una conductividad finita.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- CONTACTO DIRECTO -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-rose-200 shadow-sm relative space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 font-bold text-xs uppercase">Contacto Directo</span>
+              <i class="fa-solid fa-hand-holding-droplet text-rose-500 text-lg"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Contacto con Partes Activas</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Ocurre cuando la persona toma contacto directo con un conductor o elemento que <strong>está normalmente energizado</strong> en condiciones normales de servicio.
+            </p>
+            <div class="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-xs text-slate-700 space-y-2">
+              <div class="font-bold text-rose-900">Modalidades Principales:</div>
+              <ul class="list-disc pl-4 space-y-1">
+                <li><strong>Bifásico:</strong> Contacto simultáneo con dos conductores activos de fases distintas (tensión de línea, ej. 380 V). Es el más letal.</li>
+                <li><strong>Fase-Tierra:</strong> Contacto con un conductor activo mientras los pies tocan el suelo o una estructura a tierra (la corriente cierra por el neutro del transformador puesto a tierra).</li>
+                <li><strong>Por Descarga Disruptiva (Arco):</strong> Aproximación a partes de MT o AT sin contacto físico, superando la rigidez dieléctrica del aire.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- CONTACTO INDIRECTO -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-amber-200 shadow-sm relative space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 font-bold text-xs uppercase">Contacto Indirecto</span>
+              <i class="fa-solid fa-triangle-exclamation text-amber-500 text-lg"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Contacto con Masas Puestas Accidentalmente bajo Tensión</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Ocurre cuando la persona toca una <strong>masa metálica</strong> (la chapa de un electrodoméstico, motor o tablero) que <em>normalmente está desenergizada</em>, pero se energizó por una <strong>falla de aislación interna</strong>.
+            </p>
+            <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100 text-xs text-slate-700 space-y-2">
+              <div class="font-bold text-amber-900">Mecanismo de Falla:</div>
+              <p>
+                Un cable interno se pela o deteriora térmicamente y toca la chapa. Si la persona toca la carcasa metálica, la corriente de defecto I<sub>d</sub> se desvía a través de su cuerpo hacia tierra buscando cerrar el lazo con el centro de la estrella del transformador.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: BIOFÍSICA E IMPEDANCIA DEL CUERPO HUMANO -->
+      <section id="biofisica" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">4</span>
+          <h3 class="text-2xl font-bold text-slate-900">Biofísica e Impedancia del Cuerpo Humano (Z<sub>h</sub>)</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Desde el punto de vista bioeléctrico, los tejidos vivos no son conductores óhmicos ideales. Están compuestos por agua, iones disueltos (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>) y estructuras celulares rodeadas de membranas lipídicas que se comportan simultáneamente como <strong>resistores y capacitores</strong>.
+        </p>
+
+        <!-- Modelo de la Membrana y Circuito Equivalente -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-microscope text-brand-600"></i> La Membrana Celular y el Modelo RC
+          </h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+              <span class="font-bold text-slate-900 block">Comportamiento Resistivo (R)</span>
+              <p class="text-slate-600">Dado por la circulación de iones libres a través de las soluciones electrolíticas de los fluidos intra y extracelulares (sangre, linfa, citoplasma).</p>
+            </div>
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+              <span class="font-bold text-slate-900 block">Comportamiento Capacitivo (C)</span>
+              <p class="text-slate-600">Las bicapas lipídicas de las membranas celulares (7 a 10 nm de espesor) actúan como un dieléctrico, acumulando carga en interfaces intra/extracelulares.</p>
+            </div>
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+              <span class="font-bold text-slate-900 block">Potencial Transmembrana</span>
+              <p class="text-slate-600">En estado de reposo fisiológico, la diferencia de concentración iónica genera una ddp en la membrana de aprox. <strong>-70 mV</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Fórmula de Impedancia de la Piel -->
+          <div class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50 p-4 rounded-xl border border-slate-200 text-xs">
+            <div class="font-bold text-slate-900 mb-2">Modelo Serie del Cuerpo Humano (IEC 60479-1):</div>
+            <p class="text-slate-700 mb-3">
+              La impedancia total del cuerpo humano (<strong>Z<sub>h</sub></strong>) es la suma de tres componentes en serie:
+            </p>
+            <div class="text-center font-mono font-bold text-sm text-slate-900 bg-white p-2.5 rounded-lg border border-slate-200 shadow-xs mb-3">
+              Z<sub>h</sub> = Z<sub>p, entrada</sub> + R<sub>int</sub> + Z<sub>p, salida</sub>
+            </div>
+            <p class="text-slate-600 mb-2">Donde la impedancia de la piel (<strong>Z<sub>p</sub></strong>) responde a un circuito en paralelo RC:</p>
+            <div class="text-center font-mono font-bold text-sm text-brand-700 bg-white p-2.5 rounded-lg border border-slate-200 shadow-xs">
+              Z<sub>p</sub> = R<sub>p</sub> / &radic;( 1 + (R<sub>p</sub> &times; C<sub>p</sub> &times; f)<sup>2</sup> )
+            </div>
+          </div>
+
+          <!-- Efecto de la Frecuencia y Tensión -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-200 space-y-2">
+              <div class="font-bold text-amber-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-wave-square"></i> Dependencia de la Frecuencia (f)
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>En bajas frecuencias (50 Hz):</strong> Los iones tienen tiempo de polarizar la membrana celular, generando una gran oposición al paso de corriente. La impedancia de la piel domina la resistencia total del cuerpo.
+              </p>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>En altas frecuencias (>10 kHz):</strong> La reactancia capacitiva X<sub>c</sub> = 1/(2&pi;fC) se hace casi nula. La membrana se cortocircuita capacitivamente y la impedancia de la piel se vuelve <em>despreciable</em>, quedando únicamente la resistencia interna de los tejidos (R<sub>int</sub> &approx; 500-1000 &Omega;).
+              </p>
+            </div>
+
+            <div class="bg-rose-50/50 p-4 rounded-xl border border-rose-200 space-y-2">
+              <div class="font-bold text-rose-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-bolt"></i> Dependencia de la Tensión de Contacto (U<sub>c</sub>)
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                La relación tensión-corriente en el cuerpo humano <strong>no es lineal</strong>:
+              </p>
+              <div class="font-mono text-center bg-white p-1.5 rounded border border-rose-200 text-rose-950 font-bold">
+                I<sub>c</sub> = U<sub>c</sub> / Z<sub>h</sub>(U<sub>c</sub>)
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                A medida que la tensión de contacto aumenta, se produce la <strong>perforación dieléctrica</strong> del estrato córneo de la piel. A tensiones mayores a 220-400 V, la piel pierde instantáneamente sus propiedades aislantes y la impedancia corporal desciende rápidamente a su límite puramente interno.
+              </p>
+            </div>
+          </div>
+
+          <!-- TABLA DE IMPEDANCIA EN FMaterial generado con IA, puede contener erroresIÓN DE LA HUMEDAD -->
+          <div class="mt-4">
+            <h5 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Impedancia Total del Cuerpo (&Omega;) según Humedad de la Piel (Trayecto Mano-Mano, 50 Hz)</h5>
+            <div class="overflow-x-auto">
+              <table class="w-full text-center text-xs border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 text-slate-700 font-bold">
+                    <th class="p-2 border text-left">Tensión de Contacto (V)</th>
+                    <th class="p-2 border bg-amber-50/50">Piel Seca (&Omega;)</th>
+                    <th class="p-2 border bg-sky-50/50">Piel Húmeda (&Omega;)</th>
+                    <th class="p-2 border bg-blue-50/50">Piel Mojada (&Omega;)</th>
+                    <th class="p-2 border bg-indigo-50/50">Piel Sumergida (&Omega;)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 font-mono text-slate-700">
+                  <tr>
+                    <td class="p-2 border text-left font-sans font-semibold">&lt; 25 V</td>
+                    <td class="p-2 border">5.000</td>
+                    <td class="p-2 border">2.500</td>
+                    <td class="p-2 border">1.000</td>
+                    <td class="p-2 border text-rose-600 font-bold">500</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 border text-left font-sans font-semibold">50 V</td>
+                    <td class="p-2 border">4.000</td>
+                    <td class="p-2 border">2.000</td>
+                    <td class="p-2 border">875</td>
+                    <td class="p-2 border text-rose-600 font-bold">440</td>
+                  </tr>
+                  <tr class="bg-amber-50/30">
+                    <td class="p-2 border text-left font-sans font-semibold">250 V (Tensión de Red)</td>
+                    <td class="p-2 border">1.500</td>
+                    <td class="p-2 border">1.000</td>
+                    <td class="p-2 border">650</td>
+                    <td class="p-2 border text-rose-600 font-bold">325</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1.5">
+              <em>Conclusión práctica:</em> En una persona con la piel mojada o sumergida, la resistencia total cae a valores tan reducidos que incluso tensiones inferiores a 50 V pueden hacer circular corrientes mortales superiores a 50 mA.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: EFECTOS FISIOLÓGICOS Y PATOLÓGICOS -->
+      <section id="efectos" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">5</span>
+          <h3 class="text-2xl font-bold text-slate-900">Efectos Fisiológicos y Patológicos del Choque</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm">
+          Los efectos de la corriente eléctrica sobre el organismo pueden clasificarse en <strong>directos</strong>, <strong>indirectos</strong> y <strong>secuelas no inmediatas (diferidas)</strong>.
+        </p>
+
+        <!-- Efectos Directos -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-rose-600 flex items-center gap-1.5">
+            <i class="fa-solid fa-heart-pulse"></i> 1. Efectos Directos del Paso de Corriente
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+              <span class="font-bold text-slate-900 text-sm block">Tetanización Muscular y "No Soltar"</span>
+              <p class="text-slate-600 leading-relaxed">
+                Las fibras musculares son excitadas por la corriente a una frecuencia (50 Hz) mucho mayor que los estímulos fisiológicos normales, produciendo contracciones repetidas continuas sin relajación muscular.
+              </p>
+              <div class="bg-amber-50 p-2 rounded text-amber-900 font-semibold">
+                Umbral de "no soltar" (I<sub>límite</sub>): aprox. <strong>10 mA</strong> en CA. Los músculos flexores de la mano (más fuertes que los extensores) se contraen cerrando los dedos sobre el conductor activo.
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+              <span class="font-bold text-slate-900 text-sm block">Asfixia y Paro Respiratorio</span>
+              <p class="text-slate-600 leading-relaxed">
+                Ocurre cuando la corriente circula a través del tórax (aproximadamente a partir de 20-30 mA), provocando la contracción tetánica sostenida de los músculos intercostales y del diafragma, impidiendo la ventilación pulmonar.
+              </p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border-2 border-rose-300 shadow-sm space-y-2 md:col-span-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-rose-900 text-sm">Fibrilación Ventricular (Causa Principal de Muerte por BT)</span>
+                <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold text-[10px] uppercase">Riesgo Crítico</span>
+              </div>
+              <p class="text-slate-600 leading-relaxed">
+                Desincronización motriz completa de las fibras miocárdicas de los ventrículos cardíacos. El corazón deja de bombear sangre de manera efectiva (colapso circulatorio inmediato) y la presión arterial cae a cero. Si no se aplica un <strong>desfibrilador (DEA)</strong> en cuestión de pocos minutos, sobreviene la muerte biológica cerebral irreversible.
+              </p>
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
+                <div class="text-[11px] text-slate-700 leading-relaxed">
+                  <strong>La Ventana Vulnerable del Ciclo Cardíaco:</strong> El corazón dura aprox. 0,75 segundos por latido. Existe una ventana especialmente crítica de aprox. <strong>0,15 segundos (onda T del electrocardiograma)</strong> en la cual el miocardio se encuentra en repolarización inhomogénea. Si la corriente coincide con esta fase, la probabilidad de fibrilación ventricular es máxima.
+                </div>
+              </div>
+            </div>
+
+            <!-- Quemaduras por Efecto Joule -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2 md:col-span-2">
+              <span class="font-bold text-slate-900 text-sm block">Quemaduras Térmicas e Internas (Efecto Joule)</span>
+              <p class="text-slate-600">
+                La disipación calórica durante el paso de corriente sigue la Ley de Joule:
+              </p>
+              <div class="flex flex-wrap gap-4 text-xs font-mono font-bold my-1">
+                <span class="bg-slate-100 px-2.5 py-1 rounded border">Q = I<sup>2</sup> &times; R &times; t [Joules]</span>
+                <span class="bg-slate-100 px-2.5 py-1 rounded border">Q = 0,24 &times; I<sup>2</sup> &times; R &times; t [Calorías]</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 pt-2 text-[11px]">
+                <div class="bg-slate-50 p-2 rounded border">
+                  <strong>Zona 0:</strong> Piel grisácea o rugosa tras varios segundos de contacto superficial.
+                </div>
+                <div class="bg-rose-50/50 p-2 rounded border border-rose-100">
+                  <strong>Zona 1 (1° Grado):</strong> Eritema, enrojecimiento dérmico e hinchazón de bordes.
+                </div>
+                <div class="bg-rose-100/50 p-2 rounded border border-rose-200">
+                  <strong>Zona 2 (2° Grado):</strong> Tonalidad oscura, flictenas (ampollas), úlceras profundas.
+                </div>
+                <div class="bg-slate-900 text-slate-200 p-2 rounded border border-slate-800">
+                  <strong>Zona 3 (3° Grado):</strong> Carbonización completa dérmica y necrosis de tejidos musculares y óseos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Efectos Indirectos y Efectos Diferidos (No Inmediatos) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Efectos Indirectos -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <span class="font-bold text-amber-700 text-sm block flex items-center gap-1.5">
+              <i class="fa-solid fa-person-falling-burst"></i> 2. Efectos Indirectos
+            </span>
+            <ul class="text-slate-600 space-y-1.5 list-disc pl-4">
+              <li><strong>Caídas a distinto nivel:</strong> Por pérdida de control motor o sobresalto involuntario al recibir la descarga.</li>
+              <li><strong>Golpes traumáticos:</strong> Puesta en marcha imprevista de máquinas o expulsión violenta del operario.</li>
+              <li><strong>Quemaduras por Arco Eléctrico:</strong> Proyección de cobre y aluminio fundido a más de 5.000 &deg;C y radiación UV extrema.</li>
+              <li><strong>Incendios y explosiones:</strong> En presencia de vapores, gases o polvos inflamables provocados por chispas de corte.</li>
+            </ul>
+          </div>
+
+          <!-- Efectos No Inmediatos -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <span class="font-bold text-purple-700 text-sm block flex items-center gap-1.5">
+              <i class="fa-solid fa-hospital-user"></i> 3. Efectos Diferidos (No Inmediatos)
+            </span>
+            <ul class="text-slate-600 space-y-1.5 list-disc pl-4">
+              <li><strong>Insuficiencia Renal Aguda:</strong> Los riñones colapsan al intentar filtrar la gran cantidad de <em>mioglobina y hemoglobina</em> liberadas masivamente por la necrosis de los músculos quemados (rabdomiólisis).</li>
+              <li><strong>Trastornos Cardiovasculares Tardíos:</strong> Infartos de miocardio diferidos, arritmias ventriculares y bloqueos A-V horas después del choque.</li>
+              <li><strong>Secuelas Neurológicas:</strong> Amnesia, delirio, parálisis periférica (neuritis) y lesiones de la médula espinal.</li>
+              <li><strong>Afecciones Sensoriales:</strong> Cataratas inducidas por arco eléctrico, desprendimiento de retina y pérdida auditiva por onda acústica.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: FACTORES DETERMINANTES DEL ACCIDENTE -->
+      <section id="factores" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">6</span>
+          <h3 class="text-2xl font-bold text-slate-900">Variables Determinantes de la Severidad</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm">
+          La severidad del daño orgánico depende fundamentalmente de la intensidad de corriente, el tiempo de contacto, la frecuencia, el trayecto corporal y el estado de la persona.
+        </p>
+
+        <!-- TABLA DE UMBRALES: CA 50 Hz vs CC -->
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Valores Umbrales de Corriente (en mA) para Hombres y Mujeres</h4>
+          <div class="overflow-x-auto">
+            <table class="w-full text-center text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 font-bold">
+                  <th class="p-2 border text-left">Efecto Fisiológico</th>
+                  <th colspan="2" class="p-2 border bg-amber-50">Corriente Continua (CC)</th>
+                  <th colspan="2" class="p-2 border bg-sky-50">Corriente Alterna (CA 50 Hz)</th>
+                </tr>
+                <tr class="bg-slate-50 text-[11px] font-semibold text-slate-600">
+                  <th class="p-1 border text-left"></th>
+                  <th class="p-1 border">Hombres</th>
+                  <th class="p-1 border">Mujeres</th>
+                  <th class="p-1 border text-sky-800">Hombres</th>
+                  <th class="p-1 border text-sky-800">Mujeres</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono text-slate-700">
+                <tr>
+                  <td class="p-2 border text-left font-sans">Sin percepción perceptible</td>
+                  <td class="p-2 border">1,0 mA</td>
+                  <td class="p-2 border">0,6 mA</td>
+                  <td class="p-2 border">0,4 mA</td>
+                  <td class="p-2 border">0,3 mA</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans font-semibold">Umbral de percepción</td>
+                  <td class="p-2 border">5,2 mA</td>
+                  <td class="p-2 border">3,5 mA</td>
+                  <td class="p-2 border text-amber-700 font-bold">1,1 mA</td>
+                  <td class="p-2 border text-amber-700 font-bold">0,7 mA</td>
+                </tr>
+                <tr class="bg-amber-50/20">
+                  <td class="p-2 border text-left font-sans font-bold text-amber-900">Umbral límite de no soltar</td>
+                  <td class="p-2 border">76 mA</td>
+                  <td class="p-2 border">51 mA</td>
+                  <td class="p-2 border text-rose-600 font-bold">16 mA</td>
+                  <td class="p-2 border text-rose-600 font-bold">10,5 mA</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">Choque doloroso y dificultad respiratoria</td>
+                  <td class="p-2 border">90 mA</td>
+                  <td class="p-2 border">60 mA</td>
+                  <td class="p-2 border">23 mA</td>
+                  <td class="p-2 border">15 mA</td>
+                </tr>
+                <tr class="bg-rose-50/30">
+                  <td class="p-2 border text-left font-sans font-bold text-rose-900">Principio de Fibrilación Ventricular</td>
+                  <td class="p-2 border">200 mA</td>
+                  <td class="p-2 border">170 mA</td>
+                  <td class="p-2 border text-rose-700 font-bold">50 mA</td>
+                  <td class="p-2 border text-rose-700 font-bold">35 mA</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">Probabilidad fibrilación (t = 3 s)</td>
+                  <td class="p-2 border">500 mA</td>
+                  <td class="p-2 border">500 mA</td>
+                  <td class="p-2 border">100 mA</td>
+                  <td class="p-2 border">100 mA</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">Probabilidad fibrilación (t = 0,03 s)</td>
+                  <td class="p-2 border">1.300 mA</td>
+                  <td class="p-2 border">1.300 mA</td>
+                  <td class="p-2 border">1.000 mA</td>
+                  <td class="p-2 border">1.000 mA</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 mt-2">
+            <div class="bg-slate-50 p-2 rounded">
+              &bull; <strong>Sensibilidad de género:</strong> Las mujeres son aproximadamente un <strong>50% más sensibles</strong> a los efectos de la corriente debido a menor masa muscular y espesor epidérmico.
+            </div>
+            <div class="bg-slate-50 p-2 rounded">
+              &bull; <strong>CA vs. CC:</strong> La corriente alterna a 50 Hz es <strong>entre 3 y 5 veces más nociva</strong> que la corriente continua a igual intensidad.
+            </div>
+          </div>
+        </div>
+
+        <!-- RELACIÓN TIEMPO - INTENSIDAD: ECUACIÓN OIT Y ZONAS IEC 60479 -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-stopwatch text-amber-600"></i> Relación Tiempo de Exposición - Intensidad de Corriente
+          </h4>
+
+          <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-xs text-slate-800 space-y-2">
+            <div class="font-bold text-amber-900">Ecuación Experimental de la OIT (Organización Internacional del Trabajo):</div>
+            <div class="flex flex-wrap items-center justify-around gap-4 font-mono font-bold text-sm bg-white p-3 rounded-lg border border-amber-200 shadow-xs">
+              <span>I = 60 / &radic;t &nbsp;[mA]</span>
+              <span>t = ( 60 / I )<sup>2</sup> &nbsp;[segundos]</span>
+            </div>
+            <p class="text-[11px] text-slate-600">
+              Establece la corriente máxima que una persona puede soportar durante un tiempo <em>t</em> sin riesgo de fibrilación ventricular irreversible.
+            </p>
+          </div>
+
+          <!-- Zonas IEC 60479-1 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-200">
+              <strong class="text-emerald-800 block mb-1">Zona 1: Sin Percepción Fisiológica</strong>
+              El cuerpo no reacciona al paso de corriente (I &lt; 0,5 mA). Ningún efecto peligroso.
+            </div>
+            <div class="bg-sky-50/50 p-3 rounded-xl border border-sky-200">
+              <strong class="text-sky-800 block mb-1">Zona 2: Perceptible sin Daño</strong>
+              Desde el umbral de percepción hasta el límite de soltar. No se registran efectos fisiológicos nocivos ni quemaduras.
+            </div>
+            <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-200">
+              <strong class="text-amber-800 block mb-1">Zona 3: Contracciones y Paro Reversible</strong>
+              Contracciones musculares dolorosas que dificultan la respiración. Si t &gt; 2 s e I &lt; 50 mA puede haber paro temporal pero sin fibrilación. Sin daños orgánicos permanentes.
+            </div>
+            <div class="bg-rose-50/50 p-3 rounded-xl border border-rose-200">
+              <strong class="text-rose-800 block mb-1">Zona 4: Fibrilación y Quemaduras Severas</strong>
+              Alto riesgo de fibrilación ventricular (probabilidad desde 5% hasta más del 50%), parada cardiorrespiratoria y quemaduras internas graves.
+            </div>
+          </div>
+        </div>
+
+        <!-- TRAYECTO DE LA CORRIENTE Y FACTOR DE CORRIENTE DE CORAZÓN (F) -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-person text-brand-600"></i> Trayecto Corporal y Factor de Corriente de Corazón (F)
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            La gravedad del choque depende críticamente de qué órganos vitales atraviese la corriente (cerebro, bulbo raquídeo, pulmones o corazón). Para comparar trayectorias se toma como referencia patrón el recorrido <strong>Mano Izquierda - Ambos Pies (F = 1,0)</strong> y se calcula la corriente equivalente mediante el factor <strong>F</strong>:
+          </p>
+
+          <div class="bg-slate-100 p-2.5 rounded text-center font-mono font-bold text-xs text-slate-800 mb-3">
+            I<sub>h</sub> = I<sub>ref</sub> / F &nbsp;&Longleftrightarrow;&nbsp; I<sub>ref</sub> = F &times; I<sub>h</sub>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center text-xs">
+            <div class="bg-rose-50 p-2.5 rounded-lg border border-rose-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Pecho &rarr; Mano Izq.</span>
+              <span class="text-lg font-black text-rose-700">F = 1,5</span>
+              <span class="block text-[10px] text-rose-900 font-semibold mt-0.5">Máximo Peligro</span>
+            </div>
+            <div class="bg-rose-50 p-2.5 rounded-lg border border-rose-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Pecho &rarr; Mano Der.</span>
+              <span class="text-lg font-black text-rose-700">F = 1,3</span>
+              <span class="block text-[10px] text-rose-900 font-semibold mt-0.5">Riesgo Muy Alto</span>
+            </div>
+            <div class="bg-amber-50 p-2.5 rounded-lg border border-amber-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Mano Izq. &rarr; Pies</span>
+              <span class="text-lg font-black text-amber-700">F = 1,0</span>
+              <span class="block text-[10px] text-amber-900 font-semibold mt-0.5">Referencia Patrón</span>
+            </div>
+            <div class="bg-amber-50 p-2.5 rounded-lg border border-amber-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Mano Der. &rarr; Pies</span>
+              <span class="text-lg font-black text-amber-700">F = 0,8</span>
+              <span class="block text-[10px] text-amber-900 font-semibold mt-0.5">Alto Riesgo</span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Espalda &rarr; Mano Der.</span>
+              <span class="text-lg font-black text-slate-800">F = 0,7</span>
+              <span class="block text-[10px] text-slate-600 font-semibold mt-0.5">Riesgo Medio</span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Mano &rarr; Mano</span>
+              <span class="text-lg font-black text-slate-800">F = 0,4</span>
+              <span class="block text-[10px] text-slate-600 font-semibold mt-0.5">Atraviesa Tórax</span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Pie &rarr; Pie</span>
+              <span class="text-lg font-black text-slate-800">F = 0,04</span>
+              <span class="block text-[10px] text-slate-600 font-semibold mt-0.5">Tensión de Paso</span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+              <span class="block text-slate-500 text-[10px] uppercase font-bold">Glúteo &rarr; Pies/Manos</span>
+              <span class="text-lg font-black text-slate-800">F = 0,7</span>
+              <span class="block text-[10px] text-slate-600 font-semibold mt-0.5">Superficie Grande</span>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-2">
+            <em>Regla mnemotécnica:</em> Todo trayecto que pase por el corazón (especialmente desde el lado izquierdo del tórax o brazo izquierdo) tiene el mayor factor F. Si F &gt; 1, se requiere <em>menor corriente</em> para inducir la fibrilación.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 7: SISTEMAS DE PROTECCIÓN CONTRA CONTACTOS DIRECTOS -->
+      <section id="proteccion-directos" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">7</span>
+          <h3 class="text-2xl font-bold text-slate-900">Protección contra Contactos Directos (AEA 90364-4)</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm">
+          Medidas técnicas destinadas a impedir que las personas toquen voluntaria o involuntariamente partes que normalmente están bajo tensión.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Aislación -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <div class="flex items-center gap-2 font-bold text-slate-900 text-sm">
+              <span class="w-6 h-6 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-xs">a</span>
+              Aislamiento de Partes Activas
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Las partes con tensión deben estar completamente recubiertas por una capa aislante que <strong>solo pueda ser removida por destrucción mecánica</strong>.
+            </p>
+            <ul class="list-disc pl-4 text-slate-600 space-y-1">
+              <li><strong>Materiales dieléctricos aptos:</strong> PVC, polietileno reticulado (XLPE), goma EPR, cerámica, porcelana, vidrio, resina epoxi.</li>
+              <li class="text-rose-600 font-semibold">¡Las lacas, barnices o pinturas comunes NO constituyen aislación suficiente contra contactos directos!</li>
+            </ul>
+          </div>
+
+          <!-- Barreras y Envolventes -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <div class="flex items-center gap-2 font-bold text-slate-900 text-sm">
+              <span class="w-6 h-6 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-xs">b</span>
+              Protección por Barreras o Envolventes
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Las partes activas se alojan dentro de tableros o gabinetes cerrados.
+            </p>
+            <ul class="list-disc pl-4 text-slate-600 space-y-1">
+              <li><strong>Grado mínimo general:</strong> <strong>IP2X</strong> (impide ingreso de dedos u objetos &gt; 12,5 mm).</li>
+              <li><strong>Superficies horizontales accesibles:</strong> <strong>IP4X</strong> (impide ingreso de alambres u objetos &gt; 1 mm).</li>
+              <li>Apertura permitida únicamente mediante el <strong>uso de una herramienta especial</strong> o mediante desenergización previa con enclavamiento.</li>
+            </ul>
+          </div>
+
+          <!-- Obstáculos -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <div class="flex items-center gap-2 font-bold text-slate-900 text-sm">
+              <span class="w-6 h-6 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-xs">c</span>
+              Protección Parcial por Obstáculos
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Dispositivos físicos (barandillas, cercas, paneles de rejilla) diseñados para impedir el <strong>acercamiento o contacto fortuito e involuntario</strong>, pero que no impiden el contacto derivado de una maniobra intencional deliberada.
+            </p>
+            <p class="text-slate-500">
+              <em>Regla:</em> Si el obstáculo conductor está separado de las partes activas por aislación básica, debe ser tratado reglamentariamente como una masa eléctrica y ponerse a tierra.
+            </p>
+          </div>
+
+          <!-- Alejamiento -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <div class="flex items-center gap-2 font-bold text-slate-900 text-sm">
+              <span class="w-6 h-6 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-xs">d</span>
+              Puesta Fuera de Alcance por Alejamiento
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Disposición de las partes activas fuera del <strong>volumen de accesibilidad</strong> del personal calificado:
+            </p>
+            <ul class="list-disc pl-4 text-slate-600 space-y-1">
+              <li><strong>Hacia arriba:</strong> 2,50 m desde la superficie transitable.</li>
+              <li><strong>Hacia los laterales y hacia abajo:</strong> 1,25 m de distancia libre.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TABLA DE DISTANCIAS SEGÚN DECRETO 351/79 -->
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Distancias Mínimas de Seguridad para Trabajos en la Proximidad de Partes con Tensión (DR 351/79)</h4>
+          <div class="overflow-x-auto">
+            <table class="w-full text-center text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 font-bold">
+                  <th class="p-2 border text-left">Nivel de Tensión Nominal</th>
+                  <th class="p-2 border">Distancia Mínima de Seguridad</th>
+                  <th class="p-2 border text-left">Observaciones Reglamentarias</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono text-slate-700">
+                <tr>
+                  <td class="p-2 border text-left font-sans">0 a 50 V (MBT)</td>
+                  <td class="p-2 border font-bold text-emerald-700">Ninguna</td>
+                  <td class="p-2 border text-left font-sans">Sin riesgo de arco eléctrico disruptivo.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">50 V a 1.000 V (BT)</td>
+                  <td class="p-2 border font-bold text-amber-700">0,80 m</td>
+                  <td class="p-2 border text-left font-sans">Distancia libre medida desde el operario o herramientas no aisladas.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">1 kV a 33 kV (MT)</td>
+                  <td class="p-2 border font-bold text-amber-700">0,80 m</td>
+                  <td class="p-2 border text-left font-sans">Puede reducirse a <strong>0,60 m</strong> si se colocan pantallas aislantes adecuadas sin rejas metálicas intermedias.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">33 kV a 66 kV</td>
+                  <td class="p-2 border font-bold">0,90 m</td>
+                  <td class="p-2 border text-left font-sans">Para prevenir descargas disruptivas en aire.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">66 kV a 132 kV</td>
+                  <td class="p-2 border font-bold">1,50 m</td>
+                  <td class="p-2 border text-left font-sans">Se incrementa por longitud de arco disruptivo.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">132 kV a 150 kV</td>
+                  <td class="p-2 border font-bold">1,65 m</td>
+                  <td class="p-2 border text-left font-sans">Líneas de alta tensión.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">150 kV a 220 kV</td>
+                  <td class="p-2 border font-bold">2,10 m</td>
+                  <td class="p-2 border text-left font-sans">Subestaciones de transmisión troncal.</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border text-left font-sans">220 kV a 330 kV</td>
+                  <td class="p-2 border font-bold">2,90 m</td>
+                  <td class="p-2 border text-left font-sans">Sistemas de extra alta tensión.</td>
+                </tr>
+                <tr class="bg-rose-50/40">
+                  <td class="p-2 border text-left font-sans font-bold text-rose-900">330 kV a 500 kV</td>
+                  <td class="p-2 border font-bold text-rose-700">3,60 m</td>
+                  <td class="p-2 border text-left font-sans">Interconexión nacional de 500 kV (SADI).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 8: PROTECCIÓN CONTRA CONTACTOS INDIRECTOS -->
+      <section id="proteccion-indirectos" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">8</span>
+          <h3 class="text-2xl font-bold text-slate-900">Protección contra Contactos Indirectos</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Los contactos indirectos se previenen mediante dos grandes filosofías: <strong>medidas sin desconexión automática</strong> (evitando que aparezca tensión en las masas accesibles) o <strong>medidas con desconexión automática de la alimentación</strong> (interrumpiendo la energía antes de que cause daño).
+        </p>
+
+        <!-- Medidas sin desconexión automática -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+            <div class="flex items-center gap-2 font-bold text-slate-900">
+              <span class="text-lg text-slate-700 font-mono">&#x25A1;&#x25A1;</span> Clase II de Aislación
+            </div>
+            <p class="text-slate-600">
+              Doble aislación o aislación reforzada. Consta de aislación básica más una envolvente suplementaria resistente. <strong>No llevan puesta a tierra</strong> (su chasis es de plástico dieléctrico resistente).
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+            <div class="flex items-center gap-2 font-bold text-slate-900">
+              <i class="fa-solid fa-arrows-split-up-and-left text-sky-600"></i> Separación Eléctrica
+            </div>
+            <p class="text-slate-600">
+              Alimentación a través de un <strong>transformador de aislación galvánica 1:1</strong> (220 V / 220 V) con secundario desvinculado de tierra. Al no haber circuito a tierra, tocar un conductor no cierra corriente por el cuerpo.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+            <div class="flex items-center gap-2 font-bold text-slate-900">
+              <i class="fa-solid fa-border-none text-purple-600"></i> Locales No Conductores
+            </div>
+            <p class="text-slate-600">
+              Pisos y paredes con resistencia aislante &gt; 50 k&Omega; (para BT &le; 500 V) que impiden el cierre del circuito entre la persona y la tierra física.
+            </p>
+          </div>
+        </div>
+
+        <!-- SISTEMA DE EQUIPOTENCIALIZACIÓN Y PUESTA A TIERRA -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-network-wired text-amber-600"></i> Sistema de Equipotencialización de Edificios (AEA 90364)
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            La protección moderna se basa en evitar diferencias de potencial entre elementos metálicos accesibles. Todo edificio debe contar con una <strong>Barra de Equipotencialización Principal (BEP)</strong> conectada a tierra:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-900">Elementos Conectados a la BEP:</span>
+              <ul class="list-disc pl-4 text-slate-600 space-y-1">
+                <li>Electrodo de dispersión de PAT (Jabalina).</li>
+                <li>Barra de puesta a tierra (BPT) del tablero principal.</li>
+                <li>Conductores de equipotencialización principal (CEP): conectan cañerías de agua, gas, cloacas, bandejas portacables y ductos de A/A.</li>
+                <li>Armaduras metálicas estructurales del edificio (Hormigón Armado).</li>
+                <li>Guías de ascensores y descargadores de sobretensión atmosférica (pararrayos).</li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-900">Sección Mínima de Conductores (Tabla 771.18.III AEA):</span>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-[11px]">
+                  <thead>
+                    <tr class="border-b font-bold text-slate-700">
+                      <th>Fase S (mm²)</th>
+                      <th>PE (mm²)</th>
+                      <th>Conductor PAT (mm²)</th>
+                    </tr>
+                  </thead>
+                  <tbody class="font-mono divide-y divide-slate-200">
+                    <tr><td>S &le; 16</td><td>S (igual a fase)</td><td>Mínimo <strong>4 mm²</strong></td></tr>
+                    <tr><td>16 &lt; S &le; 35</td><td>16 mm²</td><td>16 mm²</td></tr>
+                    <tr><td>S &gt; 35</td><td>S / 2</td><td>S / 2</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-[10px] text-slate-500">
+                <em>Regla clave:</em> El conductor que va de la jabalina a la barra BEP nMaterial generado con IA, puede contener erroresa puede ser inferior a <strong>4 mm²</strong> de cobre (IRAM 2183 / 247-3).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 9: ESQUEMAS DE CONEXIÓN A TIERRA (TT vs TN) -->
+      <section id="esquemas-puesta-tierra" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">9</span>
+          <h3 class="text-2xl font-bold text-slate-900">Esquemas de Conexión a Tierra (ECT): TT vs. TN-S</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm">
+          El esquema de conexión a tierra define cómo se conectan el neutro del transformador y las masas de la instalación de los usuarios. Esta configuración dicta el comportamiento del <strong>lazo de falla</strong>.
+        </p>
+
+        <!-- ESQUEMA TT -->
+        <div class="bg-white rounded-2xl p-5 border-2 border-amber-300 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-black text-xs uppercase">Esquema Reglamentario en Argentina para BT</span>
+              <h4 class="text-lg font-extrabold text-slate-900 mt-1">Esquema TT (Tierra del Servicio &mdash; Tierra de Protección)</h4>
+            </div>
+            <div class="text-xs bg-slate-100 px-3 py-1.5 rounded-lg font-mono text-slate-700">
+              Neutro &rarr; R<sub>b</sub> | Masas &rarr; R<sub>a</sub>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed">
+            El neutro del transformador de distribución de la empresa de energía se conecta a una toma de tierra de servicio (<strong>R<sub>b</sub></strong>, típicamente de 1 &Omega;). Las masas metálicas de la instalación del usuario se conectan a una jabalina independiente de protección (<strong>R<sub>a</sub></strong>, típicamente de 10 &Omega;). Ambas tomas son tierras independientes o lejanas (distancia D &gt; 10 R<sub>e</sub>).
+          </p>
+
+          <!-- DEMOSTRACIÓN MATEMÁTICA: POR QUÉ FALLA LA TERMOMAGNÉTICA EN TT -->
+          <div class="bg-slate-900 text-slate-100 p-4 rounded-xl space-y-3 font-mono text-xs">
+            <div class="font-bold text-amber-400 font-sans text-sm flex items-center gap-2">
+              <i class="fa-solid fa-calculator"></i> Demostración de Materia: Ineficacia de Termomagnéticas y Fusibles en TT
+            </div>
+            <p class="text-slate-300 font-sans text-xs">
+              Supongamos una red de 220 V con R<sub>a</sub> = 10 &Omega; y R<sub>b</sub> = 1 &Omega;. Se produce una falla de aislación directa a masa:
+            </p>
+            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-2">
+              <div class="text-emerald-400">
+                1) Corriente de defecto (I<sub>d</sub>):
+                <br>
+                I<sub>d</sub> = U<sub>0</sub> / (R<sub>a</sub> + R<sub>b</sub>) = 220 V / (10 + 1) &Omega; = <strong>20 A</strong>
+              </div>
+              <div class="text-amber-300">
+                2) Tensión de contacto peligrosa en la chapa (U<sub>c</sub>):
+                <br>
+                U<sub>c</sub> = R<sub>a</sub> &times; I<sub>d</sub> = 10 &Omega; &times; 20 A = <strong>200 V</strong> (¡Peligro de muerte inminente!)
+              </div>
+              <div class="text-rose-400">
+                3) Tiempo exigido de corte según Curva Lp (Dec. 351/79):
+                <br>
+                Para U<sub>c</sub> = 200 V &rarr; Tiempo máximo admisible = <strong>60 ms (0,06 s)</strong>.
+              </div>
+            </div>
+
+            <div class="bg-rose-950/60 p-3 rounded-lg border border-rose-800 text-rose-200 text-xs font-sans space-y-1">
+              <strong>¿Por qué no dispara la termomagnética común (ej. 16 A, curva B)?</strong>
+              <p>
+                Para disparar en 60 ms por su mecanismo magnético instantáneo, la curva B requiere entre 3 y 5 veces su corriente nominal (In):
+                <br>
+                I<sub>disparo</sub> = 3 a 5 &times; 16 A = <strong>48 A a 80 A</strong>.
+                <br>
+                ¡Pero la corriente de defecto real es de apenas <strong>20 A</strong>! La termomagnética operaría por su bimetal térmico recién después de varios minutos, cuando la persona ya habría fallecido electrocutada.
+              </p>
+              <p class="font-bold text-amber-300 pt-1">
+                Conclusión Reglamentaria: ¡En esquema TT, la instalación de un Interruptor Diferencial es OBLIGATORIA e IRREEMPLAZABLE!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESQUEMA TN-S vs TN-C -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- TN-S -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold uppercase text-[10px]">Industrias con Trafo Propio</span>
+            <h4 class="font-bold text-slate-900 text-sm">Esquema TN-S (Tierra-Neutro Separados)</h4>
+            <p class="text-slate-600 leading-relaxed">
+              El conductor neutro (N) y el conductor de protección (PE) están separados en toda la instalación, pero unidos en el centro de estrella del transformador.
+            </p>
+            <div class="bg-sky-50 p-2.5 rounded border border-sky-100 text-slate-700 space-y-1">
+              <p><strong>Lazo metálico:</strong> Una falla de aislación a masa es un cortocircuito franco fase-PE.</p>
+              <p><strong>I<sub>d</sub> muy alta:</strong> Entre 500 A y 3.000 A. Permite el disparo instantáneo de termomagnéticas y fusibles.</p>
+              <p class="text-[10px] text-slate-500"><em>Condición:</em> Solo admitido en Argentina si el usuario recibe MT y dispone de transformador particular.</p>
+            </div>
+          </div>
+
+          <!-- TN-C -->
+          <div class="bg-white p-4 rounded-xl border-2 border-rose-300 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold uppercase text-[10px]">¡PROHIBIDO EN ARGENTINA!</span>
+            <h4 class="font-bold text-rose-950 text-sm">Esquema TN-C (Neutro y PE Combinados: PEN)</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Utiliza un único conductor neutro y de protección combinado (PEN).
+            </p>
+            <div class="bg-rose-50 p-2.5 rounded border border-rose-200 text-rose-900 space-y-1">
+              <p class="font-bold">Riesgo Mortal Inaceptable:</p>
+              <p>Si el conductor PEN se corta accidentalmente aguas arriba, todas las carcasas de los equipos conectados quedan inmediatamente energizadas a 220 V de fase a través de las cargas en servicio.</p>
+              <p class="font-bold">Prohibido explícitamente por la norma AEA 90364.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 10: INTERRUPTOR DIFERENCIAL Y ENSAYOS NORMATIVOS -->
+      <section id="diferencial-ensayos" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">10</span>
+          <h3 class="text-2xl font-bold text-slate-900">El Interruptor Diferencial (ID) y Ensayos Normativos</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm leading-relaxed">
+          El <strong>Interruptor Diferencial (RCD)</strong> es un dispositivo electromecánico de desconexión rápida que basa su fMaterial generado con IA, puede contener erroresionamiento en la Ley de Ampère y la inducción de Faraday.
+        </p>
+
+        <!-- Principio de FMaterial generado con IA, puede contener erroresionamiento -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-ring text-amber-500"></i> Principio Físico del Toroide Magnético
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+              <span class="font-bold text-emerald-700 block">Condición Normal (Sin Fuga):</span>
+              <p class="text-slate-600">
+                La corriente que ingresa por la fase es exactamente igual a la que retorna por el neutro:
+              </p>
+              <div class="font-mono bg-white p-2 rounded border text-center font-bold text-slate-800">
+                I<sub>fase</sub> - I<sub>neutro</sub> = 0 &rarr; &Phi;<sub>resultante</sub> = 0
+              </div>
+              <p class="text-slate-500">
+                Los flujos magnéticos generados en el núcleo toroidal de ferrita se anulan mutuamente. No se induce fem en el bobinado de disparo.
+              </p>
+            </div>
+
+            <div class="bg-rose-50/50 p-3.5 rounded-xl border border-rose-200 space-y-2">
+              <span class="font-bold text-rose-700 block">Condición de Falla (Corriente de Fuga I<sub>d</sub>):</span>
+              <p class="text-slate-600">
+                Una parte de la corriente se desvía a tierra a través de la persona o de la jabalina:
+              </p>
+              <div class="font-mono bg-white p-2 rounded border border-rose-200 text-center font-bold text-rose-800">
+                I<sub>fase</sub> - I<sub>neutro</sub> = I<sub>d</sub> &ne; 0 &rarr; &Phi;<sub>neto</sub> &ne; 0
+              </div>
+              <p class="text-slate-600">
+                El flujo induce una corriente en el devanado secundario de control, la cual energiza un relé de disparo electromagnético de alta sensibilidad que destraba los contactos principales en milisegundos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROTOCOLO DE ENSAYOS NORMATIVOS (IEC 61008 / AEA) -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-sky-600"></i> Protocolo de Verificación del Interruptor Diferencial (IEC 61008)
+          </h4>
+          <p class="text-xs text-slate-600">
+            Un interruptor diferencial debe ser ensayado mediante dos vías:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <!-- Ensayo Mecánico -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-fingerprint text-amber-600"></i> Ensayo Mecánico (Usuario)
+              </div>
+              <p class="text-slate-600 leading-relaxed">
+                Pulsar <strong>una vez al mes el botón de test "T"</strong> del disyuntor. Este pulsador introduce una fuga controlada a través de una resistencia interna para desatascar el mecanismo mecánico y verificar su capacidad de apertura.
+              </p>
+            </div>
+
+            <!-- Ensayos Eléctricos con Instrumental -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-gauge-high text-sky-600"></i> Ensayos Eléctricos Instrumentales (Especialistas)
+              </div>
+              <p class="text-slate-600">Realizados con analizador de RCD calibrado:</p>
+              <ul class="space-y-1 text-slate-700">
+                <li>&bull; <strong>A 0,5 I<sub>&Delta;n</sub> (15 mA):</strong> <em>NO debe disparar</em> (evita disparos intempestivos por corrientes parásitas).</li>
+                <li>&bull; <strong>A 1,0 I<sub>&Delta;n</sub> (30 mA):</strong> Debe disparar en un tiempo <strong>&le; 300 ms</strong>.</li>
+                <li>&bull; <strong>A 2,0 I<sub>&Delta;n</sub> (60 mA):</strong> Debe disparar en un tiempo <strong>&le; 150 ms</strong>.</li>
+                <li>&bull; <strong>A 5,0 I<sub>&Delta;n</sub> (150 mA):</strong> Debe disparar en un tiempo <strong>&le; 40 ms</strong>.</li>
+                <li>&bull; <strong>Ensayo de Rampa:</strong> Determina la corriente real exacta a la que destraba (típicamente entre 20 y 28 mA).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Medición de PAT: Caída de Potencial (Regla del 62%) -->
+          <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-200 text-xs space-y-2 mt-2">
+            <div class="font-bold text-amber-950 flex items-center gap-1.5">
+              <i class="fa-solid fa-arrows-left-right-to-line text-amber-700"></i> Medición de Puesta a Tierra: Método de la Caída de Potencial (Regla del 62%)
+            </div>
+            <p class="text-slate-700 leading-relaxed">
+              Para medir la resistencia de dispersión del electrodo de tierra (jabalina) con un telurímetro de 3 bornes (E, P, C):
+            </p>
+            <ol class="list-decimal pl-4 space-y-1 text-slate-700">
+              <li>Desconectar el conductor de protección PE del electrodo para no medir tierras en paralelo.</li>
+              <li>Ubicar la <strong>pica auxiliar de corriente (C)</strong> a una distancia D &ge; 30 metros (o al menos 3 a 5 veces la longitud de la jabalina) en terreno uniforme.</li>
+              <li>Ubicar la <strong>pica auxiliar de tensión (P)</strong> exactamente al <strong>62% de la distancia total D (0,62 &times; D)</strong>, donde el gradiente de potencial del terreno es plano (zona de resistencia real no distorsionada).</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 11: LAS 5 REGLAS DE ORO Y TRABAJOS CON TENSIÓN -->
+      <section id="reglas-de-oro" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">11</span>
+          <h3 class="text-2xl font-bold text-slate-900">Las 5 Reglas de Oro y Trabajos con Tensión</h3>
+        </div>
+
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Para realizar <strong>trabajos sin tensión</strong> de manera completamente segura, la legislación argentina (Decreto 351/79 Anexo VI Art. 2.1.3) y las buenas prácticas internacionales exigen el cumplimiento secuencial, estricto y sin omisiones de las <strong>Cinco Reglas de Oro</strong>.
+        </p>
+
+        <!-- Acordeón / Cards de las 5 Reglas de Oro -->
+        <div class="space-y-3 text-xs">
+          <!-- Regla 1 -->
+          <div class="bg-white p-4 rounded-xl border-l-4 border-amber-500 shadow-sm space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-slate-900 text-sm">1ª Regla de Oro: Corte Visible o Corte Efectivo</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Paso 1</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Abrir con corte visible (distancia de separación en aire comprobable visualmente a través de cuchillas de seccionador) o corte efectivo (interruptores encapsulados con indicador mecánico de posición garantizada) todas las posibles fuentes de tensión hacia el sector a intervenir.
+            </p>
+          </div>
+
+          <!-- Regla 2 -->
+          <div class="bg-white p-4 rounded-xl border-l-4 border-amber-500 shadow-sm space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-slate-900 text-sm">2ª Regla de Oro: Bloqueo y Señalización (Lockout / Tagout)</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Paso 2</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Inmovilizar físicamente el mando de los aparatos de seccionamiento en posición "ABIERTO" mediante candados de consignación mecánica, aldabas múltiples o llaves de enclavamiento. Colocar tarjetas normalizadas de advertencia: <strong>"PELIGRO - PERSONAL TRABAJANDO - PROHIBIDO MANIOBRAR"</strong> con nombre y firma del responsable.
+            </p>
+          </div>
+
+          <!-- Regla 3 -->
+          <div class="bg-white p-4 rounded-xl border-l-4 border-amber-500 shadow-sm space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-slate-900 text-sm">3ª Regla de Oro: Verificar Ausencia de Tensión</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Paso 3</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Toda instalación se considera bajo tensión hasta que se demuestre lo contrario. Se debe verificar la ausencia de tensión en <strong>todos los conductores activos y en el neutro</strong>, tanto en el lugar de trabajo como en los puntos de corte, utilizando detectores de tensión normalizados y probados inmediatamente antes y después de la maniobra.
+            </p>
+          </div>
+
+          <!-- Regla 4 -->
+          <div class="bg-white p-4 rounded-xl border-l-4 border-amber-500 shadow-sm space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-slate-900 text-sm">4ª Regla de Oro: Puesta a Tierra y en Cortocircuito</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Paso 4</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Conectar a tierra y cortocircuitar entre sí todas las fases y el neutro en ambos extremos de la zona de trabajo. <em>FMaterial generado con IA, puede contener erroresión vital:</em> En caso de una energización intempestiva accidental o por inducción electromagnética/descargas atmosféricas, se crea un cortocircuito franco a tierra que drena la corriente y provoca la desconexión inmediata de las protecciones aguas arriba sin riesgo para el operario.
+            </p>
+          </div>
+
+          <!-- Regla 5 -->
+          <div class="bg-white p-4 rounded-xl border-l-4 border-amber-500 shadow-sm space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-slate-900 text-sm">5ª Regla de Oro: Señalizar y Delimitar la Zona de Trabajo</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Paso 5</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Delimitar perimetralmente la zona segura de trabajo mediante vallas, cadenas plásticas, cintas y conos. Colocar señalizaciones normalizadas según código IRAM/ISO (Rojo: Prohibición, Amarillo: Advertencia/Peligro, Azul: Obligación de EPP, Verde: Vías de evacuación y primeros auxilios).
+            </p>
+          </div>
+        </div>
+
+        <!-- TRABAJOS CON TENSIÓN (TCT) -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-user-shield text-rose-600"></i> Trabajos en Instalaciones con Tensión (TCT)
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Solo pueden ser ejecutados por personal expresamente habilitado, capacitado, con aptitud psicofísica periódica y que otorgue su consentimiento informado. Requiere la confección previa del <strong>Análisis Previo de Riesgos (APR)</strong> y Permiso de Trabajo.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+              <span class="font-bold text-amber-800 block">1. Método al Contacto (BT y MT)</span>
+              <p class="text-slate-600">
+                El trabajador entra en contacto con las partes bajo tensión utilizando <strong>guantes dieléctricos ensayados</strong>, protectores de cuero, alfombras aislantes y herramientas de mano con aislamiento certificado de 1.000 V.
+              </p>
+            </div>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+              <span class="font-bold text-sky-800 block">2. Método a Distancia (MT y AT)</span>
+              <p class="text-slate-600">
+                El trabajador permanece a potencial de tierra (sobre el suelo o plataforma) y realiza las intervenciones mecánicas manipulando herramientas montadas en el extremo de <strong>pértigas aislantes</strong> de fibra de vidrio certificadas, manteniendo siempre la distancia mínima de seguridad.
+              </p>
+            </div>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+              <span class="font-bold text-purple-800 block">3. Método a Potencial (AT &gt; 33 kV)</span>
+              <p class="text-slate-600">
+                El operario se aísla de tierra (mediante barquillas aisladas o escaleras) y se coloca <strong>al mismo potencial que el conductor</strong> mediante un traje conductor de malla metálica (Jaula de Faraday). Como V<sub>operario</sub> = V<sub>cable</sub> &rarr; &Delta;V = 0, no circula corriente a través de su cuerpo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 12: SIMULADORES Y CALCULADORAS DE INGENIERÍA -->
+      <section id="calculadoras" class="scroll-mt-24 space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-sm">
+            <i class="fa-solid fa-calculator"></i>
+          </span>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900">Simulador de Choque y Calculadoras Eléctricas</h3>
+            <p class="text-xs text-slate-500">Herramientas interactivas para resolución de prácticos y verificación de proyectos.</p>
+          </div>
+        </div>
+
+        <!-- SIMULADOR 1: LAZO DE FALLA Y TENSIÓN DE CONTACTO EN ESQUEMA TT -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b pb-2">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-plug-circle-exclamation text-amber-500"></i> 1. Cálculo de Lazo de Falla y Tensión de Contacto (Esquema TT)
+            </h4>
+            <span class="text-[11px] font-mono bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">U<sub>0</sub> = 220 V</span>
+          </div>
+          <p class="text-xs text-slate-600">
+            Calcula la corriente de defecto I<sub>d</sub>, la tensión de contacto U<sub>c</sub> en la masa del equipo y la corriente que atravesaría el cuerpo humano I<sub>h</sub>.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Tensión Fase-Tierra U<sub>0</sub> (V):</label>
+              <input type="number" id="sim1-u0" value="220" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Tierra Protección R<sub>a</sub> (&Omega;):</label>
+              <input type="number" id="sim1-ra" value="10" step="0.5" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Tierra Servicio R<sub>b</sub> (&Omega;):</label>
+              <input type="number" id="sim1-rb" value="1" step="0.1" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Resistencia Defecto R<sub>d</sub> (&Omega;):</label>
+              <input type="number" id="sim1-rd" value="0" step="0.5" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Impedancia Cuerpo Z<sub>h</sub> (&Omega;):</label>
+              <input type="number" id="sim1-zh" value="1000" step="50" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Resistencia Calzado R<sub>c</sub> (&Omega;):</label>
+              <input type="number" id="sim1-rc" value="50" step="10" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+            <div class="flex items-end">
+              <button onclick="calcularSimuladorTT()" class="w-full p-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg transition shadow-sm text-xs">
+                <i class="fa-solid fa-calculator mr-1"></i> Calcular Lazo TT
+              </button>
+            </div>
+          </div>
+
+          <!-- Resultados TT -->
+          <div id="sim1-resultado" class="p-4 rounded-xl border bg-slate-50 border-slate-200 text-xs font-mono space-y-2">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-slate-800">
+              <div>Corriente Defecto I<sub>d</sub>: <strong id="sim1-res-id" class="text-slate-950 font-bold">20.00 A</strong></div>
+              <div>Tensión Contacto U<sub>c</sub>: <strong id="sim1-res-uc" class="text-rose-600 font-bold">200.00 V</strong></div>
+              <div>Corriente Cuerpo I<sub>h</sub>: <strong id="sim1-res-ih" class="text-rose-600 font-bold">190.48 mA</strong></div>
+            </div>
+            <div id="sim1-res-eval" class="text-xs font-sans font-semibold text-rose-700 pt-1 border-t border-slate-200">
+              &iexcl;PELIGRO MORTAL! U<sub>c</sub> (200 V) &gt; U<sub>L</sub> (24 V). La corriente I<sub>h</sub> (190 mA) se ubica en la Zona 4 con altísimo riesgo de fibrilación ventricular. Requiere disyuntor con corte en &le; 60 ms.
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR 2: RELACIÓN TIEMPO-CORRIENTE OIT Y ZONAS IEC 60479 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b pb-2">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-stopwatch-20 text-sky-500"></i> 2. Evaluador de Corriente vs. Tiempo (Ecuación OIT & IEC 60479)
+            </h4>
+            <span class="text-[11px] font-mono bg-sky-100 text-sky-900 px-2 py-0.5 rounded font-bold">I = 60 / &radic;t</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Intensidad de Corriente I (mA):</label>
+              <input type="number" id="sim2-i" value="50" step="1" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-sky-500 outline-none">
+            </div>
+            <div>
+              <label class="font-semibold block text-slate-700 mb-1">Tiempo de Exposición t (segundos):</label>
+              <input type="number" id="sim2-t" value="1.44" step="0.05" class="w-full p-2 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-sky-500 outline-none">
+            </div>
+            <div class="flex items-end">
+              <button onclick="evaluarOIT()" class="w-full p-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg transition shadow-sm text-xs">
+                <i class="fa-solid fa-chart-line mr-1"></i> Evaluar Riesgo
+              </button>
+            </div>
+          </div>
+
+          <div id="sim2-resultado" class="p-4 rounded-xl border bg-slate-50 border-slate-200 text-xs font-mono space-y-1.5">
+            <div>Tiempo Máximo Admisible OIT para esa I: <strong id="sim2-res-toit" class="text-slate-900 font-bold">1.44 s</strong></div>
+            <div>Corriente Máxima Admisible OIT para ese t: <strong id="sim2-res-ioit" class="text-slate-900 font-bold">50.00 mA</strong></div>
+            <div id="sim2-res-zona" class="font-sans text-xs font-bold pt-1"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 13: TEST DE AUTOEVALUACIÓN UNIVERSITARIA -->
+      <section id="autoevaluacion" class="scroll-mt-24 space-y-4">
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">12</span>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900">Autoevaluación de Materia</h3>
+            <p class="text-xs text-slate-500">Preguntas tipo parcial y examen final con justificación técnica inmediata.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Pregunta 1 -->
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3" id="q1">
+            <h4 class="font-bold text-sm text-slate-900">1. Según el Decreto 351/79 (Anexo VI), ¿cuál es la tensión límite de seguridad (U<sub>L</sub>) en ambientes secos y húmedos en Argentina?</h4>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="a" class="text-amber-600">
+                <span>50 V en corriente alterna</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="b" class="text-amber-600">
+                <span>Hasta 24 V respecto a tierra</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="c" class="text-amber-600">
+                <span>12 V para todo tipo de ambiente laboral</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q1_opt" value="d" class="text-amber-600">
+                <span>110 V de acuerdo con la norma norteamericana NEC</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q1', 'b', '¡Correcto! En Argentina, el Anexo VI del Dec. 351/79 establece un límite máximo de 24 V como tensión de seguridad en ambientes secos y húmedos (Curva Lp).', 'Incorrecto. Recuerda que la legislación argentina fija 24 V (no 50 V como en Europa).')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar Respuesta
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3" id="q2">
+            <h4 class="font-bold text-sm text-slate-900">2. ¿Por qué en un esquema de conexión a tierra TT los interruptores termomagnéticos no protegen contra contactos indirectos?</h4>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q2_opt" value="a" class="text-amber-600">
+                <span>Porque las termomagnéticas solo actúan con corriente continua.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q2_opt" value="b" class="text-amber-600">
+                <span>Porque la corriente de defecto (Id &approx; 20-30 A) es demasiado baja para provocar el disparo magnético rápido en &le; 60 ms.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q2_opt" value="c" class="text-amber-600">
+                <span>Porque en esquema TT no existe conductor de puesta a tierra.</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q2', 'b', '¡Exacto! Al circular por las resistencias de jabalina (Ra + Rb), la corriente de falla ronda los 20-30 A. Una termomagnética común necesita mucho más para su disparo instantáneo en 60 ms. Por eso es vital el disyuntor diferencial.', 'Incorrecto. La resistencia de tierra limita la corriente de falla a valores que no alcanzan el umbral magnético instantáneo del interruptor.')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar Respuesta
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3" id="q3">
+            <h4 class="font-bold text-sm text-slate-900">3. ¿Cuál es el orden secuencial estricto de las 5 Reglas de Oro para trabajos sin tensión?</h4>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q3_opt" value="a" class="text-amber-600">
+                <span>1° Bloquear, 2° Cortar, 3° Delimitar, 4° Medir tensión, 5° Poner a tierra.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q3_opt" value="b" class="text-amber-600">
+                <span>1° Corte visible/efectivo, 2° Bloqueo y señalización, 3° Verificar ausencia de tensión, 4° Puesta a tierra y en cortocircuito, 5° Señalizar y delimitar la zona.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q3_opt" value="c" class="text-amber-600">
+                <span>1° Poner a tierra, 2° Abrir circuito, 3° Bloquear, 4° Señalizar, 5° Trabajar.</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q3', 'b', '¡Excelente! La secuencia obligatoria por ley es: 1° Corte, 2° Bloqueo (LOTO), 3° Comprobación de tensión, 4° Puesta a tierra y cortocircuito, 5° Delimitación perimetral.', 'Incorrecto. No se puede poner a tierra sin haber verificado previamente la ausencia de tensión, ni comprobar tensión sin haber cortado y bloqueado.')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar Respuesta
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3" id="q4">
+            <h4 class="font-bold text-sm text-slate-900">4. En el ensayo instrumental del interruptor diferencial según norma IEC 61008, ¿qué debe suceder al inyectar 0,5 I<sub>&Delta;n</sub> (15 mA)?</h4>
+            <div class="space-y-1.5 text-xs text-slate-700">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q4_opt" value="a" class="text-amber-600">
+                <span>Debe disparar en menos de 40 ms.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q4_opt" value="b" class="text-amber-600">
+                <span>NO debe disparar.</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer">
+                <input type="radio" name="q4_opt" value="c" class="text-amber-600">
+                <span>Debe emitir una señal sonora de alarma sin cortar la energía.</span>
+              </label>
+            </div>
+            <button onclick="checkAnswer('q4', 'b', '¡Correcto! A la mitad de su sensibilidad nominal (0,5 Idn), el diferencial NO debe disparar. Esto previene aperturas intempestivas por fugas normales de aislamiento de los cables.', 'Incorrecto. A 0,5 Idn la norma exige que NO dispare.')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded text-xs font-semibold">
+              Verificar Respuesta
+            </button>
+            <div class="quiz-feedback hidden text-xs p-2.5 rounded-lg"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUMEN FINAL / CHEAT SHEET PARA EXAMEN -->
+      <section class="bg-slate-900 text-slate-200 rounded-2xl p-6 shadow-md space-y-4 text-xs">
+        <h4 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-bookmark text-amber-400"></i> Síntesis Ejecutiva para Exámenes y Coloquios
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ul class="space-y-2 text-slate-300">
+            <li>&bull; <strong>Tensión Segura en Argentina:</strong> <strong>U<sub>L</sub> &le; 24 V</strong> en ambientes secos y húmedos (Dec. 351/79 Anexo VI). En otros países suele ser 50 V.</li>
+            <li>&bull; <strong>Umbral de "No Soltar":</strong> <strong>10 mA</strong> en corriente alterna a 50 Hz. Las mujeres son un 50% más sensibles que los varones.</li>
+            <li>&bull; <strong>Fibrilación Ventricular:</strong> Ocurre a partir de 35-50 mA, especialmente si coincide con la <strong>onda T</strong> de repolarización miocárdica (0,15 s).</li>
+            <li>&bull; <strong>Impedancia Corporal:</strong> Compuesta por 3 impedancias en serie (Piel entrada + Tejido interno + Piel salida). A alta tensión o alta frecuencia, la piel se perfora/cortocircuita y queda sólo R<sub>int</sub> &approx; 1.000 &Omega;.</li>
+          </ul>
+          <ul class="space-y-2 text-slate-300">
+            <li>&bull; <strong>Esquema TT Obligatorio:</strong> Requiere jabalina independiente y <strong>Disyuntor Diferencial I<sub>&Delta;n</sub> &le; 30 mA</strong> porque la termomagnética no llega a abrir en 60 ms para I<sub>d</sub> &approx; 20 A.</li>
+            <li>&bull; <strong>Esquema TN-C:</strong> Terminantemente <strong>PROHIBIDO</strong> en Argentina por el riesgo de corte del conductor PEN.</li>
+            <li>&bull; <strong>Regla del 62%:</strong> Para medir jabalina con telurímetro, la pica P se ubica al 62% de la distancia total hasta la pica de corriente C (&ge; 30 m).</li>
+            <li>&bull; <strong>Las 5 Reglas de Oro:</strong> 1° Corte, 2° Bloqueo (LOTO), 3° Verificar tensión, 4° PAT y cortocircuito, 5° Delimitar y señalizar.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 dark:text-slate-400 no-print transition-colors">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Material pedagógico desarrollado para la Materia de <strong>Seguridad, Higiene Industrial y Medio Ambiente</strong></p>
+      <p class="mt-1">Material generado con IA, puede contener errores &mdash; Material generado con IA, puede contener errores</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante volver al índice -->
+  <a href="index.html" class="no-print fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-900/90 dark:bg-amber-500 hover:bg-slate-800 dark:hover:bg-amber-400 text-white dark:text-slate-950 font-semibold text-xs shadow-xl backdrop-blur border border-slate-700/50 dark:border-amber-400/50 transition-all hover:scale-105 active:scale-95 group" title="Volver al índice general">
+    <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+    <span>Volver al Menú</span>
+  </a>
+
+  <!-- JAVASCRIPT: LÓGICA DE SIMULADORES Y AUTOEVALUACIÓN -->
+  <script>
+    // Theme toggle logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      });
+    }
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Barra de progreso de lectura
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (height > 0) {
+        const scrolled = (winScroll / height) * 100;
+        const bar = document.getElementById('progress-bar');
+        if (bar) bar.style.width = scrolled + '%';
+      }
+    });
+
+    // SIMULADOR 1: LAZO TT
+    function calcularSimuladorTT() {
+      const u0 = parseFloat(document.getElementById('sim1-u0').value) || 220;
+      const ra = parseFloat(document.getElementById('sim1-ra').value) || 10;
+      const rb = parseFloat(document.getElementById('sim1-rb').value) || 1;
+      const rd = parseFloat(document.getElementById('sim1-rd').value) || 0;
+      const zh = parseFloat(document.getElementById('sim1-zh').value) || 1000;
+      const rc = parseFloat(document.getElementById('sim1-rc').value) || 50;
+
+      const rLazo = ra + rb + rd;
+      const id = u0 / rLazo; // Amperes
+      const uc = ra * id; // Volts de contacto
+
+      // Corriente que pasa por el cuerpo de quien toca la masa
+      const rHumanoRama = zh + rc;
+      const ih = (uc / rHumanoRama) * 1000; // mA
+
+      document.getElementById('sim1-res-id').textContent = id.toFixed(2) + ' A';
+      document.getElementById('sim1-res-uc').textContent = uc.toFixed(2) + ' V';
+      document.getElementById('sim1-res-ih').textContent = ih.toFixed(2) + ' mA';
+
+      const evalBox = document.getElementById('sim1-res-eval');
+      const containerBox = document.getElementById('sim1-resultado');
+
+      if (uc > 24) {
+        containerBox.className = "p-4 rounded-xl border text-xs font-mono space-y-2 bg-rose-50 border-rose-200 dark:bg-rose-950/40 dark:border-rose-900";
+        evalBox.className = "text-xs font-sans font-semibold text-rose-700 dark:text-rose-400 pt-1 border-t border-rose-200 dark:border-rose-900";
+        evalBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>¡CONDICIÓN PELIGROSA!</strong> La tensión de contacto Uc (${uc.toFixed(1)} V) supera la tensión de seguridad UL (24 V). La corriente por el cuerpo es ${ih.toFixed(1)} mA (Zona ${ih > 50 ? '4: Fibrilación' : '3: Tetanización'}). Las termomagnéticas comunes no actúan; se requiere Disyuntor Diferencial con disparo en &le; 60 ms.`;
+      } else {
+        containerBox.className = "p-4 rounded-xl border text-xs font-mono space-y-2 bg-emerald-50 border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-900";
+        evalBox.className = "text-xs font-sans font-semibold text-emerald-700 dark:text-emerald-400 pt-1 border-t border-emerald-200 dark:border-emerald-900";
+        evalBox.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> <strong>TENSIÓN SEGURA:</strong> Uc (${uc.toFixed(1)} V) &le; UL (24 V). La corriente que circularía (${ih.toFixed(1)} mA) se encuentra dentro de umbrales no letales.`;
+      }
+    }
+
+    // SIMULADOR 2: OIT Y ZONAS
+    function evaluarOIT() {
+      const i = parseFloat(document.getElementById('sim2-i').value) || 50;
+      const t = parseFloat(document.getElementById('sim2-t').value) || 1.0;
+
+      // Tiempo límite OIT para esa I: t = (60 / I)^2
+      const tOit = Math.pow(60 / i, 2);
+      // Corriente límite OIT para ese t: I = 60 / sqrt(t)
+      const iOit = 60 / Math.sqrt(t);
+
+      document.getElementById('sim2-res-toit').textContent = tOit.toFixed(2) + ' s';
+      document.getElementById('sim2-res-ioit').textContent = iOit.toFixed(2) + ' mA';
+
+      const zonaDiv = document.getElementById('sim2-res-zona');
+      let zonaTexto = "";
+      let colorClass = "";
+
+      if (i <= 0.5) {
+        zonaTexto = "Zona 1: Habitualmente ninguna reacción. Imperceptible.";
+        colorClass = "text-emerald-700 dark:text-emerald-400";
+      } else if (i <= 10) {
+        zonaTexto = "Zona 2: Perceptible sin efectos fisiológicos nocivos ni dificultad para soltar.";
+        colorClass = "text-sky-700 dark:text-sky-400";
+      } else if (i <= 50 && t <= tOit) {
+        zonaTexto = "Zona 3: Contracciones musculares intensas, dificultad respiratoria reversible. Sin fibrilación si se corta en tiempo.";
+        colorClass = "text-amber-700 dark:text-amber-400";
+      } else {
+        zonaTexto = `Zona 4: ¡ALTO RIESGO DE FIBRILACIÓN VENTRICULAR Y QUEMADURAS! El tiempo real (${t} s) supera el límite seguro de la OIT (${tOit.toFixed(2)} s) o la intensidad supera 50 mA prolongados.`;
+        colorClass = "text-rose-700 dark:text-rose-400";
+      }
+
+      zonaDiv.className = "font-sans text-xs font-bold pt-1 " + colorClass;
+      zonaDiv.innerHTML = '<i class="fa-solid fa-shield-heart mr-1"></i> ' + zonaTexto;
+    }
+
+    // QUIZ CHECKER
+    function checkAnswer(qId, correctVal, successMsg, failMsg) {
+      const container = document.getElementById(qId);
+      const selected = container.querySelector('input[type="radio"]:checked');
+      const feedback = container.querySelector('.quiz-feedback');
+
+      feedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'bg-rose-50', 'text-rose-900', 'border-rose-200', 'bg-amber-50', 'text-amber-900', 'border-amber-200', 'dark:bg-emerald-950/40', 'dark:text-emerald-200', 'dark:border-emerald-800', 'dark:bg-rose-950/40', 'dark:text-rose-200', 'dark:border-rose-800', 'dark:bg-amber-950/40', 'dark:text-amber-200', 'dark:border-amber-800');
+      feedback.classList.add('border');
+
+      if (!selected) {
+        feedback.classList.add('bg-amber-50', 'text-amber-900', 'border-amber-200', 'dark:bg-amber-950/40', 'dark:text-amber-200', 'dark:border-amber-800');
+        feedback.innerHTML = '<i class="fa-solid fa-circle-exclamation mr-1"></i> Por favor, selecciona una opción antes de verificar.';
+        return;
+      }
+
+      if (selected.value === correctVal) {
+        feedback.classList.add('bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'dark:bg-emerald-950/40', 'dark:text-emerald-200', 'dark:border-emerald-800');
+        feedback.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> ' + successMsg;
+      } else {
+        feedback.classList.add('bg-rose-50', 'text-rose-900', 'border-rose-200', 'dark:bg-rose-950/40', 'dark:text-rose-200', 'dark:border-rose-800');
+        feedback.innerHTML = '<i class="fa-solid fa-circle-xmark text-rose-600 dark:text-rose-400 mr-1.5"></i> ' + failMsg;
+      }
+    }
+
+    // Inicializar cálculos al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      calcularSimuladorTT();
+      evaluarOIT();
+    });
+  </script>
+</body>
+</html>
